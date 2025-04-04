@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- Primary Meta Tags -->
+    <title>DTB Technologies - Leading IT Solutions Provider in Kenya</title>
+    <meta name="title" content="DTB Technologies - Leading IT Solutions Provider in Kenya">
+    <meta name="description" content="DTB Technologies offers premier IT services, web development, and tech solutions in Nairobi, Kenya. Expert consultancy, 24/7 support, and innovative solutions for businesses.">
+    <meta name="keywords" content="DTB Technologies, IT services Kenya, web development Nairobi, tech solutions Africa, IT support Kenya, software development Nairobi, cloud services Kenya, cybersecurity Africa">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="author" content="DTB Technologies">
+    <meta name="geo.region" content="KE">
+    <meta name="geo.placename" content="Nairobi">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dtbtechnologies.co.ke/">
+    <meta property="og:title" content="DTB Technologies - Leading IT Solutions Provider in Kenya">
+    <meta property="og:description" content="Premier IT services, web development, and innovative tech solutions in Nairobi. Expert consultancy and 24/7 support for businesses across East Africa.">
+    <meta property="og:image" content="https://dtbtechnologies.co.ke/assets/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://dtbtechnologies.co.ke/">
+    <meta property="twitter:title" content="DTB Technologies - Leading IT Solutions Provider in Kenya">
+    <meta property="twitter:description" content="Premier IT services, web development, and innovative tech solutions in Nairobi. Expert consultancy and 24/7 support for businesses across East Africa.">
+    <meta property="twitter:image" content="https://dtbtechnologies.co.ke/assets/twitter-image.jpg">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://dtbtechnologies.co.ke/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- Stylesheets and Scripts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Schema.org Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "DTB Technologies",
+        "url": "https://dtbtechnologies.co.ke",
+        "logo": "https://dtbtechnologies.co.ke/assets/logo.png",
+        "description": "Leading IT solutions provider in Kenya offering web development, tech support, and innovative digital solutions.",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Nairobi",
+            "addressRegion": "Nairobi",
+            "addressCountry": "KE"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+254-700-000000",
+            "contactType": "customer service",
+            "availableLanguage": ["English", "Swahili"]
+        },
+        "sameAs": [
+            "https://facebook.com/DTBTechnologies",
+            "https://twitter.com/DTBTech",
+            "https://linkedin.com/company/dtb-technologies",
+            "https://instagram.com/dtbtechnologies"
+        ]
+    }
+    </script>
+
+    <style>
+        .hero-logo-container {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        .hero-logo-container img {
+            height: 100%;
+            width: auto;
+            transition: transform 0.5s ease;
+            filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.5));
+        }
+        .hero-logo-container:hover img {
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.7));
+        }
+        .nav-logo-container {
+            height: 50px;
+            display: flex;
+            align-items: center;
+        }
+        .nav-logo-container img {
+            height: 100%;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+        .nav-logo-container:hover img {
+            transform: scale(1.05);
+        }
+        @media (max-width: 768px) {
+            .hero-logo-container {
+                height: 60px;
+            }
+        }
+        .btn-primary {
+            @apply inline-flex items-center px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition-colors;
+        }
+        .btn-secondary {
+            @apply inline-flex items-center px-6 py-3 bg-slate-700 text-white font-semibold rounded-lg hover:bg-slate-600 transition-colors;
+        }
+        .animate-fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-slate-900">
+    <!-- Header -->
+    <header class="bg-gray-900 fixed w-full top-0 z-50">
+        <nav class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="nav-logo-container">
+                    <img src="assets/dtb-logo.png" alt="DTB Technologies Logo" class="h-12">
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-white hover:text-blue-400 transition duration-300">Home</a>
+                    <a href="about.html" class="text-white hover:text-blue-400 transition duration-300">About Us</a>
+                    <a href="services.html" class="text-white hover:text-blue-400 transition duration-300">Services</a>
+                    <a href="tech-lab.html" class="text-white hover:text-blue-400 transition duration-300">Tech Lab</a>
+                    <a href="help.html" class="text-white hover:text-blue-400 transition duration-300">Help</a>
+                    <a href="contact.html" class="text-white hover:text-blue-400 transition duration-300">Contact</a>
+                    <a href="cart.html" class="relative text-white hover:text-blue-400 transition duration-300">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cartCount" class="absolute -top-2 -right-2 bg-blue-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-white focus:outline-none" id="mobile-menu-button">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div class="md:hidden hidden" id="mobile-menu">
+                <div class="py-2 space-y-2">
+                    <a href="index.html" class="block text-white hover:text-blue-400 transition duration-300">Home</a>
+                    <a href="about.html" class="block text-white hover:text-blue-400 transition duration-300">About Us</a>
+                    <a href="services.html" class="block text-white hover:text-blue-400 transition duration-300">Services</a>
+                    <a href="tech-lab.html" class="block text-white hover:text-blue-400 transition duration-300">Tech Lab</a>
+                    <a href="help.html" class="block text-white hover:text-blue-400 transition duration-300">Help</a>
+                    <a href="contact.html" class="block text-white hover:text-blue-400 transition duration-300">Contact</a>
+                    <a href="cart.html" class="block text-white hover:text-blue-400 transition duration-300">
+                        <i class="fas fa-shopping-cart mr-2"></i>Cart
+                        <span id="mobileCartCount" class="inline-block bg-blue-600 text-white text-xs rounded-full h-5 w-5 text-center leading-5 ml-2">0</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Cart Count Update Script -->
+    <script>
+    function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const count = cart.length;
+        const cartCount = document.getElementById('cartCount');
+        const mobileCartCount = document.getElementById('mobileCartCount');
+        
+        if (cartCount) {
+            cartCount.textContent = count;
+            cartCount.style.display = count > 0 ? 'flex' : 'none';
+        }
+        
+        if (mobileCartCount) {
+            mobileCartCount.textContent = count;
+            mobileCartCount.style.display = count > 0 ? 'inline-block' : 'none';
+        }
+    }
+
+    // Initialize cart count on page load
+    document.addEventListener('DOMContentLoaded', updateCartCount);
+    </script>
+
+    <!-- Add margin to account for fixed header -->
+    <div class="h-16"></div>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = this.querySelector('i');
+            
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+                // Add smooth animation
+                mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+            } else {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+                // Reset height for animation
+                mobileMenu.style.maxHeight = '0';
+            }
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            
+            if (!mobileMenuButton.contains(event.target) && !mobileMenu.contains(event.target) && !mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+                const menuIcon = mobileMenuButton.querySelector('i');
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+                mobileMenu.style.maxHeight = '0';
+            }
+        });
+    </script>
+
+    <main class="bg-slate-900">
+        <!-- Hero Section -->
+        <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+            <!-- Animated Background Elements -->
+            <div class="absolute inset-0">
+                <!-- Gradient Background -->
+                <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"></div>
+                
+                <!-- Animated Orbs -->
+                <div class="absolute top-0 left-0 w-96 h-96 bg-blue-500/10 rounded-full mix-blend-overlay blur-3xl animate-pulse"></div>
+                <div class="absolute bottom-0 right-0 w-96 h-96 bg-purple-500/10 rounded-full mix-blend-overlay blur-3xl animate-pulse delay-1000"></div>
+                
+                <!-- Animated Grid -->
+                <div class="absolute inset-0 opacity-20">
+                    <div class="absolute inset-0" style="background-image: linear-gradient(transparent 1px, transparent 1px), linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 50px 50px;"></div>
+                </div>
+                
+                <!-- Glass Effect -->
+                <div class="absolute inset-0 backdrop-blur-3xl bg-gradient-to-br from-blue-500/5 to-purple-500/5"></div>
+            </div>
+
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="text-center max-w-4xl mx-auto">
+                    <div class="hero-logo-container mx-auto">
+                        <img src="assets/dtb-logo.png" alt="DTB Technologies Logo" class="mx-auto">
+                    </div>
+                    <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight animate-fade-in">
+                        Innovative IT Solutions for Your Business
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-300 mb-12 animate-fade-in" style="animation-delay: 200ms;">
+                        Empowering businesses across Kenya with cutting-edge technology solutions
+                    </p>
+                    <div class="flex flex-col md:flex-row gap-4 justify-center items-center animate-fade-in" style="animation-delay: 400ms;">
+                        <a href="services.html" class="btn-primary group">
+                            Explore Our Services
+                            <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                        <a href="contact.html" class="btn-secondary group">
+                            Get in Touch
+                            <i class="fas fa-envelope ml-2 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Floating Elements -->
+            <div class="absolute inset-0 pointer-events-none">
+                <div class="absolute top-1/4 left-1/4 w-2 h-2 bg-blue-400 rounded-full animate-ping"></div>
+                <div class="absolute top-3/4 right-1/4 w-2 h-2 bg-purple-400 rounded-full animate-ping" style="animation-delay: 1s;"></div>
+                <div class="absolute top-1/2 left-3/4 w-2 h-2 bg-cyan-400 rounded-full animate-ping" style="animation-delay: 1.5s;"></div>
+            </div>
+        </section>
+
+        <!-- Core Services Section -->
+        <section class="py-16 relative overflow-hidden">
+            <!-- Backdrop Effects -->
+            <div class="absolute inset-0">
+                <div class="absolute inset-0 bg-gradient-to-br from-slate-900/80 to-slate-800/80 backdrop-blur-xl"></div>
+                <div class="absolute -top-1/2 -right-1/4 w-96 h-96 bg-blue-500/10 rounded-full mix-blend-overlay blur-3xl"></div>
+                <div class="absolute -bottom-1/2 -left-1/4 w-96 h-96 bg-purple-500/10 rounded-full mix-blend-overlay blur-3xl"></div>
+            </div>
+
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Our Core Services</h2>
+                    <div class="h-1 w-24 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mx-auto"></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Service Cards with enhanced backdrop effects -->
+                    <div class="group">
+                        <div class="relative bg-gray-800/40 backdrop-blur-xl rounded-2xl p-8 border border-gray-700/30 h-full transform hover:scale-105 transition-all duration-300">
+                            <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                            <div class="relative z-10">
+                                <div class="text-blue-400 text-4xl mb-6 transform group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-laptop-medical"></i>
+                                </div>
+                                <h3 class="text-2xl font-semibold text-white mb-4">IT Support</h3>
+                                <p class="text-gray-300 mb-6">24/7 technical support and maintenance for your business IT infrastructure.</p>
+                                <a href="services/it-support.html" class="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors">
+                                    Learn More <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Service Cards with enhanced backdrop effects -->
+                    <div class="group">
+                        <div class="relative bg-gray-800/40 backdrop-blur-xl rounded-2xl p-8 border border-gray-700/30 h-full transform hover:scale-105 transition-all duration-300">
+                            <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                            <div class="relative z-10">
+                                <div class="text-blue-400 text-4xl mb-6 transform group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-cloud"></i>
+                                </div>
+                                <h3 class="text-2xl font-semibold text-white mb-4">Cloud Solutions</h3>
+                                <p class="text-gray-300 mb-6">Secure and scalable cloud infrastructure for your growing business needs.</p>
+                                <a href="services/cloud-solutions.html" class="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors">
+                                    Learn More <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Service Cards with enhanced backdrop effects -->
+                    <div class="group">
+                        <div class="relative bg-gray-800/40 backdrop-blur-xl rounded-2xl p-8 border border-gray-700/30 h-full transform hover:scale-105 transition-all duration-300">
+                            <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                            <div class="relative z-10">
+                                <div class="text-blue-400 text-4xl mb-6 transform group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-network-wired"></i>
+                                </div>
+                                <h3 class="text-2xl font-semibold text-white mb-4">Network Solutions</h3>
+                                <p class="text-gray-300 mb-6">Enterprise-grade networking solutions for optimal business connectivity.</p>
+                                <a href="services/network-solutions.html" class="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors">
+                                    Learn More <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Service Cards with enhanced backdrop effects -->
+                    <div class="group">
+                        <div class="relative bg-gray-800/40 backdrop-blur-xl rounded-2xl p-8 border border-gray-700/30 h-full transform hover:scale-105 transition-all duration-300">
+                            <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                            <div class="relative z-10">
+                                <div class="text-blue-400 text-4xl mb-6 transform group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <h3 class="text-2xl font-semibold text-white mb-4">Cybersecurity</h3>
+                                <p class="text-gray-300 mb-6">Advanced security solutions to protect your business from cyber threats.</p>
+                                <a href="services/cybersecurity.html" class="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors">
+                                    Learn More <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Service Cards with enhanced backdrop effects -->
+                    <div class="group">
+                        <div class="relative bg-gray-800/40 backdrop-blur-xl rounded-2xl p-8 border border-gray-700/30 h-full transform hover:scale-105 transition-all duration-300">
+                            <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                            <div class="relative z-10">
+                                <div class="text-blue-400 text-4xl mb-6 transform group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-satellite-dish"></i>
+                                </div>
+                                <h3 class="text-2xl font-semibold text-white mb-4">WiFi & Starlink</h3>
+                                <p class="text-gray-300 mb-6">Professional installation of WiFi and Starlink internet systems.</p>
+                                <a href="services/wifi-starlink.html" class="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors">
+                                    Learn More <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Service Cards with enhanced backdrop effects -->
+                    <div class="group">
+                        <div class="relative bg-gray-800/40 backdrop-blur-xl rounded-2xl p-8 border border-gray-700/30 h-full transform hover:scale-105 transition-all duration-300">
+                            <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                            <div class="relative z-10">
+                                <div class="text-blue-400 text-4xl mb-6 transform group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <h3 class="text-2xl font-semibold text-white mb-4">Web & App Development</h3>
+                                <p class="text-gray-300 mb-6">Custom website and mobile app development solutions.</p>
+                                <a href="services/web-app-dev.html" class="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors">
+                                    Learn More <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Contact Section -->
+        <section class="py-16 relative overflow-hidden">
+            <!-- Backdrop Effects -->
+            <div class="absolute inset-0">
+                <div class="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-purple-600/10 backdrop-blur-3xl"></div>
+                <div class="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full mix-blend-overlay blur-3xl"></div>
+                <div class="absolute bottom-0 left-0 w-96 h-96 bg-purple-500/10 rounded-full mix-blend-overlay blur-3xl"></div>
+            </div>
+
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-6">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white">Get in Touch</h2>
+                        <p class="text-gray-300 text-lg">Ready to transform your business with cutting-edge technology solutions? Contact us today for a free consultation.</p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="contact.html" class="btn-primary group">
+                                Contact Us
+                                <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+                            <a href="tel:+254729983567" class="btn-secondary group">
+                                Call Now
+                                <i class="fas fa-phone ml-2 group-hover:rotate-12 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="bg-gray-800/40 backdrop-blur-xl p-6 rounded-2xl border border-gray-700/30">
+                            <div class="text-blue-400 text-3xl mb-4">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-white mb-2">24/7 Support</h3>
+                            <p class="text-gray-300">Round-the-clock technical assistance for your business</p>
+                        </div>
+                        <div class="bg-gray-800/40 backdrop-blur-xl p-6 rounded-2xl border border-gray-700/30">
+                            <div class="text-purple-400 text-3xl mb-4">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-white mb-2">Expert Team</h3>
+                            <p class="text-gray-300">Certified professionals ready to help</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="py-16">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                    <div class="p-6">
+                        <div class="text-4xl font-bold text-blue-400 mb-2">500+</div>
+                        <div class="text-white">Happy Clients</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-4xl font-bold text-blue-400 mb-2">1000+</div>
+                        <div class="text-white">Projects Completed</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-4xl font-bold text-blue-400 mb-2">24/7</div>
+                        <div class="text-white">Support Available</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-4xl font-bold text-blue-400 mb-2">15+</div>
+                        <div class="text-white">Years Experience</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Contact Orb Button -->
+    <div class="fixed bottom-8 left-8 z-50">
+        <div class="relative group">
+            <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-blue-400 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
+            <a href="contact.html" class="relative flex items-center justify-center w-16 h-16 bg-slate-900 rounded-full hover:bg-slate-800 transition-colors">
+                <i class="fas fa-headset text-2xl text-blue-400"></i>
+            </a>
+            <div class="absolute bottom-full right-0 mb-2 w-48 p-2 bg-slate-800 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
+                Need help? Click me!
+            </div>
+        </div>
+    </div>
+
+    <!-- Book Services Button -->
+    <div class="fixed bottom-8 right-8 z-50">
+        <div class="relative group">
+            <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-blue-400 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+            <a href="services.html" class="relative flex items-center gap-3 px-6 py-3 bg-slate-900 text-white rounded-full hover:bg-slate-800 transition-colors">
+                <div class="relative">
+                    <i class="fas fa-briefcase text-xl text-blue-400"></i>
+                </div>
+                <span class="font-medium tracking-wide">Book Services</span>
+            </a>
+            <div class="absolute bottom-full right-0 mb-2 w-48 p-2 bg-slate-800 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
+                View and book our services
+            </div>
+        </div>
+    </div>
+
+    <!-- Modern Footer -->
+    <footer class="bg-gray-900 text-gray-300">
+        <div class="max-w-7xl mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="space-y-4">
+                    <h3 class="text-2xl font-bold text-blue-400">DTB Technologies</h3>
+                    <p class="text-sm">Empowering innovation through cutting-edge technology solutions since 2020.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="space-y-4">
+                    <h4 class="text-lg font-semibold text-white">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="hover:text-blue-400 transition-colors">Home</a></li>
+                        <li><a href="about.html" class="hover:text-blue-400 transition-colors">About Us</a></li>
+                        <li><a href="services.html" class="hover:text-blue-400 transition-colors">Services</a></li>
+                        <li><a href="tech-lab.html" class="hover:text-blue-400 transition-colors">Tech Lab</a></li>
+                        <li><a href="contact.html" class="hover:text-blue-400 transition-colors">Contact</a></li>
+                        <li><a href="help.html" class="hover:text-blue-400 transition-colors">Help</a></li>
+                        <li><a href="cart.html" class="hover:text-blue-400 transition-colors">Cart</a></li>
+                    </ul>
+                </div>
+
+                <!-- Resources -->
+                <div class="space-y-4">
+                    <h4 class="text-lg font-semibold text-white">Resources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-blue-400 transition-colors">Blog</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors">Documentation</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors">Support Center</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors">API Access</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="space-y-4">
+                    <h4 class="text-lg font-semibold text-white">Stay Updated</h4>
+                    <p class="text-sm">Subscribe to our newsletter for the latest updates and tech insights.</p>
+                    <form class="flex gap-2">
+                        <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-2 bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="mt-12 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                <p class="text-sm">&copy; 2025 DTB Technologies. All rights reserved.</p>
+                <div class="flex space-x-6 text-sm">
+                    <a href="#" class="hover:text-blue-400 transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-blue-400 transition-colors">Terms of Service</a>
+                    <a href="#" class="hover:text-blue-400 transition-colors">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="cart.js"></script>
+</body>
+</html>
