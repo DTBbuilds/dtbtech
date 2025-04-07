@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - DTB Technologies</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+
     <!-- Primary Meta Tags -->
     <title>Contact DTB Technologies - Get Expert IT Support in Kenya</title>
     <meta name="title" content="Contact DTB Technologies - Get Expert IT Support in Kenya">
@@ -74,7 +77,7 @@
                 },
                 {
                     "@type": "ContactPoint",
-                    "email": "support@dtbtechnologies.co.ke",
+                    "email": "dtbinfotech@gmail.com",
                     "contactType": "technical support",
                     "availableLanguage": ["English", "Swahili"]
                 }
@@ -106,46 +109,64 @@
     </style>
 </head>
 <body class="bg-slate-900">
-    <!-- Header -->
-    <header class="bg-gray-900 fixed w-full top-0 z-50">
-        <nav class="container mx-auto px-4 py-3">
-            <div class="flex justify-between items-center">
-                <a href="index.html" class="logo-container">
-                    <img src="assets/dtb-logo.png" alt="DTB Technologies Logo" class="h-12">
-                </a>
-                <!-- Mobile Navigation -->
-                <div class="lg:hidden">
-                    <div class="bg-gray-900 text-white px-4 py-3 flex justify-between items-center">
-                        <a href="index.html" class="flex items-center">
-                            <span class="text-white text-xl font-bold">DTB Technologies</span>
+    <script type="module">
+        import authModal from './components/auth-modal.js';
+        window.authModal = authModal;
+    </script>
+    <script src="./components/auth-buttons.js"></script>
+    <script src="./components/mobile-menu.js"></script>
+
+    <!-- Navigation -->
+    <nav class="bg-slate-900 shadow-lg fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <a href="/">
+                            <img class="h-8 w-auto" src="./assets/dtb-logo.png" alt="DTB Technologies">
                         </a>
-                        <button id="mobile-menu-button" class="text-white focus:outline-none">
-                            <i class="fas fa-bars text-2xl"></i>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="/" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                        <a href="/services.html" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Services</a>
+                        <a href="/tech-lab.html" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Tech Lab</a>
+                        <a href="/contact.html" class="text-white bg-slate-800 px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Contact</a>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <!-- Auth Buttons for Desktop -->
+                    <div class="hidden sm:block">
+                        <auth-buttons></auth-buttons>
+                    </div>
+                    <!-- Mobile menu button -->
+                    <div class="sm:hidden">
+                        <button type="button" class="mobile-menu-button inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-expanded="false">
+                            <span class="sr-only">Open main menu</span>
+                            <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
                         </button>
                     </div>
-                    <div id="mobile-menu" class="hidden bg-gray-800 text-white">
-                        <a href="index.html" class="block px-4 py-3 hover:bg-gray-700">Home</a>
-                        <a href="about.html" class="block px-4 py-3 hover:bg-gray-700">About</a>
-                        <a href="services.html" class="block px-4 py-3 hover:bg-gray-700">Services</a>
-                        <a href="tech-lab.html" class="block px-4 py-3 hover:bg-gray-700">Tech Lab</a>
-                        <a href="contact.html" class="block px-4 py-3 hover:bg-gray-700">Contact</a>
-                    </div>
-                </div>
-
-                <!-- Desktop Navigation -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="hover:text-blue-400 transition-colors">Home</a>
-                    <a href="about.html" class="hover:text-blue-400 transition-colors">About</a>
-                    <a href="services.html" class="hover:text-blue-400 transition-colors">Services</a>
-                    <a href="tech-lab.html" class="hover:text-blue-400 transition-colors">Tech Lab</a>
-                    <a href="contact.html" class="hover:text-blue-400 transition-colors">Contact</a>
                 </div>
             </div>
-        </nav>
-    </header>
+        </div>
+        <!-- Mobile menu -->
+        <div class="sm:hidden mobile-menu hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="/" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="/services.html" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Services</a>
+                <a href="/tech-lab.html" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Tech Lab</a>
+                <a href="/contact.html" class="bg-slate-800 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Contact</a>
+                <!-- Auth Buttons for Mobile -->
+                <div class="px-3 py-2">
+                    <auth-buttons></auth-buttons>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-    <!-- Main Content with proper padding for fixed header -->
-    <main class="pt-24">
+    <!-- Main Content -->
+    <main class="pt-16">
         <!-- Hero Section -->
         <section class="relative py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
             <div class="absolute inset-0 bg-blue-500/10 backdrop-blur-3xl"></div>
@@ -217,14 +238,9 @@
                                         </div>
                                     </div>
 
-                                    <div class="flex items-center p-4 bg-purple-500/10 rounded-xl">
-                                        <div class="w-12 h-12 bg-purple-500/20 rounded-full flex items-center justify-center">
-                                            <i class="fas fa-envelope text-xl text-purple-400"></i>
-                                        </div>
-                                        <div class="ml-4">
-                                            <p class="text-white font-medium">Email</p>
-                                            <p class="text-gray-400">info@dtbtechnologies.co.ke</p>
-                                        </div>
+                                    <div class="flex items-center space-x-4 text-gray-300">
+                                        <i class="fas fa-envelope text-blue-500"></i>
+                                        <a href="mailto:dtbinfotech@gmail.com" class="hover:text-blue-400 transition-colors">dtbinfotech@gmail.com</a>
                                     </div>
 
                                     <div class="flex items-center p-4 bg-orange-500/10 rounded-xl">

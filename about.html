@@ -40,8 +40,9 @@
 
     <!-- Stylesheets and Scripts -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="components/header.js" type="module"></script>
 
     <!-- Schema.org Markup -->
     <script type="application/ld+json">
@@ -92,42 +93,8 @@
     </script>
 </head>
 <body class="bg-slate-900">
-    <!-- Mobile Navigation -->
-    <div class="lg:hidden">
-        <div class="bg-gray-900 text-white px-4 py-3 flex justify-between items-center">
-            <a href="index.html" class="flex items-center">
-                <span class="text-white text-xl font-bold">DTB Technologies</span>
-            </a>
-            <button id="mobile-menu-button" class="text-white focus:outline-none">
-                <i class="fas fa-bars text-2xl"></i>
-            </button>
-        </div>
-        <div id="mobile-menu" class="hidden bg-gray-800 text-white">
-            <div class="space-y-1">
-                <a href="index.html" class="block px-4 py-3 hover:bg-gray-700">Home</a>
-                <a href="about.html" class="block px-4 py-3 hover:bg-gray-700">About</a>
-                <a href="services.html" class="block px-4 py-3 hover:bg-gray-700">Services</a>
-                <a href="tech-lab.html" class="block px-4 py-3 hover:bg-gray-700">Tech Lab</a>
-                <a href="contact.html" class="block px-4 py-3 hover:bg-gray-700">Contact</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Desktop Navigation -->
-    <header class="bg-gray-900 text-white hidden lg:block">
-        <nav class="container mx-auto px-4 py-6 flex justify-between items-center">
-            <a href="index.html" class="flex items-center">
-                <span class="text-white text-2xl font-bold">DTB Technologies</span>
-            </a>
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="index.html" class="hover:text-blue-400 transition-colors">Home</a>
-                <a href="about.html" class="hover:text-blue-400 transition-colors">About</a>
-                <a href="services.html" class="hover:text-blue-400 transition-colors">Services</a>
-                <a href="tech-lab.html" class="hover:text-blue-400 transition-colors">Tech Lab</a>
-                <a href="contact.html" class="hover:text-blue-400 transition-colors">Contact</a>
-            </div>
-        </nav>
-    </header>
+    <!-- Header -->
+    <site-header></site-header>
 
     <main class="pt-24">
         <!-- Hero Section -->

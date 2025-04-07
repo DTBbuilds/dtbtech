@@ -1,170 +1,194 @@
-# DTB Technologies Website Documentation
+# DTB Technologies Website
 
-## Project Overview
-A modern, responsive website for DTB Technologies, a leading IT solutions provider in Kenya. The website showcases the company's services, expertise, and provides an e-commerce functionality for booking IT services.
-
-## Table of Contents
-1. [Technology Stack](#technology-stack)
-2. [Project Structure](#project-structure)
-3. [Features](#features)
-4. [SEO Implementation](#seo-implementation)
-5. [Cart System](#cart-system)
-6. [Installation](#installation)
-7. [Usage](#usage)
-8. [Maintenance](#maintenance)
-
-## Technology Stack
-- **Frontend Framework**: HTML5, Tailwind CSS
-- **JavaScript**: Vanilla JS with ES6+ features
-- **Icons**: Font Awesome 6.0.0-beta3
-- **Responsive Design**: Mobile-first approach
-- **Local Storage**: For cart functionality
-- **SEO**: Schema.org markup, Open Graph, Twitter Cards
-
-## Project Structure
-```
-dtb-technologies/
-├── index.html          # Homepage
-├── about.html         # About page
-├── services.html      # Services listing
-├── tech-lab.html      # Tech lab information
-├── contact.html       # Contact information
-├── help.html          # Help and support
-├── cart.html          # Shopping cart
-├── styles.css         # Custom styles
-├── script.js          # Global JavaScript
-└── assets/           # Images and resources
-```
+A modern, responsive website for DTB Technologies showcasing IT services and solutions.
 
 ## Features
 
-### 1. Navigation
-- Responsive header with mobile menu
-- Smooth scrolling
-- Active page indication
-- Cart counter integration
+### Core Pages
 
-### 2. Services
-- IT Support (from KSh 500/hour)
-  - Remote & on-site support
-  - Hardware troubleshooting
-  - Software installation
-  - Network maintenance
-  - Data backup & recovery
+1. **Home Page**
+   - Modern hero section with animated background
+   - Interactive service cards with hover effects
+   - Animated statistics section with counters
+   - Client testimonials
+   - Latest news and updates
+   - Contact form with validation
 
-- Web Development (from KSh 30,000)
+2. **Services Page**
+   - Comprehensive service grid layout
+   - Individual service pages with detailed information
+   - Modern card design with hover animations
+   - Service categories:
+     - IT Support (24/7)
+     - Cybersecurity
+     - Cloud Solutions
+     - Network Solutions
+     - Software Development
+     - Hardware Solutions
+     - Digital Transformation
+
+3. **Tech Lab**
+   - Interactive skills showcase
+   - Technology stack presentation
+   - Project portfolio
+   - Modern grid layout with animations
+
+4. **Contact Page**
+   - Interactive contact form
+   - Google Maps integration
+   - Business hours
+   - Multiple contact methods
+   - Social media links
+
+### Design Features
+
+1. **Modern UI Elements**
+   - Glass-morphism effects
+   - Gradient backgrounds
+   - Smooth animations
+   - Hover effects
+   - Responsive design
+   - Dark theme
+
+2. **Interactive Components**
+   - Animated statistics counters
+   - Mobile-friendly navigation
+   - Smooth scrolling
+   - Loading animations
+   - Form validation
+   - Toast notifications
+
+3. **Footer**
+   - Quick links section
+   - Service links
+   - Contact information
+   - Social media integration
+   - Business hours
+   - Newsletter subscription
+
+## Technical Stack
+
+- **Frontend**
+  - HTML5
+  - CSS3 (Tailwind CSS)
+  - JavaScript (Vanilla)
+  - Font Awesome Icons
+
+- **Performance**
+  - Optimized images
+  - Lazy loading
+  - Minified assets
   - Responsive design
-  - E-commerce solutions
-  - CMS integration
-  - SEO optimization
-  - Performance tuning
+  - Mobile-first approach
 
-- Cloud Solutions (from KSh 5,000/month)
-  - Cloud migration
-  - Server management
-  - Data storage
-  - Backup solutions
-  - 24/7 monitoring
+## Contact Information
 
-### 3. Cart System
-- Local storage-based cart management
-- Real-time cart updates
-- Dynamic price calculations
-- VAT (16%) inclusion
-- Remove item functionality
-- Empty cart state handling
+- Email: dtbinfotech@gmail.com
+- Phone: +1 (234) 567-890
+- Address: 123 Tech Street, Digital City
 
-### 4. SEO Implementation
-Each page includes:
-- Optimized meta tags
-- Schema.org markup
-- Open Graph tags
-- Twitter Cards
-- Canonical URLs
-- Geo-targeting for Kenya
-- Language specifications
+## Business Hours
 
-### 5. Contact Integration
-- Contact form with validation
-- Location information
-- Social media links
-- Business hours
-- Emergency support contact
+- Monday - Friday: 9:00 AM - 6:00 PM
+- Saturday: 10:00 AM - 2:00 PM
+- Sunday: Closed
 
-## Installation
+## Social Media
+
+- Facebook: [DTB Technologies](https://facebook.com/dtbtechnologies)
+- Twitter: [@dtbtechnologies](https://twitter.com/dtbtechnologies)
+- LinkedIn: [DTB Technologies](https://linkedin.com/company/dtbtechnologies)
+- Instagram: [@dtbtechnologies](https://instagram.com/dtbtechnologies)
+
+## Development
+
+### Setup
 1. Clone the repository
-2. No build process required - static HTML site
-3. Deploy to any web server
+2. Open the project in your preferred code editor
+3. No build process required - static HTML/CSS/JS
 
-## Usage
-
-### Local Development
-1. Open any HTML file in a modern web browser
-2. For best results, use a local server (e.g., Live Server in VS Code)
-
-### Adding New Services
-1. Update `services.html`
-2. Add service details in the grid section
-3. Include pricing information
-4. Add corresponding schema markup
-
-### Modifying Cart Functionality
-```javascript
-// Add item to cart
-function addToCart(service, price) {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    cart.push({
-        service: service,
-        price: price,
-        id: Date.now()
-    });
-    localStorage.setItem('cart', JSON.stringify(cart));
-    updateCartCount();
-}
-
-// Update cart display
-function updateCartCount() {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const count = cart.length;
-    document.getElementById('cartCount').textContent = count;
-}
+### File Structure
 ```
+dtb-technologies/
+├── index.html              # Home page
+├── services/              # Service pages
+│   ├── it-support.html
+│   ├── cybersecurity.html
+│   ├── cloud-solutions.html
+│   └── ...
+├── tech-lab/             # Tech lab pages
+│   ├── skills/
+│   └── ...
+├── assets/              # Static assets
+│   ├── images/
+│   ├── css/
+│   └── js/
+└── README.md
+```
+
+### Styling
+- Using Tailwind CSS for utility-first styling
+- Custom CSS for specific components
+- Responsive breakpoints:
+  - Mobile: < 768px
+  - Tablet: 768px - 1024px
+  - Desktop: > 1024px
+
+### JavaScript Features
+- Intersection Observer for animations
+- Counter animations
+- Form validation
+- Mobile menu handling
+- Smooth scrolling
+- Dynamic content loading
+
+## Recent Updates
+
+1. **Mobile Navigation**
+   - Enhanced mobile menu button
+   - Smooth animations
+   - Improved accessibility
+   - Better touch interactions
+
+2. **Statistics Section**
+   - Added animated counters
+   - Modern card design
+   - Interactive hover effects
+   - Background animations
+
+3. **Footer Enhancement**
+   - Updated contact information
+   - Added business hours
+   - Improved social media links
+   - Better link organization
+
+4. **Service Pages**
+   - Modern card layouts
+   - Improved hover effects
+   - Better content organization
+   - Enhanced visual hierarchy
 
 ## Maintenance
 
 ### Regular Updates
-1. Keep dependencies updated:
-   - Font Awesome
-   - Tailwind CSS
+- Keep content fresh and relevant
+- Update service offerings
+- Maintain contact information
+- Check all links periodically
 
-2. Content Updates:
-   - Service prices
-   - Contact information
-   - Company details
+### Performance
+- Monitor page load times
+- Optimize images regularly
+- Update dependencies
+- Check for broken links
 
-### SEO Maintenance
-1. Regular review of meta tags
-2. Update schema markup when adding services
-3. Monitor and update canonical URLs
-4. Keep social media links current
+## Support
 
-### Performance Optimization
-1. Compress new images before adding
-2. Minimize CSS and JavaScript
-3. Regular testing of responsive design
-4. Monitor cart system performance
-
-## Security Considerations
-1. Form validation implementation
-2. XSS prevention in cart system
-3. Secure data handling
-4. Regular security audits
-
-## Contact Information
 For technical support or inquiries:
-- Email: support@dtbtechnologies.co.ke
-- Phone: +254-729983567
-- Location: Nairobi, Kenya
+- Email: dtbinfotech@gmail.com
+- Phone: +1 (234) 567-890
+- Help Center: [help.html](help.html)
 
 ## License
-Copyright © 2025 DTB Technologies. All rights reserved.
+
+All rights reserved 2025 DTB Technologies
