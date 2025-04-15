@@ -1,78 +1,55 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Enhanced header functionality
-    const header = document.querySelector('.site-header, nav.fixed');
-    const mobileMenuButton = document.querySelector('.mobile-menu-button');
-    const mobileMenu = document.querySelector('.mobile-menu');
-    const navItems = document.querySelectorAll('.nav-item');
+    const header = document.querySelector('site-header header'); // Target the actual header element inside the custom element
+    const navLinks = document.querySelectorAll('site-header nav a[href]'); // Refined selector for nav links
     const currentPath = window.location.pathname;
+
+    if (!header) {
+        console.error('Header element not found!');
+        return; // Exit if header isn't found
+    }
 
     // Scroll effects
     let lastScroll = 0;
     const scrollThreshold = 50;
 
+    // Initial state classes
+    header.classList.add('header-default', 'header-visible');
+
     window.addEventListener('scroll', () => {
         const currentScroll = window.pageYOffset;
         
-        // Add glass effect and shadow on scroll
+        // Add/remove classes for background/blur effect based on scroll position
         if (currentScroll > scrollThreshold) {
-            header.classList.add('scrolled', 'backdrop-blur-md');
-            header.style.setProperty('--header-bg', 'rgba(15, 23, 42, 0.95)');
-            header.style.setProperty('--header-border', 'rgba(148, 163, 184, 0.2)');
+            header.classList.add('header-scrolled');
+            header.classList.remove('header-default');
         } else {
-            header.classList.remove('scrolled', 'backdrop-blur-md');
-            header.style.setProperty('--header-bg', 'rgba(15, 23, 42, 0.8)');
-            header.style.setProperty('--header-border', 'rgba(148, 163, 184, 0.1)');
+            header.classList.remove('header-scrolled');
+            header.classList.add('header-default');
         }
 
-        // Hide/show header on scroll
+        // Add/remove classes to hide/show header on scroll direction
         if (currentScroll > lastScroll && currentScroll > 100) {
-            header.style.transform = 'translateY(-100%)';
+            // Scrolling down past 100px
+            header.classList.add('header-hidden');
+            header.classList.remove('header-visible');
         } else {
-            header.style.transform = 'translateY(0)';
+            // Scrolling up or near the top
+            header.classList.remove('header-hidden');
+            header.classList.add('header-visible');
         }
 
-        lastScroll = currentScroll;
+        lastScroll = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
     });
 
-    // Mobile menu toggle with animation
-    if (mobileMenuButton && mobileMenu) {
-        mobileMenuButton.addEventListener('click', () => {
-            const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
-            mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
-            
-            // Toggle mobile menu with animation
-            if (!isExpanded) {
-                mobileMenu.classList.add('active');
-                mobileMenu.style.transform = 'translateY(0)';
-                mobileMenu.style.opacity = '1';
-                document.body.style.overflow = 'hidden';
-            } else {
-                mobileMenu.style.transform = 'translateY(-100%)';
-                mobileMenu.style.opacity = '0';
-                setTimeout(() => {
-                    mobileMenu.classList.remove('active');
-                    document.body.style.overflow = '';
-                }, 300);
-            }
-        });
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (mobileMenu.classList.contains('active') &&
-                !mobileMenu.contains(e.target) &&
-                !mobileMenuButton.contains(e.target)) {
-                mobileMenuButton.click();
-            }
-        });
-    }
-
     // Active nav item highlight
-    navItems.forEach(item => {
+    navLinks.forEach(item => {
         const href = item.getAttribute('href');
-        if (href === currentPath || 
-            (currentPath.endsWith('/') && href === currentPath.slice(0, -1)) ||
-            (currentPath === '/' && href === 'index.html')) {
-            item.classList.add('active');
+        // Improved logic for matching paths, including index
+        if (href && (href === currentPath || 
+            (currentPath.endsWith('/') && href === currentPath.slice(0, -1)) || // Handles trailing slash
+            (currentPath === '/' && href === '/'))) { // Handles root path explicitly
+            item.classList.add('active'); // Ensure an 'active' class CSS rule exists
         }
     });
 
@@ -80,29 +57,25 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-                // Close mobile menu if open
-                if (mobileMenu && mobileMenu.classList.contains('active')) {
-                    mobileMenuButton.click();
+            const targetId = this.getAttribute('href');
+            // Ensure targetId is a valid selector (starts with #, not just #)
+            if (targetId && targetId.length > 1 && targetId.startsWith('#')) {
+                const target = document.querySelector(targetId);
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
+            } else if (targetId === '#') {
+                // Scroll to top if href="#"
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
         });
     });
 
-    // Handle window resize
-    window.addEventListener('resize', () => {
-        if (window.innerWidth > 768 && mobileMenu && mobileMenu.classList.contains('active')) {
-            mobileMenuButton.click();
-        }
-    });
-
     // Add hover effect to nav items
-    navItems.forEach(item => {
+    navLinks.forEach(item => {
         item.addEventListener('mouseenter', () => {
             if (!item.classList.contains('active')) {
                 item.style.transform = 'translateY(-2px)';

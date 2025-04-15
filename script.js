@@ -210,7 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Debounced resize handler
     const debouncedResize = debounce(() => {
         // Update any size-dependent features
-        updateOrbPosition();
+        // updateOrbPosition(); // Commented out - function definition not found
     }, 250);
 
     window.addEventListener('resize', debouncedResize);

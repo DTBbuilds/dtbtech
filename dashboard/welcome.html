@@ -8,723 +8,87 @@
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <meta name="description" content="DTB Technologies - Your personalized dashboard for managing IT projects and services">
+    <link rel="stylesheet" href="../css/animations.css">
+    <script src="../js/welcome.js" defer></script>
 </head>
-<body class="bg-slate-900">
-    <!-- Header -->
-    <header class="site-header">
-        <div class="absolute inset-0 bg-gradient-to-r from-blue-600/5 via-purple-600/5 to-pink-600/5"></div>
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
-            <nav class="flex items-center justify-between h-full">
-                <a href="../index.html" class="nav-brand">
-                    <img src="../assets/dtb-logo.png" alt="DTB Technologies" class="h-8 w-auto">
-                    <span class="hidden sm:block">DTB Technologies</span>
-                </a>
-
-                <!-- Desktop Navigation -->
-                <div class="hidden md:flex items-center space-x-4">
-                    <a href="../services.html" class="nav-item">Services</a>
-                    <a href="../tech-lab.html" class="nav-item">Tech Lab</a>
-                    <a href="../contact.html" class="nav-item">Contact</a>
-                    <button id="logoutBtn" class="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-700 transition-colors">
-                        Logout
-                    </button>
+<body class="bg-slate-900" onload="displayWelcome()">
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-slate-800/30 backdrop-blur-md border-b border-gray-700/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="../index.html" class="text-white font-bold text-xl hover:text-blue-400 transition-colors">
+                        DTB Technologies
+                    </a>
                 </div>
-
-                <!-- Mobile Menu Button -->
-                <button class="md:hidden text-white" id="mobile-menu-button">
-                    <i class="fas fa-bars text-2xl"></i>
-                </button>
-            </nav>
-
-            <!-- Mobile Menu -->
-            <div id="mobile-menu" class="hidden md:hidden pb-4">
-                <a href="../services.html" class="block text-white py-2 hover:text-blue-400 transition-colors">Services</a>
-                <a href="../tech-lab.html" class="block text-white py-2 hover:text-blue-400 transition-colors">Tech Lab</a>
-                <a href="../contact.html" class="block text-white py-2 hover:text-blue-400 transition-colors">Contact</a>
-                <button id="mobile-logoutBtn" class="mt-2 w-full px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-700 transition-colors">
-                    Logout
-                </button>
-            </div>
-        </div>
-    </header>
-
-    <div class="min-h-screen pt-20">
-        <!-- Welcome Banner -->
-        <div class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
-            <div class="max-w-7xl mx-auto py-8 sm:py-12 px-4 sm:px-6 lg:px-8">
-                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                    <div>
-                        <h1 class="text-2xl sm:text-3xl font-bold welcome-message">Welcome back!</h1>
-                        <p class="mt-2 text-sm sm:text-base text-blue-100">Here's what's new at DTB Technologies</p>
-                    </div>
-                    <button onclick="dismissWelcome()" class="text-blue-100 hover:text-white transition-colors">
-                        <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
+                
+                <!-- Navigation Links -->
+                <div class="flex items-center space-x-8">
+                    <a href="../index.html" class="text-gray-300 hover:text-blue-400 transition-colors">
+                        <i class="fas fa-home mr-2"></i>Home
+                    </a>
+                    <a href="#" class="text-gray-300 hover:text-purple-400 transition-colors">
+                        <i class="fas fa-chart-line mr-2"></i>Dashboard
+                    </a>
+                    <a href="#" class="text-gray-300 hover:text-pink-400 transition-colors">
+                        <i class="fas fa-envelope mr-2"></i>Contact
+                    </a>
+                    <button onclick="logout()" class="px-4 py-2 rounded-lg bg-slate-700/50 text-gray-300 hover:bg-slate-700/80 hover:text-white transition-all duration-300 flex items-center space-x-2">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
                     </button>
                 </div>
             </div>
         </div>
+    </nav>
 
-        <!-- Main Content -->
-        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
-            <!-- Quick Actions -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8">
-                <div class="bg-slate-800 rounded-lg p-4 sm:p-6 transform hover:scale-[1.02] transition-transform">
-                    <div class="flex items-center space-x-4">
-                        <div class="bg-blue-600 p-3 rounded-lg">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-medium text-white">Your Projects</h3>
-                            <p class="text-gray-400">View and manage your tech projects</p>
-                        </div>
-                    </div>
-                    <a href="#" class="mt-4 inline-flex items-center text-blue-400 hover:text-blue-300">
-                        Get started
-                        <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                        </svg>
-                    </a>
-                </div>
+    <div class="min-h-screen flex flex-col items-center justify-center p-4 relative overflow-hidden">
+        <!-- Background Effects -->
+        <div class="absolute inset-0">
+            <div class="absolute top-10 left-10 w-72 h-72 bg-blue-500/10 rounded-full mix-blend-overlay filter blur-3xl animate-blob"></div>
+            <div class="absolute top-0 right-0 w-72 h-72 bg-purple-500/10 rounded-full mix-blend-overlay filter blur-3xl animate-blob animation-delay-2000"></div>
+            <div class="absolute -bottom-8 left-20 w-72 h-72 bg-pink-500/10 rounded-full mix-blend-overlay filter blur-3xl animate-blob animation-delay-4000"></div>
+        </div>
 
-                <div class="bg-slate-800 rounded-lg p-4 sm:p-6 transform hover:scale-[1.02] transition-transform">
-                    <div class="flex items-center space-x-4">
-                        <div class="bg-green-600 p-3 rounded-lg">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-medium text-white">Tech Lab</h3>
-                            <p class="text-gray-400">Access exclusive tech resources</p>
-                        </div>
-                    </div>
-                    <a href="/tech-lab" class="mt-4 inline-flex items-center text-green-400 hover:text-green-300">
-                        Explore lab
-                        <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                        </svg>
-                    </a>
-                </div>
-
-                <div class="bg-slate-800 rounded-lg p-4 sm:p-6 transform hover:scale-[1.02] transition-transform">
-                    <div class="flex items-center space-x-4">
-                        <div class="bg-purple-600 p-3 rounded-lg">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-medium text-white">Support</h3>
-                            <p class="text-gray-400">Get help from our tech experts</p>
-                        </div>
-                    </div>
-                    <a href="/support" class="mt-4 inline-flex items-center text-purple-400 hover:text-purple-300">
-                        Get help
-                        <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                        </svg>
-                    </a>
-                </div>
+        <!-- Welcome Message -->
+        <div class="relative z-10 text-center mb-16 animate-float">
+            <h1 class="text-6xl font-bold text-white mb-6 animate-gradient bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
+                Welcome Back!
+            </h1>
+            <div id="welcomeMessage" class="text-2xl text-gray-300 opacity-0 animate-fade-in">
+                <!-- Dynamically inserted by JavaScript -->
             </div>
+        </div>
 
-            <!-- Progress Overview -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                <div class="bg-slate-800 rounded-lg p-6">
-                    <div class="flex justify-between items-center mb-4">
-                        <h2 class="text-xl font-bold text-white">Your Progress</h2>
-                        <div class="relative">
-                            <button id="progressInfo" class="text-gray-400 hover:text-white">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                            </button>
-                            <div id="progressTooltip" class="hidden absolute right-0 mt-2 w-64 bg-slate-700 p-4 rounded-lg shadow-lg z-10">
-                                <p class="text-sm text-gray-300">Complete tasks and projects to level up your profile and unlock new features!</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="space-y-4">
-                        <div>
-                            <div class="flex justify-between text-sm text-gray-400 mb-1">
-                                <span>Profile Completion</span>
-                                <span>75%</span>
-                            </div>
-                            <div class="h-2 bg-slate-700 rounded-full">
-                                <div class="h-2 bg-blue-500 rounded-full" style="width: 75%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between text-sm text-gray-400 mb-1">
-                                <span>Projects Completed</span>
-                                <span>3/5</span>
-                            </div>
-                            <div class="h-2 bg-slate-700 rounded-full">
-                                <div class="h-2 bg-green-500 rounded-full" style="width: 60%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between text-sm text-gray-400 mb-1">
-                                <span>Tech Skills</span>
-                                <span>12/20</span>
-                            </div>
-                            <div class="h-2 bg-slate-700 rounded-full">
-                                <div class="h-2 bg-purple-500 rounded-full" style="width: 60%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-slate-800 rounded-lg p-6">
-                    <h2 class="text-xl font-bold text-white mb-4">Upcoming Events</h2>
-                    <div class="space-y-4" id="upcomingEvents">
-                        <div class="flex items-center p-3 bg-slate-700 rounded-lg">
-                            <div class="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mr-4">
-                                <span class="text-white font-bold">15</span>
-                                <span class="text-white text-xs">APR</span>
-                            </div>
-                            <div>
-                                <h3 class="text-white font-medium">Tech Workshop</h3>
-                                <p class="text-sm text-gray-400">Advanced Web Development</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-slate-800 rounded-lg p-6">
-                    <h2 class="text-xl font-bold text-white mb-4">Notifications</h2>
-                    <div class="space-y-4" id="notificationsList">
-                        <!-- Notifications will be populated by JavaScript -->
-                    </div>
-                </div>
+        <!-- Construction Notice -->
+        <div class="relative z-10 max-w-2xl mx-auto text-center p-8 rounded-2xl bg-slate-800/50 backdrop-blur-md border border-gray-700/30 animate-slide-up">
+            <div class="flex items-center justify-center mb-6 animate-spin-slow">
+                <i class="fas fa-tools text-4xl text-yellow-400"></i>
             </div>
-
-            <!-- Project Showcase -->
-            <div class="bg-slate-800 rounded-lg p-6 mb-8">
-                <div class="flex justify-between items-center mb-6">
-                    <h2 class="text-xl font-bold text-white">Your Projects</h2>
-                    <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors">
-                        New Project
-                    </button>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="projectsGrid">
-                    <!-- Project cards will be populated by JavaScript -->
-                </div>
+            <h2 class="text-2xl font-bold text-white mb-4 animate-pulse-subtle">🚧 Pardon Our Digital Dust! 🚧</h2>
+            <p class="text-gray-300 mb-6 leading-relaxed">
+                We're crafting something amazing just for you! Our team of digital artisans is working their magic to create an extraordinary dashboard experience.
+            </p>
+            <div class="flex justify-center space-x-4 text-sm text-gray-400">
+                <span class="flex items-center">
+                    <i class="fas fa-code-branch mr-2 text-blue-400"></i>
+                    Version 0.1.0
+                </span>
+                <span class="flex items-center">
+                    <i class="fas fa-clock mr-2 text-purple-400"></i>
+                    Coming Soon
+                </span>
             </div>
+        </div>
 
-            <!-- Tech Skills -->
-            <div class="bg-slate-800 rounded-lg p-6 mb-8">
-                <h2 class="text-xl font-bold text-white mb-4">Tech Skills</h2>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="skillsGrid">
-                    <!-- Skills will be populated by JavaScript -->
-                </div>
-            </div>
-
-            <!-- Recent Activity -->
-            <div class="bg-slate-800 rounded-lg p-6 mb-8">
-                <h2 class="text-xl font-bold text-white mb-4">Recent Activity</h2>
-                <div class="space-y-4" id="recentActivity">
-                    <!-- Activity items will be populated by JavaScript -->
-                </div>
-            </div>
-
-            <!-- Recommended Resources -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-slate-800 rounded-lg p-6">
-                    <h2 class="text-xl font-bold text-white mb-4">Recommended for You</h2>
-                    <div class="space-y-4" id="recommendations">
-                        <!-- Recommendations will be populated by JavaScript -->
-                    </div>
-                </div>
-
-                <div class="bg-slate-800 rounded-lg p-6">
-                    <h2 class="text-xl font-bold text-white mb-4">Getting Started</h2>
-                    <div class="space-y-4">
-                        <a href="#" class="block p-4 bg-slate-700 rounded-lg hover:bg-slate-600 transition-colors">
-                            <h3 class="text-lg font-medium text-white">Complete Your Profile</h3>
-                            <p class="text-gray-400">Add your skills and interests to get personalized recommendations</p>
-                        </a>
-                        <a href="#" class="block p-4 bg-slate-700 rounded-lg hover:bg-slate-600 transition-colors">
-                            <h3 class="text-lg font-medium text-white">Join the Community</h3>
-                            <p class="text-gray-400">Connect with other tech enthusiasts and share knowledge</p>
-                        </a>
-                        <a href="#" class="block p-4 bg-slate-700 rounded-lg hover:bg-slate-600 transition-colors">
-                            <h3 class="text-lg font-medium text-white">Explore Projects</h3>
-                            <p class="text-gray-400">Discover ongoing projects and collaboration opportunities</p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Team Collaboration -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-8">
-                <div class="bg-slate-800 rounded-lg p-6">
-                    <div class="flex justify-between items-center mb-6">
-                        <h2 class="text-xl font-bold text-white">Team Members</h2>
-                        <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors flex items-center space-x-2">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-                            </svg>
-                            <span>Invite</span>
-                        </button>
-                    </div>
-                    <div class="space-y-4" id="teamMembers">
-                        <!-- Team members will be populated by JavaScript -->
-                    </div>
-                </div>
-
-                <div class="bg-slate-800 rounded-lg p-6">
-                    <div class="flex justify-between items-center mb-6">
-                        <h2 class="text-xl font-bold text-white">Team Chat</h2>
-                        <button class="text-gray-400 hover:text-white transition-colors">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="h-64 flex flex-col">
-                        <div class="flex-1 overflow-y-auto space-y-4 mb-4" id="chatMessages">
-                            <!-- Chat messages will be populated by JavaScript -->
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <input type="text" id="chatInput" placeholder="Type a message..." class="flex-1 bg-slate-700 text-white rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                            <button onclick="sendMessage()" class="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-lg transition-colors">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project Collaboration -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                <div class="bg-slate-800 rounded-lg p-6">
-                    <h2 class="text-xl font-bold text-white mb-4">Active Tasks</h2>
-                    <div class="space-y-4" id="activeTasks">
-                        <!-- Tasks will be populated by JavaScript -->
-                    </div>
-                </div>
-
-                <div class="bg-slate-800 rounded-lg p-6">
-                    <h2 class="text-xl font-bold text-white mb-4">Shared Files</h2>
-                    <div class="space-y-4" id="sharedFiles">
-                        <!-- Files will be populated by JavaScript -->
-                    </div>
-                </div>
-
-                <div class="bg-slate-800 rounded-lg p-6">
-                    <h2 class="text-xl font-bold text-white mb-4">Team Calendar</h2>
-                    <div id="teamCalendar">
-                        <!-- Calendar will be populated by JavaScript -->
-                    </div>
-                </div>
-            </div>
+        <!-- Decorative Elements -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex space-x-2">
+            <span class="w-2 h-2 bg-blue-400 rounded-full animate-bounce"></span>
+            <span class="w-2 h-2 bg-purple-400 rounded-full animate-bounce animation-delay-200"></span>
+            <span class="w-2 h-2 bg-pink-400 rounded-full animate-bounce animation-delay-400"></span>
         </div>
     </div>
 
-    <script>
-        // Update welcome message with user's name
-        document.addEventListener('DOMContentLoaded', () => {
-            const user = JSON.parse(localStorage.getItem('user') || '{}');
-            if (user.username) {
-                document.querySelector('.welcome-message').textContent = `Welcome back, ${user.username}!`;
-            }
-
-            // Populate recent activity
-            const activities = [
-                { type: 'login', time: 'Just now', message: 'Successful login from your device' },
-                { type: 'project', time: '2 days ago', message: 'Started new project: Tech Lab Integration' },
-                { type: 'community', time: '1 week ago', message: 'Joined DTB Technologies community' }
-            ];
-
-            const activityHtml = activities.map(activity => `
-                <div class="flex items-center space-x-4 text-gray-300">
-                    <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
-                    <div>
-                        <p class="text-white">${activity.message}</p>
-                        <p class="text-sm text-gray-400">${activity.time}</p>
-                    </div>
-                </div>
-            `).join('');
-
-            document.getElementById('recentActivity').innerHTML = activityHtml;
-
-            // Populate recommendations
-            const recommendations = [
-                { title: 'Introduction to Tech Lab', type: 'Course', difficulty: 'Beginner' },
-                { title: 'Advanced Project Management', type: 'Workshop', difficulty: 'Intermediate' },
-                { title: 'Community Collaboration Guide', type: 'Guide', difficulty: 'All Levels' }
-            ];
-
-            const recommendationsHtml = recommendations.map(rec => `
-                <div class="flex items-center justify-between p-4 bg-slate-700 rounded-lg hover:bg-slate-600 transition-colors cursor-pointer">
-                    <div>
-                        <h3 class="text-white font-medium">${rec.title}</h3>
-                        <p class="text-sm text-gray-400">${rec.type} • ${rec.difficulty}</p>
-                    </div>
-                    <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                    </svg>
-                </div>
-            `).join('');
-
-            document.getElementById('recommendations').innerHTML = recommendationsHtml;
-
-            // Initialize tooltips
-            const progressInfo = document.getElementById('progressInfo');
-            const progressTooltip = document.getElementById('progressTooltip');
-            
-            progressInfo.addEventListener('mouseenter', () => {
-                progressTooltip.classList.remove('hidden');
-            });
-            
-            progressInfo.addEventListener('mouseleave', () => {
-                progressTooltip.classList.add('hidden');
-            });
-
-            // Populate notifications
-            const notifications = [
-                { type: 'info', message: 'New tech workshop available', time: '1 hour ago' },
-                { type: 'success', message: 'Project milestone completed', time: '2 hours ago' },
-                { type: 'warning', message: 'Update your profile skills', time: '1 day ago' }
-            ];
-
-            const notificationIcons = {
-                info: `<svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                      </svg>`,
-                success: `<svg class="w-6 h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                         </svg>`,
-                warning: `<svg class="w-6 h-6 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-                         </svg>`
-            };
-
-            const notificationsHtml = notifications.map(notification => `
-                <div class="flex items-center space-x-4 p-3 bg-slate-700 rounded-lg">
-                    ${notificationIcons[notification.type]}
-                    <div>
-                        <p class="text-white">${notification.message}</p>
-                        <p class="text-sm text-gray-400">${notification.time}</p>
-                    </div>
-                </div>
-            `).join('');
-
-            document.getElementById('notificationsList').innerHTML = notificationsHtml;
-
-            // Populate projects
-            const projects = [
-                { name: 'Tech Lab Integration', progress: 75, status: 'In Progress', tech: ['React', 'Node.js'] },
-                { name: 'API Development', progress: 90, status: 'Review', tech: ['Python', 'FastAPI'] },
-                { name: 'Mobile App', progress: 30, status: 'Planning', tech: ['Flutter', 'Firebase'] }
-            ];
-
-            const projectsHtml = projects.map(project => `
-                <div class="bg-slate-700 rounded-lg p-4 transform hover:scale-105 transition-all cursor-pointer">
-                    <div class="flex justify-between items-start mb-4">
-                        <h3 class="text-lg font-medium text-white">${project.name}</h3>
-                        <span class="px-2 py-1 text-xs rounded-full ${
-                            project.status === 'In Progress' ? 'bg-blue-500 text-white' :
-                            project.status === 'Review' ? 'bg-yellow-500 text-white' :
-                            'bg-purple-500 text-white'
-                        }">${project.status}</span>
-                    </div>
-                    <div class="mb-4">
-                        <div class="flex justify-between text-sm text-gray-400 mb-1">
-                            <span>Progress</span>
-                            <span>${project.progress}%</span>
-                        </div>
-                        <div class="h-2 bg-slate-600 rounded-full">
-                            <div class="h-2 bg-blue-500 rounded-full transition-all duration-500" style="width: ${project.progress}%"></div>
-                        </div>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        ${project.tech.map(tech => `
-                            <span class="px-2 py-1 text-xs bg-slate-600 text-gray-300 rounded-full">${tech}</span>
-                        `).join('')}
-                    </div>
-                </div>
-            `).join('');
-
-            document.getElementById('projectsGrid').innerHTML = projectsHtml;
-
-            // Populate skills
-            const skills = [
-                { name: 'JavaScript', level: 'Advanced', progress: 90 },
-                { name: 'Python', level: 'Intermediate', progress: 75 },
-                { name: 'React', level: 'Advanced', progress: 85 },
-                { name: 'Node.js', level: 'Intermediate', progress: 70 }
-            ];
-
-            const skillsHtml = skills.map(skill => `
-                <div class="bg-slate-700 rounded-lg p-4">
-                    <div class="flex justify-between items-center mb-2">
-                        <h3 class="text-white font-medium">${skill.name}</h3>
-                        <span class="text-sm text-gray-400">${skill.level}</span>
-                    </div>
-                    <div class="h-2 bg-slate-600 rounded-full">
-                        <div class="h-2 bg-green-500 rounded-full transition-all duration-500" style="width: ${skill.progress}%"></div>
-                    </div>
-                </div>
-            `).join('');
-
-            document.getElementById('skillsGrid').innerHTML = skillsHtml;
-
-            // Add real-time updates simulation
-            setInterval(() => {
-                const randomSkill = skills[Math.floor(Math.random() * skills.length)];
-                const notification = document.createElement('div');
-                notification.className = 'fixed bottom-4 right-4 bg-slate-800 text-white px-6 py-3 rounded-lg shadow-lg transform transition-all duration-500 translate-y-full';
-                notification.innerHTML = `
-                    <div class="flex items-center space-x-2">
-                        <svg class="w-6 h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                        <span>Skill progress updated: ${randomSkill.name}</span>
-                    </div>
-                `;
-                document.body.appendChild(notification);
-                
-                setTimeout(() => {
-                    notification.classList.remove('translate-y-full');
-                }, 100);
-                
-                setTimeout(() => {
-                    notification.classList.add('translate-y-full');
-                    setTimeout(() => notification.remove(), 500);
-                }, 3000);
-            }, 10000);
-
-            // Team Members Data
-            const teamMembers = [
-                { name: 'Alex Johnson', role: 'Frontend Developer', status: 'online', icon: 'fas fa-user-circle text-blue-400' },
-                { name: 'Sarah Chen', role: 'Backend Developer', status: 'offline', icon: 'fas fa-user-circle text-purple-400' },
-                { name: 'Mike Wilson', role: 'UI Designer', status: 'away', icon: 'fas fa-user-circle text-pink-400' }
-            ];
-
-            const teamMembersHtml = teamMembers.map(member => `
-                <div class="flex items-center justify-between p-3 bg-slate-700 rounded-lg group hover:bg-slate-600 transition-colors">
-                    <div class="flex items-center space-x-3">
-                        <div class="relative">
-                            <div class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center">
-                                <i class="${member.icon} text-2xl"></i>
-                            </div>
-                            <div class="absolute bottom-0 right-0 w-3 h-3 rounded-full border-2 border-slate-700 group-hover:border-slate-600 ${
-                                member.status === 'online' ? 'bg-green-500' :
-                                member.status === 'away' ? 'bg-yellow-500' : 'bg-gray-500'
-                            }"></div>
-                        </div>
-                        <div>
-                            <h3 class="text-white font-medium">${member.name}</h3>
-                            <p class="text-sm text-gray-400">${member.role}</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center space-x-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <button class="text-gray-400 hover:text-white">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                            </svg>
-                        </button>
-                        <button class="text-gray-400 hover:text-white">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            `).join('');
-
-            document.getElementById('teamMembers').innerHTML = teamMembersHtml;
-
-            // Chat Messages
-            const chatMessages = [
-                { user: 'Alex Johnson', message: 'Hey team, how\'s the new feature coming along?', time: '10:30 AM', avatar: 'https://i.pravatar.cc/40?img=1' },
-                { user: 'Sarah Chen', message: 'Backend APIs are ready for testing', time: '10:32 AM', avatar: 'https://i.pravatar.cc/40?img=2' },
-                { user: 'Mike Wilson', message: 'UI designs are updated in Figma', time: '10:35 AM', avatar: 'https://i.pravatar.cc/40?img=3' }
-            ];
-
-            const chatMessagesHtml = chatMessages.map(msg => `
-                <div class="flex items-start space-x-3">
-                    <img src="${msg.avatar}" alt="${msg.user}" class="w-8 h-8 rounded-full">
-                    <div>
-                        <div class="flex items-center space-x-2">
-                            <span class="text-white font-medium">${msg.user}</span>
-                            <span class="text-xs text-gray-400">${msg.time}</span>
-                        </div>
-                        <p class="text-gray-300">${msg.message}</p>
-                    </div>
-                </div>
-            `).join('');
-
-            document.getElementById('chatMessages').innerHTML = chatMessagesHtml;
-
-            // Active Tasks
-            const tasks = [
-                { title: 'Update API Documentation', assignee: 'Sarah Chen', priority: 'high', dueDate: 'Tomorrow' },
-                { title: 'Fix Navigation Bug', assignee: 'Alex Johnson', priority: 'medium', dueDate: 'Today' },
-                { title: 'Design Review', assignee: 'Mike Wilson', priority: 'low', dueDate: 'Next Week' }
-            ];
-
-            const tasksHtml = tasks.map(task => `
-                <div class="p-3 bg-slate-700 rounded-lg hover:bg-slate-600 transition-colors cursor-pointer text-sm sm:text-base">
-                    <div class="flex items-center justify-between mb-2">
-                        <h3 class="text-white font-medium">${task.title}</h3>
-                        <span class="px-2 py-1 text-xs rounded-full ${
-                            task.priority === 'high' ? 'bg-red-500' :
-                            task.priority === 'medium' ? 'bg-yellow-500' : 'bg-green-500'
-                        } text-white">${task.priority}</span>
-                    </div>
-                    <div class="flex items-center justify-between text-sm">
-                        <span class="text-gray-400">Assigned to: ${task.assignee}</span>
-                        <span class="text-gray-400">Due: ${task.dueDate}</span>
-                    </div>
-                </div>
-            `).join('');
-
-            document.getElementById('activeTasks').innerHTML = tasksHtml;
-
-            // Shared Files
-            const files = [
-                { name: 'API Documentation.pdf', size: '2.5 MB', type: 'pdf', shared: 'Yesterday' },
-                { name: 'Design Assets.zip', size: '15 MB', type: 'zip', shared: '2 days ago' },
-                { name: 'Meeting Notes.doc', size: '500 KB', type: 'doc', shared: 'Today' }
-            ];
-
-            const filesHtml = files.map(file => `
-                <div class="flex items-center justify-between p-3 bg-slate-700 rounded-lg hover:bg-slate-600 transition-colors cursor-pointer">
-                    <div class="flex items-center space-x-3">
-                        <div class="p-2 bg-slate-600 rounded">
-                            <svg class="w-6 h-6 ${
-                                file.type === 'pdf' ? 'text-red-400' :
-                                file.type === 'zip' ? 'text-yellow-400' : 'text-blue-400'
-                            }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="text-white font-medium">${file.name}</h3>
-                            <p class="text-sm text-gray-400">${file.size} • Shared ${file.shared}</p>
-                        </div>
-                    </div>
-                    <button class="text-gray-400 hover:text-white">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                        </svg>
-                    </button>
-                </div>
-            `).join('');
-
-            document.getElementById('sharedFiles').innerHTML = filesHtml;
-
-            // Team Calendar Events
-            const calendarEvents = [
-                { title: 'Team Standup', time: '9:00 AM', attendees: 5 },
-                { title: 'Design Review', time: '2:00 PM', attendees: 3 },
-                { title: 'Code Review', time: '4:00 PM', attendees: 4 }
-            ];
-
-            const calendarHtml = `
-                <div class="space-y-3">
-                    ${calendarEvents.map(event => `
-                        <div class="flex items-center space-x-4 p-3 bg-slate-700 rounded-lg">
-                            <div class="flex-shrink-0 w-12 text-center">
-                                <div class="text-lg font-bold text-white">${event.time.split(' ')[0]}</div>
-                                <div class="text-xs text-gray-400">${event.time.split(' ')[1]}</div>
-                            </div>
-                            <div class="flex-1">
-                                <h3 class="text-white font-medium">${event.title}</h3>
-                                <p class="text-sm text-gray-400">${event.attendees} attendees</p>
-                            </div>
-                            <button class="text-blue-400 hover:text-blue-300">Join</button>
-                        </div>
-                    `).join('')}
-                </div>
-            `;
-
-            document.getElementById('teamCalendar').innerHTML = calendarHtml;
-
-            // Handle chat message sending
-            window.sendMessage = () => {
-                const input = document.getElementById('chatInput');
-                const message = input.value.trim();
-                
-                if (message) {
-                    const user = JSON.parse(localStorage.getItem('user') || '{}');
-                    const newMessage = {
-                        user: user.username || 'You',
-                        message: message,
-                        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-                        avatar: 'https://i.pravatar.cc/40?img=4'
-                    };
-
-                    const messageElement = document.createElement('div');
-                    messageElement.className = 'flex items-start space-x-3 transform translate-y-8 opacity-0 transition-all duration-300';
-                    messageElement.innerHTML = `
-                        <img src="${newMessage.avatar}" alt="${newMessage.user}" class="w-8 h-8 rounded-full">
-                        <div>
-                            <div class="flex items-center space-x-2">
-                                <span class="text-white font-medium">${newMessage.user}</span>
-                                <span class="text-xs text-gray-400">${newMessage.time}</span>
-                            </div>
-                            <p class="text-gray-300">${newMessage.message}</p>
-                        </div>
-                    `;
-
-                    const chatMessages = document.getElementById('chatMessages');
-                    chatMessages.appendChild(messageElement);
-                    chatMessages.scrollTop = chatMessages.scrollHeight;
-
-                    // Animate the new message
-                    setTimeout(() => {
-                        messageElement.classList.remove('translate-y-8', 'opacity-0');
-                    }, 50);
-
-                    input.value = '';
-                }
-            };
-
-            // Mobile menu toggle
-            document.getElementById('mobile-menu-button').addEventListener('click', () => {
-                const mobileMenu = document.getElementById('mobile-menu');
-                mobileMenu.classList.toggle('hidden');
-            });
-        });
-
-        // Handle welcome banner dismissal
-        function dismissWelcome() {
-            const banner = document.querySelector('.bg-gradient-to-r');
-            banner.style.transition = 'transform 0.5s ease-in-out';
-            banner.style.transform = 'translateY(-100%)';
-            localStorage.setItem('welcomeBannerDismissed', 'true');
-            setTimeout(() => banner.remove(), 500);
-        }
-
-        // Check if welcome banner was previously dismissed
-        if (localStorage.getItem('welcomeBannerDismissed') === 'true') {
-            const banner = document.querySelector('.bg-gradient-to-r');
-            if (banner) {
-                banner.remove();
-            }
-        }
-
-        // Handle logout
-        document.getElementById('logoutBtn').addEventListener('click', () => {
-            localStorage.removeItem('isAuthenticated');
-            localStorage.removeItem('user');
-            window.location.href = '../index.html';
-        });
-        document.getElementById('mobile-logoutBtn').addEventListener('click', () => {
-            localStorage.removeItem('isAuthenticated');
-            localStorage.removeItem('user');
-            window.location.href = '../index.html';
-        });
-    </script>
 </body>
 </html>

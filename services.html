@@ -1,76 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Services - DTB Technologies</title>
-    <meta name="description" content="Professional IT services including cybersecurity, cloud solutions, network infrastructure, and software development.">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles/main.css">
-    <script>
-        // Ensure dark mode is always enabled
-        document.documentElement.classList.add('dark');
-    </script>
-    <script src="js/animations.js" defer></script>
+    <title>Services - DTB Technologies</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/animations.css">
+    <script src="./components/nav-header.js" defer></script>
+    <script src="./js/dashboard.js" defer></script>
 </head>
-<body style="background-color: var(--bg-primary);" class="min-h-screen text-gray-100">
-    <script type="module">
-        import authModal from './components/auth-modal.js';
-        import './components/auth-buttons.js';
-        window.authModal = authModal;
-    </script>
-    <script src="./js/header.js"></script>
-
-    <!-- Header -->
-    <header class="site-header">
-        <!-- Gradient Overlay -->
-        <div class="absolute inset-0 bg-gradient-to-r from-blue-600/5 via-purple-600/5 to-pink-600/5"></div>
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
-            <nav class="flex items-center justify-between h-full">
-                <!-- Logo and Brand -->
-                <a href="index.html" class="nav-brand">
-                    <img src="./assets/dtb-logo.png" alt="DTB Technologies" class="h-8 w-auto">
-                    <span class="hidden sm:block">DTB Technologies</span>
-                </a>
-
-                <!-- Desktop Navigation -->
-                <div class="hidden md:flex items-center space-x-1">
-                    <a href="index.html" class="nav-item">Home</a>
-                    <a href="tech-lab.html" class="nav-item">Tech Lab</a>
-                    <a href="contact.html" class="nav-item">Contact</a>
-                </div>
-
-                <!-- Auth Buttons & Mobile Menu -->
-                <div class="flex items-center gap-4">
-                    <div class="hidden md:flex items-center space-x-4">
-                        <a href="auth/login.html" class="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors">Login</a>
-                        <a href="auth/signup.html" class="px-4 py-2 text-sm font-medium text-white bg-purple-600 rounded-lg hover:bg-purple-700 transition-colors">Sign Up</a>
-                    </div>
-                    <!-- Mobile Menu Button -->
-                    <button type="button" class="mobile-menu-button md:hidden" aria-label="Toggle menu" aria-expanded="false">
-                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </button>
-                </div>
-            </nav>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div class="mobile-menu md:hidden">
-            <nav class="px-4 py-2 space-y-2">
-                <a href="index.html" class="nav-item block">Home</a>
-                <a href="tech-lab.html" class="nav-item block">Tech Lab</a>
-                <a href="contact.html" class="nav-item block">Contact</a>
-                <div class="pt-2 flex flex-col space-y-2">
-                    <a href="auth/login.html" class="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors text-center">Login</a>
-                    <a href="auth/signup.html" class="px-4 py-2 text-sm font-medium text-white bg-purple-600 rounded-lg hover:bg-purple-700 transition-colors text-center">Sign Up</a>
-                </div>
-            </nav>
-        </div>
-    </header>
+<body class="bg-slate-900">
+    <!-- Navigation -->
+    <nav-header></nav-header>
 
     <!-- Main Content -->
     <main class="pt-16">
@@ -128,7 +71,7 @@
                                 </div>
                                 <h3 class="text-xl font-bold text-white mb-3 group-hover:text-blue-200 transition-colors duration-500">IT Support</h3>
                                 <p class="text-gray-300 mb-6">24/7 technical support and maintenance for your business IT infrastructure.</p>
-                                <button onclick="window.location.href='services/it-support.html'" class="inline-flex items-center px-4 py-2 bg-blue-600/20 text-blue-400 rounded-lg hover:bg-blue-600/30 transition-all duration-300 group-hover:translate-x-2">
+                                <button onclick="window.location.href='services/it-support.html'" class="inline-flex items-center justify-center px-6 py-3 bg-blue-600/20 text-blue-400 rounded-lg hover:bg-blue-600/30 transition-all duration-300 group-hover:translate-x-2">
                                     Learn More <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
                                 </button>
                             </div>
@@ -146,7 +89,7 @@
                                 </div>
                                 <h3 class="text-xl font-bold text-white mb-3 group-hover:text-purple-200 transition-colors duration-500">Cybersecurity</h3>
                                 <p class="text-gray-300 mb-6">Comprehensive security solutions to protect your digital assets and data.</p>
-                                <button onclick="window.location.href='services/cybersecurity.html'" class="inline-flex items-center px-4 py-2 bg-purple-600/20 text-purple-400 rounded-lg hover:bg-purple-600/30 transition-all duration-300 group-hover:translate-x-2">
+                                <button onclick="window.location.href='services/cybersecurity.html'" class="inline-flex items-center justify-center px-6 py-3 bg-purple-600/20 text-purple-400 rounded-lg hover:bg-purple-600/30 transition-all duration-300 group-hover:translate-x-2">
                                     Learn More <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
                                 </button>
                             </div>
@@ -164,7 +107,7 @@
                                 </div>
                                 <h3 class="text-xl font-bold text-white mb-3 group-hover:text-cyan-200 transition-colors duration-500">Cloud Solutions</h3>
                                 <p class="text-gray-300 mb-6">Scalable cloud infrastructure and services for modern businesses.</p>
-                                <button onclick="window.location.href='services/cloud-solutions.html'" class="inline-flex items-center px-4 py-2 bg-cyan-600/20 text-cyan-400 rounded-lg hover:bg-cyan-600/30 transition-all duration-300 group-hover:translate-x-2">
+                                <button onclick="window.location.href='services/cloud-solutions.html'" class="inline-flex items-center justify-center px-6 py-3 bg-cyan-600/20 text-cyan-400 rounded-lg hover:bg-cyan-600/30 transition-all duration-300 group-hover:translate-x-2">
                                     Learn More <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
                                 </button>
                             </div>
@@ -182,7 +125,7 @@
                                 </div>
                                 <h3 class="text-xl font-bold text-white mb-3 group-hover:text-green-200 transition-colors duration-500">Network Solutions</h3>
                                 <p class="text-gray-300 mb-6">Design and implementation of reliable network infrastructure.</p>
-                                <button onclick="window.location.href='services/network-solutions.html'" class="inline-flex items-center px-4 py-2 bg-green-600/20 text-green-400 rounded-lg hover:bg-green-600/30 transition-all duration-300 group-hover:translate-x-2">
+                                <button onclick="window.location.href='services/network-solutions.html'" class="inline-flex items-center justify-center px-6 py-3 bg-green-600/20 text-green-400 rounded-lg hover:bg-green-600/30 transition-all duration-300 group-hover:translate-x-2">
                                     Learn More <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
                                 </button>
                             </div>
@@ -200,7 +143,7 @@
                                 </div>
                                 <h3 class="text-xl font-bold text-white mb-3 group-hover:text-pink-200 transition-colors duration-500">Software Development</h3>
                                 <p class="text-gray-300 mb-6">Custom software solutions tailored to your business needs.</p>
-                                <button onclick="window.location.href='services/software-development.html'" class="inline-flex items-center px-4 py-2 bg-pink-600/20 text-pink-400 rounded-lg hover:bg-pink-600/30 transition-all duration-300 group-hover:translate-x-2">
+                                <button onclick="window.location.href='services/software-development.html'" class="inline-flex items-center justify-center px-6 py-3 bg-pink-600/20 text-pink-400 rounded-lg hover:bg-pink-600/30 transition-all duration-300 group-hover:translate-x-2">
                                     Learn More <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
                                 </button>
                             </div>
@@ -218,7 +161,7 @@
                                 </div>
                                 <h3 class="text-xl font-bold text-white mb-3">Hardware Solutions</h3>
                                 <p class="text-gray-300 mb-6">Professional hardware maintenance, repairs, and upgrades.</p>
-                                <a href="services/hardware-solutions.html" class="inline-flex items-center px-4 py-2 bg-amber-600/20 text-amber-400 rounded-lg hover:bg-amber-600/30 transition-all group-hover:translate-x-2">
+                                <a href="services/hardware-solutions.html" class="inline-flex items-center justify-center px-6 py-3 bg-amber-600/20 text-amber-400 rounded-lg hover:bg-amber-600/30 transition-all group-hover:translate-x-2">
                                     Learn More <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
                                 </a>
                             </div>
@@ -319,22 +262,88 @@
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="text-gray-300 py-12" style="background-color: var(--bg-secondary);">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-6 md:mb-0">
-                    <img src="assets/dtb-logo.png" alt="DTB Technologies Logo" class="h-12">
+    <!-- Modern Footer -->
+    <footer class="relative bg-gray-900/90 backdrop-blur-md border-t border-gray-800/50">
+        <!-- Gradient Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-gray-900/50 to-gray-900/90 pointer-events-none"></div>
+        
+        <div class="container mx-auto px-4 py-12 relative">
+            <!-- Main Footer Content -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="space-y-6 backdrop-blur-sm bg-slate-900/30 p-6 rounded-2xl border border-gray-800/30">
+                    <div class="flex items-center space-x-3">
+                        <img src="assets/dtb-logo.png" alt="DTB Technologies Logo" class="h-8">
+                        <h3 class="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">DTB Technologies</h3>
+                    </div>
+                    <p class="text-gray-300">Empowering businesses with innovative technology solutions and expert IT services.</p>
+                    <div class="flex items-center space-x-4">
+                        <a href="https://facebook.com/dtbtechnologies" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg bg-slate-800/80 hover:bg-blue-600/20 flex items-center justify-center transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-700/30 hover:border-blue-500/50 group">
+                            <i class="fab fa-facebook-f text-gray-400 group-hover:text-blue-400 transition-colors"></i>
+                        </a>
+                        <a href="https://twitter.com/dtbtechnologies" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg bg-slate-800/80 hover:bg-cyan-600/20 flex items-center justify-center transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-700/30 hover:border-cyan-500/50 group">
+                            <i class="fab fa-twitter text-gray-400 group-hover:text-cyan-400 transition-colors"></i>
+                        </a>
+                        <a href="https://linkedin.com/company/dtbtechnologies" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg bg-slate-800/80 hover:bg-blue-600/20 flex items-center justify-center transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-700/30 hover:border-blue-500/50 group">
+                            <i class="fab fa-linkedin-in text-gray-400 group-hover:text-blue-400 transition-colors"></i>
+                        </a>
+                        <a href="https://instagram.com/dtbtechnologies" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg bg-slate-800/80 hover:bg-pink-600/20 flex items-center justify-center transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-700/30 hover:border-pink-500/50 group">
+                            <i class="fab fa-instagram text-gray-400 group-hover:text-pink-400 transition-colors"></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="flex space-x-6">
-                    <a href="index.html" class="hover:text-blue-400 transition-colors">Home</a>
-                    <a href="about.html" class="hover:text-blue-400 transition-colors">About</a>
-                    <a href="services.html" class="hover:text-blue-400 transition-colors">Services</a>
-                    <a href="contact.html" class="hover:text-blue-400 transition-colors">Contact</a>
+
+                <!-- Quick Links -->
+                <div class="space-y-6 backdrop-blur-sm bg-slate-900/30 p-6 rounded-2xl border border-gray-800/30">
+                    <h4 class="text-lg font-semibold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-300 hover:text-blue-400 transition-colors flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-blue-400"></i>Home</a></li>
+                        <li><a href="about.html" class="text-gray-300 hover:text-blue-400 transition-colors flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-blue-400"></i>About Us</a></li>
+                        <li><a href="services.html" class="text-gray-300 hover:text-blue-400 transition-colors flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-blue-400"></i>Services</a></li>
+                        <li><a href="tech-lab.html" class="text-gray-300 hover:text-blue-400 transition-colors flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-blue-400"></i>Tech Lab</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-blue-400 transition-colors flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-blue-400"></i>Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div class="space-y-6 backdrop-blur-sm bg-slate-900/30 p-6 rounded-2xl border border-gray-800/30">
+                    <h4 class="text-lg font-semibold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Our Services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="services/web-development.html" class="text-gray-300 hover:text-blue-400 transition-colors flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-blue-400"></i>Web Development</a></li>
+                        <li><a href="services/cloud-solutions.html" class="text-gray-300 hover:text-blue-400 transition-colors flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-blue-400"></i>Cloud Solutions</a></li>
+                        <li><a href="services/cybersecurity.html" class="text-gray-300 hover:text-blue-400 transition-colors flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-blue-400"></i>Cybersecurity</a></li>
+                        <li><a href="services/it-consulting.html" class="text-gray-300 hover:text-blue-400 transition-colors flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-blue-400"></i>IT Consulting</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="space-y-6 backdrop-blur-sm bg-slate-900/30 p-6 rounded-2xl border border-gray-800/30">
+                    <h4 class="text-lg font-semibold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Contact Us</h4>
+                    <div class="space-y-4">
+                        <p class="text-gray-300 flex items-center"><i class="fas fa-map-marker-alt text-blue-400 mr-3"></i>Nairobi, Kenya</p>
+                        <p class="text-gray-300 flex items-center"><i class="fas fa-phone text-blue-400 mr-3"></i>+254 700 000000</p>
+                        <p class="text-gray-300 flex items-center"><i class="fas fa-envelope text-blue-400 mr-3"></i>info@dtbtechnologies.co.ke</p>
+                    </div>
                 </div>
             </div>
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
-                <p>&copy; 2025 DTB Technologies. All rights reserved.</p>
+
+            <!-- Footer Bottom -->
+            <div class="mt-12 pt-8 border-t border-gray-800/30 relative">
+                <div class="flex flex-col items-center justify-center space-y-6">
+                    <!-- Copyright text centered -->
+                    <p class="text-gray-400 text-sm font-medium tracking-wide backdrop-blur-sm py-3 px-6 rounded-xl border border-gray-800/30 hover:border-gray-700/50 transition-colors mx-auto bg-slate-900/30">
+                        &copy; 2025 DTB Technologies. All rights reserved.
+                    </p>
+                    
+                    <!-- Links centered -->
+                    <div class="flex items-center space-x-4 text-sm">
+                        <a href="privacy-policy.html" class="text-gray-400 hover:text-blue-400 transition-colors">Privacy Policy</a>
+                        <span class="text-gray-600">|</span>
+                        <a href="terms.html" class="text-gray-400 hover:text-blue-400 transition-colors">Terms</a>
+                        <span class="text-gray-600">|</span>
+                        <a href="cookies.html" class="text-gray-400 hover:text-blue-400 transition-colors">Cookies</a>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
