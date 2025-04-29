@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Product Details - DTB Technologies</title>
+    <meta name="description" content="View and purchase this product/service from DTB Technologies.">
+    <link rel="stylesheet" href="https://cdn.tailwindcss.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="canonical" href="https://dtbtechnologies.co.ke/product">
+    <script src="./components/BottomNav.js" defer></script>
+    <script src="./components/CheckoutModal.js" defer></script>
+    <script src="./components/header.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/keen-slider.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/keen-slider.min.css">
+    <style>
+        .collapsible-content { display: none; }
+        .collapsible.open .collapsible-content { display: block; }
+    </style>
+</head>
+<body class="bg-slate-900">
+    <site-header></site-header>
+    <main class="max-w-md mx-auto px-4 pt-24 pb-32" aria-label="Product Details">
+        <!-- Image Carousel -->
+        <div class="keen-slider rounded-2xl overflow-hidden mb-6" id="product-carousel" aria-label="Product Images">
+            <div class="keen-slider__slide number-slide1"><img src="/assets/sample1.webp" alt="Product Image 1" class="w-full h-64 object-cover" loading="lazy"></div>
+            <div class="keen-slider__slide number-slide2"><img src="/assets/sample2.webp" alt="Product Image 2" class="w-full h-64 object-cover" loading="lazy"></div>
+            <div class="keen-slider__slide number-slide3"><img src="/assets/sample3.webp" alt="Product Image 3" class="w-full h-64 object-cover" loading="lazy"></div>
+        </div>
+        <h1 class="text-2xl md:text-3xl font-bold text-white mb-2">Sample Product Name</h1>
+        <p class="text-lg text-blue-400 font-semibold mb-4">KSh 2,500</p>
+        <div class="flex gap-2 mb-6 sticky bottom-24 z-20">
+            <button class="flex-1 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white text-lg font-bold shadow-lg hover:from-blue-700 hover:to-purple-700 focus:ring-2 focus:ring-blue-500 min-h-[44px] min-w-[44px] transition-all" onclick="addToCart()">Add to Cart</button>
+            <button class="flex-1 py-4 rounded-xl bg-green-500 text-white text-lg font-bold shadow-lg hover:bg-green-600 focus:ring-2 focus:ring-green-400 min-h-[44px] min-w-[44px] transition-all" onclick="window.showCheckoutModal()">Buy Now</button>
+        </div>
+        <!-- Collapsible Sections -->
+        <section class="mb-4">
+            <button class="w-full text-left py-3 px-4 bg-slate-800 text-white font-semibold rounded-t-xl focus:outline-none focus:ring-2 focus:ring-blue-500 collapsible-btn" aria-expanded="false">Description <i class="fas fa-chevron-down float-right"></i></button>
+            <div class="collapsible-content bg-slate-800 text-slate-200 p-4 rounded-b-xl">This is a detailed product description. It highlights features, benefits, and use-cases.</div>
+        </section>
+        <section class="mb-4">
+            <button class="w-full text-left py-3 px-4 bg-slate-800 text-white font-semibold rounded-t-xl focus:outline-none focus:ring-2 focus:ring-blue-500 collapsible-btn" aria-expanded="false">Reviews <i class="fas fa-chevron-down float-right"></i></button>
+            <div class="collapsible-content bg-slate-800 text-slate-200 p-4 rounded-b-xl">No reviews yet. Be the first to review!</div>
+        </section>
+    </main>
+    <bottom-nav></bottom-nav>
+    <checkout-modal></checkout-modal>
+    <script>
+        // Carousel
+        window.addEventListener('DOMContentLoaded', function() {
+            if(window.KeenSlider) {
+                new KeenSlider('#product-carousel', { loop: true });
+            }
+            // Collapsible
+            document.querySelectorAll('.collapsible-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const expanded = btn.getAttribute('aria-expanded') === 'true';
+                    btn.setAttribute('aria-expanded', !expanded);
+                    btn.parentElement.classList.toggle('open');
+                });
+            });
+        });
+        // Add to Cart
+        function addToCart() {
+            window.navigator.vibrate?.(30);
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push({id: 1, service: 'Sample Product Name', price: 2500});
+            localStorage.setItem('cart', JSON.stringify(cart));
+            localStorage.setItem('cartCount', cart.length);
+            alert('Added to cart!');
+            document.querySelector('bottom-nav')?.updateCartCount?.();
+        }
+    </script>
+</body>
+</html>

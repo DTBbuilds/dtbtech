@@ -72,28 +72,48 @@ class PaymentUI {
         const submitBtn = form.querySelector('button[type="submit"]');
         const statusDiv = document.getElementById('payment-status');
 
+        const amount = form.querySelector('#payment-amount').value;
+        const phone = form.querySelector('#phone-number').value;
+        const description = form.querySelector('#payment-description').value;
+
+        // Frontend phone validation (Kenyan format: 2547XXXXXXXX or 07XXXXXXXX)
+        const cleanedPhone = phone.replace(/\D/g, '');
+        const phoneValid = cleanedPhone.match(/^(2547\d{8}|07\d{8})$/);
+        if (!phoneValid) {
+            statusDiv.innerHTML = `
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+                    <p>Enter a valid Safaricom number: 07XXXXXXXX or 2547XXXXXXXX</p>
+                </div>`;
+            return;
+        }
+        if (!amount || isNaN(amount) || Number(amount) <= 0) {
+            statusDiv.innerHTML = `
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+                    <p>Enter a valid amount greater than 0</p>
+                </div>`;
+            return;
+        }
+
         try {
-            // Disable submit button and show loading state
+            // Disable form elements and show loading state
             submitBtn.disabled = true;
+            form.querySelectorAll('input').forEach(inp => inp.disabled = true);
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
             statusDiv.innerHTML = '<p class="text-blue-500">Initiating payment...</p>';
 
-            const amount = form.querySelector('#payment-amount').value;
-            const phone = form.querySelector('#phone-number').value;
-            const description = form.querySelector('#payment-description').value;
-
             const response = await this.mpesa.initiateSTKPush(amount, phone, description);
-            
             if (response.success) {
                 statusDiv.innerHTML = `
                     <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded">
                         <p>Please check your phone and enter M-Pesa PIN to complete payment.</p>
                     </div>`;
-                
                 // Start checking payment status
                 this.pollPaymentStatus(response.checkoutRequestId);
             } else {
-                throw new Error(response.message || 'Payment initiation failed');
+                statusDiv.innerHTML = `
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+                        <p>${response.message || 'Payment initiation failed'}</p>
+                    </div>`;
             }
         } catch (error) {
             statusDiv.innerHTML = `
@@ -101,8 +121,9 @@ class PaymentUI {
                     <p>${error.message}</p>
                 </div>`;
         } finally {
-            // Reset button state
+            // Reset button and form state
             submitBtn.disabled = false;
+            form.querySelectorAll('input').forEach(inp => inp.disabled = false);
             submitBtn.innerHTML = 'Pay with M-Pesa';
         }
     }
@@ -116,7 +137,7 @@ class PaymentUI {
             if (attempts >= maxAttempts) {
                 statusDiv.innerHTML = `
                     <div class="bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 rounded">
-                        <p>Payment verification timeout. If you completed the payment, please contact support.</p>
+                        <p>Payment verification timed out.<br>If you completed the payment, please contact support with your transaction details.</p>
                     </div>`;
                 return;
             }
@@ -126,14 +147,21 @@ class PaymentUI {
                 if (status.success) {
                     statusDiv.innerHTML = `
                         <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded">
-                            <p>Payment completed successfully!</p>
+                            <p>Payment completed successfully! Thank you for your business.</p>
                         </div>`;
                     return;
                 } else if (status.pending) {
                     attempts++;
+                    statusDiv.innerHTML = `
+                        <div class="bg-blue-100 border border-blue-400 text-blue-700 px-4 py-3 rounded">
+                            <p>Waiting for payment confirmation... (Attempt ${attempts}/${maxAttempts})</p>
+                        </div>`;
                     setTimeout(checkStatus, 5000); // Check again in 5 seconds
                 } else {
-                    throw new Error(status.message || 'Payment failed');
+                    statusDiv.innerHTML = `
+                        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+                            <p>${status.message || 'Payment failed. Please try again.'}</p>
+                        </div>`;
                 }
             } catch (error) {
                 statusDiv.innerHTML = `

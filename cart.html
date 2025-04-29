@@ -95,7 +95,7 @@
 </head>
 <body class="bg-slate-900">
     <!-- Header -->
-    <header class="bg-gray-900 fixed w-full top-0 z-50">
+    <site-header></site-header>
         <nav class="container mx-auto px-4 py-3">
             <div class="flex justify-between items-center">
                 <!-- Logo -->
@@ -174,9 +174,7 @@
                                 <span id="total">KSh 0</span>
                             </div>
                         </div>
-                        <button id="checkout-btn" 
-                                class="w-full py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                                disabled>
+                        <button id="checkout-btn" class="w-full py-3 mt-6 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold text-lg hover:from-blue-700 hover:to-purple-700 focus:ring-2 focus:ring-blue-500 transition-all min-h-[44px] min-w-[44px] fixed bottom-20 left-0 right-0 z-40 md:static md:mt-6" style="max-width:420px;margin:auto;" onclick="window.showCheckoutModal()" aria-label="Proceed to Checkout">
                             Proceed to Checkout
                         </button>
                     </div>
@@ -432,5 +430,9 @@
             updateCartCount();
         }
     </script>
+    <bottom-nav></bottom-nav>
+    <checkout-modal></checkout-modal>
+    <script src="./components/BottomNav.js" defer></script>
+    <script src="./components/CheckoutModal.js" defer></script>
 </body>
 </html>

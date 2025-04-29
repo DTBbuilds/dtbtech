@@ -8,12 +8,50 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/animations.css">
-    <script src="./components/nav-header.js" defer></script>
+    <script src="./components/header.js" defer></script>
     <script src="./js/dashboard.js" defer></script>
+    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
 </head>
 <body class="bg-slate-900">
     <!-- Navigation -->
-    <nav-header></nav-header>
+    <site-header></site-header>
+    <noscript>
+  <nav class="fixed w-full top-0 z-50 bg-slate-900/95 backdrop-blur-sm border-b border-slate-800">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+      <a href="/" class="flex items-center space-x-2">
+        <img src="/assets/images/default-logo.svg" alt="DTB Technologies Logo" class="h-10 w-auto"/>
+        <span class="text-xl font-bold text-white">DTB Technologies</span>
+      </a>
+      <div class="flex items-center space-x-8">
+        <a href="/" class="text-gray-300 hover:text-white transition-colors flex items-center space-x-2">
+          <i class="fas fa-home mr-2"></i><span>Home</span>
+        </a>
+        <a href="/services.html" class="text-gray-300 hover:text-white transition-colors flex items-center space-x-2">
+          <i class="fas fa-cogs mr-2"></i><span>Services</span>
+        </a>
+        <a href="/about.html" class="text-gray-300 hover:text-white transition-colors flex items-center space-x-2">
+          <i class="fas fa-info-circle mr-2"></i><span>About</span>
+        </a>
+        <a href="/contact.html" class="text-gray-300 hover:text-white transition-colors flex items-center space-x-2">
+          <i class="fas fa-envelope mr-2"></i><span>Contact</span>
+        </a>
+        <a href="/tech-lab.html" class="text-gray-300 hover:text-white transition-colors flex items-center space-x-2">
+          <i class="fas fa-flask mr-2"></i><span>Tech Lab</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+</noscript>
 
     <!-- Hero Section -->
     <section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden py-16 md:py-24">
@@ -535,5 +573,20 @@
                 });
         }
     </script>
+    <bottom-nav></bottom-nav>
+    <script src="./components/BottomNav.js" defer></script>
+    <checkout-modal></checkout-modal>
+    <script src="./components/CheckoutModal.js" defer></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('/sw.js');
+        });
+      }
+    </script>
+    <checkout-modal></checkout-modal>
+    <bottom-nav></bottom-nav>
+    <script src="./components/BottomNav.js" defer></script>
+    <script src="./components/CheckoutModal.js" defer></script>
 </body>
 </html>
