@@ -114,21 +114,37 @@
     <!-- Main Content -->
     <main class="pt-16">
         <!-- Hero Section -->
-        <section class="relative py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-            <div class="absolute inset-0 bg-blue-500/10 backdrop-blur-3xl"></div>
-            <div class="container mx-auto px-4 relative">
-                <div class="max-w-4xl mx-auto text-center">
-                    <h1 class="text-5xl font-bold text-white mb-6 tracking-tight">Get in Touch</h1>
-                    <p class="text-gray-300 text-xl mb-12">Have questions? We're here to help you succeed.</p>
+        <section class="relative py-24 overflow-hidden min-h-[60vh]">
+            <!-- Enhanced Animated Background Elements -->
+            <div class="absolute inset-0 pointer-events-none">
+                <div class="absolute inset-0 bg-gradient-to-br from-blue-700/15 via-slate-900/90 to-purple-800/15"></div>
+                <svg class="absolute -top-32 -left-32 w-[28rem] h-[28rem] animate-blob opacity-60" viewBox="0 0 600 600" fill="none"><ellipse cx="300" cy="300" rx="280" ry="180" fill="#3b82f6" fill-opacity="0.10"/></svg>
+                <svg class="absolute bottom-[-7rem] right-[-7rem] w-[22rem] h-[22rem] animate-blob animation-delay-2000 opacity-50" viewBox="0 0 600 600" fill="none"><ellipse cx="300" cy="300" rx="200" ry="180" fill="#a21caf" fill-opacity="0.10"/></svg>
+                <i class="fas fa-envelope-open-text absolute top-24 left-1/4 text-blue-400/20 text-6xl animate-float"></i>
+                <i class="fas fa-headset absolute bottom-20 right-1/3 text-purple-400/30 text-5xl animate-float animation-delay-400"></i>
+                <div class="absolute inset-0 opacity-10"><div class="absolute inset-0" style="background-image: linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px); background-size: clamp(30px, 5vw, 50px) clamp(30px, 5vw, 50px);"></div></div>
+                <div class="absolute inset-0 backdrop-blur-3xl bg-gradient-to-br from-blue-500/10 to-purple-500/10"></div>
+            </div>
+            <div class="container mx-auto px-4 relative z-10">
+    <!-- Help Floating Button -->
+    <a href="help.html" title="Get Help" class="hidden sm:flex items-center justify-center absolute top-2 right-2 z-30 w-11 h-11 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 shadow-lg border-4 border-white/30 hover:scale-110 hover:shadow-2xl transition-all duration-300 group focus:outline-none" style="box-shadow:0 4px 24px 0 rgba(80,0,180,0.11);">
+      <i class="fas fa-question-circle text-white text-2xl animate-pulse group-hover:animate-spin"></i>
+      <span class="sr-only">Help</span>
+    </a>
+    <!-- End Help Floating Button -->
+
+                <div class="max-w-4xl mx-auto text-center animate-slide-up">
+                    <h1 class="text-4xl md:text-7xl font-extrabold tracking-tight mb-8 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent drop-shadow-lg animate-gradient">Contact <span class="inline-block animate-pulse-subtle">Us</span></h1>
+                    <p class="text-2xl text-slate-300 mb-10">Have questions? We're here to help you succeed.</p>
                 </div>
             </div>
         </section>
 
         <!-- Contact Section -->
         <section class="py-16 bg-slate-900 relative">
-            <div class="container mx-auto px-4">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="max-w-6xl mx-auto">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
                         <!-- Contact Form -->
                         <div class="bg-gray-800/50 backdrop-blur-xl p-8 rounded-2xl border border-gray-700/30 shadow-xl transform hover:scale-[1.02] transition-all duration-300">
                             <h3 class="text-2xl font-semibold text-white mb-6">Send us a Message</h3>
@@ -180,13 +196,13 @@
                                         </div>
                                         <div class="ml-4">
                                             <p class="text-white font-medium">Phone</p>
-                                            <p class="text-gray-400">+254-729983567</p>
+                                            <p class="text-gray-400">+254 104 160 502</p>
                                         </div>
                                     </div>
 
                                     <div class="flex items-center space-x-4 text-gray-300">
                                         <i class="fas fa-envelope text-blue-500"></i>
-                                        <a href="mailto:dtbinfotech@gmail.com" class="hover:text-blue-400 transition-colors">dtbinfotech@gmail.com</a>
+                                        <a href="mailto:dtbinfotech@gmail.com" class="hover:text-blue-400 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-lg" role="button" aria-label="Email DTB Technologies">dtbinfotech@gmail.com</a>
                                     </div>
 
                                     <div class="flex items-center p-4 bg-orange-500/10 rounded-xl">
@@ -306,15 +322,12 @@
             </div>
 
             <!-- Footer Bottom -->
-            <div class="mt-12 pt-8 border-t border-gray-800/30 relative">
-                <div class="flex flex-col items-center justify-center space-y-6">
-                    <!-- Copyright text centered -->
-                    <p class="text-gray-400 text-sm font-medium tracking-wide backdrop-blur-sm py-3 px-6 rounded-xl border border-gray-800/30 hover:border-gray-700/50 transition-colors mx-auto bg-slate-900/30">
+            <div class="mt-16 pt-10 border-t border-slate-800 bg-gradient-to-tr from-blue-900/30 via-slate-900/70 to-purple-900/30 backdrop-blur-2xl relative rounded-t-3xl shadow-inner">
+                <div class="flex flex-col items-center justify-center space-y-8">
+                    <p class="text-gray-300 text-base font-medium tracking-wide py-3 px-8 rounded-2xl border border-slate-800/40 hover:border-blue-500/40 transition-colors mx-auto bg-slate-900/40 shadow-lg">
                         &copy; 2025 DTB Technologies. All rights reserved.
                     </p>
-                    
-                    <!-- Links centered -->
-                    <div class="flex items-center space-x-4 text-sm">
+                    <div class="flex flex-wrap items-center justify-center gap-5 text-sm">
                         <a href="privacy-policy.html" class="text-gray-400 hover:text-blue-400 transition-colors">Privacy Policy</a>
                         <span class="text-gray-600">|</span>
                         <a href="terms.html" class="text-gray-400 hover:text-blue-400 transition-colors">Terms</a>
@@ -327,7 +340,7 @@
     </footer>
 
     <!-- Contact Orb Button -->
-    <div class="fixed 8 z-50">
+    <div class="fixed bottom-8 left-8 z-50">
         <div class="relative group">
             <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-blue-400 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
             <a href="contact.html" class="relative flex items-center justify-center w-16 h-16 bg-slate-900 rounded-full hover:bg-slate-800 transition-colors">

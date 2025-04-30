@@ -5,14 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404 - Page Not Found | DTB Technologies</title>
     <link href="/css/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 </head>
 <body class="bg-gray-100 min-h-screen flex items-center justify-center">
-    <div class="text-center p-8">
-        <h1 class="text-6xl font-bold text-gray-800 mb-4">404</h1>
-        <p class="text-xl text-gray-600 mb-8">Page Not Found</p>
-        <a href="/" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
-            Return to Home
-        </a>
+    <div class="container mx-auto px-4 relative z-10">
+    <!-- Help Floating Button -->
+    <a href="help.html" title="Get Help" class="hidden sm:flex items-center justify-center absolute top-2 right-2 z-30 w-11 h-11 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 shadow-lg border-4 border-white/30 hover:scale-110 hover:shadow-2xl transition-all duration-300 group focus:outline-none" style="box-shadow:0 4px 24px 0 rgba(80,0,180,0.11);">
+      <i class="fas fa-question-circle text-white text-2xl animate-pulse group-hover:animate-spin"></i>
+      <span class="sr-only">Help</span>
+    </a>
+    <!-- End Help Floating Button -->
+
+        <div class="text-center p-8">
+            <h1 class="text-6xl font-bold text-gray-800 mb-4">404</h1>
+            <p class="text-xl text-gray-600 mb-8">Page Not Found</p>
+            <a href="/" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                Return to Home
+            </a>
+        </div>
     </div>
 </body>
 </html>

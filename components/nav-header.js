@@ -28,6 +28,9 @@ class NavHeader extends HTMLElement {
                             <a href="${prefix}services.html" class="text-gray-300 hover:text-purple-400 transition-colors">
                                 <i class="fas fa-cogs mr-2"></i>Services
                             </a>
+                            <a href="${prefix}about.html" class="text-gray-300 hover:text-pink-400 transition-colors">
+                                <i class="fas fa-info-circle mr-2"></i>About
+                            </a>
                             <a href="${prefix}tech-lab.html" class="text-gray-300 hover:text-pink-400 transition-colors">
                                 <i class="fas fa-flask mr-2"></i>Tech Lab
                             </a>
@@ -65,6 +68,9 @@ class NavHeader extends HTMLElement {
                         </a>
                         <a href="${prefix}services.html" class="block px-3 py-2 text-gray-300 hover:text-purple-400 transition-colors">
                             <i class="fas fa-cogs mr-2"></i>Services
+                        </a>
+                        <a href="${prefix}about.html" class="block px-3 py-2 text-gray-300 hover:text-pink-400 transition-colors">
+                            <i class="fas fa-info-circle mr-2"></i>About
                         </a>
                         <a href="${prefix}tech-lab.html" class="block px-3 py-2 text-gray-300 hover:text-pink-400 transition-colors">
                             <i class="fas fa-flask mr-2"></i>Tech Lab

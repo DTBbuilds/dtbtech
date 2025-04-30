@@ -8,89 +8,59 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/animations.css">
-    <script src="./components/header.js" defer></script>
+    <script src="./components/nav-header.js" defer></script>
     <script src="./js/dashboard.js" defer></script>
-    <link rel="manifest" href="/manifest.webmanifest">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX');
-    </script>
 </head>
 <body class="bg-slate-900">
     <!-- Navigation -->
-    <site-header></site-header>
-    <noscript>
-  <nav class="fixed w-full top-0 z-50 bg-slate-900/95 backdrop-blur-sm border-b border-slate-800">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
-      <a href="/" class="flex items-center space-x-2">
-        <img src="/assets/images/default-logo.svg" alt="DTB Technologies Logo" class="h-10 w-auto"/>
-        <span class="text-xl font-bold text-white">DTB Technologies</span>
-      </a>
-      <div class="flex items-center space-x-8">
-        <a href="/" class="text-gray-300 hover:text-white transition-colors flex items-center space-x-2">
-          <i class="fas fa-home mr-2"></i><span>Home</span>
-        </a>
-        <a href="/services.html" class="text-gray-300 hover:text-white transition-colors flex items-center space-x-2">
-          <i class="fas fa-cogs mr-2"></i><span>Services</span>
-        </a>
-        <a href="/about.html" class="text-gray-300 hover:text-white transition-colors flex items-center space-x-2">
-          <i class="fas fa-info-circle mr-2"></i><span>About</span>
-        </a>
-        <a href="/contact.html" class="text-gray-300 hover:text-white transition-colors flex items-center space-x-2">
-          <i class="fas fa-envelope mr-2"></i><span>Contact</span>
-        </a>
-        <a href="/tech-lab.html" class="text-gray-300 hover:text-white transition-colors flex items-center space-x-2">
-          <i class="fas fa-flask mr-2"></i><span>Tech Lab</span>
-        </a>
-      </div>
-    </div>
-  </nav>
-</noscript>
+    <nav-header></nav-header>
 
     <!-- Hero Section -->
-    <section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden py-16 md:py-24">
-        <!-- Animated Background Elements -->
-        <div class="absolute inset-0">
-            <!-- Gradient Background -->
+    <section class="relative min-h-[95vh] flex items-center justify-center overflow-hidden py-20 md:py-28">
+        <!-- Enhanced Animated Background Elements -->
+        <div class="absolute inset-0 pointer-events-none">
+            <!-- Large Gradient Background -->
             <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800/95 to-slate-900"></div>
-            
-            <!-- Animated Orbs -->
-            <div class="absolute top-0 -left-48 w-96 h-96 bg-blue-500/10 rounded-full mix-blend-overlay filter blur-3xl animate-pulse"></div>
-            <div class="absolute bottom-0 -right-48 w-96 h-96 bg-purple-500/10 rounded-full mix-blend-overlay filter blur-3xl animate-pulse delay-1000"></div>
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] bg-cyan-500/5 rounded-full mix-blend-overlay filter blur-3xl animate-pulse delay-500"></div>
-            
-            <!-- Animated Grid -->
-            <div class="absolute inset-0 opacity-5">
-                <div class="absolute inset-0" style="background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px); background-size: clamp(30px, 5vw, 50px) clamp(30px, 5vw, 50px);"></div>
+            <!-- Animated SVG Blobs -->
+            <svg class="absolute top-[-7rem] left-[-7rem] w-[28rem] h-[28rem] opacity-60 animate-blob z-0" viewBox="0 0 600 600" fill="none">
+                <g filter="url(#blur1)">
+                    <ellipse cx="300" cy="300" rx="280" ry="180" fill="#3b82f6" fill-opacity="0.12"/>
+                </g>
+            </svg>
+            <svg class="absolute bottom-[-6rem] right-[-6rem] w-[24rem] h-[24rem] opacity-50 animate-blob animation-delay-2000 z-0" viewBox="0 0 600 600" fill="none">
+                <g filter="url(#blur2)">
+                    <ellipse cx="300" cy="300" rx="200" ry="180" fill="#a21caf" fill-opacity="0.12"/>
+                </g>
+            </svg>
+            <!-- Subtle Floating Tech Icons -->
+            <i class="fas fa-cloud absolute top-20 left-1/4 text-blue-400/30 text-6xl animate-float"></i>
+            <i class="fas fa-server absolute bottom-16 right-1/3 text-purple-400/30 text-5xl animate-float animation-delay-400"></i>
+            <i class="fas fa-cogs absolute top-1/2 left-10 text-cyan-400/20 text-4xl animate-spin-slow"></i>
+            <!-- Animated Grid Overlay -->
+            <div class="absolute inset-0 opacity-10">
+                <div class="absolute inset-0" style="background-image: linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px); background-size: clamp(30px, 5vw, 50px) clamp(30px, 5vw, 50px);"></div>
             </div>
-            
-            <!-- Glass Effect -->
-            <div class="absolute inset-0 backdrop-blur-3xl bg-gradient-to-br from-blue-500/5 to-purple-500/5"></div>
-
+            <!-- Glassmorphism Overlay -->
+            <div class="absolute inset-0 backdrop-blur-3xl bg-gradient-to-br from-blue-500/10 to-purple-500/10"></div>
         </div>
-
         <div class="container mx-auto px-4 relative z-10">
-            <div class="text-center max-w-3xl mx-auto">
-                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight animate-fade-in mb-6">
-                    Innovative IT Solutions <br class="hidden sm:block" />for Modern Business
+
+
+            <div class="text-center max-w-3xl mx-auto animate-slide-up">
+                <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight mb-8 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent drop-shadow-lg animate-gradient">
+                    Innovative <span class="inline-block animate-pulse-subtle">IT Solutions</span><br class="hidden sm:block" />for Modern Business
                 </h1>
-                <p class="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-10 animate-fade-in-delay-1">
-                    Empowering businesses across Kenya with cutting-edge technology, reliable support, and strategic consultancy.
+                <p class="text-xl md:text-2xl text-slate-300 max-w-2xl mx-auto mb-12 animate-fade-in-delay-1">
+                    Empowering businesses across Kenya with <span class="font-semibold text-blue-400">cutting-edge technology</span>, reliable support, and strategic consultancy.
                 </p>
-                <div class="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in-delay-2">
-                    <button onclick="promptNameAndRedirect()" class="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-slate-900">
+                <div class="flex flex-col sm:flex-row justify-center gap-5 animate-fade-in-delay-2">
+                    <button onclick="promptNameAndRedirect()" class="px-7 py-4 rounded-2xl bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold shadow-xl transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-slate-900">
                         <i class="fas fa-chart-line mr-2"></i>Dashboard
                     </button>
-                    <a href="/services.html" class="inline-block px-8 py-3 text-lg font-medium text-center text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transform transition duration-300 ease-in-out">
+                    <a href="/services.html" class="inline-block px-10 py-4 text-lg font-semibold text-center text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl shadow-lg hover:shadow-2xl hover:scale-105 transform transition duration-300 ease-in-out">
                         Explore Our Services
                     </a>
-                    <a href="/contact.html" class="inline-block px-8 py-3 text-lg font-medium text-center text-blue-300 bg-slate-800/50 border border-slate-700 rounded-lg shadow-md hover:bg-slate-700/70 hover:border-slate-600 hover:scale-105 transform transition duration-300 ease-in-out">
+                    <a href="/contact.html" class="inline-block px-10 py-4 text-lg font-semibold text-center text-blue-300 bg-slate-800/60 border border-slate-700 rounded-xl shadow-md hover:bg-slate-700/80 hover:border-slate-600 hover:scale-105 transform transition duration-300 ease-in-out">
                         Get In Touch
                     </a>
                 </div>
@@ -109,6 +79,8 @@
         </div>
 
         <div class="container mx-auto px-4 relative z-10">
+
+
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Our Core Services</h2>
                 <div class="h-1 w-24 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mx-auto"></div>
@@ -199,6 +171,8 @@
         </div>
 
         <div class="container mx-auto px-4 relative z-10">
+
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div class="space-y-6">
                     <h2 class="text-3xl md:text-4xl font-bold text-white">Get in Touch</h2>
@@ -515,11 +489,11 @@
                             <span> Tech Lane Nairobi</span>
                         </li>
                         <li>
-                            <a href="tel:+1234567890" class="flex items-center space-x-3 text-gray-300 hover:text-blue-400 group">
+                            <a href="tel:+254104160502" class="flex items-center space-x-3 text-blue-500 hover:text-blue-600 group font-semibold focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-lg transition-all" role="button" aria-label="Call DTB Technologies">
                                 <div class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center group-hover:bg-blue-600/20">
                                     <i class="fas fa-phone"></i>
                                 </div>
-                                <span>+254 983-567</span>
+                                <span>+254 104 160 502</span>
                             </a>
                         </li>
                         <li>
@@ -540,14 +514,13 @@
                 </div>
             </div>
 
-            <!-- Footer Bottom -->
-            <div class="mt-12 pt-8 border-t border-slate-800">
-                <div class="flex flex-col items-center justify-center space-y-6">
-                    <!-- Copyright text centered -->
-                    <p class="text-gray-400 text-sm font-medium tracking-wide backdrop-blur-sm py-2 px-6 rounded-lg border border-gray-800/30 hover:border-gray-700/50 transition-colors mx-auto">&copy; 2025 DTB Technologies. All rights reserved.</p>
-                    
-                    <!-- Links centered -->
-                    <div class="flex items-center space-x-4 text-sm">
+            <!-- Footer Bottom: Modern Glassy Gradient Footer -->
+            <div class="mt-16 pt-10 border-t border-slate-800 bg-gradient-to-tr from-blue-900/30 via-slate-900/70 to-purple-900/30 backdrop-blur-2xl relative rounded-t-3xl shadow-inner">
+                <div class="flex flex-col items-center justify-center space-y-8">
+                    <p class="text-gray-300 text-base font-medium tracking-wide py-3 px-8 rounded-2xl border border-slate-800/40 hover:border-blue-500/40 transition-colors mx-auto bg-slate-900/40 shadow-lg">
+                        &copy; 2025 DTB Technologies. All rights reserved.
+                    </p>
+                    <div class="flex flex-wrap items-center justify-center gap-5 text-sm">
                         <a href="privacy-policy.html" class="text-gray-400 hover:text-blue-400 transition-colors">Privacy Policy</a>
                         <span class="text-gray-600">|</span>
                         <a href="terms.html" class="text-gray-400 hover:text-blue-400 transition-colors">Terms</a>
@@ -573,20 +546,5 @@
                 });
         }
     </script>
-    
-    <script src="./components/BottomNav.js" defer></script>
-    <checkout-modal></checkout-modal>
-    <script src="./components/CheckoutModal.js" defer></script>
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-          navigator.serviceWorker.register('/sw.js');
-        });
-      }
-    </script>
-    <checkout-modal></checkout-modal>
-    
-    <script src="./components/BottomNav.js" defer></script>
-    <script src="./components/CheckoutModal.js" defer></script>
 </body>
 </html>

@@ -14,6 +14,33 @@
 <body class="bg-slate-900" onload="displayWelcome()">
     <!-- Navigation Bar -->
     <nav class="fixed top-0 left-0 right-0 z-50 bg-slate-800/30 backdrop-blur-md border-b border-gray-700/30">
+        <div class="absolute top-4 right-8 flex items-center space-x-6 z-50">
+            <!-- Notification Bell -->
+            <div class="relative group">
+                <button class="focus:outline-none">
+                    <i class="fas fa-bell text-2xl text-gray-300 hover:text-yellow-400 transition"></i>
+                    <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-1.5 py-0.5">3</span>
+                </button>
+                <!-- Dropdown -->
+                <div class="hidden group-hover:block absolute right-0 mt-2 w-64 bg-slate-800 text-white rounded-lg shadow-lg border border-slate-700/40 p-4">
+                    <p class="font-semibold mb-2">Notifications</p>
+                    <ul class="text-sm space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-2"></i>Task completed: Project Setup</li>
+                        <li class="flex items-center"><i class="fas fa-user-plus text-blue-400 mr-2"></i>New team member joined</li>
+                        <li class="flex items-center"><i class="fas fa-exclamation-circle text-yellow-400 mr-2"></i>Pending approval: Leave Request</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Avatar Dropdown -->
+            <div class="relative group">
+                <img src="../assets/avatar-default.png" alt="User Avatar" class="w-10 h-10 rounded-full border-2 border-blue-500 cursor-pointer">
+                <div class="hidden group-hover:block absolute right-0 mt-2 w-40 bg-slate-800 text-white rounded-lg shadow-lg border border-slate-700/40 p-3">
+                    <a href="#" class="block px-2 py-1 hover:bg-slate-700 rounded">Profile</a>
+                    <a href="#" class="block px-2 py-1 hover:bg-slate-700 rounded">Settings</a>
+                    <a href="#" class="block px-2 py-1 hover:bg-slate-700 rounded">Logout</a>
+                </div>
+            </div>
+        </div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <!-- Logo -->
@@ -44,6 +71,114 @@
     </nav>
 
     <div class="min-h-screen flex flex-col items-center justify-center p-4 relative overflow-hidden">
+        <!-- Quick Links Panel -->
+        <div class="w-full max-w-6xl mx-auto mt-28 mb-4 grid grid-cols-2 md:grid-cols-4 gap-4 z-10">
+            <a href="#" class="flex flex-col items-center justify-center bg-gradient-to-br from-blue-500/70 to-purple-600/60 rounded-2xl p-4 shadow hover:scale-105 transition-all duration-300">
+                <i class="fas fa-users text-2xl text-white mb-1"></i>
+                <span class="text-white text-sm font-semibold">Team Directory</span>
+            </a>
+            <a href="#" class="flex flex-col items-center justify-center bg-gradient-to-br from-purple-500/70 to-pink-600/60 rounded-2xl p-4 shadow hover:scale-105 transition-all duration-300">
+                <i class="fas fa-calendar-alt text-2xl text-white mb-1"></i>
+                <span class="text-white text-sm font-semibold">Calendar</span>
+            </a>
+            <a href="#" class="flex flex-col items-center justify-center bg-gradient-to-br from-blue-400/70 to-pink-500/60 rounded-2xl p-4 shadow hover:scale-105 transition-all duration-300">
+                <i class="fas fa-chart-line text-2xl text-white mb-1"></i>
+                <span class="text-white text-sm font-semibold">Reports</span>
+            </a>
+            <a href="#" class="flex flex-col items-center justify-center bg-gradient-to-br from-pink-500/70 to-blue-600/60 rounded-2xl p-4 shadow hover:scale-105 transition-all duration-300">
+                <i class="fas fa-cogs text-2xl text-white mb-1"></i>
+                <span class="text-white text-sm font-semibold">Settings</span>
+            </a>
+        </div>
+        <!-- Dashboard Main Content -->
+        <div class="w-full max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 mt-24 z-10">
+            <!-- Profile Card -->
+            <div class="col-span-1 bg-slate-800/80 rounded-2xl p-6 flex flex-col items-center shadow-xl border border-slate-700/40">
+                <img id="userAvatar" src="../assets/avatar-default.png" alt="User Avatar" class="w-24 h-24 rounded-full mb-4 border-4 border-blue-500 shadow-lg">
+                <h2 id="userName" class="text-2xl font-bold text-white mb-1">User Name</h2>
+                <p id="userRole" class="text-blue-400 mb-4">Role</p>
+                <button class="mt-2 px-4 py-2 rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold hover:scale-105 transition-all duration-300">
+                    <i class="fas fa-cog mr-2"></i>Profile Settings
+                </button>
+            </div>
+            <!-- Summary Cards -->
+            <div class="col-span-2 grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Task Completion Progress -->
+                <div class="col-span-3 bg-slate-800/70 rounded-2xl p-6 shadow flex flex-col items-center mb-6">
+                    <div class="w-full flex items-center justify-between mb-2">
+                        <span class="text-white font-semibold">Task Completion</span>
+                        <span class="text-blue-400 font-bold">60%</span>
+                    </div>
+                    <div class="w-full bg-slate-700 rounded-full h-4">
+                        <div class="bg-gradient-to-r from-blue-500 to-purple-500 h-4 rounded-full" style="width: 60%"></div>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-blue-500/70 to-purple-600/60 rounded-2xl p-6 shadow-lg flex flex-col items-center">
+                    <i class="fas fa-tasks text-3xl text-white mb-2"></i>
+                    <span class="text-4xl font-bold text-white" id="tasksCount">0</span>
+                    <span class="text-gray-200 text-lg">Tasks</span>
+                </div>
+                <div class="bg-gradient-to-br from-purple-500/70 to-pink-600/60 rounded-2xl p-6 shadow-lg flex flex-col items-center">
+                    <i class="fas fa-briefcase text-3xl text-white mb-2"></i>
+                    <span class="text-4xl font-bold text-white" id="projectsCount">0</span>
+                    <span class="text-gray-200 text-lg">Projects</span>
+                </div>
+                <div class="bg-gradient-to-br from-blue-400/70 to-pink-500/60 rounded-2xl p-6 shadow-lg flex flex-col items-center">
+                    <i class="fas fa-envelope text-3xl text-white mb-2"></i>
+                    <span class="text-4xl font-bold text-white" id="messagesCount">0</span>
+                    <span class="text-gray-200 text-lg">Messages</span>
+                </div>
+            </div>
+        </div>
+        <!-- Quick Actions -->
+        <div class="w-full max-w-6xl mx-auto mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 z-10">
+            <button class="flex flex-col items-center justify-center bg-slate-800/90 rounded-2xl p-6 shadow hover:scale-105 transition-all duration-300">
+                <i class="fas fa-calendar-check text-2xl text-blue-400 mb-2"></i>
+                <span class="text-lg text-white font-semibold">Request Leave</span>
+            </button>
+            <button class="flex flex-col items-center justify-center bg-slate-800/90 rounded-2xl p-6 shadow hover:scale-105 transition-all duration-300">
+                <i class="fas fa-user-clock text-2xl text-purple-400 mb-2"></i>
+                <span class="text-lg text-white font-semibold">Attendance</span>
+            </button>
+            <button class="flex flex-col items-center justify-center bg-slate-800/90 rounded-2xl p-6 shadow hover:scale-105 transition-all duration-300">
+                <i class="fas fa-bolt text-2xl text-pink-400 mb-2"></i>
+                <span class="text-lg text-white font-semibold">Quick Action</span>
+            </button>
+        </div>
+        <!-- Motivational Quote / Tip -->
+        <div class="w-full max-w-6xl mx-auto mt-8 z-10">
+            <div class="bg-gradient-to-r from-blue-800/80 to-purple-800/80 rounded-2xl p-6 shadow-xl border border-slate-700/40 flex items-center justify-center">
+                <i class="fas fa-lightbulb text-yellow-300 text-2xl mr-4"></i>
+                <span class="text-white text-lg italic">"Success is the sum of small efforts, repeated day in and day out."</span>
+            </div>
+        </div>
+        <!-- Recent Activity -->
+        <div class="w-full max-w-6xl mx-auto mt-12 z-10">
+            <div class="bg-slate-800/80 rounded-2xl p-6 shadow-xl border border-slate-700/40">
+                <h3 class="text-xl font-bold text-white mb-4"><i class="fas fa-history mr-2"></i>Recent Activity</h3>
+                <ul id="recentActivity" class="divide-y divide-slate-700">
+                    <!-- Dynamically filled -->
+                </ul>
+            </div>
+        </div>
+        <!-- Personalized Welcome (moved up) -->
+        <div class="fixed top-28 left-1/2 transform -translate-x-1/2 z-50 text-center animate-fade-in">
+            
+        </div>
+        <script>
+        // Set dashboard to default user (or placeholders)
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('userName').textContent = 'Your Name';
+            document.getElementById('userRole').textContent = 'Your Role';
+            document.getElementById('userAvatar').src = '../assets/avatar-default.png';
+            document.getElementById('tasksCount').textContent = '0';
+            document.getElementById('projectsCount').textContent = '0';
+            document.getElementById('messagesCount').textContent = '0';
+            document.getElementById('personalGreeting').textContent = 'Welcome Back!';
+            const activityList = document.getElementById('recentActivity');
+            activityList.innerHTML = '';
+        });
+        </script>
         <!-- Background Effects -->
         <div class="absolute inset-0">
             <div class="absolute top-10 left-10 w-72 h-72 bg-blue-500/10 rounded-full mix-blend-overlay filter blur-3xl animate-blob"></div>
