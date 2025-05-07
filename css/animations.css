@@ -18,6 +18,7 @@
     animation: blob 7s infinite;
 }
 
+/* Animation delays */
 .animation-delay-2000 {
     animation-delay: 2s;
 }
@@ -41,6 +42,10 @@
 
 .animate-float {
     animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-slow {
+    animation: float 10s ease-in-out infinite;
 }
 
 /* Gradient text animation */
@@ -93,7 +98,7 @@
     animation: slideUp 1s ease-out forwards;
 }
 
-/* Slow spin animation */
+/* Spin animations */
 @keyframes spinSlow {
     from {
         transform: rotate(0deg);
@@ -103,8 +108,29 @@
     }
 }
 
+@keyframes reverseSpin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
 .animate-spin-slow {
     animation: spinSlow 10s linear infinite;
+}
+
+.animate-spin-very-slow {
+    animation: spinSlow 25s linear infinite;
+}
+
+.animate-reverse-spin-very-slow {
+    animation: reverseSpin 30s linear infinite;
+}
+
+.animate-spin-extremely-slow {
+    animation: spinSlow 40s linear infinite;
 }
 
 /* Subtle pulse animation */
@@ -124,6 +150,10 @@
     animation: pulseSoft 2s ease-in-out infinite;
 }
 
+.animate-pulse-slow {
+    animation: pulseSoft 4s ease-in-out infinite;
+}
+
 /* Bounce animation with delays */
 .animate-bounce {
     animation: bounce 1s infinite;
@@ -135,4 +165,20 @@
 
 .animation-delay-400 {
     animation-delay: 0.4s;
+}
+
+.animation-delay-500 {
+    animation-delay: 0.5s;
+}
+
+.animation-delay-1000 {
+    animation-delay: 1s;
+}
+
+.animation-delay-1500 {
+    animation-delay: 1.5s;
+}
+
+.animation-delay-2000 {
+    animation-delay: 2s;
 }

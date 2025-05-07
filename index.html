@@ -16,53 +16,115 @@
     <nav-header></nav-header>
 
     <!-- Hero Section -->
-    <section class="relative min-h-[95vh] flex items-center justify-center overflow-hidden py-20 md:py-28">
-        <!-- Enhanced Animated Background Elements -->
+    <section class="relative min-h-[100vh] flex items-center justify-center overflow-hidden py-0">
+        <!-- Modern Animated Background Elements -->
         <div class="absolute inset-0 pointer-events-none">
-            <!-- Large Gradient Background -->
-            <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800/95 to-slate-900"></div>
-            <!-- Animated SVG Blobs -->
-            <svg class="absolute top-[-7rem] left-[-7rem] w-[28rem] h-[28rem] opacity-60 animate-blob z-0" viewBox="0 0 600 600" fill="none">
-                <g filter="url(#blur1)">
-                    <ellipse cx="300" cy="300" rx="280" ry="180" fill="#3b82f6" fill-opacity="0.12"/>
-                </g>
-            </svg>
-            <svg class="absolute bottom-[-6rem] right-[-6rem] w-[24rem] h-[24rem] opacity-50 animate-blob animation-delay-2000 z-0" viewBox="0 0 600 600" fill="none">
-                <g filter="url(#blur2)">
-                    <ellipse cx="300" cy="300" rx="200" ry="180" fill="#a21caf" fill-opacity="0.12"/>
-                </g>
-            </svg>
-            <!-- Subtle Floating Tech Icons -->
-            <i class="fas fa-cloud absolute top-20 left-1/4 text-blue-400/30 text-6xl animate-float"></i>
-            <i class="fas fa-server absolute bottom-16 right-1/3 text-purple-400/30 text-5xl animate-float animation-delay-400"></i>
-            <i class="fas fa-cogs absolute top-1/2 left-10 text-cyan-400/20 text-4xl animate-spin-slow"></i>
-            <!-- Animated Grid Overlay -->
-            <div class="absolute inset-0 opacity-10">
-                <div class="absolute inset-0" style="background-image: linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px); background-size: clamp(30px, 5vw, 50px) clamp(30px, 5vw, 50px);"></div>
+            <!-- Dynamic Gradient Background -->
+            <div class="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950"></div>
+            
+            <!-- Animated Particle Network -->
+            <div class="absolute inset-0 opacity-20">
+                <div class="absolute inset-0" style="background-image: radial-gradient(circle at 30% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 25%), radial-gradient(circle at 70% 20%, rgba(139, 92, 246, 0.15) 0%, transparent 25%), radial-gradient(circle at 50% 80%, rgba(59, 130, 246, 0.15) 0%, transparent 25%);"></div>
             </div>
-            <!-- Glassmorphism Overlay -->
-            <div class="absolute inset-0 backdrop-blur-3xl bg-gradient-to-br from-blue-500/10 to-purple-500/10"></div>
+            
+            <!-- Modern Floating Elements -->
+            <div class="absolute w-full h-full overflow-hidden">
+                <!-- Tech-inspired floating elements -->
+                <div class="absolute top-10 left-[10%] w-32 h-32 rounded-full bg-blue-500/5 backdrop-blur-3xl animate-float-slow"></div>
+                <div class="absolute bottom-10 right-[10%] w-40 h-40 rounded-full bg-purple-500/5 backdrop-blur-3xl animate-float-slow animation-delay-1000"></div>
+                <div class="absolute top-1/3 right-[15%] w-24 h-24 rounded-full bg-cyan-500/5 backdrop-blur-3xl animate-float-slow animation-delay-2000"></div>
+                
+                <!-- Subtle accent lines -->
+                <div class="absolute top-20 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent animate-pulse-slow"></div>
+                <div class="absolute bottom-20 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500/20 to-transparent animate-pulse-slow animation-delay-1000"></div>
+            </div>
+            
+            <!-- Modern Grid Overlay -->
+            <div class="absolute inset-0 opacity-5">
+                <div class="absolute inset-0" style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: clamp(40px, 8vw, 80px) clamp(40px, 8vw, 80px);"></div>
+            </div>
+            
+            <!-- Enhanced Glassmorphism Effect -->
+            <div class="absolute inset-0 backdrop-blur-xl bg-gradient-to-br from-blue-600/5 via-transparent to-purple-600/5"></div>
         </div>
-        <div class="container mx-auto px-4 relative z-10">
-
-
-            <div class="text-center max-w-3xl mx-auto animate-slide-up">
-                <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight mb-8 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent drop-shadow-lg animate-gradient">
-                    Innovative <span class="inline-block animate-pulse-subtle">IT Solutions</span><br class="hidden sm:block" />for Modern Business
-                </h1>
-                <p class="text-xl md:text-2xl text-slate-300 max-w-2xl mx-auto mb-12 animate-fade-in-delay-1">
-                    Empowering businesses across Kenya with <span class="font-semibold text-blue-400">cutting-edge technology</span>, reliable support, and strategic consultancy.
-                </p>
-                <div class="flex flex-col sm:flex-row justify-center gap-5 animate-fade-in-delay-2">
-                    <button onclick="promptNameAndRedirect()" class="px-7 py-4 rounded-2xl bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold shadow-xl transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-slate-900">
-                        <i class="fas fa-chart-line mr-2"></i>Dashboard
-                    </button>
-                    <a href="/services.html" class="inline-block px-10 py-4 text-lg font-semibold text-center text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl shadow-lg hover:shadow-2xl hover:scale-105 transform transition duration-300 ease-in-out">
-                        Explore Our Services
-                    </a>
-                    <a href="/contact.html" class="inline-block px-10 py-4 text-lg font-semibold text-center text-blue-300 bg-slate-800/60 border border-slate-700 rounded-xl shadow-md hover:bg-slate-700/80 hover:border-slate-600 hover:scale-105 transform transition duration-300 ease-in-out">
-                        Get In Touch
-                    </a>
+        <div class="container mx-auto px-6 relative z-10 flex items-center min-h-[100vh]">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center w-full">
+                <!-- Left Content: Hero Text and CTA -->
+                <div class="animate-fade-in order-2 lg:order-1 max-w-2xl mx-auto lg:mx-0">
+                    <div class="inline-flex items-center py-1.5 px-3 mb-6 rounded-full bg-blue-900/30 border border-blue-700/20 backdrop-blur-md">
+                        <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse mr-2"></span>
+                        <span class="text-blue-300 text-sm font-medium tracking-wide">Trusted IT Partner Since 2020</span>
+                    </div>
+                    
+                    <h1 class="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight mb-6 text-white">
+                        <span class="block mb-2">Innovative</span>
+                        <span class="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">IT Solutions</span>
+                        <span class="block mt-2">for Modern Business</span>
+                    </h1>
+                    
+                    <p class="text-xl text-slate-300 max-w-xl mb-10 leading-relaxed">
+                        Empowering businesses across Kenya with cutting-edge technology, reliable support, and strategic consultancy tailored to your specific needs.                    
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-5">
+                        <!-- Dashboard Button - Glass Morphism with Accent Border -->
+                        <button onclick="promptNameAndRedirect()" class="relative px-7 py-4 rounded-xl text-white font-medium group overflow-hidden">
+                            <!-- Button Background with animated gradient border -->
+                            <span class="absolute inset-0 bg-gradient-to-r from-blue-600 to-violet-600 opacity-80 group-hover:opacity-100 transition-opacity duration-300"></span>
+                            <span class="absolute inset-[1px] bg-slate-900 rounded-[10px] group-hover:bg-slate-800 transition-colors duration-300"></span>
+                            <!-- Glowing effect on hover -->
+                            <span class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-40 bg-blue-500 blur-xl transition-opacity duration-300"></span>
+                            <!-- Content -->                            
+                            <span class="relative flex items-center justify-center">
+                                <i class="fas fa-chart-line mr-2 text-blue-400 group-hover:text-blue-300 transition-colors"></i>
+                                <span class="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-semibold">Dashboard</span>
+                            </span>
+                        </button>
+                        
+                        <!-- Services Button - Solid Fill with Animation -->
+                        <a href="/services.html" class="relative overflow-hidden px-8 py-4 rounded-xl text-white font-medium flex items-center justify-center group bg-gradient-to-r from-indigo-600 to-blue-600 shadow-lg hover:shadow-indigo-500/25 transition-all duration-300 hover:-translate-y-1">
+                            <span class="absolute top-0 right-full w-full h-full bg-gradient-to-r from-blue-500 to-indigo-500 opacity-0 group-hover:opacity-100 group-hover:right-0 transition-all duration-500"></span>
+                            <span class="relative">Explore Our Services</span>
+                            <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform duration-300"></i>
+                        </a>
+                        
+                        <!-- Contact Button - Outline Style -->
+                        <a href="/contact.html" class="relative px-8 py-4 rounded-xl font-medium flex items-center justify-center group">
+                            <!-- Border gradient animation -->
+                            <span class="absolute inset-0 rounded-xl border border-blue-700/50 group-hover:border-blue-500/70 group-hover:bg-slate-800/50 transition-all duration-300"></span>
+                            <!-- Content -->
+                            <span class="relative text-blue-300 group-hover:text-blue-200 transition-colors duration-300">Get In Touch</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Right Content: Decorative Tech Visual -->
+                <div class="order-1 lg:order-2 flex justify-center items-center">
+                    <div class="relative w-full max-w-md aspect-square">
+                        <!-- Central glowing orb -->
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-32 h-32 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 opacity-20 blur-2xl animate-pulse-slow"></div>
+                            <div class="absolute w-40 h-40 rounded-full border border-blue-500/20 animate-spin-very-slow"></div>
+                            <div class="absolute w-64 h-64 rounded-full border border-purple-500/10 animate-reverse-spin-very-slow"></div>
+                            <div class="absolute w-96 h-96 rounded-full border border-indigo-500/5 animate-spin-extremely-slow"></div>
+                        </div>
+                        
+                        <!-- Tech Icons positioned around the circles -->
+                        <div class="absolute inset-0">
+                            <div class="absolute top-10 left-1/2 -translate-x-1/2 w-12 h-12 rounded-xl bg-slate-800/80 backdrop-blur-md flex items-center justify-center text-blue-400 shadow-lg shadow-blue-900/20 border border-slate-700/50 animate-float-slow">
+                                <i class="fas fa-cloud text-xl"></i>
+                            </div>
+                            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 w-12 h-12 rounded-xl bg-slate-800/80 backdrop-blur-md flex items-center justify-center text-purple-400 shadow-lg shadow-purple-900/20 border border-slate-700/50 animate-float-slow animation-delay-1000">
+                                <i class="fas fa-database text-xl"></i>
+                            </div>
+                            <div class="absolute left-10 top-1/2 -translate-y-1/2 w-12 h-12 rounded-xl bg-slate-800/80 backdrop-blur-md flex items-center justify-center text-indigo-400 shadow-lg shadow-indigo-900/20 border border-slate-700/50 animate-float-slow animation-delay-1500">
+                                <i class="fas fa-code text-xl"></i>
+                            </div>
+                            <div class="absolute right-10 top-1/2 -translate-y-1/2 w-12 h-12 rounded-xl bg-slate-800/80 backdrop-blur-md flex items-center justify-center text-cyan-400 shadow-lg shadow-cyan-900/20 border border-slate-700/50 animate-float-slow animation-delay-500">
+                                <i class="fas fa-shield-alt text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
