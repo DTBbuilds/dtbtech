@@ -236,4 +236,44 @@ class AuthModal extends HTMLElement {
     }
 }
 
+// Define the custom element
 customElements.define('auth-modal', AuthModal);
+
+// Create and export a singleton instance for use by other components
+const authModal = {
+    open(mode = 'login') {
+        // Find or create the auth modal element
+        let modalElement = document.querySelector('auth-modal');
+        if (!modalElement) {
+            modalElement = document.createElement('auth-modal');
+            document.body.appendChild(modalElement);
+        }
+        
+        // Set the mode and show the modal
+        modalElement.isLogin = mode === 'login';
+        modalElement.updateModalState();
+        const modal = modalElement.querySelector('#auth-modal');
+        if (modal) {
+            modal.classList.remove('hidden');
+        }
+    },
+    
+    close() {
+        const modalElement = document.querySelector('auth-modal');
+        if (modalElement) {
+            const modal = modalElement.querySelector('#auth-modal');
+            if (modal) {
+                modal.classList.add('hidden');
+                const form = modalElement.querySelector('#auth-form');
+                if (form) form.reset();
+                const errorMessage = modalElement.querySelector('.error-message');
+                if (errorMessage) errorMessage.classList.add('hidden');
+            }
+        }
+    }
+};
+
+// Export both the class and the singleton instance
+export { AuthModal };
+export default authModal;
+ 

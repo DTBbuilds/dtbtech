@@ -5,15 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tech Lab - DTB Technologies</title>
     <link rel="stylesheet" href="./dist/output.css">
-    <link rel="stylesheet" href="./src/css/mobile-optimized.css">
-    <link rel="stylesheet" href="./css/common.css">
-    <link rel="stylesheet" href="./css/animations.css">
-    <link rel="stylesheet" href="./assets/icons/fontawesome-subset.css">
-    <link rel="stylesheet" href="./css/common.css">
-    <link rel="stylesheet" href="./css/animations.css">
-    <script type="module" src="./components/nav-header.js" defer></script>
-    <script type="module" src="./js/dashboard.js" defer></script>
-    <script type="module" src="./src/js/main.js"></script>
+  <script type="module" crossorigin src="/assets/tech-lab-DwtksJXR.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/web-vitals-royK9i-h.js">
+  <link rel="modulepreload" crossorigin href="/assets/dashboard-C8mzrn47.js">
+  <link rel="modulepreload" crossorigin href="/assets/script-z0xI97zk.js">
+  <link rel="modulepreload" crossorigin href="/assets/cart-Ctv9MGn8.js">
+  <link rel="stylesheet" crossorigin href="/assets/dashboard-DbGFv8Oi.css">
+  <link rel="stylesheet" crossorigin href="/assets/animations-B268rTuP.css">
 </head>
 <body class="bg-slate-900">
     <!-- Navigation -->
@@ -242,7 +240,7 @@
                 <!-- Company Info -->
                 <div class="space-y-6 backdrop-blur-sm bg-slate-900/30 p-6 rounded-2xl border border-gray-800/30">
                     <div class="flex items-center space-x-3">
-                        <img src="assets/dtb-logo.png" alt="DTB Technologies Logo" class="h-8">
+                        <img src="/assets/dtb-logo-DyecXdNJ.png" alt="DTB Technologies Logo" class="h-8">
                         <h3 class="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">DTB Technologies</h3>
                     </div>
                     <p class="text-gray-300">Empowering businesses with innovative technology solutions and expert IT services.</p>
@@ -317,109 +315,6 @@
         </div>
     </footer>
 
-    <script type="module">
-        import authModal from './components/auth-modal.js';
-        import './components/auth-buttons.js';
-        window.authModal = authModal;
-
-        // Handle authentication state
-        function updateAuthUI() {
-            const token = localStorage.getItem('token');
-            const user = JSON.parse(localStorage.getItem('user') || 'null');
-            const authButtons = document.querySelector('.auth-buttons');
-            const userMenu = document.querySelector('.user-menu');
-            const username = document.querySelector('.username');
-            const userDropdown = document.getElementById('userDropdown');
-
-            if (token && user) {
-                authButtons.classList.add('hidden');
-                userMenu.classList.remove('hidden');
-                username.textContent = user.username;
-            } else {
-                authButtons.classList.remove('hidden');
-                userMenu.classList.add('hidden');
-                userDropdown.classList.add('hidden');
-            }
-        }
-
-        // Toggle user dropdown with animation
-        const userMenuBtn = document.getElementById('userMenuBtn');
-        const userDropdown = document.getElementById('userDropdown');
-        if (userMenuBtn) {
-            userMenuBtn.addEventListener('click', () => {
-                const isHidden = userDropdown.classList.contains('hidden');
-                if (isHidden) {
-                    userDropdown.classList.remove('hidden');
-                    setTimeout(() => {
-                        userDropdown.classList.remove('opacity-0', 'scale-95');
-                        userDropdown.classList.add('opacity-100', 'scale-100');
-                        userMenuBtn.querySelector('svg:last-child').classList.add('rotate-180');
-                    }, 10);
-                } else {
-                    userDropdown.classList.remove('opacity-100', 'scale-100');
-                    userDropdown.classList.add('opacity-0', 'scale-95');
-                    userMenuBtn.querySelector('svg:last-child').classList.remove('rotate-180');
-                    setTimeout(() => {
-                        userDropdown.classList.add('hidden');
-                    }, 200);
-                }
-            });
-
-            // Close dropdown when clicking outside
-            document.addEventListener('click', (e) => {
-                if (!userMenuBtn.contains(e.target) && !userDropdown.contains(e.target) && !userDropdown.classList.contains('hidden')) {
-                    userDropdown.classList.remove('opacity-100', 'scale-100');
-                    userDropdown.classList.add('opacity-0', 'scale-95');
-                    userMenuBtn.querySelector('svg:last-child').classList.remove('rotate-180');
-                    setTimeout(() => {
-                        userDropdown.classList.add('hidden');
-                    }, 200);
-                }
-            });
-        }
-
-        // Handle logout with animation
-        window.handleLogout = () => {
-            const userMenu = document.querySelector('.user-menu');
-            userMenu.style.opacity = '0';
-            setTimeout(() => {
-                localStorage.removeItem('token');
-                localStorage.removeItem('user');
-                updateAuthUI();
-                userMenu.style.opacity = '';
-            }, 300);
-        };
-
-        // Update UI on page load
-        updateAuthUI();
-
-        // Add password strength indicator
-        const passwordInput = document.getElementById('signupPassword');
-        if (passwordInput) {
-            passwordInput.addEventListener('input', (e) => {
-                const password = e.target.value;
-                const strength = getPasswordStrength(password);
-                updatePasswordStrength(strength);
-            });
-        }
-
-        function getPasswordStrength(password) {
-            let strength = 0;
-            if (password.length >= 8) strength++;
-            if (/[A-Z]/.test(password)) strength++;
-            if (/[0-9]/.test(password)) strength++;
-            if (/[^A-Za-z0-9]/.test(password)) strength++;
-            return strength;
-        }
-
-        function updatePasswordStrength(strength) {
-            const indicator = document.querySelector('.password-strength');
-            indicator.className = 'password-strength';
-            if (strength === 1) indicator.classList.add('strength-weak');
-            else if (strength === 2) indicator.classList.add('strength-medium');
-            else if (strength >= 3) indicator.classList.add('strength-strong');
-        }
-    </script>
     <script>
         // Mobile menu toggle
         document.getElementById('mobile-menu-button').addEventListener('click', function() {
@@ -452,7 +347,5 @@
             }
         });
     </script>
-    <script type="module" src="script.js"></script>
-    <script type="module" src="cart.js"></script>
 </body>
 </html>
