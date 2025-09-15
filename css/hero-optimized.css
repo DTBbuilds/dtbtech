@@ -1,0 +1,370 @@
+/**
+ * Optimized Hero Section Styles
+ * Fixes UI breaks and improves performance
+ */
+
+/* Hero Section Base Styles */
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding-top: 5rem;
+  padding-bottom: 2rem;
+}
+
+/* Hero Content Layout */
+.hero-content {
+  animation: fadeInUp 0.8s ease-out forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.hero-visual {
+  animation: fadeInScale 1s ease-out 0.3s forwards;
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+/* Typography Optimizations */
+.hero-title {
+  font-size: clamp(2rem, 8vw, 4.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  max-width: 36rem;
+}
+
+/* Button Optimizations */
+.hero-section .group {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 1rem 2rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  min-height: 3rem;
+  touch-action: manipulation;
+}
+
+.hero-section .group:first-child {
+  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+  color: white;
+  box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.3);
+}
+
+.hero-section .group:first-child:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px -10px rgba(37, 99, 235, 0.4);
+}
+
+.hero-section .group:last-child {
+  background: rgba(30, 41, 59, 0.5);
+  border: 1px solid rgba(51, 65, 85, 0.4);
+  color: rgb(226, 232, 240);
+  backdrop-filter: blur(8px);
+}
+
+.hero-section .group:last-child:hover {
+  background: rgba(51, 65, 85, 0.6);
+  border-color: rgba(71, 85, 105, 0.6);
+  color: white;
+}
+
+/* Visual Element Optimizations */
+.hero-visual .absolute {
+  will-change: transform;
+}
+
+.hero-visual .animate-spin-very-slow {
+  animation: heroSpin 25s linear infinite;
+}
+
+.hero-visual .animate-reverse-spin-very-slow {
+  animation: heroReverseSpin 30s linear infinite;
+}
+
+.hero-visual .animate-spin-extremely-slow {
+  animation: heroSpin 40s linear infinite;
+}
+
+.hero-visual .animate-float-slow {
+  animation: heroFloat 10s ease-in-out infinite;
+}
+
+.hero-visual .animate-pulse-slow {
+  animation: heroPulse 4s ease-in-out infinite;
+}
+
+/* Tech Icon Styling - Match Original Layout */
+.hero-visual .absolute.top-4,
+.hero-visual .absolute.bottom-4,
+.hero-visual .absolute.left-4,
+.hero-visual .absolute.right-4 {
+  background: rgba(30, 41, 59, 0.9);
+  backdrop-filter: blur(4px);
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-width: 2px;
+}
+
+.hero-visual .absolute:hover {
+  transform: scale(1.1);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4);
+}
+
+/* Specific positioning - at edges for better visual balance */
+.hero-visual .absolute.top-4 {
+  top: 1rem;
+}
+
+.hero-visual .absolute.bottom-4 {
+  bottom: 1rem;
+}
+
+.hero-visual .absolute.left-4 {
+  left: 1rem;
+}
+
+.hero-visual .absolute.right-4 {
+  right: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .hero-section {
+    padding-top: 4rem;
+    min-height: 100vh;
+  }
+  
+  .hero-title {
+    font-size: clamp(1.875rem, 6vw, 3.5rem);
+  }
+  
+  .hero-visual .relative {
+    max-width: 20rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding-top: 5rem;
+    padding-bottom: 3rem;
+    min-height: 100vh;
+  }
+  
+  .hero-content {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .hero-title {
+    font-size: clamp(1.75rem, 8vw, 2.5rem);
+    margin-bottom: 1rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+  }
+  
+  .hero-visual .relative {
+    max-width: 16rem;
+  }
+  
+  /* Simplify animations on mobile */
+  .hero-visual .animate-spin-very-slow,
+  .hero-visual .animate-reverse-spin-very-slow {
+    animation-duration: 15s;
+  }
+  
+  /* Optimize button layout */
+  .hero-section .flex.flex-col.sm\\:flex-row {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .hero-section .group {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.9375rem;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .hero-title {
+    font-size: clamp(1.5rem, 10vw, 2rem);
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  
+  .hero-visual .relative {
+    max-width: 14rem;
+  }
+  
+  /* Further simplify on small screens */
+  .hero-visual .w-12.h-12 {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  
+  .hero-visual .text-xl {
+    font-size: 1rem;
+  }
+}
+
+/* Performance Optimizations */
+@media (prefers-reduced-motion: reduce) {
+  .hero-content,
+  .hero-visual,
+  .hero-visual .absolute {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  .hero-content {
+    opacity: 1;
+    transform: none;
+  }
+  
+  .hero-visual {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Optimized Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes heroSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes heroReverseSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes heroFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes heroPulse {
+  0%, 100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+/* High-DPI Display Optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .hero-visual .blur-xl {
+    filter: blur(12px);
+  }
+  
+  .hero-visual .blur-3xl {
+    filter: blur(24px);
+  }
+}
+
+/* Dark Mode Enhancements */
+@media (prefers-color-scheme: dark) {
+  .hero-section {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #312e81 100%);
+  }
+}
+
+/* Focus States for Accessibility */
+.hero-section .group:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+.hero-visual .absolute:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Loading States */
+.hero-section.loading .hero-content,
+.hero-section.loading .hero-visual {
+  opacity: 0;
+}
+
+/* Print Styles */
+@media print {
+  .hero-section {
+    min-height: auto;
+    padding: 2rem 0;
+    background: white !important;
+    color: black !important;
+  }
+  
+  .hero-visual {
+    display: none;
+  }
+  
+  .hero-title {
+    color: black !important;
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    background-clip: unset !important;
+  }
+}

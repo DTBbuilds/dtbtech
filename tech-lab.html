@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Lab - DTB Technologies</title>
+    <link rel="stylesheet" href="./dist/output.css">
+    <link rel="stylesheet" href="./src/css/mobile-optimized.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/animations.css">
+    <link rel="stylesheet" href="./assets/icons/fontawesome-subset.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/animations.css">
+    <script src="./components/nav-header.js" defer></script>
+    <script src="./js/dashboard.js" defer></script>
+    <script type="module" src="./src/js/main.js"></script>
+</head>
+<body class="bg-slate-900">
+    <!-- Navigation -->
+    <nav-header></nav-header>
+
+    <!-- Hero -->
+    <section class="relative p-6 lg:p-16 text-center bg-slate-900 overflow-hidden flex flex-col items-center justify-center min-h-[60vh]">
+        <!-- Animated SVG Blobs -->
+        <svg class="absolute left-[-10vw] top-[-10vw] w-[40vw] h-[40vw] opacity-40 animate-blob-slow z-0" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#6366F1" d="M46.8,-67.5C60.6,-61.8,71.9,-50.2,78.6,-36.2C85.3,-22.2,87.5,-5.8,83.9,8.6C80.3,23,70.9,35.4,59.6,45.7C48.2,56.1,35,64.4,20.7,68.5C6.5,72.7,-8.7,72.8,-24.2,69.6C-39.7,66.4,-55.6,60,-63.7,48.1C-71.8,36.2,-72.1,18.1,-72.3,-0.2C-72.5,-18.5,-72.5,-37,-63.7,-50.4C-54.9,-63.8,-37.3,-72.1,-19.3,-75.7C-1.3,-79.3,16.2,-78.1,32.1,-73.3C48,-68.5,46.8,-67.5,46.8,-67.5Z" transform="translate(100 100)"/>
+        </svg>
+        <svg class="absolute right-[-8vw] bottom-[-8vw] w-[32vw] h-[32vw] opacity-40 animate-blob-fast z-0" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#A78BFA" d="M41.5,-57.7C54.7,-49.1,66.6,-39.9,73.5,-27.1C80.3,-14.3,82.1,2,76.3,16.9C70.5,31.8,57,45.3,42.1,50.4C27.2,55.5,10.9,52.2,-5.6,54.2C-22.1,56.2,-39,63.6,-50.3,58.1C-61.6,52.6,-67.3,34.2,-67.1,17.2C-66.9,0.2,-60.7,-15.4,-52.1,-28.6C-43.5,-41.8,-32.5,-52.6,-19.4,-59.9C-6.3,-67.2,9,-71,23.1,-67.2C37.2,-63.4,41.5,-57.7,41.5,-57.7Z" transform="translate(100 100)"/>
+        </svg>
+        <!-- Layered Glassmorphism Overlay -->
+        <div class="absolute inset-0 bg-white/10 backdrop-blur-2xl rounded-3xl shadow-2xl border border-white/10 z-0"></div>
+        <!-- Floating Tech Icons -->
+        <div class="absolute left-10 top-24 animate-float-slow z-10"><i class="fas fa-microchip text-5xl text-blue-400/70"></i></div>
+        <div class="absolute right-16 top-12 animate-float-fast z-10"><i class="fas fa-cloud text-4xl text-purple-400/70"></i></div>
+        <div class="absolute left-1/2 bottom-8 animate-float-mid z-10"><i class="fas fa-laptop-code text-4xl text-blue-300/70"></i></div>
+        <!-- Headline -->
+        <h2 class="text-4xl lg:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 animate-gradient-text drop-shadow-lg relative z-20">
+          The Tech Alchemist's <span class="relative inline-block"><span class="animate-pulse-gradient bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">IT Solutions</span><span class="absolute right-0 top-0 w-2 h-2 bg-pink-400 rounded-full animate-pulse"></span></span> Lab
+        </h2>
+        <p class="text-xl lg:text-2xl mt-6 text-white relative z-20 max-w-2xl mx-auto">Where IT magic is forged for organizations and individuals alike.</p>
+        <!-- Call to Action Buttons -->
+        <div class="flex flex-wrap justify-center gap-6 mt-10 relative z-20">
+          <a href="services.html" class="inline-flex items-center px-8 py-4 rounded-2xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold text-lg shadow-xl hover:scale-105 hover:from-blue-700 hover:to-purple-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            <i class="fas fa-cogs mr-3"></i>Explore Services
+          </a>
+          <a href="contact.html" class="inline-flex items-center px-8 py-4 rounded-2xl bg-gradient-to-r from-pink-500 to-blue-500 text-white font-bold text-lg shadow-xl hover:scale-105 hover:from-pink-600 hover:to-blue-600 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-pink-400">
+            <i class="fas fa-magic mr-3"></i>Hire the Tech Alchemist
+          </a>
+        </div>
+    </section>
+
+    <!-- Skills & Services -->
+    <section class="p-6 lg:p-10 bg-slate-900 relative overflow-hidden">
+        <!-- Background Effects -->
+        <div class="absolute inset-0">
+            <div class="absolute -top-24 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl"></div>
+            <div class="absolute -bottom-24 right-10 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div class="relative z-10">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl lg:text-4xl font-bold text-white mb-4">Tech Alchemist Skills</h3>
+                <div class="h-1 w-24 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- System Administration -->
+                <div class="group">
+                    <div class="relative bg-slate-800/40 backdrop-blur-xl rounded-2xl p-8 border border-slate-700/30 h-full transform hover:scale-105 transition-all duration-300 overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-purple-600/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="absolute -right-8 -bottom-8 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl group-hover:bg-blue-600/20 transition-all duration-300"></div>
+                        <div class="relative z-10">
+                            <div class="text-4xl text-blue-400 mb-4 transform group-hover:scale-110 transition-transform">
+                                <i class="fas fa-server"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-3">System Administration</h3>
+                            <p class="text-gray-300 mb-6">Expert system administration and infrastructure management services.</p>
+                            <a href="tech-lab/skills/system-administration.html" class="inline-flex items-center px-4 py-2 bg-blue-600/20 text-blue-400 rounded-lg hover:bg-blue-600/30 transition-all group-hover:translate-x-2">
+                                Learn More <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Web Development -->
+                <div class="group">
+                    <div class="relative bg-slate-800/40 backdrop-blur-xl rounded-2xl p-8 border border-slate-700/30 h-full transform hover:scale-105 transition-all duration-300 overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-purple-600/10 to-pink-600/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="absolute -right-8 -bottom-8 w-32 h-32 bg-purple-500/10 rounded-full blur-2xl group-hover:bg-purple-600/20 transition-all duration-300"></div>
+                        <div class="relative z-10">
+                            <div class="text-4xl text-purple-400 mb-4 transform group-hover:scale-110 transition-transform">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-3">Web Development</h3>
+                            <p class="text-gray-300 mb-6">Creating stunning and functional websites with modern technologies.</p>
+                            <a href="tech-lab/skills/web-development.html" class="inline-flex items-center px-4 py-2 bg-purple-600/20 text-purple-400 rounded-lg hover:bg-purple-600/30 transition-all group-hover:translate-x-2">
+                                Learn More <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Operating Systems -->
+                <div class="group">
+                    <div class="relative bg-slate-800/40 backdrop-blur-xl rounded-2xl p-8 border border-slate-700/30 h-full transform hover:scale-105 transition-all duration-300 overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-cyan-600/10 to-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="absolute -right-8 -bottom-8 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl group-hover:bg-cyan-600/20 transition-all duration-300"></div>
+                        <div class="relative z-10">
+                            <div class="text-4xl text-cyan-400 mb-4 transform group-hover:scale-110 transition-transform">
+                                <i class="fas fa-desktop"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-3">Operating Systems</h3>
+                            <p class="text-gray-300 mb-6">Expert management of Windows, Linux, and macOS environments.</p>
+                            <a href="tech-lab/skills/operating-systems.html" class="inline-flex items-center px-4 py-2 bg-cyan-600/20 text-cyan-400 rounded-lg hover:bg-cyan-600/30 transition-all group-hover:translate-x-2">
+                                Learn More <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hardware & Software -->
+                <div class="group">
+                    <div class="relative bg-slate-800/40 backdrop-blur-xl rounded-2xl p-8 border border-slate-700/30 h-full transform hover:scale-105 transition-all duration-300 overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-pink-600/10 to-red-600/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="absolute -right-8 -bottom-8 w-32 h-32 bg-pink-500/10 rounded-full blur-2xl group-hover:bg-pink-600/20 transition-all duration-300"></div>
+                        <div class="relative z-10">
+                            <div class="text-4xl text-pink-400 mb-4 transform group-hover:scale-110 transition-transform">
+                                <i class="fas fa-microchip"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-3">Hardware & Software</h3>
+                            <p class="text-gray-300 mb-6">Comprehensive solutions for all your hardware and software needs.</p>
+                            <a href="tech-lab/skills/hardware-software.html" class="inline-flex items-center px-4 py-2 bg-pink-600/20 text-pink-400 rounded-lg hover:bg-pink-600/30 transition-all group-hover:translate-x-2">
+                                Learn More <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="contact.html" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all transform hover:scale-105">
+                    <span class="mr-2">Hire the Tech Alchemist</span>
+                    <i class="fas fa-magic"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Target Audience -->
+    <section class="p-6 lg:p-10 bg-slate-800/50 backdrop-blur-xl relative overflow-hidden">
+        <!-- Background Effects -->
+        <div class="absolute inset-0">
+            <div class="absolute -top-24 right-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl"></div>
+            <div class="absolute -bottom-24 left-10 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div class="relative z-10">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl lg:text-4xl font-bold text-white mb-4">Who We Serve</h3>
+                <div class="h-1 w-24 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Organizations -->
+                <div class="group">
+                    <div class="relative bg-slate-800/40 backdrop-blur-xl rounded-2xl p-8 border border-slate-700/30 h-full transform hover:scale-105 transition-all duration-300 overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-cyan-600/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="absolute -right-8 -bottom-8 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl group-hover:bg-blue-600/20 transition-all duration-300"></div>
+                        <div class="relative z-10">
+                            <div class="text-4xl text-blue-400 mb-4 transform group-hover:scale-110 transition-transform">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-white mb-3">Organizations</h4>
+                            <p class="text-gray-300">Enterprise-level IT solutions tailored for your business growth.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Individuals -->
+                <div class="group">
+                    <div class="relative bg-slate-800/40 backdrop-blur-xl rounded-2xl p-8 border border-slate-700/30 h-full transform hover:scale-105 transition-all duration-300 overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-purple-600/10 to-pink-600/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="absolute -right-8 -bottom-8 w-32 h-32 bg-purple-500/10 rounded-full blur-2xl group-hover:bg-purple-600/20 transition-all duration-300"></div>
+                        <div class="relative z-10">
+                            <div class="text-4xl text-purple-400 mb-4 transform group-hover:scale-110 transition-transform">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-white mb-3">Individuals</h4>
+                            <p class="text-gray-300">Personal tech solutions—your devices, your way, 24/7.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Book Services Button -->
+    <div class="fixed bottom-8 right-8 z-50">
+        <div class="relative group">
+            <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-blue-400 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+            <a href="services.html" class="relative flex items-center gap-3 px-6 py-3 bg-slate-900 text-white rounded-full hover:bg-slate-800 transition-colors">
+                <div class="relative">
+                    <i class="fas fa-briefcase text-xl text-blue-400"></i>
+                </div>
+                <span class="font-medium tracking-wide">Book Services</span>
+            </a>
+            <div class="absolute bottom-full right-0 mb-2 w-48 p-2 bg-slate-800 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
+                View and book our services
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Orb Button -->
+    <div class="fixed bottom-8 left-8 z-50">
+        <div class="relative group">
+            <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-blue-400 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
+            <a href="contact.html" class="relative flex items-center justify-center w-16 h-16 bg-slate-900 rounded-full hover:bg-slate-800 transition-colors">
+                <i class="fas fa-headset text-2xl text-blue-400"></i>
+            </a>
+            <div class="absolute bottom-full right-0 mb-2 w-48 p-2 bg-slate-800 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
+                Need help? Click me!
+            </div>
+        </div>
+    </div>
+
+    <!-- Help Floating Button -->
+    <a href="help.html" title="Get Help" class="hidden sm:flex items-center justify-center absolute top-2 right-2 z-30 w-11 h-11 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 shadow-lg border-4 border-white/30 hover:scale-110 hover:shadow-2xl transition-all duration-300 group focus:outline-none" style="box-shadow:0 4px 24px 0 rgba(80,0,180,0.11);">
+      <i class="fas fa-question-circle text-white text-2xl animate-pulse group-hover:animate-spin"></i>
+      <span class="sr-only">Help</span>
+    </a>
+    <!-- End Help Floating Button -->
+
+    <!-- Modern Footer -->
+    <footer class="relative bg-gray-900/90 backdrop-blur-md border-t border-gray-800/50">
+        <!-- Gradient Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-gray-900/50 to-gray-900/90 pointer-events-none"></div>
+        
+        <div class="container mx-auto px-4 py-12 relative">
+            <!-- Main Footer Content -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="space-y-6 backdrop-blur-sm bg-slate-900/30 p-6 rounded-2xl border border-gray-800/30">
+                    <div class="flex items-center space-x-3">
+                        <img src="assets/dtb-logo.png" alt="DTB Technologies Logo" class="h-8">
+                        <h3 class="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">DTB Technologies</h3>
+                    </div>
+                    <p class="text-gray-300">Empowering businesses with innovative technology solutions and expert IT services.</p>
+                    <div class="flex items-center space-x-4">
+                        <a href="https://facebook.com/dtbtechnologies" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg bg-slate-800/80 hover:bg-blue-600/20 flex items-center justify-center transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-700/30 hover:border-blue-500/50 group">
+                            <i class="fab fa-facebook-f text-gray-400 group-hover:text-blue-400 transition-colors"></i>
+                        </a>
+                        <a href="https://twitter.com/dtbtechnologies" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg bg-slate-800/80 hover:bg-cyan-600/20 flex items-center justify-center transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-700/30 hover:border-cyan-500/50 group">
+                            <i class="fab fa-twitter text-gray-400 group-hover:text-cyan-400 transition-colors"></i>
+                        </a>
+                        <a href="https://linkedin.com/company/dtbtechnologies" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg bg-slate-800/80 hover:bg-blue-600/20 flex items-center justify-center transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-700/30 hover:border-blue-500/50 group">
+                            <i class="fab fa-linkedin-in text-gray-400 group-hover:text-blue-400 transition-colors"></i>
+                        </a>
+                        <a href="https://instagram.com/dtbtechnologies" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg bg-slate-800/80 hover:bg-pink-600/20 flex items-center justify-center transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-gray-700/30 hover:border-pink-500/50 group">
+                            <i class="fab fa-instagram text-gray-400 group-hover:text-pink-400 transition-colors"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="space-y-6 backdrop-blur-sm bg-slate-900/30 p-6 rounded-2xl border border-gray-800/30">
+                    <h4 class="text-lg font-semibold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-300 hover:text-blue-400 transition-colors flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-blue-400"></i>Home</a></li>
+                        <li><a href="about.html" class="text-gray-300 hover:text-blue-400 transition-colors flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-blue-400"></i>About Us</a></li>
+                        <li><a href="services.html" class="text-gray-300 hover:text-blue-400 transition-colors flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-blue-400"></i>Services</a></li>
+                        <li><a href="tech-lab.html" class="text-gray-300 hover:text-blue-400 transition-colors flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-blue-400"></i>Tech Lab</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-blue-400 transition-colors flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-blue-400"></i>Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Tech Lab -->
+                <div class="space-y-6 backdrop-blur-sm bg-slate-900/30 p-6 rounded-2xl border border-gray-800/30">
+                    <h4 class="text-lg font-semibold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Tech Lab</h4>
+                    <ul class="space-y-3">
+                        <li><a href="tech-lab/innovations.html" class="text-gray-300 hover:text-blue-400 transition-colors flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-blue-400"></i>Innovations</a></li>
+                        <li><a href="tech-lab/research.html" class="text-gray-300 hover:text-blue-400 transition-colors flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-blue-400"></i>Research</a></li>
+                        <li><a href="tech-lab/case-studies.html" class="text-gray-300 hover:text-blue-400 transition-colors flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-blue-400"></i>Case Studies</a></li>
+                        <li><a href="tech-lab/blog.html" class="text-gray-300 hover:text-blue-400 transition-colors flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-blue-400"></i>Tech Blog</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="space-y-6 backdrop-blur-sm bg-slate-900/30 p-6 rounded-2xl border border-gray-800/30">
+                    <h4 class="text-lg font-semibold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Contact Us</h4>
+                    <div class="space-y-4">
+                        <p class="text-gray-300 flex items-center"><i class="fas fa-map-marker-alt text-blue-400 mr-3"></i>Nairobi, Kenya</p>
+                        <p class="text-gray-300 flex items-center"><i class="fas fa-phone text-blue-400 mr-3"></i>+254 700 000000</p>
+                        <p class="text-gray-300 flex items-center"><i class="fas fa-envelope text-blue-400 mr-3"></i>info@dtbtechnologies.co.ke</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="mt-12 pt-8 border-t border-gray-800/30 relative">
+                <div class="flex flex-col items-center justify-center space-y-6">
+                    <!-- Copyright text centered -->
+                    <p class="text-gray-400 text-sm font-medium tracking-wide backdrop-blur-sm py-3 px-6 rounded-xl border border-gray-800/30 hover:border-gray-700/50 transition-colors mx-auto bg-slate-900/30">
+                        &copy; 2025 DTB Technologies. All rights reserved.
+                    </p>
+                    
+                    <!-- Links centered -->
+                    <div class="flex items-center space-x-4 text-sm">
+                        <a href="privacy-policy.html" class="text-gray-400 hover:text-blue-400 transition-colors">Privacy Policy</a>
+                        <span class="text-gray-600">|</span>
+                        <a href="terms.html" class="text-gray-400 hover:text-blue-400 transition-colors">Terms</a>
+                        <span class="text-gray-600">|</span>
+                        <a href="cookies.html" class="text-gray-400 hover:text-blue-400 transition-colors">Cookies</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module">
+        import authModal from './components/auth-modal.js';
+        import './components/auth-buttons.js';
+        window.authModal = authModal;
+
+        // Handle authentication state
+        function updateAuthUI() {
+            const token = localStorage.getItem('token');
+            const user = JSON.parse(localStorage.getItem('user') || 'null');
+            const authButtons = document.querySelector('.auth-buttons');
+            const userMenu = document.querySelector('.user-menu');
+            const username = document.querySelector('.username');
+            const userDropdown = document.getElementById('userDropdown');
+
+            if (token && user) {
+                authButtons.classList.add('hidden');
+                userMenu.classList.remove('hidden');
+                username.textContent = user.username;
+            } else {
+                authButtons.classList.remove('hidden');
+                userMenu.classList.add('hidden');
+                userDropdown.classList.add('hidden');
+            }
+        }
+
+        // Toggle user dropdown with animation
+        const userMenuBtn = document.getElementById('userMenuBtn');
+        const userDropdown = document.getElementById('userDropdown');
+        if (userMenuBtn) {
+            userMenuBtn.addEventListener('click', () => {
+                const isHidden = userDropdown.classList.contains('hidden');
+                if (isHidden) {
+                    userDropdown.classList.remove('hidden');
+                    setTimeout(() => {
+                        userDropdown.classList.remove('opacity-0', 'scale-95');
+                        userDropdown.classList.add('opacity-100', 'scale-100');
+                        userMenuBtn.querySelector('svg:last-child').classList.add('rotate-180');
+                    }, 10);
+                } else {
+                    userDropdown.classList.remove('opacity-100', 'scale-100');
+                    userDropdown.classList.add('opacity-0', 'scale-95');
+                    userMenuBtn.querySelector('svg:last-child').classList.remove('rotate-180');
+                    setTimeout(() => {
+                        userDropdown.classList.add('hidden');
+                    }, 200);
+                }
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!userMenuBtn.contains(e.target) && !userDropdown.contains(e.target) && !userDropdown.classList.contains('hidden')) {
+                    userDropdown.classList.remove('opacity-100', 'scale-100');
+                    userDropdown.classList.add('opacity-0', 'scale-95');
+                    userMenuBtn.querySelector('svg:last-child').classList.remove('rotate-180');
+                    setTimeout(() => {
+                        userDropdown.classList.add('hidden');
+                    }, 200);
+                }
+            });
+        }
+
+        // Handle logout with animation
+        window.handleLogout = () => {
+            const userMenu = document.querySelector('.user-menu');
+            userMenu.style.opacity = '0';
+            setTimeout(() => {
+                localStorage.removeItem('token');
+                localStorage.removeItem('user');
+                updateAuthUI();
+                userMenu.style.opacity = '';
+            }, 300);
+        };
+
+        // Update UI on page load
+        updateAuthUI();
+
+        // Add password strength indicator
+        const passwordInput = document.getElementById('signupPassword');
+        if (passwordInput) {
+            passwordInput.addEventListener('input', (e) => {
+                const password = e.target.value;
+                const strength = getPasswordStrength(password);
+                updatePasswordStrength(strength);
+            });
+        }
+
+        function getPasswordStrength(password) {
+            let strength = 0;
+            if (password.length >= 8) strength++;
+            if (/[A-Z]/.test(password)) strength++;
+            if (/[0-9]/.test(password)) strength++;
+            if (/[^A-Za-z0-9]/.test(password)) strength++;
+            return strength;
+        }
+
+        function updatePasswordStrength(strength) {
+            const indicator = document.querySelector('.password-strength');
+            indicator.className = 'password-strength';
+            if (strength === 1) indicator.classList.add('strength-weak');
+            else if (strength === 2) indicator.classList.add('strength-medium');
+            else if (strength >= 3) indicator.classList.add('strength-strong');
+        }
+    </script>
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = this.querySelector('div');
+            
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+                menuIcon.classList.add('group-focus:-rotate-[45deg]');
+                // Add smooth animation
+                mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+            } else {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('group-focus:-rotate-[45deg]');
+                // Reset height for animation
+                mobileMenu.style.maxHeight = '0';
+            }
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            
+            if (!mobileMenuButton.contains(event.target) && !mobileMenu.contains(event.target) && !mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+                const menuIcon = mobileMenuButton.querySelector('div');
+                menuIcon.classList.remove('group-focus:-rotate-[45deg]');
+                mobileMenu.style.maxHeight = '0';
+            }
+        });
+    </script>
+    <script src="script.js"></script>
+    <script src="cart.js"></script>
+</body>
+</html>

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DTB Technologies - Performance Test Dashboard</title>
+    <link rel="stylesheet" href="./dist/output.css">
+    <style>
+        .metric-card {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(51, 65, 85, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+        .metric-good { border-left: 4px solid #10b981; }
+        .metric-needs-improvement { border-left: 4px solid #f59e0b; }
+        .metric-poor { border-left: 4px solid #ef4444; }
+        .test-running { opacity: 0.6; }
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(51, 65, 85, 0.5);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-white min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold mb-4">DTB Technologies Performance Dashboard</h1>
+            <p class="text-gray-300">Real-time performance monitoring and optimization validation</p>
+        </div>
+
+        <!-- Performance Score -->
+        <div class="metric-card text-center">
+            <h2 class="text-2xl font-bold mb-4">Overall Performance Score</h2>
+            <div class="text-6xl font-bold mb-4" id="overall-score">--</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="score-progress" style="width: 0%"></div>
+            </div>
+        </div>
+
+        <!-- Core Web Vitals -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="metric-card" id="lcp-card">
+                <h3 class="text-xl font-semibold mb-2">Largest Contentful Paint (LCP)</h3>
+                <div class="text-3xl font-bold mb-2" id="lcp-value">--</div>
+                <div class="text-sm text-gray-400">Target: &lt; 2.5s</div>
+            </div>
+            
+            <div class="metric-card" id="fid-card">
+                <h3 class="text-xl font-semibold mb-2">First Input Delay (FID)</h3>
+                <div class="text-3xl font-bold mb-2" id="fid-value">--</div>
+                <div class="text-sm text-gray-400">Target: &lt; 100ms</div>
+            </div>
+            
+            <div class="metric-card" id="cls-card">
+                <h3 class="text-xl font-semibold mb-2">Cumulative Layout Shift (CLS)</h3>
+                <div class="text-3xl font-bold mb-2" id="cls-value">--</div>
+                <div class="text-sm text-gray-400">Target: &lt; 0.1</div>
+            </div>
+        </div>
+
+        <!-- Additional Metrics -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <div class="metric-card">
+                <h3 class="text-lg font-semibold mb-2">First Contentful Paint</h3>
+                <div class="text-2xl font-bold" id="fcp-value">--</div>
+            </div>
+            
+            <div class="metric-card">
+                <h3 class="text-lg font-semibold mb-2">Time to First Byte</h3>
+                <div class="text-2xl font-bold" id="ttfb-value">--</div>
+            </div>
+            
+            <div class="metric-card">
+                <h3 class="text-lg font-semibold mb-2">Time to Interactive</h3>
+                <div class="text-2xl font-bold" id="tti-value">--</div>
+            </div>
+            
+            <div class="metric-card">
+                <h3 class="text-lg font-semibold mb-2">Memory Usage</h3>
+                <div class="text-2xl font-bold" id="memory-value">--</div>
+            </div>
+        </div>
+
+        <!-- Optimization Status -->
+        <div class="metric-card">
+            <h2 class="text-2xl font-bold mb-4">Optimization Status</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">✅ Implemented Optimizations</h3>
+                    <ul class="space-y-1 text-sm text-green-400">
+                        <li id="vite-status">• Modern build system (Vite)</li>
+                        <li id="lazy-loading-status">• Lazy loading implementation</li>
+                        <li id="animation-optimizer-status">• Animation optimization</li>
+                        <li id="service-worker-status">• Service worker caching</li>
+                        <li id="image-optimization-status">• Image optimization (WebP/AVIF)</li>
+                        <li id="mobile-css-status">• Mobile-optimized CSS</li>
+                        <li id="web-vitals-status">• Performance monitoring</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">📊 Performance Features</h3>
+                    <ul class="space-y-1 text-sm text-blue-400">
+                        <li>• Hardware acceleration enabled</li>
+                        <li>• Reduced motion support</li>
+                        <li>• Battery-aware animations</li>
+                        <li>• Network-aware caching</li>
+                        <li>• Progressive image loading</li>
+                        <li>• Code splitting & tree shaking</li>
+                        <li>• Critical CSS inlining</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Test Controls -->
+        <div class="metric-card">
+            <h2 class="text-2xl font-bold mb-4">Performance Tests</h2>
+            <div class="flex flex-wrap gap-4">
+                <button onclick="runScrollTest()" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors">
+                    Test Scroll Performance
+                </button>
+                <button onclick="runAnimationTest()" class="bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded-lg transition-colors">
+                    Test Animation Performance
+                </button>
+                <button onclick="runImageLoadTest()" class="bg-green-600 hover:bg-green-700 px-4 py-2 rounded-lg transition-colors">
+                    Test Image Loading
+                </button>
+                <button onclick="runMemoryTest()" class="bg-orange-600 hover:bg-orange-700 px-4 py-2 rounded-lg transition-colors">
+                    Test Memory Usage
+                </button>
+                <button onclick="clearCache()" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg transition-colors">
+                    Clear Cache
+                </button>
+            </div>
+        </div>
+
+        <!-- Test Results -->
+        <div class="metric-card">
+            <h2 class="text-2xl font-bold mb-4">Test Results</h2>
+            <div id="test-results" class="space-y-2 text-sm font-mono bg-slate-800 p-4 rounded-lg max-h-64 overflow-y-auto">
+                <div class="text-gray-400">Ready to run performance tests...</div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import WebVitalsMonitor from './src/js/performance/web-vitals.js';
+        import AnimationOptimizer from './src/js/performance/animation-optimizer.js';
+        import LazyLoader from './src/js/performance/lazy-loading.js';
+
+        class PerformanceTestDashboard {
+            constructor() {
+                this.webVitals = new WebVitalsMonitor();
+                this.animationOptimizer = new AnimationOptimizer();
+                this.lazyLoader = new LazyLoader();
+                this.init();
+            }
+
+            init() {
+                this.updateMetrics();
+                this.checkOptimizationStatus();
+                
+                // Update metrics every 5 seconds
+                setInterval(() => this.updateMetrics(), 5000);
+            }
+
+            updateMetrics() {
+                const metrics = this.webVitals.getMetrics();
+                
+                // Update Core Web Vitals
+                this.updateMetric('lcp', metrics.LCP, 2500, 4000);
+                this.updateMetric('fid', metrics.FID, 100, 300);
+                this.updateMetric('cls', metrics.CLS, 0.1, 0.25);
+                this.updateMetric('fcp', metrics.FCP, 1800, 3000);
+                this.updateMetric('ttfb', metrics.TTFB, 800, 1800);
+                this.updateMetric('tti', metrics.TTI, 3800, 7300);
+
+                // Update memory usage
+                if ('memory' in performance) {
+                    const memory = performance.memory;
+                    const usedMB = Math.round(memory.usedJSHeapSize / 1048576);
+                    document.getElementById('memory-value').textContent = `${usedMB} MB`;
+                }
+
+                // Update overall score
+                const score = this.webVitals.getPerformanceScore();
+                document.getElementById('overall-score').textContent = score;
+                document.getElementById('score-progress').style.width = `${score}%`;
+                
+                const scoreElement = document.getElementById('overall-score').parentElement;
+                scoreElement.className = `metric-card text-center ${
+                    score >= 90 ? 'metric-good' : 
+                    score >= 50 ? 'metric-needs-improvement' : 'metric-poor'
+                }`;
+            }
+
+            updateMetric(name, value, goodThreshold, poorThreshold) {
+                const element = document.getElementById(`${name}-value`);
+                const card = document.getElementById(`${name}-card`);
+                
+                if (value !== undefined) {
+                    const displayValue = name === 'cls' ? value.toFixed(3) : `${Math.round(value)}ms`;
+                    element.textContent = displayValue;
+                    
+                    let status;
+                    if (value <= goodThreshold) {
+                        status = 'metric-good';
+                    } else if (value <= poorThreshold) {
+                        status = 'metric-needs-improvement';
+                    } else {
+                        status = 'metric-poor';
+                    }
+                    
+                    card.className = `metric-card ${status}`;
+                }
+            }
+
+            checkOptimizationStatus() {
+                // Check if optimizations are working
+                const checks = {
+                    'vite-status': () => document.querySelector('script[type="module"]') !== null,
+                    'lazy-loading-status': () => window.lazyLoader !== undefined,
+                    'animation-optimizer-status': () => window.animationOptimizer !== undefined,
+                    'service-worker-status': () => 'serviceWorker' in navigator,
+                    'web-vitals-status': () => window.webVitalsMonitor !== undefined
+                };
+
+                Object.entries(checks).forEach(([id, check]) => {
+                    const element = document.getElementById(id);
+                    if (check()) {
+                        element.style.color = '#10b981';
+                    } else {
+                        element.style.color = '#ef4444';
+                        element.textContent = element.textContent.replace('•', '❌');
+                    }
+                });
+            }
+
+            logResult(message) {
+                const results = document.getElementById('test-results');
+                const timestamp = new Date().toLocaleTimeString();
+                const div = document.createElement('div');
+                div.innerHTML = `<span class="text-gray-500">[${timestamp}]</span> ${message}`;
+                results.appendChild(div);
+                results.scrollTop = results.scrollHeight;
+            }
+        }
+
+        // Global test functions
+        window.runScrollTest = function() {
+            const dashboard = window.performanceDashboard;
+            dashboard.logResult('🔄 Running scroll performance test...');
+            
+            let frameCount = 0;
+            let startTime = performance.now();
+            
+            const testScroll = () => {
+                window.scrollBy(0, 10);
+                frameCount++;
+                
+                if (frameCount < 100) {
+                    requestAnimationFrame(testScroll);
+                } else {
+                    const endTime = performance.now();
+                    const fps = Math.round(1000 / ((endTime - startTime) / frameCount));
+                    dashboard.logResult(`✅ Scroll test complete: ${fps} FPS average`);
+                    window.scrollTo(0, 0);
+                }
+            };
+            
+            requestAnimationFrame(testScroll);
+        };
+
+        window.runAnimationTest = function() {
+            const dashboard = window.performanceDashboard;
+            dashboard.logResult('🎬 Testing animation performance...');
+            
+            const testElement = document.createElement('div');
+            testElement.style.cssText = `
+                position: fixed; top: 50%; left: 50%; width: 100px; height: 100px;
+                background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+                border-radius: 50%; transform: translate(-50%, -50%);
+                animation: spin 1s linear infinite;
+            `;
+            document.body.appendChild(testElement);
+            
+            let frameCount = 0;
+            const startTime = performance.now();
+            
+            const countFrames = () => {
+                frameCount++;
+                if (frameCount < 60) {
+                    requestAnimationFrame(countFrames);
+                } else {
+                    const endTime = performance.now();
+                    const fps = Math.round(1000 / ((endTime - startTime) / frameCount));
+                    dashboard.logResult(`✅ Animation test: ${fps} FPS during animation`);
+                    document.body.removeChild(testElement);
+                }
+            };
+            
+            requestAnimationFrame(countFrames);
+        };
+
+        window.runImageLoadTest = function() {
+            const dashboard = window.performanceDashboard;
+            dashboard.logResult('🖼️ Testing image loading performance...');
+            
+            const startTime = performance.now();
+            const testImage = new Image();
+            
+            testImage.onload = () => {
+                const loadTime = performance.now() - startTime;
+                dashboard.logResult(`✅ Image load test: ${Math.round(loadTime)}ms`);
+            };
+            
+            testImage.onerror = () => {
+                dashboard.logResult('❌ Image load test failed');
+            };
+            
+            testImage.src = './assets/dtb-logo.png?' + Date.now();
+        };
+
+        window.runMemoryTest = function() {
+            const dashboard = window.performanceDashboard;
+            dashboard.logResult('💾 Running memory usage test...');
+            
+            if ('memory' in performance) {
+                const before = performance.memory.usedJSHeapSize;
+                
+                // Create some temporary objects
+                const testData = [];
+                for (let i = 0; i < 10000; i++) {
+                    testData.push({ id: i, data: 'test'.repeat(100) });
+                }
+                
+                setTimeout(() => {
+                    const after = performance.memory.usedJSHeapSize;
+                    const increase = Math.round((after - before) / 1048576 * 100) / 100;
+                    dashboard.logResult(`✅ Memory test: +${increase}MB allocated`);
+                    
+                    // Cleanup
+                    testData.length = 0;
+                    if (window.gc) window.gc();
+                }, 100);
+            } else {
+                dashboard.logResult('❌ Memory API not available');
+            }
+        };
+
+        window.clearCache = async function() {
+            const dashboard = window.performanceDashboard;
+            dashboard.logResult('🗑️ Clearing caches...');
+            
+            try {
+                if ('caches' in window) {
+                    const cacheNames = await caches.keys();
+                    await Promise.all(cacheNames.map(name => caches.delete(name)));
+                    dashboard.logResult(`✅ Cleared ${cacheNames.length} caches`);
+                }
+                
+                if ('serviceWorker' in navigator) {
+                    const registrations = await navigator.serviceWorker.getRegistrations();
+                    await Promise.all(registrations.map(reg => reg.unregister()));
+                    dashboard.logResult(`✅ Unregistered ${registrations.length} service workers`);
+                }
+                
+                dashboard.logResult('🔄 Reload page to see fresh performance metrics');
+            } catch (error) {
+                dashboard.logResult(`❌ Cache clear failed: ${error.message}`);
+            }
+        };
+
+        // Initialize dashboard
+        window.performanceDashboard = new PerformanceTestDashboard();
+    </script>
+</body>
+</html>

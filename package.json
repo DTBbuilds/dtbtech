@@ -1,0 +1,57 @@
+{
+  "name": "dtb-technologies",
+  "version": "1.0.0",
+  "description": "DTB Technologies Website",
+  "main": "server.js",
+  "scripts": {
+    "dev": "concurrently \"node server.js\" \"vite\"",
+    "dev:vite": "vite",
+    "dev:server": "node server.js",
+    "build": "npm run optimize:images && vite build",
+    "preview": "vite preview",
+    "serve": "vite preview --port 3000",
+    "start": "node server.js",
+    "build:css": "tailwindcss -i ./src/input.css -o ./dist/output.css",
+    "watch:css": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
+    "optimize:images": "node build-scripts/optimize-images.js",
+    "analyze": "vite-bundle-analyzer dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://DTBbuilds@github.com/DTBbuilds/dtbtechnologies.git"
+  },
+  "keywords": [
+    "web",
+    "technology",
+    "services"
+  ],
+  "author": "DTB Technologies",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DTBbuilds/dtbtechnologies/issues"
+  },
+  "homepage": "https://github.com/DTBbuilds/dtbtechnologies#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongodb": "^6.15.0",
+    "mongoose": "^8.13.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/forms": "^0.5.3",
+    "@tailwindcss/typography": "^0.5.9",
+    "@vitejs/plugin-legacy": "^5.0.0",
+    "autoprefixer": "^10.4.14",
+    "concurrently": "^9.2.1",
+    "cssnano": "^6.0.1",
+    "nodemon": "^3.1.9",
+    "postcss": "^8.4.21",
+    "rollup-plugin-visualizer": "^5.9.2",
+    "sharp": "^0.32.6",
+    "tailwindcss": "^3.4.17",
+    "terser": "^5.19.2",
+    "vite": "^5.0.0",
+    "vite-bundle-analyzer": "^0.7.0",
+    "workbox-build": "^7.0.0"
+  }
+}

@@ -1,0 +1,409 @@
+/**
+ * Mobile-Optimized CSS for DTB Technologies
+ * Reduces animation complexity and improves scrolling performance on mobile devices
+ */
+
+/* Base mobile optimizations */
+@media (max-width: 768px) {
+  /* Reduce backdrop blur effects on mobile for better performance */
+  .backdrop-blur-xl {
+    backdrop-filter: blur(4px) !important;
+    -webkit-backdrop-filter: blur(4px) !important;
+  }
+  
+  .backdrop-blur-3xl {
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+  }
+  
+  .backdrop-blur-md {
+    backdrop-filter: blur(2px) !important;
+    -webkit-backdrop-filter: blur(2px) !important;
+  }
+  
+  /* Disable heavy blur effects on low-end devices */
+  @media (max-width: 480px) {
+    .backdrop-blur-xl,
+    .backdrop-blur-3xl,
+    .backdrop-blur-md {
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      background-color: rgba(15, 23, 42, 0.8) !important;
+    }
+  }
+
+  /* Optimize transform animations */
+  .animate-float-slow {
+    animation: mobile-float 12s ease-in-out infinite !important;
+    will-change: transform;
+    transform: translateZ(0); /* Force hardware acceleration */
+  }
+
+  .animate-spin-very-slow {
+    animation: mobile-spin 20s linear infinite !important;
+    will-change: transform;
+    transform: translateZ(0);
+  }
+
+  .animate-spin-extremely-slow {
+    animation: mobile-spin 30s linear infinite !important;
+    will-change: transform;
+    transform: translateZ(0);
+  }
+
+  /* Simplify blob animations */
+  .animate-blob {
+    animation: mobile-blob 10s ease-in-out infinite !important;
+    will-change: transform;
+    transform: translateZ(0);
+  }
+
+  /* Reduce gradient complexity */
+  .bg-gradient-to-br,
+  .bg-gradient-to-r {
+    background-size: 200% 200% !important;
+  }
+
+  /* Optimize hover effects for touch */
+  .hover\:scale-105:hover {
+    transform: scale(1.02) !important;
+  }
+
+  .hover\:translate-y-1:hover {
+    transform: translateY(2px) !important;
+  }
+
+  /* Reduce shadow complexity */
+  .shadow-lg {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  .shadow-xl {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  /* Optimize text rendering */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeSpeed;
+  }
+
+  /* Reduce animation delays */
+  .animation-delay-1000 {
+    animation-delay: 0.5s !important;
+  }
+
+  .animation-delay-1500 {
+    animation-delay: 0.75s !important;
+  }
+
+  .animation-delay-2000 {
+    animation-delay: 1s !important;
+  }
+}
+
+/* Simplified mobile animations */
+@keyframes mobile-float {
+  0%, 100% {
+    transform: translateY(0px) translateZ(0);
+  }
+  50% {
+    transform: translateY(-10px) translateZ(0);
+  }
+}
+
+@keyframes mobile-spin {
+  from {
+    transform: rotate(0deg) translateZ(0);
+  }
+  to {
+    transform: rotate(360deg) translateZ(0);
+  }
+}
+
+@keyframes mobile-blob {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1) translateZ(0);
+  }
+  33% {
+    transform: translate(15px, -25px) scale(1.05) translateZ(0);
+  }
+  66% {
+    transform: translate(-10px, 10px) scale(0.95) translateZ(0);
+  }
+}
+
+/* High-performance scroll optimizations */
+.scroll-smooth {
+  scroll-behavior: smooth;
+}
+
+@media (max-width: 768px) {
+  .scroll-smooth {
+    scroll-behavior: auto; /* Disable smooth scroll on mobile for better performance */
+  }
+}
+
+/* Touch-optimized interactive elements */
+@media (max-width: 768px) {
+  button, .btn-primary, .btn-secondary, a[role="button"] {
+    min-height: 44px; /* iOS recommended touch target size */
+    min-width: 44px;
+    touch-action: manipulation; /* Disable double-tap zoom */
+  }
+
+  /* Optimize form inputs */
+  input, textarea, select {
+    font-size: 16px; /* Prevent zoom on iOS */
+    touch-action: manipulation;
+  }
+}
+
+/* Battery-conscious animations */
+@media (max-width: 768px) and (prefers-reduced-motion: no-preference) {
+  /* Only run essential animations on mobile */
+  .animate-pulse {
+    animation: mobile-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-fade-in {
+    animation: mobile-fade-in 0.3s ease-out forwards;
+  }
+}
+
+@keyframes mobile-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes mobile-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) translateZ(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) translateZ(0);
+  }
+}
+
+/* Navigation z-index and positioning fixes */
+nav {
+  z-index: 9999 !important;
+}
+
+/* Ensure navigation doesn't interfere with hero content */
+.fixed.top-0 {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 50 !important;
+}
+
+/* Hero section spacing adjustments */
+.relative.min-h-\[100vh\] {
+  padding-top: 4rem;
+}
+
+@media (max-width: 768px) {
+  .relative.min-h-\[100vh\] {
+    padding-top: 5rem;
+  }
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Low-end device optimizations */
+@media (max-width: 768px) and (max-resolution: 1.5dppx) {
+  /* Further reduce effects on low-resolution displays */
+  .backdrop-blur-xl,
+  .backdrop-blur-3xl,
+  .backdrop-blur-md {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background-color: rgba(30, 41, 59, 0.8) !important;
+  }
+
+  /* Disable complex gradients */
+  .bg-gradient-to-br,
+  .bg-gradient-to-r {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%) !important;
+  }
+}
+
+/* Critical rendering path optimizations */
+.above-fold {
+  contain: layout style paint;
+}
+
+.below-fold {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 500px;
+}
+
+/* Optimize images for mobile */
+@media (max-width: 768px) {
+  img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+
+  /* Lazy loading placeholder */
+  img[data-src] {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading-shimmer 1.5s infinite;
+  }
+
+  img[data-src].loaded {
+    animation: none;
+    background: none;
+  }
+}
+
+@keyframes loading-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Performance-focused utility classes */
+.gpu-accelerated {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.contain-paint {
+  contain: paint;
+}
+
+.contain-layout {
+  contain: layout;
+}
+
+.contain-strict {
+  contain: strict;
+}
+
+/* Mobile-first responsive typography */
+@media (max-width: 768px) {
+  .text-7xl {
+    font-size: 3rem !important;
+    line-height: 1.1 !important;
+  }
+
+  .text-6xl {
+    font-size: 2.5rem !important;
+    line-height: 1.1 !important;
+  }
+
+  .text-5xl {
+    font-size: 2rem !important;
+    line-height: 1.2 !important;
+  }
+}
+
+/* Updated hero section mobile optimizations */
+@media (max-width: 768px) {
+  /* Hero section spacing and layout */
+  .hero-section {
+    min-height: 100vh;
+    padding: 5rem 1rem 3rem;
+  }
+  
+  /* Optimize hero container height */
+  .min-h-\[calc\(100vh-6rem\)\] {
+    min-height: calc(100vh - 8rem) !important;
+  }
+  
+  /* Animation optimizations */
+  .animate-float-slow {
+    animation-duration: 8s;
+  }
+  
+  /* Reduce visual complexity on small screens */
+  .absolute.inset-0.opacity-10 {
+    opacity: 0.05 !important;
+  }
+  
+  .absolute.inset-0.opacity-5 {
+    opacity: 0.02 !important;
+  }
+  
+  /* Simplify blur effects on mobile */
+  .blur-3xl {
+    filter: blur(16px) !important;
+  }
+  
+  .blur-xl {
+    filter: blur(8px) !important;
+  }
+  
+  /* Tech icon optimizations - Match original positioning */
+  .hero-visual .absolute.top-4,
+  .hero-visual .absolute.bottom-4 {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+  
+  .hero-visual .absolute.left-4 {
+    left: 1rem !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+  }
+  
+  .hero-visual .absolute.right-4 {
+    right: 1rem !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+  }
+  
+  /* Icon sizing - Match original w-14 h-14 */
+  .hero-visual .w-14.h-14 {
+    width: 3rem !important;
+    height: 3rem !important;
+  }
+  
+  /* Button optimizations */
+  .hero-section .group {
+    min-height: 3rem !important;
+    padding: 0.875rem 1.5rem !important;
+  }
+}
+
+/* Optimize fixed elements */
+.fixed {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Mobile navigation optimizations */
+@media (max-width: 768px) {
+  nav {
+    contain: layout style;
+  }
+
+  .mobile-menu {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+}
