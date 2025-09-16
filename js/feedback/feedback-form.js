@@ -3,8 +3,12 @@
  * Creates and manages the feedback collection UI
  */
 
-import { feedbackService, FeedbackTypes, FeedbackEmotions } from './feedback-service.js';
-import authService from '../auth/auth-service.js';
+import {
+  feedbackService,
+  FeedbackTypes,
+  // FeedbackEmotions,
+} from './feedback-service.js';
+// import authService from '../auth/auth-service.js';
 
 /**
  * FeedbackForm class
@@ -20,7 +24,7 @@ class FeedbackForm {
     this.onSubmitCallback = null;
     this.isSubmitting = false;
   }
-  
+
   /**
    * Show the feedback form modal
    * @param {string} type - Type of feedback (project, exhibit, experience, etc)
@@ -28,54 +32,64 @@ class FeedbackForm {
    * @param {string} itemName - Name of the item being rated (optional)
    * @param {Function} onSubmit - Callback function called after successful submission
    */
-  show(type = FeedbackTypes.EXPERIENCE, itemId = null, itemName = null, onSubmit = null) {
+  show(
+    type = FeedbackTypes.EXPERIENCE,
+    itemId = null,
+    itemName = null,
+    onSubmit = null
+  ) {
     this.currentType = type;
     this.currentItemId = itemId;
     this.currentItemName = itemName;
     this.onSubmitCallback = onSubmit;
-    
+
     // Create the form if it doesn't exist
     if (!this.formElement) {
       this.createForm();
     }
-    
+
     // Update the form title and fields based on feedback type
     this.updateFormForType();
-    
+
     // Show the form
     this.formElement.classList.remove('hidden');
     setTimeout(() => {
       this.formElement.classList.add('opacity-100');
-      this.formElement.querySelector('.modal-container').classList.add('translate-y-0');
+      this.formElement
+        .querySelector('.modal-container')
+        .classList.add('translate-y-0');
     }, 10);
   }
-  
+
   /**
    * Hide the feedback form modal
    */
   hide() {
     if (!this.formElement) return;
-    
+
     this.formElement.classList.remove('opacity-100');
-    this.formElement.querySelector('.modal-container').classList.remove('translate-y-0');
-    
+    this.formElement
+      .querySelector('.modal-container')
+      .classList.remove('translate-y-0');
+
     setTimeout(() => {
       this.formElement.classList.add('hidden');
-      
+
       // Reset form when hidden
       this.resetForm();
     }, 300);
   }
-  
+
   /**
    * Create the feedback form element
    */
   createForm() {
     // Create form container
     this.formElement = document.createElement('div');
-    this.formElement.className = 'fixed inset-0 z-50 flex items-center justify-center bg-slate-900/90 backdrop-blur-sm opacity-0 transition-opacity duration-300 hidden';
+    this.formElement.className =
+      'fixed inset-0 z-50 flex items-center justify-center bg-slate-900/90 backdrop-blur-sm opacity-0 transition-opacity duration-300 hidden';
     this.formElement.id = 'feedback-form-modal';
-    
+
     // Create form structure
     this.formElement.innerHTML = `
       <div class="modal-container bg-slate-800 rounded-2xl w-full max-w-lg mx-4 overflow-hidden shadow-2xl transform -translate-y-8 transition-transform duration-300">
@@ -178,13 +192,13 @@ class FeedbackForm {
         </div>
       </div>
     `;
-    
+
     // Add event listeners
     this.setupEventListeners();
-    
+
     // Add to document
     document.body.appendChild(this.formElement);
-    
+
     // Add CSS for selected rating
     const style = document.createElement('style');
     style.textContent = `
@@ -206,7 +220,7 @@ class FeedbackForm {
     `;
     document.head.appendChild(style);
   }
-  
+
   /**
    * Set up event listeners for the form
    */
@@ -216,23 +230,23 @@ class FeedbackForm {
     if (closeBtn) {
       closeBtn.addEventListener('click', () => this.hide());
     }
-    
+
     // Cancel button
     const cancelBtn = this.formElement.querySelector('#cancel-feedback-btn');
     if (cancelBtn) {
       cancelBtn.addEventListener('click', () => this.hide());
     }
-    
+
     // Rating options
     const ratingOptions = this.formElement.querySelectorAll('.reaction-option');
     ratingOptions.forEach(option => {
       option.addEventListener('click', () => {
         // Remove selected class from all options
         ratingOptions.forEach(opt => opt.classList.remove('selected'));
-        
+
         // Add selected class to clicked option
         option.classList.add('selected');
-        
+
         // Update hidden rating input
         const ratingInput = this.formElement.querySelector('#feedback-rating');
         if (ratingInput) {
@@ -240,44 +254,54 @@ class FeedbackForm {
         }
       });
     });
-    
+
     // Capture screenshot button
-    const captureScreenshotBtn = this.formElement.querySelector('#capture-screenshot-btn');
+    const captureScreenshotBtn = this.formElement.querySelector(
+      '#capture-screenshot-btn'
+    );
     if (captureScreenshotBtn) {
-      captureScreenshotBtn.addEventListener('click', () => this.captureScreenshot());
+      captureScreenshotBtn.addEventListener('click', () =>
+        this.captureScreenshot()
+      );
     }
-    
+
     // Remove screenshot button
-    const removeScreenshotBtn = this.formElement.querySelector('#remove-screenshot-btn');
+    const removeScreenshotBtn = this.formElement.querySelector(
+      '#remove-screenshot-btn'
+    );
     if (removeScreenshotBtn) {
-      removeScreenshotBtn.addEventListener('click', () => this.removeScreenshot());
+      removeScreenshotBtn.addEventListener('click', () =>
+        this.removeScreenshot()
+      );
     }
-    
+
     // Form submission
     const form = this.formElement.querySelector('#feedback-form');
     if (form) {
-      form.addEventListener('submit', (e) => {
+      form.addEventListener('submit', e => {
         e.preventDefault();
         this.submitFeedback();
       });
     }
-    
+
     // Close when clicking outside
-    this.formElement.addEventListener('click', (e) => {
+    this.formElement.addEventListener('click', e => {
       if (e.target === this.formElement) {
         this.hide();
       }
     });
   }
-  
+
   /**
    * Update the form fields based on feedback type
    */
   updateFormForType() {
     const contextElement = this.formElement.querySelector('#feedback-context');
-    const categoryContainer = this.formElement.querySelector('#feedback-category-container');
+    const categoryContainer = this.formElement.querySelector(
+      '#feedback-category-container'
+    );
     const title = this.formElement.querySelector('.modal-title');
-    
+
     // Update title based on feedback type
     switch (this.currentType) {
       case FeedbackTypes.PROJECT:
@@ -298,7 +322,7 @@ class FeedbackForm {
       default:
         title.textContent = 'Share Your Feedback';
     }
-    
+
     // Show context information if we have an item name
     if (contextElement) {
       if (this.currentItemName) {
@@ -308,17 +332,20 @@ class FeedbackForm {
         contextElement.classList.add('hidden');
       }
     }
-    
+
     // Show category field for certain feedback types
     if (categoryContainer) {
-      if (this.currentType === FeedbackTypes.SUGGESTION || this.currentType === FeedbackTypes.BUG) {
+      if (
+        this.currentType === FeedbackTypes.SUGGESTION ||
+        this.currentType === FeedbackTypes.BUG
+      ) {
         categoryContainer.classList.remove('hidden');
       } else {
         categoryContainer.classList.add('hidden');
       }
     }
   }
-  
+
   /**
    * Reset the form to default state
    */
@@ -326,34 +353,34 @@ class FeedbackForm {
     // Reset rating
     const ratingOptions = this.formElement.querySelectorAll('.reaction-option');
     ratingOptions.forEach(opt => opt.classList.remove('selected'));
-    
+
     const ratingInput = this.formElement.querySelector('#feedback-rating');
     if (ratingInput) ratingInput.value = '';
-    
+
     // Reset comment
     const commentInput = this.formElement.querySelector('#feedback-comment');
     if (commentInput) commentInput.value = '';
-    
+
     // Reset category
     const categoryInput = this.formElement.querySelector('#feedback-category');
     if (categoryInput) categoryInput.value = '';
-    
+
     // Reset screenshot
     this.removeScreenshot();
-    
+
     // Hide error and success messages
     const errorElement = this.formElement.querySelector('#feedback-error');
     if (errorElement) errorElement.classList.add('hidden');
-    
+
     const successElement = this.formElement.querySelector('#feedback-success');
     if (successElement) successElement.classList.add('hidden');
-    
+
     // Reset submit button
     const submitButton = this.formElement.querySelector('#submit-feedback-btn');
     const spinner = this.formElement.querySelector('#feedback-spinner');
     if (submitButton) submitButton.disabled = false;
     if (spinner) spinner.classList.add('hidden');
-    
+
     // Reset state variables
     this.currentType = FeedbackTypes.EXPERIENCE;
     this.currentItemId = null;
@@ -362,7 +389,7 @@ class FeedbackForm {
     this.onSubmitCallback = null;
     this.isSubmitting = false;
   }
-  
+
   /**
    * Capture a screenshot of the current page
    */
@@ -370,58 +397,68 @@ class FeedbackForm {
     try {
       // In a real implementation, you would use html2canvas or similar library
       // For this demo, we'll simulate a screenshot with a placeholder
-      this.screenshot = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFeAJegQVHdwAAAABJRU5ErkJggg==';
-      
+      this.screenshot =
+        'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFeAJegQVHdwAAAABJRU5ErkJggg==';
+
       // Show screenshot preview
-      const previewElement = this.formElement.querySelector('#screenshot-preview');
+      const previewElement = this.formElement.querySelector(
+        '#screenshot-preview'
+      );
       if (previewElement) {
         previewElement.classList.remove('hidden');
       }
-      
+
       // Hide capture button
-      const captureBtn = this.formElement.querySelector('#capture-screenshot-btn');
+      const captureBtn = this.formElement.querySelector(
+        '#capture-screenshot-btn'
+      );
       if (captureBtn) {
         captureBtn.classList.add('hidden');
       }
-      
+
       console.log('Screenshot captured');
     } catch (error) {
       console.error('Error capturing screenshot:', error);
-      
+
       // Show error
       const errorElement = this.formElement.querySelector('#feedback-error');
       if (errorElement) {
-        errorElement.textContent = 'Failed to capture screenshot. Please try again.';
+        errorElement.textContent =
+          'Failed to capture screenshot. Please try again.';
         errorElement.classList.remove('hidden');
       }
     }
   }
-  
+
   /**
    * Remove the captured screenshot
    */
   removeScreenshot() {
     this.screenshot = null;
-    
+
     // Hide screenshot preview
-    const previewElement = this.formElement.querySelector('#screenshot-preview');
+    const previewElement = this.formElement.querySelector(
+      '#screenshot-preview'
+    );
     if (previewElement) {
       previewElement.classList.add('hidden');
     }
-    
+
     // Show capture button
-    const captureBtn = this.formElement.querySelector('#capture-screenshot-btn');
+    const captureBtn = this.formElement.querySelector(
+      '#capture-screenshot-btn'
+    );
     if (captureBtn) {
       captureBtn.classList.remove('hidden');
     }
   }
-  
+
   /**
    * Submit the feedback
    */
   async submitFeedback() {
     if (this.isSubmitting) return;
-    
+
     // Get form values
     const ratingInput = this.formElement.querySelector('#feedback-rating');
     const commentInput = this.formElement.querySelector('#feedback-comment');
@@ -430,32 +467,39 @@ class FeedbackForm {
     const successElement = this.formElement.querySelector('#feedback-success');
     const submitButton = this.formElement.querySelector('#submit-feedback-btn');
     const spinner = this.formElement.querySelector('#feedback-spinner');
-    
-    if (!ratingInput || !commentInput || !errorElement || !successElement || !submitButton || !spinner) {
+
+    if (
+      !ratingInput ||
+      !commentInput ||
+      !errorElement ||
+      !successElement ||
+      !submitButton ||
+      !spinner
+    ) {
       console.error('Missing form elements');
       return;
     }
-    
+
     const rating = ratingInput.value;
     const comment = commentInput.value.trim();
     const category = categoryInput?.value || null;
-    
+
     // Validate input
     if (!rating) {
       errorElement.textContent = 'Please select a rating';
       errorElement.classList.remove('hidden');
       return;
     }
-    
+
     // Hide error and success messages
     errorElement.classList.add('hidden');
     successElement.classList.add('hidden');
-    
+
     // Show loading state
     this.isSubmitting = true;
     submitButton.disabled = true;
     spinner.classList.remove('hidden');
-    
+
     try {
       // Prepare feedback data
       const feedbackData = {
@@ -466,40 +510,40 @@ class FeedbackForm {
         comment,
         category,
         screenshot: this.screenshot,
-        tags: []
+        tags: [],
       };
-      
+
       // Add tags based on feedback type and category
       if (this.currentType) {
         feedbackData.tags.push(this.currentType);
       }
-      
+
       if (category) {
         feedbackData.tags.push(category);
       }
-      
+
       // Analyze sentiment if there's a comment
       if (comment) {
         const sentimentResult = feedbackService.analyzeSentiment(comment);
         feedbackData.tags.push(`sentiment:${sentimentResult.sentiment}`);
-        
+
         // Add sentiment tags with higher confidence
         if (sentimentResult.confidence > 0.5) {
           feedbackData.tags.push(sentimentResult.sentiment);
         }
       }
-      
+
       // Submit feedback
       const result = await feedbackService.submitFeedback(feedbackData);
-      
+
       // Success
       successElement.textContent = 'Thank you for your feedback!';
       successElement.classList.remove('hidden');
-      
+
       // Hide form after a delay
       setTimeout(() => {
         this.hide();
-        
+
         // Call success callback if provided
         if (typeof this.onSubmitCallback === 'function') {
           this.onSubmitCallback(result);
@@ -507,9 +551,10 @@ class FeedbackForm {
       }, 2000);
     } catch (error) {
       // Show error
-      errorElement.textContent = error.message || 'Failed to submit feedback. Please try again.';
+      errorElement.textContent =
+        error.message || 'Failed to submit feedback. Please try again.';
       errorElement.classList.remove('hidden');
-      
+
       console.error('Feedback submission error:', error);
     } finally {
       // Reset loading state

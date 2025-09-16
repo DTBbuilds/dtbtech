@@ -11,7 +11,7 @@ class WebVitalsMonitor {
       FID: { good: 100, poor: 300 },
       CLS: { good: 0.1, poor: 0.25 },
       FCP: { good: 1800, poor: 3000 },
-      TTFB: { good: 800, poor: 1800 }
+      TTFB: { good: 800, poor: 1800 },
     };
     this.init();
   }
@@ -25,26 +25,26 @@ class WebVitalsMonitor {
   measureCoreWebVitals() {
     // Largest Contentful Paint (LCP)
     this.measureLCP();
-    
+
     // First Input Delay (FID)
     this.measureFID();
-    
+
     // Cumulative Layout Shift (CLS)
     this.measureCLS();
-    
+
     // First Contentful Paint (FCP)
     this.measureFCP();
-    
+
     // Time to First Byte (TTFB)
     this.measureTTFB();
   }
 
   measureLCP() {
     if ('PerformanceObserver' in window) {
-      const observer = new PerformanceObserver((list) => {
+      const observer = new PerformanceObserver(list => {
         const entries = list.getEntries();
         const lastEntry = entries[entries.length - 1];
-        
+
         this.metrics.LCP = Math.round(lastEntry.startTime);
         this.reportMetric('LCP', this.metrics.LCP);
       });
@@ -59,10 +59,12 @@ class WebVitalsMonitor {
 
   measureFID() {
     if ('PerformanceObserver' in window) {
-      const observer = new PerformanceObserver((list) => {
+      const observer = new PerformanceObserver(list => {
         const entries = list.getEntries();
         entries.forEach(entry => {
-          this.metrics.FID = Math.round(entry.processingStart - entry.startTime);
+          this.metrics.FID = Math.round(
+            entry.processingStart - entry.startTime
+          );
           this.reportMetric('FID', this.metrics.FID);
         });
       });
@@ -80,17 +82,19 @@ class WebVitalsMonitor {
       let clsValue = 0;
       let clsEntries = [];
 
-      const observer = new PerformanceObserver((list) => {
+      const observer = new PerformanceObserver(list => {
         const entries = list.getEntries();
-        
+
         entries.forEach(entry => {
           if (!entry.hadRecentInput) {
             const firstSessionEntry = clsEntries[0];
             const lastSessionEntry = clsEntries[clsEntries.length - 1];
 
-            if (!firstSessionEntry || 
-                entry.startTime - lastSessionEntry.startTime < 1000 ||
-                entry.startTime - firstSessionEntry.startTime < 5000) {
+            if (
+              !firstSessionEntry ||
+              entry.startTime - lastSessionEntry.startTime < 1000 ||
+              entry.startTime - firstSessionEntry.startTime < 5000
+            ) {
               clsEntries.push(entry);
               clsValue += entry.value;
             } else {
@@ -119,7 +123,7 @@ class WebVitalsMonitor {
 
   measureFCP() {
     if ('PerformanceObserver' in window) {
-      const observer = new PerformanceObserver((list) => {
+      const observer = new PerformanceObserver(list => {
         const entries = list.getEntries();
         entries.forEach(entry => {
           if (entry.name === 'first-contentful-paint') {
@@ -140,7 +144,9 @@ class WebVitalsMonitor {
   measureTTFB() {
     const navigationEntry = performance.getEntriesByType('navigation')[0];
     if (navigationEntry) {
-      this.metrics.TTFB = Math.round(navigationEntry.responseStart - navigationEntry.requestStart);
+      this.metrics.TTFB = Math.round(
+        navigationEntry.responseStart - navigationEntry.requestStart
+      );
       this.reportMetric('TTFB', this.metrics.TTFB);
     }
   }
@@ -148,10 +154,10 @@ class WebVitalsMonitor {
   measureCustomMetrics() {
     // Time to Interactive (TTI) approximation
     this.measureTTI();
-    
+
     // Resource loading performance
     this.measureResourcePerformance();
-    
+
     // JavaScript execution time
     this.measureJSExecutionTime();
   }
@@ -170,17 +176,21 @@ class WebVitalsMonitor {
   measureResourcePerformance() {
     window.addEventListener('load', () => {
       const resources = performance.getEntriesByType('resource');
-      
+
       const cssResources = resources.filter(r => r.name.includes('.css'));
       const jsResources = resources.filter(r => r.name.includes('.js'));
-      const imageResources = resources.filter(r => 
-        r.name.includes('.jpg') || r.name.includes('.png') || 
-        r.name.includes('.webp') || r.name.includes('.svg')
+      const imageResources = resources.filter(
+        r =>
+          r.name.includes('.jpg') ||
+          r.name.includes('.png') ||
+          r.name.includes('.webp') ||
+          r.name.includes('.svg')
       );
 
       this.metrics.cssLoadTime = this.calculateAverageLoadTime(cssResources);
       this.metrics.jsLoadTime = this.calculateAverageLoadTime(jsResources);
-      this.metrics.imageLoadTime = this.calculateAverageLoadTime(imageResources);
+      this.metrics.imageLoadTime =
+        this.calculateAverageLoadTime(imageResources);
 
       this.reportMetric('CSS Load Time', this.metrics.cssLoadTime);
       this.reportMetric('JS Load Time', this.metrics.jsLoadTime);
@@ -190,20 +200,21 @@ class WebVitalsMonitor {
 
   calculateAverageLoadTime(resources) {
     if (resources.length === 0) return 0;
-    
+
     const totalTime = resources.reduce((sum, resource) => {
       return sum + (resource.responseEnd - resource.startTime);
     }, 0);
-    
+
     return Math.round(totalTime / resources.length);
   }
 
   measureJSExecutionTime() {
     if ('PerformanceObserver' in window) {
-      const observer = new PerformanceObserver((list) => {
+      const observer = new PerformanceObserver(list => {
         const entries = list.getEntries();
         entries.forEach(entry => {
-          if (entry.duration > 50) { // Log long tasks (>50ms)
+          if (entry.duration > 50) {
+            // Log long tasks (>50ms)
             console.warn(`Long task detected: ${entry.duration}ms`);
             this.reportLongTask(entry);
           }
@@ -229,11 +240,12 @@ class WebVitalsMonitor {
         this.metrics.memoryUsage = {
           used: Math.round(memory.usedJSHeapSize / 1048576), // MB
           total: Math.round(memory.totalJSHeapSize / 1048576), // MB
-          limit: Math.round(memory.jsHeapSizeLimit / 1048576) // MB
+          limit: Math.round(memory.jsHeapSizeLimit / 1048576), // MB
         };
-        
+
         // Warn if memory usage is high
-        const usagePercent = (memory.usedJSHeapSize / memory.jsHeapSizeLimit) * 100;
+        const usagePercent =
+          (memory.usedJSHeapSize / memory.jsHeapSizeLimit) * 100;
         if (usagePercent > 80) {
           console.warn(`High memory usage: ${usagePercent.toFixed(1)}%`);
         }
@@ -244,7 +256,7 @@ class WebVitalsMonitor {
   reportMetric(name, value) {
     const threshold = this.thresholds[name];
     let status = 'unknown';
-    
+
     if (threshold) {
       if (value <= threshold.good) {
         status = 'good';
@@ -257,7 +269,7 @@ class WebVitalsMonitor {
 
     // Send to analytics (replace with your analytics service)
     this.sendToAnalytics(name, value, status);
-    
+
     // Log to console in development
     if (process.env.NODE_ENV === 'development') {
       console.log(`${name}: ${value}ms (${status})`);
@@ -271,11 +283,11 @@ class WebVitalsMonitor {
 
   sendToAnalytics(metric, value, status) {
     // Example implementation - replace with your analytics service
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'web_vitals', {
+    if (typeof window !== 'undefined' && typeof window.gtag !== 'undefined') {
+      window.gtag('event', 'web_vitals', {
         metric_name: metric,
         metric_value: value,
-        metric_status: status
+        metric_status: status,
       });
     }
 
@@ -286,15 +298,15 @@ class WebVitalsMonitor {
       status,
       timestamp: Date.now(),
       url: window.location.href,
-      userAgent: navigator.userAgent
+      userAgent: navigator.userAgent,
     };
 
     // Try sendBeacon first (for page unload scenarios)
     if (navigator.sendBeacon) {
       const blob = new Blob([JSON.stringify(data)], {
-        type: 'application/json'
+        type: 'application/json',
       });
-      
+
       const success = navigator.sendBeacon('/api/analytics/web-vitals', blob);
       if (success) return;
     }
@@ -306,7 +318,7 @@ class WebVitalsMonitor {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(data),
-      keepalive: true
+      keepalive: true,
     }).catch(error => {
       // Silently handle analytics failures in production
       if (process.env.NODE_ENV === 'development') {
@@ -323,12 +335,12 @@ class WebVitalsMonitor {
   // Public method to get performance score
   getPerformanceScore() {
     const scores = [];
-    
+
     Object.keys(this.thresholds).forEach(metric => {
       if (this.metrics[metric] !== undefined) {
         const value = this.metrics[metric];
         const threshold = this.thresholds[metric];
-        
+
         let score;
         if (value <= threshold.good) {
           score = 100;
@@ -337,24 +349,26 @@ class WebVitalsMonitor {
         } else {
           score = 0;
         }
-        
+
         scores.push(score);
       }
     });
 
-    return scores.length > 0 ? Math.round(scores.reduce((a, b) => a + b) / scores.length) : 0;
+    return scores.length > 0
+      ? Math.round(scores.reduce((a, b) => a + b) / scores.length)
+      : 0;
   }
 
   // Public method to display performance summary
   displayPerformanceSummary() {
     const score = this.getPerformanceScore();
     const metrics = this.getMetrics();
-    
+
     console.group('🚀 Performance Summary');
     console.log(`Overall Score: ${score}/100`);
     console.log('Core Web Vitals:', metrics);
     console.groupEnd();
-    
+
     return { score, metrics };
   }
 }

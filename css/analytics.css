@@ -5,20 +5,32 @@
 
 /* Chart bar animation */
 @keyframes grow-up {
-  from { height: 0; }
-  to { height: var(--target-height); }
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--target-height);
+  }
 }
 
 /* Value counter animation */
 @keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 /* Stat card hover effects */
 .stat-card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .stat-card:hover {
@@ -28,7 +40,8 @@
 
 /* Chart overlay gradient */
 .chart-gradient-overlay {
-  background: linear-gradient(to bottom,
+  background: linear-gradient(
+    to bottom,
     rgba(30, 41, 59, 0.8) 0%,
     rgba(30, 41, 59, 0) 40%,
     rgba(30, 41, 59, 0) 60%,
@@ -59,8 +72,12 @@
 
 /* Slow spin animation for 3D elements */
 @keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .animate-spin-slow {
@@ -82,7 +99,9 @@
 
 /* Timeframe button transitions */
 .timeframe-btn {
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 /* Tooltip styles */

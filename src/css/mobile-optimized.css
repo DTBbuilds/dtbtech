@@ -10,17 +10,17 @@
     backdrop-filter: blur(4px) !important;
     -webkit-backdrop-filter: blur(4px) !important;
   }
-  
+
   .backdrop-blur-3xl {
     backdrop-filter: blur(8px) !important;
     -webkit-backdrop-filter: blur(8px) !important;
   }
-  
+
   .backdrop-blur-md {
     backdrop-filter: blur(2px) !important;
     -webkit-backdrop-filter: blur(2px) !important;
   }
-  
+
   /* Disable heavy blur effects on low-end devices */
   @media (max-width: 480px) {
     .backdrop-blur-xl,
@@ -105,7 +105,8 @@
 
 /* Simplified mobile animations */
 @keyframes mobile-float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0px) translateZ(0);
   }
   50% {
@@ -123,7 +124,8 @@
 }
 
 @keyframes mobile-blob {
-  0%, 100% {
+  0%,
+  100% {
     transform: translate(0px, 0px) scale(1) translateZ(0);
   }
   33% {
@@ -147,14 +149,19 @@
 
 /* Touch-optimized interactive elements */
 @media (max-width: 768px) {
-  button, .btn-primary, .btn-secondary, a[role="button"] {
+  button,
+  .btn-primary,
+  .btn-secondary,
+  a[role='button'] {
     min-height: 44px; /* iOS recommended touch target size */
     min-width: 44px;
     touch-action: manipulation; /* Disable double-tap zoom */
   }
 
   /* Optimize form inputs */
-  input, textarea, select {
+  input,
+  textarea,
+  select {
     font-size: 16px; /* Prevent zoom on iOS */
     touch-action: manipulation;
   }
@@ -173,7 +180,8 @@
 }
 
 @keyframes mobile-pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
   50% {
@@ -329,60 +337,60 @@ nav {
     min-height: 100vh;
     padding: 5rem 1rem 3rem;
   }
-  
+
   /* Optimize hero container height */
   .min-h-\[calc\(100vh-6rem\)\] {
     min-height: calc(100vh - 8rem) !important;
   }
-  
+
   /* Animation optimizations */
   .animate-float-slow {
     animation-duration: 8s;
   }
-  
+
   /* Reduce visual complexity on small screens */
   .absolute.inset-0.opacity-10 {
     opacity: 0.05 !important;
   }
-  
+
   .absolute.inset-0.opacity-5 {
     opacity: 0.02 !important;
   }
-  
+
   /* Simplify blur effects on mobile */
   .blur-3xl {
     filter: blur(16px) !important;
   }
-  
+
   .blur-xl {
     filter: blur(8px) !important;
   }
-  
+
   /* Tech icon optimizations - Match original positioning */
   .hero-visual .absolute.top-4,
   .hero-visual .absolute.bottom-4 {
     left: 50% !important;
     transform: translateX(-50%) !important;
   }
-  
+
   .hero-visual .absolute.left-4 {
     left: 1rem !important;
     top: 50% !important;
     transform: translateY(-50%) !important;
   }
-  
+
   .hero-visual .absolute.right-4 {
     right: 1rem !important;
     top: 50% !important;
     transform: translateY(-50%) !important;
   }
-  
+
   /* Icon sizing - Match original w-14 h-14 */
   .hero-visual .w-14.h-14 {
     width: 3rem !important;
     height: 3rem !important;
   }
-  
+
   /* Button optimizations */
   .hero-section .group {
     min-height: 3rem !important;

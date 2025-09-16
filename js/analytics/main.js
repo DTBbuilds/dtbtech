@@ -16,29 +16,29 @@ function initAnalytics(options = {}) {
     enableCollection: true, // Whether to collect user data
     initialTimeframe: 'daily', // Initial chart timeframe
     updateInterval: 30000, // Real-time update interval (ms)
-    ...options
+    ...options,
   };
-  
+
   console.log('Initializing DTB Analytics System', config);
-  
+
   // Check if analytics has user consent (normally would check cookies/localStorage)
   if (hasAnalyticsConsent()) {
     // Start the data collector if enabled
     if (config.enableCollection) {
       initAnalyticsCollector();
     }
-    
+
     // Initialize the visualizer for charts and counters
     initVisualizer(config.initialTimeframe);
-    
+
     // Apply any custom update interval
     if (config.updateInterval !== 30000) {
       setCustomUpdateInterval(config.updateInterval);
     }
-    
+
     // Setup cleanup handler
     setupCleanupHandler();
-    
+
     console.log('DTB Analytics System initialized successfully');
     return true;
   } else {
@@ -74,7 +74,7 @@ function setCustomUpdateInterval(interval) {
   if (window.analyticsUpdateInterval) {
     clearInterval(window.analyticsUpdateInterval);
   }
-  
+
   // This would re-initialize the real-time updates with a custom interval
   console.log(`Setting custom update interval: ${interval}ms`);
 }
@@ -90,6 +90,4 @@ function setupCleanupHandler() {
 }
 
 // Export the public API
-export {
-  initAnalytics
-};
+export { initAnalytics };

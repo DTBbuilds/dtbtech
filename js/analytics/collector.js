@@ -3,7 +3,7 @@
  * Tracks user interactions and collects analytics data
  */
 
-import { AnalyticsSchema } from './statistics.js';
+// import { AnalyticsSchema } from './statistics.js';
 
 // Initialize Analytics state
 let analyticsState = {
@@ -11,7 +11,7 @@ let analyticsState = {
   currentPage: null,
   interactionEvents: [],
   visitorId: null,
-  isTracking: false
+  isTracking: false,
 };
 
 /**
@@ -24,16 +24,16 @@ function initAnalyticsCollector() {
   analyticsState.sessionStartTime = new Date();
   analyticsState.currentPage = window.location.pathname;
   analyticsState.isTracking = true;
-  
+
   // Set up event listeners
   setupEventListeners();
-  
+
   // Record page visit
   recordPageVisit(analyticsState.currentPage);
-  
+
   // Set up session tracking
   trackSessionDuration();
-  
+
   console.log('Analytics collector initialized', analyticsState);
 }
 
@@ -43,13 +43,14 @@ function initAnalyticsCollector() {
  */
 function getOrCreateVisitorId() {
   let visitorId = localStorage.getItem('dtb_visitor_id');
-  
+
   if (!visitorId) {
     // Create a simple UUID
-    visitorId = 'v' + Date.now() + '-' + Math.random().toString(36).substring(2, 15);
+    visitorId =
+      'v' + Date.now() + '-' + Math.random().toString(36).substring(2, 15);
     localStorage.setItem('dtb_visitor_id', visitorId);
   }
-  
+
   return visitorId;
 }
 
@@ -61,23 +62,23 @@ function setupEventListeners() {
   window.addEventListener('popstate', () => {
     recordPageChange(window.location.pathname);
   });
-  
+
   // Track project card clicks
   document.querySelectorAll('.exhibit').forEach(exhibit => {
-    exhibit.addEventListener('click', (e) => {
+    exhibit.addEventListener('click', () => {
       const projectTitle = exhibit.querySelector('h3').textContent;
       recordProjectView(projectTitle);
     });
   });
-  
+
   // Track community interactions
   const chatInput = document.querySelector('.community-chat-input');
   if (chatInput) {
-    chatInput.addEventListener('submit', (e) => {
+    chatInput.addEventListener('submit', () => {
       recordCommunityInteraction('message_sent');
     });
   }
-  
+
   // Track when users view specific sections (intersection observer)
   setupSectionViewTracking();
 }
@@ -86,18 +87,26 @@ function setupEventListeners() {
  * Track when users view specific sections using Intersection Observer
  */
 function setupSectionViewTracking() {
-  const sections = document.querySelectorAll('section, .exhibition-item, .timeline-item');
-  
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        // Record that this section was viewed
-        const sectionId = entry.target.id || entry.target.dataset.section || 'unknown-section';
-        recordSectionView(sectionId);
-      }
-    });
-  }, { threshold: 0.5 }); // Trigger when at least 50% of the section is visible
-  
+  const sections = document.querySelectorAll(
+    'section, .exhibition-item, .timeline-item'
+  );
+
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Record that this section was viewed
+          const sectionId =
+            entry.target.id ||
+            entry.target.dataset.section ||
+            'unknown-section';
+          recordSectionView(sectionId);
+        }
+      });
+    },
+    { threshold: 0.5 }
+  ); // Trigger when at least 50% of the section is visible
+
   sections.forEach(section => {
     observer.observe(section);
   });
@@ -112,18 +121,18 @@ function recordPageVisit(page) {
     page,
     timestamp: new Date().toISOString(),
     visitorId: analyticsState.visitorId,
-    referrer: document.referrer
+    referrer: document.referrer,
   };
-  
+
   // In a real implementation, this would send data to a server or Firebase
   console.log('Page visit recorded', visitData);
-  
+
   // Add to local analytics state
   analyticsState.interactionEvents.push({
     type: 'page_visit',
-    data: visitData
+    data: visitData,
   });
-  
+
   // For now, simulate sending to a server
   simulateSendToServer('page_visit', visitData);
 }
@@ -146,17 +155,17 @@ function recordProjectView(projectTitle) {
     projectTitle,
     timestamp: new Date().toISOString(),
     visitorId: analyticsState.visitorId,
-    page: analyticsState.currentPage
+    page: analyticsState.currentPage,
   };
-  
+
   // Add to local analytics state
   analyticsState.interactionEvents.push({
     type: 'project_view',
-    data: viewData
+    data: viewData,
   });
-  
+
   console.log('Project view recorded', viewData);
-  
+
   // Simulate sending to server
   simulateSendToServer('project_view', viewData);
 }
@@ -170,17 +179,17 @@ function recordSectionView(sectionId) {
     sectionId,
     timestamp: new Date().toISOString(),
     visitorId: analyticsState.visitorId,
-    durationOnPage: (new Date() - analyticsState.sessionStartTime) / 1000
+    durationOnPage: (new Date() - analyticsState.sessionStartTime) / 1000,
   };
-  
+
   // Add to local analytics state
   analyticsState.interactionEvents.push({
     type: 'section_view',
-    data: viewData
+    data: viewData,
   });
-  
+
   console.log('Section view recorded', viewData);
-  
+
   // Simulate sending to server
   simulateSendToServer('section_view', viewData);
 }
@@ -195,17 +204,17 @@ function recordCommunityInteraction(interactionType, details = {}) {
     interactionType,
     timestamp: new Date().toISOString(),
     visitorId: analyticsState.visitorId,
-    details
+    details,
   };
-  
+
   // Add to local analytics state
   analyticsState.interactionEvents.push({
     type: 'community_interaction',
-    data: interactionData
+    data: interactionData,
   });
-  
+
   console.log('Community interaction recorded', interactionData);
-  
+
   // Simulate sending to server
   simulateSendToServer('community_interaction', interactionData);
 }
@@ -220,35 +229,38 @@ function trackSessionDuration() {
       clearInterval(heartbeatInterval);
       return;
     }
-    
-    const sessionDuration = (new Date() - analyticsState.sessionStartTime) / 1000;
+
+    const sessionDuration =
+      (new Date() - analyticsState.sessionStartTime) / 1000;
     console.log(`Session duration: ${sessionDuration} seconds`);
-    
+
     // Every 5 minutes, record a heartbeat
-    if (sessionDuration % 300 < 60) { // Within the last minute of each 5-minute period
+    if (sessionDuration % 300 < 60) {
+      // Within the last minute of each 5-minute period
       const heartbeatData = {
         visitorId: analyticsState.visitorId,
         timestamp: new Date().toISOString(),
         sessionDuration,
-        currentPage: analyticsState.currentPage
+        currentPage: analyticsState.currentPage,
       };
-      
+
       // Simulate sending to server
       simulateSendToServer('session_heartbeat', heartbeatData);
     }
   }, 60000); // Check every minute
-  
+
   // Handle page unload
   window.addEventListener('beforeunload', () => {
-    const sessionDuration = (new Date() - analyticsState.sessionStartTime) / 1000;
-    
+    const sessionDuration =
+      (new Date() - analyticsState.sessionStartTime) / 1000;
+
     const sessionData = {
       visitorId: analyticsState.visitorId,
       timestamp: new Date().toISOString(),
       sessionDuration,
-      interactionCount: analyticsState.interactionEvents.length
+      interactionCount: analyticsState.interactionEvents.length,
     };
-    
+
     // Use sendBeacon to ensure the data is sent even as the page unloads
     if (navigator.sendBeacon) {
       // In a real implementation, use navigator.sendBeacon() to a real endpoint
@@ -257,7 +269,7 @@ function trackSessionDuration() {
       // Fallback for browsers that don't support sendBeacon
       simulateSendToServer('session_end', sessionData, true);
     }
-    
+
     analyticsState.isTracking = false;
   });
 }
@@ -271,9 +283,9 @@ function trackSessionDuration() {
 function simulateSendToServer(eventType, data, synchronous = false) {
   // In a real implementation, this would use fetch() or navigator.sendBeacon()
   // to send the data to a real backend or Firebase
-  
+
   console.log(`[ANALYTICS] ${eventType} data would be sent to server:`, data);
-  
+
   if (synchronous) {
     // Simulate a synchronous request (would be a real XMLHttpRequest in production)
     console.log('[ANALYTICS] Synchronous send completed');
@@ -300,5 +312,5 @@ export {
   recordProjectView,
   recordSectionView,
   recordCommunityInteraction,
-  stopAnalyticsTracking
+  stopAnalyticsTracking,
 };

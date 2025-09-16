@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DTB Technologies - Project Showcase</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/icons/fontawesome-subset.css" />
+    <style>
+      body {
+        background: linear-gradient(to bottom right, #0f172a, #1e293b);
+        min-height: 100vh;
+        color: #f8fafc;
+        font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+      }
+
+      .project-card {
+        transition: all 0.3s ease;
+        background: linear-gradient(
+          135deg,
+          rgba(51, 65, 85, 0.8),
+          rgba(30, 41, 59, 0.9)
+        );
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(59, 130, 246, 0.2);
+      }
+
+      .project-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        border-color: rgba(59, 130, 246, 0.5);
+      }
+
+      .project-preview {
+        background: linear-gradient(45deg, #1e293b, #334155);
+        border-radius: 0.75rem;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .project-preview::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          45deg,
+          rgba(59, 130, 246, 0.1),
+          rgba(139, 92, 246, 0.1)
+        );
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .project-card:hover .project-preview::before {
+        opacity: 1;
+      }
+
+      .tech-badge {
+        background: rgba(59, 130, 246, 0.2);
+        border: 1px solid rgba(59, 130, 246, 0.3);
+        backdrop-filter: blur(5px);
+      }
+    </style>
+  </head>
+  <body class="p-4">
+    <!-- Navigation Bar -->
+    <header class="max-w-7xl mx-auto mb-8">
+      <nav class="flex justify-between items-center">
+        <a href="../index.html" class="flex items-center text-xl font-bold">
+          <i class="fas fa-cube text-blue-400 mr-3"></i>
+          <span>DTB Technologies</span>
+          <span class="text-blue-400 mx-2">|</span>
+          <span class="text-sm font-normal">Project Showcase</span>
+        </a>
+        <div class="flex space-x-4">
+          <a
+            href="../index.html"
+            class="text-gray-300 hover:text-white transition-colors"
+          >
+            <i class="fas fa-home mr-1"></i> Home
+          </a>
+          <a
+            href="../virtual-tour/office-tour.html"
+            class="text-gray-300 hover:text-white transition-colors"
+          >
+            <i class="fas fa-street-view mr-1"></i> Virtual Tour
+          </a>
+          <a
+            href="#"
+            class="text-blue-400 hover:text-blue-300 transition-colors"
+          >
+            <i class="fas fa-cube mr-1"></i> Projects
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto">
+      <!-- Hero Section -->
+      <div class="text-center mb-12">
+        <h1
+          class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
+        >
+          Our Project Portfolio
+        </h1>
+        <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+          Explore our collection of innovative web applications and digital
+          solutions. Each project showcases our expertise in modern web
+          development and user experience design.
+        </p>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <!-- Linda's Nut Butter Store -->
+        <div class="project-card rounded-xl p-6">
+          <div
+            class="project-preview h-48 mb-6 flex items-center justify-center"
+          >
+            <div class="text-center">
+              <i class="fas fa-shopping-cart text-6xl text-blue-400 mb-4"></i>
+              <h3 class="text-lg font-semibold text-gray-200">
+                E-Commerce Platform
+              </h3>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <h3 class="text-xl font-bold mb-2">Linda's Nut Butter Store</h3>
+            <p class="text-gray-300 text-sm mb-4">
+              A modern e-commerce platform for artisanal nut butter products
+              featuring shopping cart functionality, product catalog, and
+              responsive design.
+            </p>
+
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="tech-badge px-2 py-1 rounded-full text-xs"
+                >React</span
+              >
+              <span class="tech-badge px-2 py-1 rounded-full text-xs"
+                >E-Commerce</span
+              >
+              <span class="tech-badge px-2 py-1 rounded-full text-xs"
+                >Responsive</span
+              >
+            </div>
+          </div>
+
+          <div class="flex space-x-3">
+            <a
+              href="https://lindas-nut-butter-store.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-center transition-colors"
+            >
+              <i class="fas fa-external-link-alt mr-2"></i>View Live
+            </a>
+          </div>
+        </div>
+
+        <!-- Mo Patience Organization -->
+        <div class="project-card rounded-xl p-6">
+          <div
+            class="project-preview h-48 mb-6 flex items-center justify-center"
+          >
+            <div class="text-center">
+              <i class="fas fa-heart text-6xl text-purple-400 mb-4"></i>
+              <h3 class="text-lg font-semibold text-gray-200">
+                Organization Website
+              </h3>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <h3 class="text-xl font-bold mb-2">Mo Patience Organization</h3>
+            <p class="text-gray-300 text-sm mb-4">
+              A professional website for a community organization focused on
+              social impact and community engagement with modern design and
+              accessibility features.
+            </p>
+
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="tech-badge px-2 py-1 rounded-full text-xs"
+                >HTML5</span
+              >
+              <span class="tech-badge px-2 py-1 rounded-full text-xs"
+                >CSS3</span
+              >
+              <span class="tech-badge px-2 py-1 rounded-full text-xs"
+                >JavaScript</span
+              >
+            </div>
+          </div>
+
+          <div class="flex space-x-3">
+            <a
+              href="https://mopatienceorganization.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex-1 bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-center transition-colors"
+            >
+              <i class="fas fa-external-link-alt mr-2"></i>View Live
+            </a>
+          </div>
+        </div>
+
+        <!-- Fix Place KE -->
+        <div class="project-card rounded-xl p-6">
+          <div
+            class="project-preview h-48 mb-6 flex items-center justify-center"
+          >
+            <div class="text-center">
+              <i class="fas fa-tools text-6xl text-green-400 mb-4"></i>
+              <h3 class="text-lg font-semibold text-gray-200">
+                Service Platform
+              </h3>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <h3 class="text-xl font-bold mb-2">Fix Place KE</h3>
+            <p class="text-gray-300 text-sm mb-4">
+              A comprehensive service platform connecting customers with repair
+              and maintenance professionals across Kenya with booking and
+              service management features.
+            </p>
+
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="tech-badge px-2 py-1 rounded-full text-xs"
+                >Web App</span
+              >
+              <span class="tech-badge px-2 py-1 rounded-full text-xs"
+                >Services</span
+              >
+              <span class="tech-badge px-2 py-1 rounded-full text-xs"
+                >Local Business</span
+              >
+            </div>
+          </div>
+
+          <div class="flex space-x-3">
+            <a
+              href="https://fix-place-ke.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex-1 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-center transition-colors"
+            >
+              <i class="fas fa-external-link-alt mr-2"></i>View Live
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Call to Action -->
+      <div
+        class="bg-gradient-to-r from-blue-900/50 to-purple-900/50 rounded-xl p-8 text-center backdrop-blur-sm border border-blue-500/20"
+      >
+        <h2 class="text-2xl font-bold mb-4">Ready to Start Your Project?</h2>
+        <p class="text-gray-300 mb-6 max-w-2xl mx-auto">
+          Let's bring your ideas to life with cutting-edge web development and
+          innovative digital solutions.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="../contact.html"
+            class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition-colors"
+          >
+            <i class="fas fa-envelope mr-2"></i>Get In Touch
+          </a>
+          <a
+            href="../services.html"
+            class="bg-transparent border border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white px-6 py-3 rounded-lg transition-colors"
+          >
+            <i class="fas fa-cogs mr-2"></i>Our Services
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer
+      class="max-w-7xl mx-auto mt-16 mb-8 pt-8 border-t border-gray-800 text-center text-gray-400"
+    >
+      <p class="mb-4">© 2025 DTB Technologies. All rights reserved.</p>
+      <div class="flex justify-center space-x-8 text-sm">
+        <a href="../about.html" class="hover:text-gray-200 transition-colors"
+          >About Us</a
+        >
+        <a href="../contact.html" class="hover:text-gray-200 transition-colors"
+          >Contact</a
+        >
+        <a href="../tech-lab.html" class="hover:text-gray-200 transition-colors"
+          >Tech Lab</a
+        >
+      </div>
+    </footer>
+  </body>
+</html>

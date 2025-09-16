@@ -150,11 +150,11 @@
     padding-top: 4rem;
     min-height: 100vh;
   }
-  
+
   .hero-title {
     font-size: clamp(1.875rem, 6vw, 3.5rem);
   }
-  
+
   .hero-visual .relative {
     max-width: 20rem;
   }
@@ -166,38 +166,38 @@
     padding-bottom: 3rem;
     min-height: 100vh;
   }
-  
+
   .hero-content {
     text-align: center;
     margin-bottom: 3rem;
   }
-  
+
   .hero-title {
     font-size: clamp(1.75rem, 8vw, 2.5rem);
     margin-bottom: 1rem;
   }
-  
+
   .hero-subtitle {
     font-size: 1.125rem;
     margin-bottom: 2rem;
   }
-  
+
   .hero-visual .relative {
     max-width: 16rem;
   }
-  
+
   /* Simplify animations on mobile */
   .hero-visual .animate-spin-very-slow,
   .hero-visual .animate-reverse-spin-very-slow {
     animation-duration: 15s;
   }
-  
+
   /* Optimize button layout */
   .hero-section .flex.flex-col.sm\\:flex-row {
     flex-direction: column;
     gap: 0.75rem;
   }
-  
+
   .hero-section .group {
     padding: 0.875rem 1.5rem;
     font-size: 0.9375rem;
@@ -210,25 +210,25 @@
     padding-left: 1rem;
     padding-right: 1rem;
   }
-  
+
   .hero-title {
     font-size: clamp(1.5rem, 10vw, 2rem);
   }
-  
+
   .hero-subtitle {
     font-size: 1rem;
   }
-  
+
   .hero-visual .relative {
     max-width: 14rem;
   }
-  
+
   /* Further simplify on small screens */
   .hero-visual .w-12.h-12 {
     width: 2.5rem;
     height: 2.5rem;
   }
-  
+
   .hero-visual .text-xl {
     font-size: 1rem;
   }
@@ -242,12 +242,12 @@
     animation: none !important;
     transition: none !important;
   }
-  
+
   .hero-content {
     opacity: 1;
     transform: none;
   }
-  
+
   .hero-visual {
     opacity: 1;
     transform: none;
@@ -296,7 +296,8 @@
 }
 
 @keyframes heroFloat {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0px);
   }
   50% {
@@ -305,7 +306,8 @@
 }
 
 @keyframes heroPulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.2;
   }
   50% {
@@ -318,7 +320,7 @@
   .hero-visual .blur-xl {
     filter: blur(12px);
   }
-  
+
   .hero-visual .blur-3xl {
     filter: blur(24px);
   }
@@ -356,11 +358,11 @@
     background: white !important;
     color: black !important;
   }
-  
+
   .hero-visual {
     display: none;
   }
-  
+
   .hero-title {
     color: black !important;
     background: none !important;

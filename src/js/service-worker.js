@@ -3,7 +3,7 @@
  * Implements aggressive caching strategies for optimal performance
  */
 
-const CACHE_NAME = 'dtb-tech-v1.0.0';
+// const CACHE_NAME = 'dtb-tech-v1.0.0';
 const STATIC_CACHE = 'dtb-static-v1.0.0';
 const DYNAMIC_CACHE = 'dtb-dynamic-v1.0.0';
 const IMAGE_CACHE = 'dtb-images-v1.0.0';
@@ -22,15 +22,11 @@ const STATIC_ASSETS = [
   '/src/js/performance/web-vitals.js',
   '/src/css/mobile-optimized.css',
   '/assets/dtb-logo.png',
-  '/assets/images/default-logo.svg'
+  '/assets/images/default-logo.svg',
 ];
 
 // Network-first resources (always try network first)
-const NETWORK_FIRST = [
-  '/api/',
-  '/dashboard/',
-  '/auth/'
-];
+const NETWORK_FIRST = ['/api/', '/dashboard/', '/auth/'];
 
 // Cache-first resources (serve from cache if available)
 const CACHE_FIRST = [
@@ -43,12 +39,12 @@ const CACHE_FIRST = [
   '.jpeg',
   '.svg',
   '.webp',
-  '.avif'
+  '.avif',
 ];
 
 self.addEventListener('install', event => {
   console.log('Service Worker: Installing...');
-  
+
   event.waitUntil(
     Promise.all([
       // Cache static assets
@@ -56,34 +52,36 @@ self.addEventListener('install', event => {
         console.log('Service Worker: Caching static assets');
         return cache.addAll(STATIC_ASSETS);
       }),
-      
+
       // Skip waiting to activate immediately
-      self.skipWaiting()
+      self.skipWaiting(),
     ])
   );
 });
 
 self.addEventListener('activate', event => {
   console.log('Service Worker: Activating...');
-  
+
   event.waitUntil(
     Promise.all([
       // Clean up old caches
       caches.keys().then(cacheNames => {
         return Promise.all(
           cacheNames.map(cacheName => {
-            if (cacheName !== STATIC_CACHE && 
-                cacheName !== DYNAMIC_CACHE && 
-                cacheName !== IMAGE_CACHE) {
+            if (
+              cacheName !== STATIC_CACHE &&
+              cacheName !== DYNAMIC_CACHE &&
+              cacheName !== IMAGE_CACHE
+            ) {
               console.log('Service Worker: Deleting old cache:', cacheName);
               return caches.delete(cacheName);
             }
           })
         );
       }),
-      
+
       // Take control of all pages
-      self.clients.claim()
+      self.clients.claim(),
     ])
   );
 });
@@ -91,43 +89,50 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', event => {
   const { request } = event;
   const url = new URL(request.url);
-  
+
   // Skip non-GET requests
   if (request.method !== 'GET') {
     return;
   }
-  
+
   // Skip chrome-extension and other non-http(s) requests
   if (!url.protocol.startsWith('http')) {
     return;
   }
-  
+
   event.respondWith(handleRequest(request));
 });
 
 async function handleRequest(request) {
   const url = new URL(request.url);
   const pathname = url.pathname;
-  
+
   try {
     // Network-first strategy for dynamic content
     if (NETWORK_FIRST.some(pattern => pathname.includes(pattern))) {
       return await networkFirst(request);
     }
-    
+
     // Cache-first strategy for static assets
-    if (CACHE_FIRST.some(pattern => pathname.includes(pattern) || pathname.endsWith(pattern))) {
+    if (
+      CACHE_FIRST.some(
+        pattern => pathname.includes(pattern) || pathname.endsWith(pattern)
+      )
+    ) {
       return await cacheFirst(request);
     }
-    
+
     // Stale-while-revalidate for HTML pages
-    if (pathname.endsWith('.html') || pathname === '/' || !pathname.includes('.')) {
+    if (
+      pathname.endsWith('.html') ||
+      pathname === '/' ||
+      !pathname.includes('.')
+    ) {
       return await staleWhileRevalidate(request);
     }
-    
+
     // Default to network-first
     return await networkFirst(request);
-    
   } catch (error) {
     console.error('Service Worker: Request failed:', error);
     return await handleOffline(request);
@@ -137,13 +142,13 @@ async function handleRequest(request) {
 async function networkFirst(request) {
   try {
     const networkResponse = await fetch(request);
-    
+
     if (networkResponse.ok) {
       // Cache successful responses
       const cache = await caches.open(DYNAMIC_CACHE);
       cache.put(request, networkResponse.clone());
     }
-    
+
     return networkResponse;
   } catch (error) {
     // Fallback to cache
@@ -157,7 +162,7 @@ async function networkFirst(request) {
 
 async function cacheFirst(request) {
   const cachedResponse = await caches.match(request);
-  
+
   if (cachedResponse) {
     // Update cache in background for images and assets
     if (isImageRequest(request) || isAssetRequest(request)) {
@@ -165,38 +170,40 @@ async function cacheFirst(request) {
     }
     return cachedResponse;
   }
-  
+
   // Not in cache, fetch from network
   const networkResponse = await fetch(request);
-  
+
   if (networkResponse.ok) {
     const cacheName = isImageRequest(request) ? IMAGE_CACHE : STATIC_CACHE;
     const cache = await caches.open(cacheName);
     cache.put(request, networkResponse.clone());
   }
-  
+
   return networkResponse;
 }
 
 async function staleWhileRevalidate(request) {
   const cachedResponse = await caches.match(request);
-  
+
   // Always try to update from network in background
-  const networkPromise = fetch(request).then(response => {
-    if (response.ok) {
-      const cache = caches.open(DYNAMIC_CACHE);
-      cache.then(c => c.put(request, response.clone()));
-    }
-    return response;
-  }).catch(() => null);
-  
+  const networkPromise = fetch(request)
+    .then(response => {
+      if (response.ok) {
+        const cache = caches.open(DYNAMIC_CACHE);
+        cache.then(c => c.put(request, response.clone()));
+      }
+      return response;
+    })
+    .catch(() => null);
+
   // Return cached version immediately if available
   if (cachedResponse) {
     return cachedResponse;
   }
-  
+
   // Wait for network if no cache
-  return await networkPromise || handleOffline(request);
+  return (await networkPromise) || handleOffline(request);
 }
 
 async function updateCacheInBackground(request) {
@@ -214,17 +221,18 @@ async function updateCacheInBackground(request) {
 }
 
 async function handleOffline(request) {
-  const url = new URL(request.url);
-  
+  // const url = new URL(request.url);
+
   // Return offline page for HTML requests
   if (request.headers.get('accept')?.includes('text/html')) {
     const offlineResponse = await caches.match('/offline.html');
     if (offlineResponse) {
       return offlineResponse;
     }
-    
+
     // Fallback offline response
-    return new Response(`
+    return new Response(
+      `
       <!DOCTYPE html>
       <html>
         <head>
@@ -262,12 +270,14 @@ async function handleOffline(request) {
           </div>
         </body>
       </html>
-    `, {
-      headers: { 'Content-Type': 'text/html' },
-      status: 200
-    });
+    `,
+      {
+        headers: { 'Content-Type': 'text/html' },
+        status: 200,
+      }
+    );
   }
-  
+
   // Return placeholder for images
   if (isImageRequest(request)) {
     return new Response(
@@ -275,13 +285,15 @@ async function handleOffline(request) {
       { headers: { 'Content-Type': 'image/svg+xml' } }
     );
   }
-  
+
   return new Response('Network error', { status: 408 });
 }
 
 function isImageRequest(request) {
-  return request.headers.get('accept')?.includes('image/') ||
-         /\.(png|jpg|jpeg|gif|webp|avif|svg)$/i.test(new URL(request.url).pathname);
+  return (
+    request.headers.get('accept')?.includes('image/') ||
+    /\.(png|jpg|jpeg|gif|webp|avif|svg)$/i.test(new URL(request.url).pathname)
+  );
 }
 
 function isAssetRequest(request) {
@@ -293,7 +305,7 @@ self.addEventListener('sync', event => {
   if (event.tag === 'analytics-sync') {
     event.waitUntil(syncAnalytics());
   }
-  
+
   if (event.tag === 'form-sync') {
     event.waitUntil(syncFormSubmissions());
   }
@@ -304,7 +316,7 @@ async function syncAnalytics() {
   try {
     const cache = await caches.open('analytics-queue');
     const requests = await cache.keys();
-    
+
     for (const request of requests) {
       try {
         await fetch(request);
@@ -323,7 +335,7 @@ async function syncFormSubmissions() {
   try {
     const cache = await caches.open('form-queue');
     const requests = await cache.keys();
-    
+
     for (const request of requests) {
       try {
         await fetch(request);
@@ -341,7 +353,7 @@ async function syncFormSubmissions() {
 self.addEventListener('push', event => {
   if (event.data) {
     const data = event.data.json();
-    
+
     event.waitUntil(
       self.registration.showNotification(data.title || 'DTB Technologies', {
         body: data.body || 'New update available',
@@ -349,7 +361,7 @@ self.addEventListener('push', event => {
         badge: '/assets/images/default-logo.svg',
         tag: data.tag || 'default',
         requireInteraction: data.requireInteraction || false,
-        actions: data.actions || []
+        actions: data.actions || [],
       })
     );
   }
@@ -358,10 +370,8 @@ self.addEventListener('push', event => {
 // Notification click handling
 self.addEventListener('notificationclick', event => {
   event.notification.close();
-  
-  event.waitUntil(
-    clients.openWindow(event.notification.data?.url || '/')
-  );
+
+  event.waitUntil(clients.openWindow(event.notification.data?.url || '/'));
 });
 
 // Performance monitoring
@@ -369,7 +379,7 @@ self.addEventListener('message', event => {
   if (event.data && event.data.type === 'SKIP_WAITING') {
     self.skipWaiting();
   }
-  
+
   if (event.data && event.data.type === 'GET_CACHE_SIZE') {
     getCacheSize().then(size => {
       event.ports[0].postMessage({ cacheSize: size });
@@ -380,11 +390,11 @@ self.addEventListener('message', event => {
 async function getCacheSize() {
   const cacheNames = await caches.keys();
   let totalSize = 0;
-  
+
   for (const cacheName of cacheNames) {
     const cache = await caches.open(cacheName);
     const requests = await cache.keys();
-    
+
     for (const request of requests) {
       const response = await cache.match(request);
       if (response) {
@@ -393,6 +403,6 @@ async function getCacheSize() {
       }
     }
   }
-  
-  return Math.round(totalSize / 1024 / 1024 * 100) / 100; // MB
+
+  return Math.round((totalSize / 1024 / 1024) * 100) / 100; // MB
 }

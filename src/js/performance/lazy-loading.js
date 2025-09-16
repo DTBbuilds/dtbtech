@@ -26,10 +26,10 @@ class LazyLoader {
     const imageObserverOptions = {
       root: null,
       rootMargin: '50px 0px', // Start loading 50px before entering viewport
-      threshold: 0.01
+      threshold: 0.01,
     };
 
-    this.imageObserver = new IntersectionObserver((entries) => {
+    this.imageObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           this.loadImage(entry.target);
@@ -48,10 +48,10 @@ class LazyLoader {
     const componentObserverOptions = {
       root: null,
       rootMargin: '100px 0px', // Load components earlier
-      threshold: 0.1
+      threshold: 0.1,
     };
 
-    this.componentObserver = new IntersectionObserver((entries) => {
+    this.componentObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           this.loadComponent(entry.target);
@@ -69,7 +69,7 @@ class LazyLoader {
   loadImage(img) {
     return new Promise((resolve, reject) => {
       const imageLoader = new Image();
-      
+
       imageLoader.onload = () => {
         // Use requestAnimationFrame for smooth transition
         requestAnimationFrame(() => {
@@ -91,16 +91,19 @@ class LazyLoader {
 
   async loadComponent(element) {
     const componentName = element.dataset.lazyComponent;
-    
+
     try {
       // Use fetch for dynamic component loading to avoid build issues
       const response = await fetch(`/components/${componentName}.js`);
       if (response.ok) {
         const moduleText = await response.text();
-        const moduleFunction = new Function('element', moduleText + '; return init;');
+        const moduleFunction = new Function(
+          'element',
+          moduleText + '; return init;'
+        );
         await moduleFunction(element);
       }
-      
+
       element.classList.add('component-loaded');
       element.removeAttribute('data-lazy-component');
     } catch (error) {

@@ -1,8 +1,8 @@
 // Header Component
 class Header extends HTMLElement {
-    constructor() {
-        super();
-        this.innerHTML = `
+  constructor() {
+    super();
+    this.innerHTML = `
             <header class="fixed w-full top-0 z-50 bg-slate-900/95 backdrop-blur-sm border-b border-slate-800">
                 <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex items-center justify-between h-16">
@@ -66,56 +66,57 @@ class Header extends HTMLElement {
             </header>
         `;
 
-        this.mobileMenuButton = this.querySelector('.mobile-menu-button');
-        this.mobileMenu = this.querySelector('.mobile-menu');
-        this.menuIcon = this.querySelector('.menu-icon');
-        this.closeIcon = this.querySelector('.close-icon');
+    this.mobileMenuButton = this.querySelector('.mobile-menu-button');
+    this.mobileMenu = this.querySelector('.mobile-menu');
+    this.menuIcon = this.querySelector('.menu-icon');
+    this.closeIcon = this.querySelector('.close-icon');
 
-        this.setupMobileMenu();
+    this.setupMobileMenu();
+  }
+
+  setupMobileMenu() {
+    if (!this.mobileMenuButton || !this.mobileMenu) return;
+
+    this.mobileMenuButton.addEventListener('click', () => {
+      this.toggleMobileMenu();
+    });
+
+    // Add listener to the menu itself to close when an item is clicked
+    this.mobileMenu.addEventListener('click', e => {
+      // Check if the clicked element is a link or a button within the menu
+      if (e.target.closest('a') || e.target.closest('button')) {
+        this.closeMobileMenu();
+      }
+    });
+  }
+
+  toggleMobileMenu() {
+    const isExpanded =
+      this.mobileMenuButton.getAttribute('aria-expanded') === 'true';
+    if (isExpanded) {
+      this.closeMobileMenu();
+    } else {
+      this.openMobileMenu();
     }
+  }
 
-    setupMobileMenu() {
-        if (!this.mobileMenuButton || !this.mobileMenu) return;
+  openMobileMenu() {
+    this.mobileMenu.classList.remove('hidden');
+    this.menuIcon.classList.remove('block');
+    this.menuIcon.classList.add('hidden');
+    this.closeIcon.classList.remove('hidden');
+    this.closeIcon.classList.add('block');
+    this.mobileMenuButton.setAttribute('aria-expanded', 'true');
+  }
 
-        this.mobileMenuButton.addEventListener('click', () => {
-            this.toggleMobileMenu();
-        });
-
-        // Add listener to the menu itself to close when an item is clicked
-        this.mobileMenu.addEventListener('click', (e) => {
-            // Check if the clicked element is a link or a button within the menu
-            if (e.target.closest('a') || e.target.closest('button')) {
-                this.closeMobileMenu();
-            }
-        });
-    }
-
-    toggleMobileMenu() {
-        const isExpanded = this.mobileMenuButton.getAttribute('aria-expanded') === 'true';
-        if (isExpanded) {
-            this.closeMobileMenu();
-        } else {
-            this.openMobileMenu();
-        }
-    }
-
-    openMobileMenu() {
-        this.mobileMenu.classList.remove('hidden');
-        this.menuIcon.classList.remove('block');
-        this.menuIcon.classList.add('hidden');
-        this.closeIcon.classList.remove('hidden');
-        this.closeIcon.classList.add('block');
-        this.mobileMenuButton.setAttribute('aria-expanded', 'true');
-    }
-
-    closeMobileMenu() {
-        this.mobileMenu.classList.add('hidden');
-        this.menuIcon.classList.remove('hidden');
-        this.menuIcon.classList.add('block');
-        this.closeIcon.classList.remove('block');
-        this.closeIcon.classList.add('hidden');
-        this.mobileMenuButton.setAttribute('aria-expanded', 'false');
-    }
+  closeMobileMenu() {
+    this.mobileMenu.classList.add('hidden');
+    this.menuIcon.classList.remove('hidden');
+    this.menuIcon.classList.add('block');
+    this.closeIcon.classList.remove('block');
+    this.closeIcon.classList.add('hidden');
+    this.mobileMenuButton.setAttribute('aria-expanded', 'false');
+  }
 }
 
 customElements.define('site-header', Header);

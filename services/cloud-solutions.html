@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Cloud Solutions - DTB Technologies</title>
     <meta name="description" content="Enterprise cloud solutions in Nairobi. Migration, hosting, and management services for businesses.">
-    <link rel="stylesheet" href="./dist/output.css">
-    <link rel="stylesheet" href="./src/css/mobile-optimized.css">
-    <link rel="stylesheet" href="./css/common.css">
-    <link rel="stylesheet" href="./css/animations.css">
+    <link rel="stylesheet" href="../dist/output.css">
+    <link rel="stylesheet" href="../src/css/mobile-optimized.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/animations.css">
     <link rel="stylesheet" href="../styles.css">
-    <link rel="stylesheet" href="./assets/icons/fontawesome-subset.css">
+    <link rel="stylesheet" href="../assets/icons/fontawesome-subset.css">
     <style>
         .logo-container {
             height: 50px;
@@ -92,7 +92,7 @@
                     <!-- Starter Plan -->
                     <div class="bg-gray-800 rounded-xl p-8 transform hover:scale-105 transition-transform duration-300">
                         <h3 class="text-xl font-semibold text-white mb-4">Starter Cloud</h3>
-                        <div class="text-blue-400 text-4xl font-bold mb-4">KSh 10,000<span class="text-lg">/mo</span></div>
+                        <div class="text-blue-400 text-4xl font-bold mb-4">$0<span class="text-lg">/mo</span></div>
                         <ul class="text-gray-300 space-y-3 mb-8">
                             <li class="flex items-center">
                                 <i class="fas fa-check text-green-400 mr-2"></i>
@@ -107,16 +107,16 @@
                                 100GB Storage
                             </li>
                         </ul>
-                        <button onclick="addToCart('Starter Cloud', 10000)" class="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition-colors">
+                        <a href="../contact.html" class="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition-colors inline-block text-center">
                             Get Started
-                        </button>
+                        </a>
                     </div>
 
                     <!-- Business Plan -->
                     <div class="bg-gray-800 rounded-xl p-8 transform hover:scale-105 transition-transform duration-300 border-2 border-blue-400">
                         <div class="absolute top-0 right-0 bg-blue-400 text-white px-4 py-1 rounded-bl-lg text-sm">Popular</div>
                         <h3 class="text-xl font-semibold text-white mb-4">Business Cloud</h3>
-                        <div class="text-blue-400 text-4xl font-bold mb-4">KSh 25,000<span class="text-lg">/mo</span></div>
+                        <div class="text-blue-400 text-4xl font-bold mb-4">$0<span class="text-lg">/mo</span></div>
                         <ul class="text-gray-300 space-y-3 mb-8">
                             <li class="flex items-center">
                                 <i class="fas fa-check text-green-400 mr-2"></i>
@@ -135,15 +135,15 @@
                                 Load Balancing
                             </li>
                         </ul>
-                        <button onclick="addToCart('Business Cloud', 25000)" class="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition-colors">
+                        <a href="../contact.html" class="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition-colors inline-block text-center">
                             Get Started
-                        </button>
+                        </a>
                     </div>
 
                     <!-- Enterprise Plan -->
                     <div class="bg-gray-800 rounded-xl p-8 transform hover:scale-105 transition-transform duration-300">
                         <h3 class="text-xl font-semibold text-white mb-4">Enterprise Cloud</h3>
-                        <div class="text-blue-400 text-4xl font-bold mb-4">Custom</div>
+                        <div class="text-blue-400 text-4xl font-bold mb-4">$0<span class="text-lg">/mo</span></div>
                         <ul class="text-gray-300 space-y-3 mb-8">
                             <li class="flex items-center">
                                 <i class="fas fa-check text-green-400 mr-2"></i>
@@ -188,67 +188,29 @@
                         <p class="text-gray-300">Absolutely! Our cloud solutions are designed to scale up or down based on your needs. You can adjust resources instantly through our management portal or contact us for assistance.</p>
                     </div>
                 </div>
-
-        <div id="cart-sidebar" class="fixed top-0 right-0 w-full md:w-96 h-full bg-gray-900 z-50 transform translate-x-full transition-transform duration-300 shadow-2xl">
-            <div class="flex flex-col h-full">
-                <div class="p-4 border-b border-gray-800 flex justify-between items-center">
-                    <h2 class="text-xl font-bold text-white">Your Cart</h2>
-                    <button class="text-gray-400 hover:text-white transition-colors close-cart">
-                        <i class="fas fa-times text-xl"></i>
-                    <button onclick="document.getElementById('pricing-section').scrollIntoView({behavior: 'smooth'})" class="inline-block bg-gray-700 text-white px-8 py-3 rounded-lg hover:bg-gray-600 transition-colors">
-                        View Pricing
-                    </button>
-                </div>
             </div>
         </section>
     </main>
 
-    <!-- Cart Components -->
-    <div id="cart-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 opacity-0 pointer-events-none transition-opacity duration-300"></div>
 
-    <div id="cart-sidebar" class="fixed top-0 right-0 w-full md:w-96 h-full bg-gray-900 z-50 transform translate-x-full transition-transform duration-300 shadow-2xl">
-        <div class="flex flex-col h-full">
-            <div class="p-4 border-b border-gray-800 flex justify-between items-center">
-                <h2 class="text-xl font-bold text-white">Your Cart</h2>
-                <button class="text-gray-400 hover:text-white transition-colors close-cart">
-                    <i class="fas fa-times text-xl"></i>
-                </button>
-            </div>
-            <div id="cart-items" class="flex-1 overflow-y-auto p-4 space-y-4"></div>
-            <div class="p-4 border-t border-gray-800">
-                <div class="flex justify-between items-center mb-4">
-                    <span class="text-white text-lg">Total:</span>
-                    <span id="cart-total" class="text-2xl font-bold text-white"></span>
-                </div>
-                <button id="checkout-btn" class="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition-colors flex items-center justify-center">
-                    <i class="fas fa-lock mr-2"></i>
-                    Proceed to Checkout
-                </button>
-            </div>
-        </div>
-    </div>
 
-    <button id="cart-button" class="fixed bottom-8 right-8 bg-blue-500 text-white w-16 h-16 rounded-full shadow-lg hover:bg-blue-600 transition-colors z-30 flex items-center justify-center">
-        <i class="fas fa-shopping-cart text-2xl cart-icon"></i>
-        <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-6 h-6 rounded-full flex items-center justify-center transform scale-0 transition-transform"></span>
-    </button>
-
-    <script src="../cart.js"></script>
     <script>
         // Mobile menu toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
         
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
 
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
-                mobileMenu.classList.add('hidden');
-            }
-        });
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        }
     </script>
 </body>
 </html>

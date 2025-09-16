@@ -1,6 +1,7 @@
 {
   "name": "dtb-technologies",
   "version": "1.0.0",
+  "type": "module",
   "description": "DTB Technologies Website",
   "main": "server.js",
   "scripts": {
@@ -14,7 +15,12 @@
     "build:css": "tailwindcss -i ./src/input.css -o ./dist/output.css",
     "watch:css": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
     "optimize:images": "node build-scripts/optimize-images.js",
-    "analyze": "vite-bundle-analyzer dist"
+    "analyze": "vite-bundle-analyzer dist",
+    "lint:js": "eslint \"**/*.js\" --ignore-pattern node_modules/ --ignore-pattern dist/",
+    "lint:html": "htmlhint \"**/*.html\" --ignore node_modules/**",
+    "lint:css": "stylelint \"**/*.css\" --ignore-pattern node_modules/ --ignore-pattern dist/",
+    "lint": "npm run lint:js && npm run lint:html && npm run lint:css",
+    "format": "prettier --write \"**/*.{js,html,css,json}\" --ignore-path .gitignore"
   },
   "repository": {
     "type": "git",
@@ -44,10 +50,15 @@
     "autoprefixer": "^10.4.14",
     "concurrently": "^9.2.1",
     "cssnano": "^6.0.1",
+    "eslint": "^8.57.0",
+    "htmlhint": "^1.1.4",
     "nodemon": "^3.1.9",
     "postcss": "^8.4.21",
+    "prettier": "^3.0.0",
     "rollup-plugin-visualizer": "^5.9.2",
     "sharp": "^0.32.6",
+    "stylelint": "^15.10.0",
+    "stylelint-config-standard": "^34.0.0",
     "tailwindcss": "^3.4.17",
     "terser": "^5.19.2",
     "vite": "^5.0.0",

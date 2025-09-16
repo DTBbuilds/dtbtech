@@ -1,5 +1,9 @@
-const express = require('express');
-const path = require('path');
+import express from 'express';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const app = express();
 
 // Middleware
@@ -8,37 +12,49 @@ app.use(express.urlencoded({ extended: true }));
 
 // Analytics API endpoints
 app.post('/api/analytics/web-vitals', (req, res) => {
-    const { metric, value, timestamp, url } = req.body;
-    
-    // Log web vitals data (in production, you'd save to database)
-    console.log(`📊 Web Vitals - ${metric}: ${value} at ${url}`);
-    
-    res.status(200).json({ 
-        success: true, 
-        message: 'Web vitals data received',
-        metric,
-        value
-    });
+  const { metric, value, url } = req.body;
+
+  // Log web vitals data (in production, you'd save to database)
+  console.log(`📊 Web Vitals - ${metric}: ${value} at ${url}`);
+
+  res.status(200).json({
+    success: true,
+    message: 'Web vitals data received',
+    metric,
+    value,
+  });
 });
 
 // General analytics endpoint
 app.post('/api/analytics', (req, res) => {
-    const { event, data, timestamp, url } = req.body;
-    
-    // Log analytics data
-    console.log(`📈 Analytics - ${event}:`, data, `at ${url}`);
-    
-    res.status(200).json({ 
-        success: true, 
-        message: 'Analytics data received',
-        event,
-        data
-    });
+  const { event, data, url } = req.body;
+
+  // Log analytics data
+  console.log(`📈 Analytics - ${event}:`, data, `at ${url}`);
+
+  res.status(200).json({
+    success: true,
+    message: 'Analytics data received',
+    event,
+    data,
+  });
 });
 
 // Favicon route
 app.get('/favicon.ico', (req, res) => {
-    res.sendFile(path.join(__dirname, 'assets', 'dtb-logo.png'));
+  res.sendFile(path.join(__dirname, 'assets', 'dtb-logo.png'));
+});
+
+// Configure MIME types for audio files
+app.use((req, res, next) => {
+  if (req.url.endsWith('.mp3')) {
+    res.setHeader('Content-Type', 'audio/mpeg');
+  } else if (req.url.endsWith('.wav')) {
+    res.setHeader('Content-Type', 'audio/wav');
+  } else if (req.url.endsWith('.ogg')) {
+    res.setHeader('Content-Type', 'audio/ogg');
+  }
+  next();
 });
 
 // Serve static files
@@ -58,44 +74,46 @@ app.use('/src', express.static('src'));
 
 // Handle all HTML routes
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // Handle routes for all directories
 app.get('/:page.html', (req, res) => {
-    res.sendFile(path.join(__dirname, `${req.params.page}.html`));
+  res.sendFile(path.join(__dirname, `${req.params.page}.html`));
 });
 
 app.get('/auth/:page.html', (req, res) => {
-    res.sendFile(path.join(__dirname, 'auth', `${req.params.page}.html`));
+  res.sendFile(path.join(__dirname, 'auth', `${req.params.page}.html`));
 });
 
 app.get('/dashboard/:page.html', (req, res) => {
-    res.sendFile(path.join(__dirname, 'dashboard', `${req.params.page}.html`));
+  res.sendFile(path.join(__dirname, 'dashboard', `${req.params.page}.html`));
 });
 
 app.get('/services/:page.html', (req, res) => {
-    res.sendFile(path.join(__dirname, 'services', `${req.params.page}.html`));
+  res.sendFile(path.join(__dirname, 'services', `${req.params.page}.html`));
 });
 
 app.get('/tech-lab/:page.html', (req, res) => {
-    res.sendFile(path.join(__dirname, 'tech-lab', `${req.params.page}.html`));
+  res.sendFile(path.join(__dirname, 'tech-lab', `${req.params.page}.html`));
 });
 
 app.get('/tech-lab/skills/:page.html', (req, res) => {
-    res.sendFile(path.join(__dirname, 'tech-lab', 'skills', `${req.params.page}.html`));
+  res.sendFile(
+    path.join(__dirname, 'tech-lab', 'skills', `${req.params.page}.html`)
+  );
 });
 
 app.get('/components/:page.html', (req, res) => {
-    res.sendFile(path.join(__dirname, 'components', `${req.params.page}.html`));
+  res.sendFile(path.join(__dirname, 'components', `${req.params.page}.html`));
 });
 
 // Error handling for 404
 app.use((req, res) => {
-    res.status(404).sendFile(path.join(__dirname, '404.html'));
+  res.status(404).sendFile(path.join(__dirname, '404.html'));
 });
 
 const PORT = 3001;
 app.listen(PORT, () => {
-    console.log(`Analytics server running at http://localhost:${PORT}`);
+  console.log(`Analytics server running at http://localhost:${PORT}`);
 });

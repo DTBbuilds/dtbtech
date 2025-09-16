@@ -1,13 +1,13 @@
 // Environment configuration
 const config = {
-    development: {
-        apiUrl: 'http://localhost:3000/api',
-        baseUrl: 'http://localhost:3000'
-    },
-    production: {
-        apiUrl: '/api',  // relative path for production
-        baseUrl: ''      // will use the current domain
-    }
+  development: {
+    apiUrl: 'http://localhost:3000/api',
+    baseUrl: 'http://localhost:3000',
+  },
+  production: {
+    apiUrl: '/api', // relative path for production
+    baseUrl: '', // will use the current domain
+  },
 };
 
 // Explicitly export development config for client-side use
@@ -18,5 +18,5 @@ export const baseUrl = config.development.baseUrl;
 // export const { apiUrl, baseUrl } = config[env]; // Removed export and dependency on env
 
 // If needed client-side, access directly, defaulting to development
-const clientConfig = config.development;
+// const clientConfig = config.development;
 // Example usage (if needed elsewhere): console.log(clientConfig.apiUrl);

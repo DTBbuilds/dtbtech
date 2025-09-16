@@ -1,229 +1,329 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>User Profile - DTB Technologies Digital Museum</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="./assets/icons/fontawesome-subset.css">
-  <style>
-    body { background: linear-gradient(to bottom right, #0f172a, #1e293b); min-height: 100vh; color: #f8fafc; font-family: 'Inter', 'Segoe UI', Arial, sans-serif; }
-    .glass-card { background-color: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
-    .avatar { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 2px solid #38bdf8; }
-    .theme-option.selected { border: 2px solid #38bdf8; background: #0ea5e9; color: #fff; }
-  </style>
-    <script type="module" src="./src/js/main.js"></script>
-</head>
-<body class="p-4">
-  <!-- Navigation Bar -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-slate-800/30 backdrop-blur-md border-b border-gray-700/30">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-        <!-- Logo -->
-        <div class="flex-shrink-0">
-          <a href="../index.html" class="text-white font-bold text-xl hover:text-blue-400 transition-colors">
-            DTB Technologies
-          </a>
-        </div>
-        
-        <!-- Navigation Links -->
-        <div class="hidden md:flex items-center space-x-8">
-          <a href="../index.html" class="text-gray-300 hover:text-blue-400 transition-colors">
-            <i class="fas fa-home mr-2"></i>Home
-          </a>
-          <a href="../services.html" class="text-gray-300 hover:text-purple-400 transition-colors">
-            <i class="fas fa-cogs mr-2"></i>Services
-          </a>
-          <a href="../about.html" class="text-gray-300 hover:text-pink-400 transition-colors">
-            <i class="fas fa-info-circle mr-2"></i>About
-          </a>
-          <a href="../tech-lab.html" class="text-gray-300 hover:text-pink-400 transition-colors">
-            <i class="fas fa-flask mr-2"></i>Tech Lab
-          </a>
-          <a href="../contact.html" class="text-gray-300 hover:text-indigo-400 transition-colors">
-            <i class="fas fa-envelope mr-2"></i>Contact
-          </a>
-          <a href="welcome.html" class="text-gray-300 hover:text-green-400 transition-colors">
-            <i class="fas fa-chart-line mr-2"></i>Dashboard
-          </a>
-          <a href="user-profile.html" class="text-blue-400 hover:text-blue-300 transition-colors">
-            <i class="fas fa-user-circle mr-2"></i>Profile
-          </a>
-        </div>
-
-        <!-- Mobile Menu Button -->
-        <button class="md:hidden text-gray-300 hover:text-white" onclick="this.closest('nav').querySelector('#mobile-menu').classList.toggle('hidden')">
-          <i class="fas fa-bars text-2xl"></i>
-        </button>
-      </div>
-    </div>
-
-    <!-- Mobile Menu -->
-    <div class="md:hidden hidden" id="mobile-menu">
-      <div class="px-4 py-3 space-y-2 bg-slate-800/95 border-t border-gray-700/30">
-        <a href="../index.html" class="block px-3 py-2 text-gray-300 hover:text-blue-400 transition-colors">
-          <i class="fas fa-home mr-2"></i>Home
-        </a>
-        <a href="../services.html" class="block px-3 py-2 text-gray-300 hover:text-purple-400 transition-colors">
-          <i class="fas fa-cogs mr-2"></i>Services
-        </a>
-        <a href="../about.html" class="block px-3 py-2 text-gray-300 hover:text-pink-400 transition-colors">
-          <i class="fas fa-info-circle mr-2"></i>About
-        </a>
-        <a href="../tech-lab.html" class="block px-3 py-2 text-gray-300 hover:text-pink-400 transition-colors">
-          <i class="fas fa-flask mr-2"></i>Tech Lab
-        </a>
-        <a href="../contact.html" class="block px-3 py-2 text-gray-300 hover:text-indigo-400 transition-colors">
-          <i class="fas fa-envelope mr-2"></i>Contact
-        </a>
-        <a href="welcome.html" class="block px-3 py-2 text-gray-300 hover:text-green-400 transition-colors">
-          <i class="fas fa-chart-line mr-2"></i>Dashboard
-        </a>
-        <a href="user-profile.html" class="block px-3 py-2 text-blue-400 hover:text-blue-300 transition-colors">
-          <i class="fas fa-user-circle mr-2"></i>Profile
-        </a>
-      </div>
-    </div>
-  </nav>
-
-  <header class="max-w-3xl mx-auto mb-8 pt-20">
-    <div class="text-center">
-      <h1 class="text-3xl font-bold text-white mb-2">
-        <i class="fas fa-user-circle text-blue-400 mr-3"></i>User Profile
-      </h1>
-      <p class="text-gray-300">Manage your account settings and preferences</p>
-    </div>
-  </header>
-  <main class="max-w-3xl mx-auto">
-    <!-- Profile Card -->
-    <div class="glass-card rounded-2xl p-8 flex flex-col items-center mb-10">
-      <img id="profile-avatar" src="https://ui-avatars.com/api/?name=User&background=0ea5e9&color=fff" class="avatar shadow-lg mb-3" alt="User Avatar">
-      <h2 id="profile-name" class="text-2xl font-bold mb-1">User Name</h2>
-      <p id="profile-email" class="text-gray-300 mb-2">user@email.com</p>
-      <button id="change-avatar-btn" class="px-3 py-1 bg-slate-700 hover:bg-slate-600 text-gray-200 rounded text-sm mb-2">Change Avatar</button>
-    </div>
-    <!-- Settings Sections -->
-    <form id="profile-settings-form" class="space-y-8">
-      <!-- Theme Preferences -->
-      <div class="glass-card rounded-xl p-6">
-        <h3 class="text-xl font-semibold mb-3">Appearance</h3>
-        <div class="flex gap-4">
-          <button type="button" class="theme-option px-4 py-2 rounded-lg bg-slate-700 text-white" data-theme="light">Light</button>
-          <button type="button" class="theme-option px-4 py-2 rounded-lg bg-slate-700 text-white" data-theme="dark">Dark</button>
-          <button type="button" class="theme-option px-4 py-2 rounded-lg bg-slate-700 text-white" data-theme="system">System</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Profile - DTB Technologies</title>
+    <meta
+      name="description"
+      content="Manage your DTB Technologies profile and preferences."
+    />
+    <link rel="stylesheet" href="../dist/output.css" />
+    <link rel="stylesheet" href="../src/css/mobile-optimized.css" />
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/animations.css" />
+    <link rel="stylesheet" href="../assets/icons/fontawesome-subset.css" />
+    <script type="module" src="../src/js/main.js"></script>
+    <script type="module" src="../components/footer.js"></script>
+  </head>
+  <body class="bg-slate-900 text-white min-h-screen">
+    <!-- Header -->
+    <header class="bg-gray-900 border-b border-gray-800">
+      <div class="container mx-auto px-4 py-4">
+        <div class="flex justify-between items-center">
+          <div class="flex items-center space-x-4">
+            <img
+              src="../assets/dtb-logo.png"
+              alt="DTB Technologies Logo"
+              class="h-10"
+            />
+            <div>
+              <h1 class="text-xl font-bold text-white">DTB Technologies</h1>
+              <p class="text-blue-400 text-sm">User Profile</p>
+            </div>
+          </div>
+          <nav class="flex space-x-4">
+            <a
+              href="welcome.html"
+              class="text-gray-300 hover:text-white transition-colors"
+            >
+              <i class="fas fa-arrow-left mr-2"></i>Back to Dashboard
+            </a>
+            <a
+              href="../index.html"
+              class="text-gray-300 hover:text-white transition-colors"
+            >
+              <i class="fas fa-home mr-2"></i>Home
+            </a>
+          </nav>
         </div>
       </div>
-      <!-- Layout Preferences -->
-      <div class="glass-card rounded-xl p-6">
-        <h3 class="text-xl font-semibold mb-3">Layout</h3>
-        <label class="block mb-2 text-gray-300">View Style</label>
-        <select id="layout-preference" class="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white">
-          <option value="card">Card View</option>
-          <option value="list">List View</option>
-          <option value="compact">Compact</option>
-        </select>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+      <div class="max-w-4xl mx-auto">
+        <!-- Profile Header -->
+        <section
+          class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl p-8 mb-8 text-center"
+        >
+          <div
+            class="w-24 h-24 bg-white rounded-full mx-auto mb-4 flex items-center justify-center"
+          >
+            <i class="fas fa-user text-4xl text-gray-600"></i>
+          </div>
+          <h2 class="text-3xl font-bold mb-2">Welcome to Your Profile</h2>
+          <p class="text-blue-100">Manage your DTB Technologies experience</p>
+        </section>
+
+        <!-- Profile Information -->
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+          <!-- Personal Information -->
+          <div class="bg-gray-800 rounded-xl p-6">
+            <h3 class="text-xl font-semibold mb-6 flex items-center">
+              <i class="fas fa-user-circle text-blue-400 mr-3"></i>
+              Personal Information
+            </h3>
+
+            <form class="space-y-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-300 mb-2"
+                  >Full Name</label
+                >
+                <input
+                  type="text"
+                  id="profile-name"
+                  class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:border-blue-500 text-white"
+                  placeholder="Enter your full name"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-300 mb-2"
+                  >Email Address</label
+                >
+                <input
+                  type="email"
+                  id="profile-email"
+                  class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:border-blue-500 text-white"
+                  placeholder="Enter your email"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-300 mb-2"
+                  >Phone Number</label
+                >
+                <input
+                  type="tel"
+                  class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:border-blue-500 text-white"
+                  placeholder="Enter your phone number"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-300 mb-2"
+                  >Company</label
+                >
+                <input
+                  type="text"
+                  class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:border-blue-500 text-white"
+                  placeholder="Enter your company name"
+                />
+              </div>
+
+              <button
+                type="submit"
+                class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg font-semibold transition-colors"
+              >
+                Update Information
+              </button>
+            </form>
+          </div>
+
+          <!-- Preferences -->
+          <div class="bg-gray-800 rounded-xl p-6">
+            <h3 class="text-xl font-semibold mb-6 flex items-center">
+              <i class="fas fa-cog text-green-400 mr-3"></i>
+              Preferences
+            </h3>
+
+            <div class="space-y-6">
+              <!-- Notification Preferences -->
+              <div>
+                <h4 class="text-lg font-medium mb-3">Notifications</h4>
+                <div class="space-y-3">
+                  <label class="flex items-center">
+                    <input
+                      type="checkbox"
+                      class="mr-3 text-blue-600 bg-gray-700 border-gray-600 rounded focus:ring-blue-500"
+                    />
+                    <span class="text-gray-300">Email notifications</span>
+                  </label>
+                  <label class="flex items-center">
+                    <input
+                      type="checkbox"
+                      class="mr-3 text-blue-600 bg-gray-700 border-gray-600 rounded focus:ring-blue-500"
+                    />
+                    <span class="text-gray-300">SMS notifications</span>
+                  </label>
+                  <label class="flex items-center">
+                    <input
+                      type="checkbox"
+                      class="mr-3 text-blue-600 bg-gray-700 border-gray-600 rounded focus:ring-blue-500"
+                      checked
+                    />
+                    <span class="text-gray-300">Service updates</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Theme Preference -->
+              <div>
+                <h4 class="text-lg font-medium mb-3">Theme</h4>
+                <select
+                  class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:border-blue-500 text-white"
+                >
+                  <option value="dark" selected>Dark Theme</option>
+                  <option value="light">Light Theme</option>
+                  <option value="auto">Auto (System)</option>
+                </select>
+              </div>
+
+              <!-- Language Preference -->
+              <div>
+                <h4 class="text-lg font-medium mb-3">Language</h4>
+                <select
+                  class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:border-blue-500 text-white"
+                >
+                  <option value="en" selected>English</option>
+                  <option value="sw">Swahili</option>
+                </select>
+              </div>
+
+              <button
+                class="w-full bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg font-semibold transition-colors"
+              >
+                Save Preferences
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Activity Summary -->
+        <section class="bg-gray-800 rounded-xl p-6 mb-8">
+          <h3 class="text-xl font-semibold mb-6 flex items-center">
+            <i class="fas fa-chart-line text-purple-400 mr-3"></i>
+            Activity Summary
+          </h3>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="text-center">
+              <div class="text-3xl font-bold text-blue-400 mb-2">12</div>
+              <p class="text-gray-400">Services Viewed</p>
+            </div>
+
+            <div class="text-center">
+              <div class="text-3xl font-bold text-green-400 mb-2">3</div>
+              <p class="text-gray-400">Inquiries Made</p>
+            </div>
+
+            <div class="text-center">
+              <div class="text-3xl font-bold text-purple-400 mb-2">7</div>
+              <p class="text-gray-400">Days Active</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Quick Actions -->
+        <section class="bg-gray-800 rounded-xl p-6">
+          <h3 class="text-xl font-semibold mb-6 flex items-center">
+            <i class="fas fa-bolt text-yellow-400 mr-3"></i>
+            Quick Actions
+          </h3>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <a
+              href="../services.html"
+              class="bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-lg text-center transition-colors"
+            >
+              <i class="fas fa-cogs text-2xl mb-2"></i>
+              <p class="font-semibold">Browse Services</p>
+            </a>
+
+            <a
+              href="../contact.html"
+              class="bg-green-600 hover:bg-green-700 text-white p-4 rounded-lg text-center transition-colors"
+            >
+              <i class="fas fa-envelope text-2xl mb-2"></i>
+              <p class="font-semibold">Contact Support</p>
+            </a>
+
+            <a
+              href="../tech-lab.html"
+              class="bg-purple-600 hover:bg-purple-700 text-white p-4 rounded-lg text-center transition-colors"
+            >
+              <i class="fas fa-flask text-2xl mb-2"></i>
+              <p class="font-semibold">Tech Lab</p>
+            </a>
+
+            <a
+              href="../help.html"
+              class="bg-gray-600 hover:bg-gray-700 text-white p-4 rounded-lg text-center transition-colors"
+            >
+              <i class="fas fa-question-circle text-2xl mb-2"></i>
+              <p class="font-semibold">Help Center</p>
+            </a>
+          </div>
+        </section>
       </div>
-      <!-- Notification Preferences -->
-      <div class="glass-card rounded-xl p-6">
-        <h3 class="text-xl font-semibold mb-3">Notifications</h3>
-        <label class="inline-flex items-center mb-2">
-          <input type="checkbox" id="notify-feedback" class="form-checkbox h-5 w-5 text-blue-600"> <span class="ml-2">Feedback responses</span>
-        </label><br>
-        <label class="inline-flex items-center">
-          <input type="checkbox" id="notify-news" class="form-checkbox h-5 w-5 text-blue-600"> <span class="ml-2">News & updates</span>
-        </label>
-      </div>
-      <!-- Privacy Settings -->
-      <div class="glass-card rounded-xl p-6">
-        <h3 class="text-xl font-semibold mb-3">Privacy</h3>
-        <label class="inline-flex items-center mb-2">
-          <input type="checkbox" id="private-profile" class="form-checkbox h-5 w-5 text-blue-600"> <span class="ml-2">Make my profile private</span>
-        </label>
-      </div>
-      <!-- Password Change -->
-      <div class="glass-card rounded-xl p-6">
-        <h3 class="text-xl font-semibold mb-3">Account Security</h3>
-        <label class="block mb-2 text-gray-300">Change Password</label>
-        <input type="password" id="new-password" class="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white mb-2" placeholder="New password">
-        <input type="password" id="confirm-password" class="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white mb-2" placeholder="Confirm new password">
-        <button type="button" id="change-password-btn" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg">Change Password</button>
-        <div id="password-message" class="mt-2 text-sm"></div>
-      </div>
-      <div class="flex justify-end">
-        <button type="submit" class="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold">Save Changes</button>
-      </div>
-    </form>
-  </main>
-  <script type="module">
-    import profileManager from '../js/auth/profile-manager.js';
-    import authService from '../js/auth/auth-service.js';
-    // Load user info
-    async function loadProfile() {
-      const user = await authService.getCurrentUser();
-      if (!user) return;
-      document.getElementById('profile-name').textContent = user.displayName || 'User';
-      document.getElementById('profile-email').textContent = user.email || '';
-      document.getElementById('profile-avatar').src = user.photoURL || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.displayName||'User')}&background=0ea5e9&color=fff`;
-      // Load preferences
-      const prefs = await profileManager.getPreferences();
-      if (prefs.theme) setThemeSelected(prefs.theme);
-      if (prefs.layout) document.getElementById('layout-preference').value = prefs.layout;
-      if (prefs.notifications) {
-        document.getElementById('notify-feedback').checked = !!prefs.notifications.feedback;
-        document.getElementById('notify-news').checked = !!prefs.notifications.news;
-      }
-      if (prefs.privacy) document.getElementById('private-profile').checked = !!prefs.privacy.privateProfile;
-    }
-    function setThemeSelected(theme) {
-      document.querySelectorAll('.theme-option').forEach(btn => {
-        btn.classList.remove('selected');
-        if (btn.dataset.theme === theme) btn.classList.add('selected');
+    </main>
+
+    <!-- Footer -->
+    <footer-component></footer-component>
+
+    <script>
+      // Simple form handling and interactions
+      document.addEventListener('DOMContentLoaded', function () {
+        // Handle form submissions
+        const forms = document.querySelectorAll('form');
+        forms.forEach(form => {
+          form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Show success message
+            const button = this.querySelector('button[type="submit"]');
+            const originalText = button.textContent;
+            button.textContent = 'Saved!';
+            button.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+            button.classList.add('bg-green-600');
+
+            setTimeout(() => {
+              button.textContent = originalText;
+              button.classList.remove('bg-green-600');
+              button.classList.add('bg-blue-600', 'hover:bg-blue-700');
+            }, 2000);
+          });
+        });
+
+        // Handle preference save button
+        const savePrefsBtn = document.querySelector('.bg-green-600');
+        if (savePrefsBtn) {
+          savePrefsBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            const originalText = this.textContent;
+            this.textContent = 'Preferences Saved!';
+
+            setTimeout(() => {
+              this.textContent = originalText;
+            }, 2000);
+          });
+        }
+
+        // Add hover effects to quick action cards
+        const actionCards = document.querySelectorAll(
+          '.grid .bg-blue-600, .grid .bg-green-600, .grid .bg-purple-600, .grid .bg-gray-600'
+        );
+        actionCards.forEach(card => {
+          card.addEventListener('mouseenter', function () {
+            this.classList.add('transform', 'scale-105');
+          });
+          card.addEventListener('mouseleave', function () {
+            this.classList.remove('transform', 'scale-105');
+          });
+        });
       });
-    }
-    // Theme selection
-    document.querySelectorAll('.theme-option').forEach(btn => {
-      btn.addEventListener('click', () => {
-        setThemeSelected(btn.dataset.theme);
-      });
-    });
-    // Save profile settings
-    document.getElementById('profile-settings-form').addEventListener('submit', async e => {
-      e.preventDefault();
-      const theme = document.querySelector('.theme-option.selected').dataset.theme;
-      const layout = document.getElementById('layout-preference').value;
-      const notifications = {
-        feedback: document.getElementById('notify-feedback').checked,
-        news: document.getElementById('notify-news').checked
-      };
-      const privacy = { privateProfile: document.getElementById('private-profile').checked };
-      await profileManager.updatePreferences({ theme, layout, notifications, privacy });
-      alert('Preferences updated!');
-    });
-    // Change password
-    document.getElementById('change-password-btn').addEventListener('click', async () => {
-      const newPassword = document.getElementById('new-password').value;
-      const confirmPassword = document.getElementById('confirm-password').value;
-      const msg = document.getElementById('password-message');
-      if (!newPassword || newPassword !== confirmPassword) {
-        msg.textContent = 'Passwords do not match.';
-        msg.className = 'text-red-400 mt-2 text-sm';
-        return;
-      }
-      try {
-        await authService.changePassword(newPassword);
-        msg.textContent = 'Password changed successfully!';
-        msg.className = 'text-green-400 mt-2 text-sm';
-      } catch (e) {
-        msg.textContent = 'Error changing password.';
-        msg.className = 'text-red-400 mt-2 text-sm';
-      }
-    });
-    // Avatar change (demo only)
-    document.getElementById('change-avatar-btn').addEventListener('click', () => {
-      alert('Avatar change functionality coming soon!');
-    });
-    // Load profile on page load
-    loadProfile();
-  </script>
-</body>
+    </script>
+  </body>
 </html>

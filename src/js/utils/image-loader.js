@@ -17,12 +17,14 @@ class ModernImageLoader {
 
   async detectFormatSupport() {
     // Test WebP support
-    this.formatSupport.webp = await this.testFormat('webp', 
+    this.formatSupport.webp = await this.testFormat(
+      'webp',
       'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA'
     );
 
     // Test AVIF support
-    this.formatSupport.avif = await this.testFormat('avif',
+    this.formatSupport.avif = await this.testFormat(
+      'avif',
       'data:image/avif;base64,AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADybWV0YQAAAAAAAAAoaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAGxpYmF2aWYAAAAADnBpdG0AAAAAAAEAAAAeaWxvYwAAAABEAAABAAEAAAABAAABGgAAAB0AAAAoaWluZgAAAAAAAQAAABppbmZlAgAAAAABAABhdjAxQ29sb3IAAAAAamlwcnAAAABLaXBjbwAAABRpc3BlAAAAAAAAAAIAAAACAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQ0MAAAAABNjb2xybmNseAACAAIAAYAAAAAXaXBtYQAAAAAAAAABAAEEAQKDBAAAACVtZGF0EgAKCBgABogQEAwgMg8f8D///8WfhwB8+ErK42A='
     );
 
@@ -30,7 +32,7 @@ class ModernImageLoader {
   }
 
   async testFormat(format, testImage) {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       const img = new Image();
       img.onload = () => resolve(img.width === 2 && img.height === 2);
       img.onerror = () => resolve(false);
@@ -43,7 +45,11 @@ class ModernImageLoader {
       const response = await fetch('/dist/assets/image-manifest.json');
       if (response.ok) {
         this.imageManifest = await response.json();
-        console.log('Image manifest loaded:', Object.keys(this.imageManifest.images).length, 'images');
+        console.log(
+          'Image manifest loaded:',
+          Object.keys(this.imageManifest.images).length,
+          'images'
+        );
       }
     } catch (error) {
       console.warn('Could not load image manifest:', error);
@@ -75,9 +81,13 @@ class ModernImageLoader {
     if (targetWidth) {
       // Find the smallest variant that's larger than target width
       const suitableVariants = imageData.variants
-        .filter(v => v.format === preferredFormat && (v.size === null || v.size >= targetWidth))
+        .filter(
+          v =>
+            v.format === preferredFormat &&
+            (v.size === null || v.size >= targetWidth)
+        )
         .sort((a, b) => (a.size || Infinity) - (b.size || Infinity));
-      
+
       bestVariant = suitableVariants[0];
     }
 
@@ -88,7 +98,9 @@ class ModernImageLoader {
 
     // Final fallback to original format
     if (!bestVariant) {
-      bestVariant = imageData.variants.find(v => v.format === 'jpg' || v.format === 'png');
+      bestVariant = imageData.variants.find(
+        v => v.format === 'jpg' || v.format === 'png'
+      );
     }
 
     return bestVariant ? `/dist/assets/${bestVariant.path}` : imagePath;
@@ -130,7 +142,12 @@ class ModernImageLoader {
     return srcSet;
   }
 
-  generatePictureElement(imagePath, alt = '', className = '', targetWidth = null) {
+  generatePictureElement(
+    imagePath,
+    alt = '',
+    className = '',
+    targetWidth = null
+  ) {
     if (!this.imageManifest) {
       return `<img src="${imagePath}" alt="${alt}" class="${className}">`;
     }
@@ -162,8 +179,9 @@ class ModernImageLoader {
 
     // Add fallback img element
     const fallbackSrc = this.getBestImageSrc(imagePath, targetWidth);
-    const fallbackSrcSet = this.generateFormatSrcSet(imageData, 'jpg') || 
-                          this.generateFormatSrcSet(imageData, 'png');
+    const fallbackSrcSet =
+      this.generateFormatSrcSet(imageData, 'jpg') ||
+      this.generateFormatSrcSet(imageData, 'png');
 
     pictureHTML += `<img src="${fallbackSrc}"`;
     if (fallbackSrcSet) {
@@ -185,42 +203,45 @@ class ModernImageLoader {
       return singleVariant ? `/dist/assets/${singleVariant.path}` : null;
     }
 
-    return variants
-      .map(v => `/dist/assets/${v.path} ${v.size}w`)
-      .join(', ');
+    return variants.map(v => `/dist/assets/${v.path} ${v.size}w`).join(', ');
   }
 
   getImageKey(imagePath) {
-    return imagePath.replace(/^.*\//, '').replace(/\.(jpg|jpeg|png|webp|avif)$/i, '');
+    return imagePath
+      .replace(/^.*\//, '')
+      .replace(/\.(jpg|jpeg|png|webp|avif)$/i, '');
   }
 
   // Lazy loading with modern formats
   setupLazyLoading() {
     const images = document.querySelectorAll('img[data-src]');
-    
-    const imageObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const img = entry.target;
-          const originalSrc = img.dataset.src;
-          
-          // Get optimized source
-          const optimizedSrc = this.getBestImageSrc(originalSrc);
-          const srcSet = this.generateSrcSet(originalSrc);
-          
-          img.src = optimizedSrc;
-          if (srcSet && srcSet !== optimizedSrc) {
-            img.srcset = srcSet;
+
+    const imageObserver = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            const originalSrc = img.dataset.src;
+
+            // Get optimized source
+            const optimizedSrc = this.getBestImageSrc(originalSrc);
+            const srcSet = this.generateSrcSet(originalSrc);
+
+            img.src = optimizedSrc;
+            if (srcSet && srcSet !== optimizedSrc) {
+              img.srcset = srcSet;
+            }
+
+            img.classList.add('loaded');
+            img.removeAttribute('data-src');
+            imageObserver.unobserve(img);
           }
-          
-          img.classList.add('loaded');
-          img.removeAttribute('data-src');
-          imageObserver.unobserve(img);
-        }
-      });
-    }, {
-      rootMargin: '50px 0px'
-    });
+        });
+      },
+      {
+        rootMargin: '50px 0px',
+      }
+    );
 
     images.forEach(img => imageObserver.observe(img));
   }
@@ -228,13 +249,13 @@ class ModernImageLoader {
   // Convert existing images to use modern formats
   upgradeExistingImages() {
     const images = document.querySelectorAll('img:not([data-src])');
-    
+
     images.forEach(img => {
       const currentSrc = img.src;
       if (currentSrc && !currentSrc.includes('/dist/assets/')) {
         const optimizedSrc = this.getBestImageSrc(currentSrc);
         const srcSet = this.generateSrcSet(currentSrc);
-        
+
         if (optimizedSrc !== currentSrc) {
           img.src = optimizedSrc;
           if (srcSet && srcSet !== optimizedSrc) {
@@ -252,14 +273,14 @@ class ModernImageLoader {
       link.rel = 'preload';
       link.as = 'image';
       link.href = this.getBestImageSrc(imagePath);
-      
+
       // Add responsive preload if supported
       const srcSet = this.generateSrcSet(imagePath);
       if (srcSet && srcSet !== link.href) {
         link.imagesrcset = srcSet;
         link.imagesizes = '(max-width: 768px) 100vw, 50vw';
       }
-      
+
       document.head.appendChild(link);
     });
   }

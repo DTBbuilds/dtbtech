@@ -1,34 +1,131 @@
 /* Modern Icon System - Unicode Fallbacks */
-.fas {
+.fas,
+.fab {
   display: inline-block;
   font-style: normal;
   font-variant: normal;
   text-rendering: auto;
   line-height: 1;
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
 }
 
 /* Essential Icons with Unicode fallbacks */
-.fa-chart-line:before { content: "📊"; }
-.fa-arrow-right:before { content: "→"; }
-.fa-cloud:before { content: "☁️"; }
-.fa-database:before { content: "🗄️"; }
-.fa-code:before { content: "</>"; }
-.fa-shield-alt:before { content: "🛡️"; }
-.fa-headset:before { content: "🎧"; }
-.fa-wifi:before { content: "📶"; }
-.fa-cog:before { content: "⚙️"; }
-.fa-cogs:before { content: "⚙️"; }
-.fa-users:before { content: "👥"; }
-.fa-phone:before { content: "📞"; }
-.fa-envelope:before { content: "✉️"; }
-.fa-map-marker-alt:before { content: "📍"; }
-.fa-bars:before { content: "☰"; }
-.fa-times:before { content: "✕"; }
-.fa-home:before { content: "🏠"; }
-.fa-info-circle:before { content: "ℹ️"; }
-.fa-flask:before { content: "🧪"; }
-.fa-sign-in-alt:before { content: "🔑"; }
-.fa-sign-out-alt:before { content: "🚪"; }
-.fa-question-circle:before { content: "❓"; }
-.fa-phone-alt:before { content: "📞"; }
+.fa-arrow-right:before {
+  content: '→';
+}
+.fa-cloud:before {
+  content: '☁️';
+}
+.fa-database:before {
+  content: '🗄️';
+}
+.fa-shield-alt:before {
+  content: '🛡️';
+}
+.fa-headset:before {
+  content: '🎧';
+}
+.fa-wifi:before {
+  content: '📶';
+}
+.fa-cog:before {
+  content: '⚙️';
+}
+.fa-cogs:before {
+  content: '⚙️';
+}
+.fa-server:before {
+  content: '🖥️';
+}
+.fa-cloud-upload-alt:before {
+  content: '☁️↑';
+}
+.fa-network-wired:before {
+  content: '🔗';
+}
+.fa-check:before {
+  content: '✓';
+}
+.fa-phone:before {
+  content: '📞';
+}
+.fa-clock:before {
+  content: '🕐';
+}
+.fa-star:before {
+  content: '⭐';
+}
+.fa-smile:before {
+  content: '😊';
+}
+.fa-check-circle:before {
+  content: '✅';
+}
+.fa-users:before {
+  content: '👥';
+}
+.fa-envelope:before {
+  content: '✉️';
+}
+.fa-map-marker-alt:before {
+  content: '📍';
+}
+.fa-bars:before {
+  content: '☰';
+}
+.fa-times:before {
+  content: '✕';
+}
+.fa-home:before {
+  content: '🏠';
+}
+.fa-info-circle:before {
+  content: 'ℹ️';
+}
+.fa-flask:before {
+  content: '🧪';
+}
+.fa-sign-in-alt:before {
+  content: '🔑';
+}
+.fa-sign-out-alt:before {
+  content: '🚪';
+}
+.fa-question-circle:before {
+  content: '❓';
+}
+.fa-lock:before {
+  content: '🔒';
+}
+
+/* Social Media Icons */
+.fa-facebook-f:before {
+  content: '📘';
+}
+.fa-twitter:before {
+  content: '𝕏';
+}
+.fa-linkedin-in:before {
+  content: '💼';
+}
+.fa-instagram:before {
+  content: '📸';
+}
+.fa-youtube:before {
+  content: '▶️';
+}
+.fa-tiktok:before {
+  content: '🎬';
+}
+.fa-whatsapp:before {
+  content: '💬';
+}
+.fa-envelope-open-text:before {
+  content: '📧';
+}
+.fa-chevron-right:before {
+  content: '›';
+}

@@ -1,5 +1,5 @@
-import { defineConfig } from 'vite'
-import { resolve } from 'path'
+import { defineConfig } from 'vite';
+import { resolve } from 'path';
 
 export default defineConfig({
   server: {
@@ -8,14 +8,14 @@ export default defineConfig({
     proxy: {
       '/api': {
         target: 'http://localhost:3001',
-        changeOrigin: true
+        changeOrigin: true,
       },
       '/favicon.ico': {
         target: 'http://localhost:3001',
-        changeOrigin: true
-      }
+        changeOrigin: true,
+      },
     },
-    https: false
+    https: false,
   },
   build: {
     outDir: 'dist',
@@ -28,25 +28,32 @@ export default defineConfig({
         cart: resolve(__dirname, 'cart.html'),
         help: resolve(__dirname, 'help.html'),
         'tech-lab': resolve(__dirname, 'tech-lab.html'),
-        'test-performance': resolve(__dirname, 'test-performance.html')
+        'test-performance': resolve(__dirname, 'test-performance.html'),
       },
       output: {
         manualChunks: {
-          utils: ['src/js/utils/image-loader.js']
-        }
-      }
+          utils: ['src/js/utils/image-loader.js'],
+        },
+      },
     },
     chunkSizeWarningLimit: 1000,
-    minify: 'terser'
+    minify: 'terser',
   },
   css: {
-    devSourcemap: true
+    devSourcemap: true,
   },
-  assetsInclude: ['**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.svg', '**/*.webp', '**/*.avif'],
+  assetsInclude: [
+    '**/*.png',
+    '**/*.jpg',
+    '**/*.jpeg',
+    '**/*.svg',
+    '**/*.webp',
+    '**/*.avif'
+  ],
   optimizeDeps: {
-    include: []
+    include: [],
   },
   esbuild: {
-    target: 'es2020'
-  }
-})
+    target: 'es2020',
+  },
+});

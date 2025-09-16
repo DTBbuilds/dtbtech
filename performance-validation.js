@@ -14,7 +14,7 @@ setTimeout(() => {
     'Web Vitals Monitor': window.webVitalsMonitor !== undefined,
     'Service Worker Support': 'serviceWorker' in navigator,
     'Intersection Observer': 'IntersectionObserver' in window,
-    'Performance API': 'performance' in window && 'memory' in performance
+    'Performance API': 'performance' in window && 'memory' in performance,
   };
 
   console.log('📊 Module Loading Tests:');
@@ -27,7 +27,7 @@ setTimeout(() => {
     setTimeout(() => {
       const metrics = window.webVitalsMonitor.getMetrics();
       const score = window.webVitalsMonitor.getPerformanceScore();
-      
+
       console.log('📈 Performance Metrics:');
       console.log(`Overall Score: ${score}/100`);
       console.log('Core Web Vitals:', {
@@ -35,7 +35,7 @@ setTimeout(() => {
         FID: metrics.FID ? `${metrics.FID}ms` : 'waiting for interaction...',
         CLS: metrics.CLS ? metrics.CLS.toFixed(3) : 'measuring...',
         FCP: metrics.FCP ? `${metrics.FCP}ms` : 'measuring...',
-        TTFB: metrics.TTFB ? `${metrics.TTFB}ms` : 'measuring...'
+        TTFB: metrics.TTFB ? `${metrics.TTFB}ms` : 'measuring...',
       });
     }, 2000);
   }
@@ -54,9 +54,10 @@ setTimeout(() => {
   console.log(`📱 Mobile CSS Loaded: ${mobileCSS ? '✅ YES' : '❌ NO'}`);
 
   // Test 5: Image Optimization
-  const preloadedImages = document.querySelectorAll('link[rel="preload"][as="image"]');
+  const preloadedImages = document.querySelectorAll(
+    'link[rel="preload"][as="image"]'
+  );
   console.log(`🖼️ Preloaded Images: ${preloadedImages.length}`);
-
 }, 1000);
 
 // Test 6: Scroll Performance Test
@@ -64,11 +65,11 @@ function testScrollPerformance() {
   console.log('🔄 Testing scroll performance...');
   let frameCount = 0;
   const startTime = performance.now();
-  
+
   const testScroll = () => {
     window.scrollBy(0, 5);
     frameCount++;
-    
+
     if (frameCount < 60) {
       requestAnimationFrame(testScroll);
     } else {
@@ -76,7 +77,7 @@ function testScrollPerformance() {
       const fps = Math.round(1000 / ((endTime - startTime) / frameCount));
       console.log(`📊 Scroll Performance: ${fps} FPS`);
       window.scrollTo(0, 0);
-      
+
       if (fps >= 55) {
         console.log('✅ Excellent scroll performance!');
       } else if (fps >= 45) {
@@ -86,7 +87,7 @@ function testScrollPerformance() {
       }
     }
   };
-  
+
   requestAnimationFrame(testScroll);
 }
 

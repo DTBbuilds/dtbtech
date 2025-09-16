@@ -1,7 +1,7 @@
 {
-  "name": "dtb-mpesa-backend",
+  "name": "dtb-backend",
   "version": "1.0.0",
-  "description": "Backend server for DTB Technologies M-Pesa integration",
+  "description": "Backend server for DTB Technologies",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

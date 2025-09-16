@@ -22,18 +22,18 @@ class AnimationOptimizer {
     const memory = navigator.deviceMemory || 4; // Default to 4GB if not available
     const cores = navigator.hardwareConcurrency || 4;
     const connection = navigator.connection;
-    
+
     // Consider device low-end if:
     // - Less than 4GB RAM
     // - Less than 4 CPU cores
     // - Slow connection
     const isLowMemory = memory < 4;
     const isLowCores = cores < 4;
-    const isSlowConnection = connection && (
-      connection.effectiveType === 'slow-2g' || 
-      connection.effectiveType === '2g' ||
-      connection.effectiveType === '3g'
-    );
+    const isSlowConnection =
+      connection &&
+      (connection.effectiveType === 'slow-2g' ||
+        connection.effectiveType === '2g' ||
+        connection.effectiveType === '3g');
 
     return isLowMemory || isLowCores || isSlowConnection;
   }
@@ -43,8 +43,11 @@ class AnimationOptimizer {
   }
 
   detectMobile() {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
-           window.innerWidth <= 768;
+    return (
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      ) || window.innerWidth <= 768
+    );
   }
 
   optimizeAnimations() {
@@ -141,15 +144,18 @@ class AnimationOptimizer {
       const throttleRate = 1000 / 30; // 30fps instead of 60fps
 
       const originalRAF = window.requestAnimationFrame;
-      window.requestAnimationFrame = function(callback) {
+      window.requestAnimationFrame = function (callback) {
         const now = Date.now();
         const elapsed = now - lastFrame;
-        
+
         if (elapsed > throttleRate) {
           lastFrame = now;
           return originalRAF(callback);
         } else {
-          return setTimeout(() => originalRAF(callback), throttleRate - elapsed);
+          return setTimeout(
+            () => originalRAF(callback),
+            throttleRate - elapsed
+          );
         }
       };
     }
@@ -157,12 +163,15 @@ class AnimationOptimizer {
 
   setupPerformanceObserver() {
     if ('PerformanceObserver' in window) {
-      const observer = new PerformanceObserver((list) => {
+      const observer = new PerformanceObserver(list => {
         const entries = list.getEntries();
         entries.forEach(entry => {
           // Monitor for long animation frames
           if (entry.entryType === 'measure' && entry.duration > 16.67) {
-            console.warn('Long animation frame detected:', entry.duration + 'ms');
+            console.warn(
+              'Long animation frame detected:',
+              entry.duration + 'ms'
+            );
             this.reduceAnimationComplexity();
           }
         });
@@ -179,9 +188,11 @@ class AnimationOptimizer {
 
   reduceAnimationComplexity() {
     // Dynamically reduce animation complexity if performance issues detected
-    document.querySelectorAll('.animate-blob, .animate-float-slow').forEach(element => {
-      element.style.animationDuration = '20s';
-    });
+    document
+      .querySelectorAll('.animate-blob, .animate-float-slow')
+      .forEach(element => {
+        element.style.animationDuration = '20s';
+      });
 
     document.querySelectorAll('[class*="backdrop-blur"]').forEach(element => {
       element.style.backdropFilter = 'blur(4px)';
@@ -200,12 +211,14 @@ class AnimationOptimizer {
     });
 
     // Listen for reduced motion preference changes
-    window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', (e) => {
-      this.prefersReducedMotion = e.matches;
-      if (this.prefersReducedMotion) {
-        this.disableAllAnimations();
-      }
-    });
+    window
+      .matchMedia('(prefers-reduced-motion: reduce)')
+      .addEventListener('change', e => {
+        this.prefersReducedMotion = e.matches;
+        if (this.prefersReducedMotion) {
+          this.disableAllAnimations();
+        }
+      });
 
     // Monitor battery status if available
     if ('getBattery' in navigator) {

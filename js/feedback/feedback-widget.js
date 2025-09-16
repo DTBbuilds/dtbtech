@@ -14,12 +14,13 @@ class FeedbackWidget {
   constructor() {
     this.widgetElement = null;
     this.isExpanded = false;
-    this.currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    
+    this.currentPage =
+      window.location.pathname.split('/').pop() || 'index.html';
+
     // Initialize the widget
     this.init();
   }
-  
+
   /**
    * Initialize the feedback widget
    */
@@ -28,10 +29,10 @@ class FeedbackWidget {
     if (!this.widgetElement) {
       this.createWidget();
     }
-    
+
     console.log('Feedback widget initialized');
   }
-  
+
   /**
    * Create the feedback widget element
    */
@@ -40,7 +41,7 @@ class FeedbackWidget {
     this.widgetElement = document.createElement('div');
     this.widgetElement.className = 'fixed bottom-6 right-6 z-40';
     this.widgetElement.id = 'feedback-widget';
-    
+
     // Create widget button
     this.widgetElement.innerHTML = `
       <div class="feedback-button-container relative">
@@ -65,13 +66,13 @@ class FeedbackWidget {
         </div>
       </div>
     `;
-    
+
     // Add event listeners
     this.setupEventListeners();
-    
+
     // Add to document
     document.body.appendChild(this.widgetElement);
-    
+
     // Add CSS for widget
     const style = document.createElement('style');
     style.textContent = `
@@ -87,7 +88,7 @@ class FeedbackWidget {
     `;
     document.head.appendChild(style);
   }
-  
+
   /**
    * Set up event listeners for the widget
    */
@@ -97,24 +98,25 @@ class FeedbackWidget {
     if (feedbackButton) {
       feedbackButton.addEventListener('click', () => this.toggleMenu());
     }
-    
+
     // Feedback option clicks
-    const feedbackOptions = this.widgetElement.querySelectorAll('.feedback-option');
+    const feedbackOptions =
+      this.widgetElement.querySelectorAll('.feedback-option');
     feedbackOptions.forEach(option => {
       option.addEventListener('click', () => {
         const feedbackType = option.dataset.type;
         this.showFeedbackForm(feedbackType);
       });
     });
-    
+
     // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
+    document.addEventListener('click', e => {
       if (this.isExpanded && !this.widgetElement.contains(e.target)) {
         this.closeMenu();
       }
     });
   }
-  
+
   /**
    * Toggle the feedback menu
    */
@@ -125,49 +127,49 @@ class FeedbackWidget {
       this.openMenu();
     }
   }
-  
+
   /**
    * Open the feedback menu
    */
   openMenu() {
     const feedbackButton = this.widgetElement.querySelector('#feedback-button');
     const feedbackMenu = this.widgetElement.querySelector('#feedback-menu');
-    
+
     if (feedbackButton && feedbackMenu) {
       feedbackButton.classList.add('expanded');
       feedbackMenu.classList.remove('hidden');
-      
+
       // Animate menu opening
       setTimeout(() => {
         feedbackMenu.classList.remove('scale-95', 'opacity-0');
         feedbackMenu.classList.add('scale-100', 'opacity-100');
       }, 10);
-      
+
       this.isExpanded = true;
     }
   }
-  
+
   /**
    * Close the feedback menu
    */
   closeMenu() {
     const feedbackButton = this.widgetElement.querySelector('#feedback-button');
     const feedbackMenu = this.widgetElement.querySelector('#feedback-menu');
-    
+
     if (feedbackButton && feedbackMenu) {
       feedbackButton.classList.remove('expanded');
       feedbackMenu.classList.remove('scale-100', 'opacity-100');
       feedbackMenu.classList.add('scale-95', 'opacity-0');
-      
+
       // Hide menu after animation
       setTimeout(() => {
         feedbackMenu.classList.add('hidden');
       }, 200);
-      
+
       this.isExpanded = false;
     }
   }
-  
+
   /**
    * Show the feedback form
    * @param {string} feedbackType - Type of feedback
@@ -175,7 +177,7 @@ class FeedbackWidget {
   showFeedbackForm(feedbackType) {
     // Close the menu
     this.closeMenu();
-    
+
     // Determine feedback type
     let type = FeedbackTypes.EXPERIENCE;
     switch (feedbackType) {
@@ -186,15 +188,20 @@ class FeedbackWidget {
         type = FeedbackTypes.BUG;
         break;
     }
-    
+
     // Determine context based on current page
     let itemId = null;
     let itemName = null;
-    
+
     // Detect if we're on a specific page or viewing a specific exhibit
-    if (this.currentPage.includes('exhibit') || this.currentPage.includes('project')) {
+    if (
+      this.currentPage.includes('exhibit') ||
+      this.currentPage.includes('project')
+    ) {
       // Try to find exhibit or project info
-      const title = document.querySelector('h1')?.textContent || document.querySelector('h2')?.textContent;
+      const title =
+        document.querySelector('h1')?.textContent ||
+        document.querySelector('h2')?.textContent;
       if (title) {
         itemId = this.currentPage;
         itemName = title;
@@ -210,7 +217,7 @@ class FeedbackWidget {
       itemId = 'office-tour';
       itemName = 'Virtual Office Tour';
     }
-    
+
     // Show the feedback form
     feedbackForm.show(type, itemId, itemName);
   }
