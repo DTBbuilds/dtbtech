@@ -6,12 +6,16 @@
 import LazyLoader from './performance/lazy-loading.js';
 import AnimationOptimizer from './performance/animation-optimizer.js';
 import WebVitalsMonitor from './performance/web-vitals.js';
+import MobileEnhancements from './mobile-enhancements.js';
+import MobilePerformanceOptimizer from './performance/mobile-performance.js';
 
 class DTBApp {
   constructor() {
     this.lazyLoader = null;
     this.animationOptimizer = null;
     this.webVitalsMonitor = null;
+    this.mobileEnhancements = null;
+    this.mobilePerformanceOptimizer = null;
     this.serviceWorkerRegistration = null;
     this.init();
   }
@@ -83,6 +87,12 @@ class DTBApp {
 
     // Initialize web vitals monitoring
     this.webVitalsMonitor = new WebVitalsMonitor();
+
+    // Initialize mobile enhancements
+    this.mobileEnhancements = new MobileEnhancements();
+
+    // Initialize mobile performance optimizer
+    this.mobilePerformanceOptimizer = new MobilePerformanceOptimizer();
   }
 
   setupEventListeners() {
@@ -149,17 +159,6 @@ class DTBApp {
   }
 
   initializeNavigation() {
-    // Mobile menu optimization
-    const mobileMenuButton = document.querySelector(
-      '[onclick*="toggleMobileMenu"]'
-    );
-    if (mobileMenuButton) {
-      mobileMenuButton.addEventListener('click', e => {
-        e.preventDefault();
-        this.toggleMobileMenu();
-      });
-    }
-
     // Smooth scroll for anchor links (desktop only)
     if (window.innerWidth > 768) {
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -463,12 +462,6 @@ class DTBApp {
     this.showOfflineNotification();
   }
 
-  toggleMobileMenu() {
-    const mobileMenu = document.getElementById('mobile-menu');
-    if (mobileMenu) {
-      mobileMenu.classList.toggle('hidden');
-    }
-  }
 
   async handleFormSubmission(form) {
     // const formData = new FormData(form);
