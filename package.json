@@ -8,7 +8,7 @@
     "dev": "concurrently \"node server.js\" \"vite\"",
     "dev:vite": "vite",
     "dev:server": "node server.js",
-    "build": "npm run optimize:images && vite build",
+    "build": "npm run optimize:images && npm run build:css && vite build",
     "preview": "vite preview",
     "serve": "vite preview --port 3000",
     "start": "node server.js",
@@ -46,7 +46,7 @@
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/forms": "^0.5.3",
     "@tailwindcss/typography": "^0.5.9",
-    "@vitejs/plugin-legacy": "^5.0.0",
+    "@vitejs/plugin-legacy": "^7.2.1",
     "autoprefixer": "^10.4.14",
     "concurrently": "^9.2.1",
     "cssnano": "^6.0.1",
@@ -61,7 +61,7 @@
     "stylelint-config-standard": "^34.0.0",
     "tailwindcss": "^3.4.17",
     "terser": "^5.19.2",
-    "vite": "^5.0.0",
+    "vite": "^7.1.5",
     "vite-bundle-analyzer": "^0.7.0",
     "workbox-build": "^7.0.0"
   }
