@@ -6,16 +6,8 @@
   "framework": null,
   "rewrites": [
     {
-      "source": "/services/(.*)",
-      "destination": "/services/$1.html"
-    },
-    {
-      "source": "/tech-lab/(.*)",
-      "destination": "/tech-lab/$1.html"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/$1.html"
+      "source": "/services/:slug",
+      "destination": "/services/:slug.html"
     }
   ],
   "redirects": [

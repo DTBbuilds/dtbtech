@@ -19,6 +19,18 @@ export default defineConfig({
         help: resolve(__dirname, 'help.html'),
         'tech-lab': resolve(__dirname, 'tech-lab.html'),
         'test-performance': resolve(__dirname, 'test-performance.html'),
+        // Service pages
+        'services/cloud-solutions': resolve(__dirname, 'services/cloud-solutions.html'),
+        'services/cybersecurity': resolve(__dirname, 'services/cybersecurity.html'),
+        'services/data-recovery': resolve(__dirname, 'services/data-recovery.html'),
+        'services/digital-transformation': resolve(__dirname, 'services/digital-transformation.html'),
+        'services/hardware-solutions': resolve(__dirname, 'services/hardware-solutions.html'),
+        'services/it-support': resolve(__dirname, 'services/it-support.html'),
+        'services/network-infrastructure': resolve(__dirname, 'services/network-infrastructure.html'),
+        'services/network-solutions': resolve(__dirname, 'services/network-solutions.html'),
+        'services/software-development': resolve(__dirname, 'services/software-development.html'),
+        'services/web-app-dev': resolve(__dirname, 'services/web-app-dev.html'),
+        'services/wifi-starlink': resolve(__dirname, 'services/wifi-starlink.html'),
       },
       output: {
         manualChunks: {
