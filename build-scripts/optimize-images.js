@@ -85,8 +85,15 @@ class ImageOptimizer {
     console.log(`Processing: ${relativePath}`);
 
     try {
+      // First, validate the image file
       const image = sharp(imagePath);
       const metadata = await image.metadata();
+
+      // Skip if metadata is invalid or image is corrupted
+      if (!metadata || !metadata.width || !metadata.height) {
+        console.warn(`⚠️  Skipping ${relativePath}: Invalid image metadata`);
+        return;
+      }
 
       // Generate original format (optimized)
       await this.generateOptimizedOriginal(
@@ -104,8 +111,21 @@ class ImageOptimizer {
       if (metadata.width > 800) {
         await this.generateResponsiveVariants(image, outputBase, metadata);
       }
+
+      console.log(`✅ Successfully processed: ${relativePath}`);
     } catch (error) {
-      console.error(`Failed to process ${relativePath}:`, error);
+      // Log warning but don't fail the build
+      console.warn(`⚠️  Skipping ${relativePath}: ${error.message}`);
+      
+      // Copy the original file as fallback if it's a valid image extension
+      try {
+        const outputPath = path.join(this.outputDir, relativePath);
+        await fs.mkdir(path.dirname(outputPath), { recursive: true });
+        await fs.copyFile(imagePath, outputPath);
+        console.log(`📋 Copied original file as fallback: ${relativePath}`);
+      } catch (copyError) {
+        console.warn(`❌ Could not copy fallback for ${relativePath}: ${copyError.message}`);
+      }
     }
   }
 
