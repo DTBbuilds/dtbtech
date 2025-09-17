@@ -46,7 +46,7 @@ class DTBApp {
         try {
           this.serviceWorkerRegistration =
             await navigator.serviceWorker.register(
-              '/src/js/service-worker.js',
+              '/service-worker.js',
               {
                 scope: '/',
               }

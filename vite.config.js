@@ -52,6 +52,7 @@ export default defineConfig({
     '**/*.webp',
     '**/*.avif'
   ],
+  publicDir: 'public',
   optimizeDeps: {
     include: [],
   },
