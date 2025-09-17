@@ -291,6 +291,11 @@ class WebVitalsMonitor {
       });
     }
 
+    // Check if analytics is enabled
+    if (import.meta.env.VITE_ANALYTICS_ENABLED !== 'true') {
+      return;
+    }
+
     // Send to custom analytics endpoint with proper error handling
     const data = {
       metric,

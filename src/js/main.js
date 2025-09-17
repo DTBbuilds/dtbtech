@@ -564,6 +564,11 @@ class DTBApp {
   }
 
   sendAnalytics(event, data) {
+    // Check if analytics is enabled
+    if (import.meta.env.VITE_ANALYTICS_ENABLED !== 'true') {
+      return;
+    }
+    
     // Queue analytics data for sending
     if (navigator.sendBeacon) {
       const payload = JSON.stringify({ event, data, timestamp: Date.now() });
