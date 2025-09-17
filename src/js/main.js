@@ -563,17 +563,10 @@ class DTBApp {
     this.sendAnalytics('performance', metrics);
   }
 
-  sendAnalytics(event, data) {
-    // Check if analytics is enabled
-    if (import.meta.env.VITE_ANALYTICS_ENABLED !== 'true') {
-      return;
-    }
-    
-    // Queue analytics data for sending
-    if (navigator.sendBeacon) {
-      const payload = JSON.stringify({ event, data, timestamp: Date.now() });
-      navigator.sendBeacon('/api/analytics', payload);
-    }
+  async sendAnalytics(event, data) {
+    // Import API service dynamically to avoid circular dependencies
+    const { default: apiService } = await import('./services/api-service.js');
+    return await apiService.sendAnalytics(event, data);
   }
 
   optimizeMemoryUsage() {

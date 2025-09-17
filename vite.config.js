@@ -19,6 +19,7 @@ export default defineConfig({
         help: resolve(__dirname, 'help.html'),
         'tech-lab': resolve(__dirname, 'tech-lab.html'),
         'test-performance': resolve(__dirname, 'test-performance.html'),
+        'api-fallback': resolve(__dirname, 'api-fallback.html'),
         // Service pages
         'services/cloud-solutions': resolve(__dirname, 'services/cloud-solutions.html'),
         'services/cybersecurity': resolve(__dirname, 'services/cybersecurity.html'),

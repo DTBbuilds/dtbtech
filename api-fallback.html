@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Service - DTB Technologies</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #e2e8f0;
+            margin: 0;
+            padding: 2rem;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            max-width: 600px;
+            text-align: center;
+            background: rgba(30, 41, 59, 0.5);
+            padding: 3rem;
+            border-radius: 1rem;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #3b82f6;
+            margin-bottom: 1rem;
+        }
+        .status {
+            display: inline-block;
+            background: #059669;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+        }
+        .message {
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        .info {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            text-align: left;
+        }
+        .info h3 {
+            margin: 0 0 1rem 0;
+            color: #3b82f6;
+        }
+        .info ul {
+            margin: 0;
+            padding-left: 1.5rem;
+        }
+        .info li {
+            margin-bottom: 0.5rem;
+        }
+        .button {
+            display: inline-block;
+            background: #3b82f6;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        .button:hover {
+            background: #2563eb;
+        }
+        .code {
+            background: #1e293b;
+            border: 1px solid #374151;
+            border-radius: 0.25rem;
+            padding: 0.25rem 0.5rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.875rem;
+            color: #10b981;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">DTB Technologies</div>
+        <div class="status">Frontend-Only Mode</div>
+        
+        <h1>API Service Information</h1>
+        <p class="message">
+            This is a frontend-only deployment. API endpoints are handled gracefully 
+            with local storage fallbacks and proper error handling.
+        </p>
+
+        <div class="info">
+            <h3>🔧 Technical Details</h3>
+            <ul>
+                <li><strong>Mode:</strong> Static Frontend Deployment</li>
+                <li><strong>Analytics:</strong> Local storage with sync capability</li>
+                <li><strong>API Calls:</strong> Gracefully handled with fallbacks</li>
+                <li><strong>Performance:</strong> Optimized for speed and reliability</li>
+            </ul>
+        </div>
+
+        <div class="info">
+            <h3>📊 Available Services</h3>
+            <ul>
+                <li>Web Vitals monitoring (local storage)</li>
+                <li>Performance metrics collection</li>
+                <li>User interaction tracking</li>
+                <li>Error logging and reporting</li>
+            </ul>
+        </div>
+
+        <div class="info">
+            <h3>🚀 For Developers</h3>
+            <p>To enable full API functionality:</p>
+            <ul>
+                <li>Set <span class="code">VITE_ANALYTICS_ENABLED=true</span></li>
+                <li>Configure <span class="code">VITE_API_URL</span> with your backend</li>
+                <li>Deploy backend services to handle API endpoints</li>
+            </ul>
+        </div>
+
+        <a href="/" class="button">← Back to Website</a>
+    </div>
+
+    <script>
+        // Return appropriate JSON response for API calls
+        if (window.location.pathname.includes('/api/')) {
+            // Set content type for API responses
+            document.addEventListener('DOMContentLoaded', () => {
+                // If this is an API call, return JSON response
+                const apiResponse = {
+                    status: 'frontend-only',
+                    message: 'API endpoint not available in frontend-only mode',
+                    timestamp: new Date().toISOString(),
+                    endpoint: window.location.pathname,
+                    fallback: 'local_storage'
+                };
+
+                // For fetch requests, we want to return JSON
+                if (document.referrer && !document.referrer.includes(window.location.origin)) {
+                    document.body.innerHTML = `<pre>${JSON.stringify(apiResponse, null, 2)}</pre>`;
+                    document.body.style.background = '#1e293b';
+                    document.body.style.color = '#10b981';
+                    document.body.style.fontFamily = 'monospace';
+                    document.body.style.padding = '2rem';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

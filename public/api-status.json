@@ -1,0 +1,16 @@
+{
+  "status": "frontend-only",
+  "mode": "static",
+  "analytics": {
+    "enabled": false,
+    "fallback": "localStorage"
+  },
+  "services": {
+    "webVitals": "available",
+    "performance": "available",
+    "analytics": "local-only"
+  },
+  "message": "DTB Technologies is running in frontend-only mode with local storage fallbacks",
+  "timestamp": "2025-01-17T05:00:00.000Z",
+  "version": "1.0.0"
+}

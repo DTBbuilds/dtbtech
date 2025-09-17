@@ -281,7 +281,7 @@ class WebVitalsMonitor {
     this.sendToAnalytics('Long Task', entry.duration, 'poor');
   }
 
-  sendToAnalytics(metric, value, status) {
+  async sendToAnalytics(metric, value, status) {
     // Example implementation - replace with your analytics service
     if (typeof window !== 'undefined' && typeof window.gtag !== 'undefined') {
       window.gtag('event', 'web_vitals', {
@@ -291,45 +291,16 @@ class WebVitalsMonitor {
       });
     }
 
-    // Check if analytics is enabled
-    if (import.meta.env.VITE_ANALYTICS_ENABLED !== 'true') {
-      return;
-    }
-
-    // Send to custom analytics endpoint with proper error handling
-    const data = {
-      metric,
-      value,
-      status,
-      timestamp: Date.now(),
-      url: window.location.href,
-      userAgent: navigator.userAgent,
-    };
-
-    // Try sendBeacon first (for page unload scenarios)
-    if (navigator.sendBeacon) {
-      const blob = new Blob([JSON.stringify(data)], {
-        type: 'application/json',
-      });
-
-      const success = navigator.sendBeacon('/api/analytics/web-vitals', blob);
-      if (success) return;
-    }
-
-    // Fallback to fetch for better error handling
-    fetch('/api/analytics/web-vitals', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-      keepalive: true,
-    }).catch(error => {
+    // Use the robust API service
+    try {
+      const { default: apiService } = await import('../services/api-service.js');
+      return await apiService.sendWebVitals(metric, value, status);
+    } catch (error) {
       // Silently handle analytics failures in production
       if (process.env.NODE_ENV === 'development') {
         console.warn('Analytics request failed:', error);
       }
-    });
+    }
   }
 
   // Public method to get current metrics

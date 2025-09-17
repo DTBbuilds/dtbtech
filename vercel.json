@@ -8,6 +8,10 @@
     {
       "source": "/services/:slug",
       "destination": "/services/:slug.html"
+    },
+    {
+      "source": "/api/(.*)",
+      "destination": "/api-fallback.html"
     }
   ],
   "redirects": [
