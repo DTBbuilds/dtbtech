@@ -13,119 +13,161 @@
 }
 
 /* Essential Icons with Unicode fallbacks */
-.fa-arrow-right:before {
+
+.fa-arrow-right::before {
   content: '→';
 }
-.fa-cloud:before {
+
+.fa-cloud::before {
   content: '☁️';
 }
-.fa-database:before {
+
+.fa-hammer::before {
+  content: '🔨';
+}
+
+.fa-database::before {
   content: '🗄️';
 }
-.fa-shield-alt:before {
+
+.fa-shield-alt::before {
   content: '🛡️';
 }
-.fa-headset:before {
+
+.fa-headset::before {
   content: '🎧';
 }
-.fa-wifi:before {
+
+.fa-wifi::before {
   content: '📶';
 }
-.fa-cog:before {
+
+.fa-cog::before {
   content: '⚙️';
 }
-.fa-cogs:before {
+
+.fa-cogs::before {
   content: '⚙️';
 }
-.fa-server:before {
+
+.fa-server::before {
   content: '🖥️';
 }
-.fa-cloud-upload-alt:before {
+
+.fa-cloud-upload-alt::before {
   content: '☁️↑';
 }
-.fa-network-wired:before {
+
+.fa-network-wired::before {
   content: '🔗';
 }
-.fa-check:before {
+
+.fa-check::before {
   content: '✓';
 }
-.fa-phone:before {
+
+.fa-phone::before {
   content: '📞';
 }
-.fa-clock:before {
+
+.fa-clock::before {
   content: '🕐';
 }
-.fa-star:before {
+
+.fa-star::before {
   content: '⭐';
 }
-.fa-smile:before {
+
+.fa-smile::before {
   content: '😊';
 }
-.fa-check-circle:before {
+
+.fa-check-circle::before {
   content: '✅';
 }
-.fa-users:before {
+
+.fa-users::before {
   content: '👥';
 }
-.fa-envelope:before {
+
+.fa-envelope::before {
   content: '✉️';
 }
-.fa-map-marker-alt:before {
+
+.fa-map-marker-alt::before {
   content: '📍';
 }
-.fa-bars:before {
+
+.fa-bars::before {
   content: '☰';
 }
-.fa-times:before {
+
+.fa-times::before {
   content: '✕';
 }
-.fa-home:before {
+
+.fa-home::before {
   content: '🏠';
 }
-.fa-info-circle:before {
+
+.fa-info-circle::before {
   content: 'ℹ️';
 }
-.fa-flask:before {
+
+.fa-flask::before {
   content: '🧪';
 }
-.fa-sign-in-alt:before {
+
+.fa-sign-in-alt::before {
   content: '🔑';
 }
-.fa-sign-out-alt:before {
+
+.fa-sign-out-alt::before {
   content: '🚪';
 }
-.fa-question-circle:before {
+
+.fa-question-circle::before {
   content: '❓';
 }
-.fa-lock:before {
+
+.fa-lock::before {
   content: '🔒';
 }
 
 /* Social Media Icons */
-.fa-facebook-f:before {
+
+.fa-facebook-f::before {
   content: '📘';
 }
-.fa-twitter:before {
+
+.fa-twitter::before {
   content: '𝕏';
 }
-.fa-linkedin-in:before {
+
+.fa-linkedin-in::before {
   content: '💼';
 }
-.fa-instagram:before {
+
+.fa-instagram::before {
   content: '📸';
 }
-.fa-youtube:before {
+
+.fa-youtube::before {
   content: '▶️';
 }
-.fa-tiktok:before {
+
+.fa-tiktok::before {
   content: '🎬';
 }
-.fa-whatsapp:before {
+
+.fa-whatsapp::before {
   content: '💬';
 }
-.fa-envelope-open-text:before {
+
+.fa-envelope-open-text::before {
   content: '📧';
 }
-.fa-chevron-right:before {
+
+.fa-chevron-right::before {
   content: '›';
 }

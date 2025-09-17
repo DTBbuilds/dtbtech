@@ -5,16 +5,6 @@ export default defineConfig({
   server: {
     port: 3000,
     host: true,
-    proxy: {
-      '/api': {
-        target: 'http://localhost:3001',
-        changeOrigin: true,
-      },
-      '/favicon.ico': {
-        target: 'http://localhost:3001',
-        changeOrigin: true,
-      },
-    },
     https: false,
   },
   build: {

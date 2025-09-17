@@ -9,12 +9,15 @@
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
+
 }
 
 /* Blob animation */
@@ -32,17 +35,21 @@
 
 @keyframes blob {
   0% {
-    transform: translate(0px, 0px) scale(1);
+    transform: translate(0, 0) scale(1);
   }
+
   33% {
     transform: translate(30px, -50px) scale(1.1);
   }
+
   66% {
     transform: translate(-20px, 20px) scale(0.9);
   }
+
   100% {
-    transform: translate(0px, 0px) scale(1);
+    transform: translate(0, 0) scale(1);
   }
+
 }
 
 /* Floating animation */
@@ -52,14 +59,17 @@
 
 @keyframes float {
   0% {
-    transform: translateY(0px);
+    transform: translateY(0);
   }
+
   50% {
     transform: translateY(-20px);
   }
+
   100% {
-    transform: translateY(0px);
+    transform: translateY(0);
   }
+
 }
 
 /* Pulse animation */
@@ -72,9 +82,11 @@
   100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.8;
   }
+
 }
 
 /* Slide up animation */
@@ -87,10 +99,12 @@
     transform: translateY(20px);
     opacity: 0;
   }
+
   100% {
     transform: translateY(0);
     opacity: 1;
   }
+
 }
 
 /* Fade in animation */
@@ -102,6 +116,7 @@
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
@@ -110,8 +125,8 @@
 /* Common layout styles */
 .page-container {
   min-height: 100vh;
-  background-color: rgb(15, 23, 42);
-  color: rgb(209, 213, 219);
+  background-color: rgb(15 23 42);
+  color: rgb(209 213 219);
 }
 
 .content-wrapper {
@@ -125,9 +140,9 @@
 
 /* Card styles */
 .glass-card {
-  background-color: rgba(30, 41, 59, 0.5);
+  background-color: rgb(30 41 59 / 50%);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(51, 65, 85, 0.3);
+  border: 1px solid rgb(51 65 85 / 30%);
   border-radius: 1rem;
   padding: 1.5rem;
 }
@@ -136,38 +151,38 @@
 .btn-primary {
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
-  background-color: rgba(37, 99, 235, 0.2);
-  color: rgb(96, 165, 250);
-  border: 1px solid rgba(37, 99, 235, 0.3);
+  background-color: rgb(37 99 235 / 20%);
+  color: rgb(96 165 250);
+  border: 1px solid rgb(37 99 235 / 30%);
   transition: all 300ms;
 }
 
 .btn-primary:hover {
-  background-color: rgba(37, 99, 235, 0.3);
-  border-color: rgba(37, 99, 235, 0.5);
+  background-color: rgb(37 99 235 / 30%);
+  border-color: rgb(37 99 235 / 50%);
 }
 
 .btn-secondary {
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
-  background-color: rgba(51, 65, 85, 0.5);
-  color: rgb(209, 213, 219);
+  background-color: rgb(51 65 85 / 50%);
+  color: rgb(209 213 219);
   transition: all 300ms;
 }
 
 .btn-secondary:hover {
-  background-color: rgba(51, 65, 85, 0.8);
+  background-color: rgb(51 65 85 / 80%);
   color: white;
 }
 
 /* Link styles */
 .nav-link {
-  color: rgb(209, 213, 219);
+  color: rgb(209 213 219);
   transition: color 300ms;
 }
 
 .nav-link:hover {
-  color: rgb(96, 165, 250);
+  color: rgb(96 165 250);
 }
 
 /* Grid layouts */

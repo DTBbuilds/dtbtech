@@ -1,0 +1,6 @@
+server.js
+backend/
+logs/
+node_modules/
+*.log
+.env*

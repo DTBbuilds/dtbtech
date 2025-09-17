@@ -4,12 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DTB Technologies - IT Solutions & Services</title>
-    <link rel="stylesheet" href="./src/css/mobile-optimized.css" />
+    <link rel="stylesheet" href="./src/input.css" />
     <link rel="stylesheet" href="./css/common.css" />
     <link rel="stylesheet" href="./css/animations.css" />
     <link rel="stylesheet" href="./css/hero-optimized.css" />
     <link rel="stylesheet" href="./assets/icons/fontawesome-subset.css" />
     <script type="module" src="./components/nav-header.js" defer></script>
+    <script type="module" src="./src/js/main.js"></script>
     <script type="module" src="script.js"></script>
     <script type="module" src="./js/dashboard.js"></script>
     <script type="module" src="./components/footer.js"></script>
@@ -135,42 +136,42 @@
                 class="relative w-80 h-80 mx-auto flex items-center justify-center"
               >
                 <div
-                  class="w-20 h-20 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 opacity-25 blur-xl animate-pulse-slow"
+                  class="w-12 h-12 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 opacity-25 blur-xl animate-pulse-slow"
                 ></div>
                 <div
-                  class="absolute w-28 h-28 rounded-full border border-blue-500/30 animate-spin-very-slow"
+                  class="absolute w-20 h-20 rounded-full border border-blue-500/30 animate-spin-very-slow"
                 ></div>
                 <div
-                  class="absolute w-44 h-44 rounded-full border border-purple-500/20 animate-reverse-spin-very-slow"
+                  class="absolute w-32 h-32 rounded-full border border-purple-500/20 animate-reverse-spin-very-slow"
                 ></div>
                 <div
-                  class="absolute w-64 h-64 rounded-full border border-indigo-500/10 animate-spin-extremely-slow"
+                  class="absolute w-48 h-48 rounded-full border border-indigo-500/10 animate-spin-extremely-slow"
                 ></div>
               </div>
 
               <!-- Tech Icons positioned around the circles -->
-              <div class="absolute inset-0 z-20">
+              <div class="absolute w-80 h-80 top-0 left-1/2 -translate-x-1/2 z-20">
                 <!-- Top Icon - Network -->
                 <div
-                  class="absolute top-4 left-1/2 -translate-x-1/2 w-12 h-12 rounded-xl bg-slate-800/95 backdrop-blur-sm flex items-center justify-center text-purple-400 shadow-lg shadow-purple-900/40 border border-purple-500/40 animate-float-slow animation-delay-0 hover:scale-110 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/30"
+                  class="absolute top-4 left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-slate-800/95 backdrop-blur-sm flex items-center justify-center text-purple-400 shadow-lg shadow-purple-900/40 border border-purple-500/40 animate-float-slow animation-delay-0 hover:scale-110 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/30"
                 >
                   <i class="fas fa-network-wired text-lg"></i>
                 </div>
                 <!-- Right Icon - Security -->
                 <div
-                  class="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-xl bg-slate-800/95 backdrop-blur-sm flex items-center justify-center text-cyan-400 shadow-lg shadow-cyan-900/40 border border-cyan-500/40 animate-float-slow animation-delay-500 hover:scale-110 transition-all duration-300 hover:shadow-xl hover:shadow-cyan-500/30"
+                  class="absolute right-4 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-slate-800/95 backdrop-blur-sm flex items-center justify-center text-cyan-400 shadow-lg shadow-cyan-900/40 border border-cyan-500/40 animate-float-slow animation-delay-500 hover:scale-110 transition-all duration-300 hover:shadow-xl hover:shadow-cyan-500/30"
                 >
                   <i class="fas fa-shield-alt text-lg"></i>
                 </div>
                 <!-- Bottom Icon - Database -->
                 <div
-                  class="absolute bottom-8 left-1/2 -translate-x-1/2 w-12 h-12 rounded-xl bg-slate-800/95 backdrop-blur-sm flex items-center justify-center text-green-400 shadow-lg shadow-green-900/40 border border-green-500/40 animate-float-slow animation-delay-1000 hover:scale-110 transition-all duration-300 hover:shadow-xl hover:shadow-green-500/30"
+                  class="absolute bottom-4 left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-slate-800/95 backdrop-blur-sm flex items-center justify-center text-green-400 shadow-lg shadow-green-900/40 border border-green-500/40 animate-float-slow animation-delay-1000 hover:scale-110 transition-all duration-300 hover:shadow-xl hover:shadow-green-500/30"
                 >
                   <i class="fas fa-database text-lg"></i>
                 </div>
                 <!-- Left Icon - Cloud Computing -->
                 <div
-                  class="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-xl bg-slate-800/95 backdrop-blur-sm flex items-center justify-center text-blue-400 shadow-lg shadow-blue-900/40 border border-blue-500/40 animate-float-slow animation-delay-1500 hover:scale-110 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/30"
+                  class="absolute left-4 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-slate-800/95 backdrop-blur-sm flex items-center justify-center text-blue-400 shadow-lg shadow-blue-900/40 border border-blue-500/40 animate-float-slow animation-delay-1500 hover:scale-110 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/30"
                 >
                   <i class="fas fa-cloud text-lg"></i>
                 </div>

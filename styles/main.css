@@ -3,11 +3,17 @@
   /* Colors */
   --bg-primary: #0f172a;
   --bg-secondary: #1e293b;
-  --bg-card: rgba(30, 41, 59, 0.4);
+  --bg-card: rgb(30 41 59 / 40%);
   --text-primary: #f8fafc;
   --text-secondary: #cbd5e1;
   --text-muted: #94a3b8;
-  --border-color: rgba(148, 163, 184, 0.1);
+  --border-color: rgb(148 163 184 / 10%);
+  
+  /* Additional colors */
+  --primary-color: rgb(37 99 235);
+  --primary-hover: rgb(29 78 216);
+  --text-primary-alt: rgb(255 255 255);
+  --text-secondary-alt: rgb(156 163 175);
   --accent-blue: #3b82f6;
   --accent-purple: #8b5cf6;
   --accent-pink: #ec4899;
@@ -16,9 +22,9 @@
 
   /* Header Properties */
   --header-height: 4rem;
-  --header-bg: rgba(15, 23, 42, 0.8);
-  --header-border: rgba(148, 163, 184, 0.1);
-  --nav-item-hover: rgba(148, 163, 184, 0.1);
+  --header-bg: rgb(15 23 42 / 80%);
+  --header-border: rgb(148 163 184 / 10%);
+  --nav-item-hover: rgb(148 163 184 / 10%);
 
   /* Animations */
   --transition-fast: 150ms;
@@ -27,13 +33,9 @@
   --cubic-bounce: cubic-bezier(0.4, 2.5, 0.6, 1);
 }
 
-/* Core Styles */
-:root {
-  --primary-color: rgb(37, 99, 235);
-  --primary-hover: rgb(29, 78, 216);
-  --text-primary: rgb(255, 255, 255);
-  --text-secondary: rgb(156, 163, 175);
-}
+/* Core Styles - Merged with main :root */
+
+/* Additional variables moved to main :root selector */
 
 /* Global Styles */
 body {
@@ -41,7 +43,7 @@ body {
   color: var(--text-primary);
   min-height: 100vh;
   font-family:
-    'Inter',
+    Inter,
     system-ui,
     -apple-system,
     sans-serif;
@@ -64,17 +66,17 @@ html {
   background: var(--header-bg);
   border-bottom: 1px solid var(--header-border);
   backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   z-index: 50;
   transition: all var(--transition-normal);
 }
 
 .site-header.scrolled {
-  --header-bg: rgba(15, 23, 42, 0.95);
-  --header-border: rgba(148, 163, 184, 0.2);
+  --header-bg: rgb(15 23 42 / 95%);
+  --header-border: rgb(148 163 184 / 20%);
+
   box-shadow:
-    0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    0 4px 6px -1px rgb(0 0 0 / 10%),
+    0 2px 4px -1px rgb(0 0 0 / 6%);
 }
 
 .nav-brand {
@@ -165,7 +167,6 @@ html {
   opacity: 0;
   transition: all var(--transition-normal);
   overflow: hidden;
-  transition: max-height 0.3s ease-in-out;
 }
 
 .mobile-menu.active {
@@ -210,8 +211,8 @@ html {
 }
 
 .service-card:hover {
-  border-color: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 30px rgba(59, 130, 246, 0.1);
+  border-color: rgb(255 255 255 / 10%);
+  box-shadow: 0 0 30px rgb(59 130 246 / 10%);
 }
 
 /* Gradient Backgrounds */
@@ -221,8 +222,8 @@ html {
   height: 100%;
   background: radial-gradient(
     circle at top right,
-    rgba(59, 130, 246, 0.1),
-    rgba(139, 92, 246, 0.05),
+    rgb(59 130 246 / 10%),
+    rgb(139 92 246 / 5%),
     transparent 70%
   );
   filter: blur(80px);
@@ -264,24 +265,25 @@ html {
 /* Backdrop Blur */
 .backdrop-blur {
   backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
 }
 
 /* Animations */
-@keyframes fadeIn {
+@keyframes fade-in {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
 }
 
-@keyframes slideInDown {
+@keyframes slide-in-down {
   from {
     transform: translateY(-10px);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
@@ -297,16 +299,16 @@ html {
   content: '';
   position: absolute;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgb(0 0 0 / 50%);
   backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: fadeIn 0.2s ease;
+  animation: fade-in 0.2s ease;
 }
 
 /* Responsive Design */
-@media (max-width: 640px) {
+@media (width <= 640px) {
   .hero-logo-container {
     height: clamp(32px, 6vw, 40px);
   }
@@ -320,12 +322,12 @@ html {
 /* Dark Mode Optimizations */
 @media (prefers-color-scheme: dark) {
   :root {
-    --primary-color: rgb(59, 130, 246);
-    --primary-hover: rgb(37, 99, 235);
+    --primary-color: rgb(59 130 246);
+    --primary-hover: rgb(37 99 235);
   }
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .nav-items {
     display: none;
   }
@@ -355,10 +357,9 @@ html {
 
 /* Header Scroll Effects & Visibility */
 .header-default {
-  background-color: rgba(15, 23, 42, 0.95);
-  border-color: rgba(148, 163, 184, 0.1);
+  background-color: rgb(15 23 42 / 95%);
+  border-color: rgb(148 163 184 / 10%);
   backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   transition:
     background-color 0.3s ease,
     border-color 0.3s ease,
@@ -367,13 +368,12 @@ html {
 }
 
 .header-scrolled {
-  background-color: rgba(15, 23, 42, 0.8);
-  border-color: rgba(148, 163, 184, 0.2);
+  background-color: rgb(15 23 42 / 80%);
+  border-color: rgb(148 163 184 / 20%);
   backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   box-shadow:
-    0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    0 4px 6px -1px rgb(0 0 0 / 10%),
+    0 2px 4px -1px rgb(0 0 0 / 6%);
   transition:
     background-color 0.3s ease,
     border-color 0.3s ease,
@@ -399,5 +399,5 @@ nav a.active {
 }
 
 .mobile-menu nav a.active {
-  background-color: rgba(148, 163, 184, 0.1);
+  background-color: rgb(148 163 184 / 10%);
 }

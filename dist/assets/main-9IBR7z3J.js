@@ -1,1 +1,0 @@
-import"./modulepreload-polyfill-YP0FEG5d.js";import"./footer-C7SVWeKf.js";/* empty css               */import"./script-B8hujD83.js";window.promptNameAndRedirect=function(){window.location.href="./dashboard/welcome.html"},window.logout=function(){sessionStorage.clear(),window.location.href="./index.html"};

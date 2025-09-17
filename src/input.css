@@ -1,3 +1,8 @@
+/* Import mobile enhancements */
+@import url('./css/mobile-enhanced.css');
+@import url('./css/mobile-touch.css');
+@import url('./css/hero-mobile.css');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

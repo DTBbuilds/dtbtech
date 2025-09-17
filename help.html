@@ -69,10 +69,11 @@
     <link rel="manifest" href="/site.webmanifest" />
 
     <!-- Stylesheets and Scripts -->
+    <link rel="stylesheet" href="./src/input.css" />
     <link rel="stylesheet" href="./src/css/mobile-optimized.css" />
     <link rel="stylesheet" href="./css/common.css" />
     <link rel="stylesheet" href="./css/animations.css" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="./assets/icons/fontawesome-subset.css" />
     <link rel="stylesheet" href="./assets/icons/fontawesome-subset.css" />
 
     <!-- Schema.org Markup -->
@@ -301,23 +302,6 @@
         </div>
       </div>
     </main>
-
-    <!-- Floating Help Button -->
-    <div class="fixed bottom-8 right-8 z-50">
-      <button
-        id="help-button"
-        class="bg-blue-500 text-white w-16 h-16 rounded-full shadow-lg hover:bg-blue-600 transition-all duration-300 flex items-center justify-center group relative"
-      >
-        <i
-          class="fas fa-question-circle text-2xl group-hover:scale-110 transition-transform"
-        ></i>
-        <span
-          class="absolute -top-12 right-0 bg-gray-900 text-white px-4 py-2 rounded-lg text-sm opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap"
-        >
-          Need Help?
-        </span>
-      </button>
-    </div>
 
     <!-- Help Modal -->
     <div id="help-modal" class="fixed inset-0 z-50 hidden">
