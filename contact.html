@@ -1,16 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - DTB Technologies</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="./css/common.css">
-    <link rel="stylesheet" href="./css/animations.css">
-    <script src="./components/nav-header.js" defer></script>
-    <script src="./js/dashboard.js" defer></script>
-
+    
     <!-- Primary Meta Tags -->
     <title>Contact DTB Technologies - Get Expert IT Support in Kenya</title>
     <meta name="title" content="Contact DTB Technologies - Get Expert IT Support in Kenya">
@@ -39,11 +32,16 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://dtbtechnologies.co.ke/contact">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="./dist/output.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/animations.css">
+    <link rel="stylesheet" href="./css/mobile-optimizations.css">
 
     <!-- Schema.org Markup -->
     <script type="application/ld+json">
@@ -90,6 +88,10 @@
         }
     }
     </script>
+    
+    <!-- Scripts -->
+    <script src="./components/nav-header.js" defer></script>
+    <script src="./js/dashboard.js" defer></script>
 
     <style>
         .logo-container {
@@ -126,12 +128,6 @@
                 <div class="absolute inset-0 backdrop-blur-3xl bg-gradient-to-br from-blue-500/10 to-purple-500/10"></div>
             </div>
             <div class="container mx-auto px-4 relative z-10">
-    <!-- Help Floating Button -->
-    <a href="help.html" title="Get Help" class="hidden sm:flex items-center justify-center absolute top-2 right-2 z-30 w-11 h-11 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 shadow-lg border-4 border-white/30 hover:scale-110 hover:shadow-2xl transition-all duration-300 group focus:outline-none" style="box-shadow:0 4px 24px 0 rgba(80,0,180,0.11);">
-      <i class="fas fa-question-circle text-white text-2xl animate-pulse group-hover:animate-spin"></i>
-      <span class="sr-only">Help</span>
-    </a>
-    <!-- End Help Floating Button -->
 
                 <div class="max-w-4xl mx-auto text-center animate-slide-up">
                     <h1 class="text-4xl md:text-7xl font-extrabold tracking-tight mb-8 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent drop-shadow-lg animate-gradient">Contact <span class="inline-block animate-pulse-subtle">Us</span></h1>
@@ -280,43 +276,94 @@
                 </div>
 
                 <!-- Quick Links -->
-                <div class="space-y-6 backdrop-blur-sm bg-slate-900/30 p-6 rounded-2xl border border-gray-800/30">
-                    <h4 class="text-lg font-semibold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Quick Links</h4>
-                    <ul class="space-y-3">
-                        <li><a href="index.html" class="text-gray-300 hover:text-blue-400 transition-colors flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-blue-400"></i>Home</a></li>
-                        <li><a href="about.html" class="text-gray-300 hover:text-blue-400 transition-colors flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-blue-400"></i>About Us</a></li>
-                        <li><a href="services.html" class="text-gray-300 hover:text-blue-400 transition-colors flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-blue-400"></i>Services</a></li>
-                        <li><a href="tech-lab.html" class="text-gray-300 hover:text-blue-400 transition-colors flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-blue-400"></i>Tech Lab</a></li>
-                        <li><a href="contact.html" class="text-gray-300 hover:text-blue-400 transition-colors flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-blue-400"></i>Contact</a></li>
+                <div class="space-y-4">
+                    <h4 class="text-lg font-semibold text-white">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-blue-400 transition-colors">Home</a></li>
+                        <li><a href="about.html" class="text-gray-300 hover:text-blue-400 transition-colors">About Us</a></li>
+                        <li><a href="services.html" class="text-gray-300 hover:text-blue-400 transition-colors">Services</a></li>
+                        <li><a href="tech-lab.html" class="text-gray-300 hover:text-blue-400 transition-colors">Tech Lab</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-blue-400 transition-colors">Contact</a></li>
                     </ul>
                 </div>
 
-                <!-- Office Hours -->
-                <div class="space-y-6 backdrop-blur-sm bg-slate-900/30 p-6 rounded-2xl border border-gray-800/30">
-                    <h4 class="text-lg font-semibold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Office Hours</h4>
-                    <ul class="space-y-3">
-                        <li class="text-gray-300 flex items-center justify-between">
-                            <span>Monday - Friday:</span>
-                            <span>8:00 AM - 6:00 PM</span>
-                        </li>
-                        <li class="text-gray-300 flex items-center justify-between">
-                            <span>Saturday:</span>
-                            <span>9:00 AM - 1:00 PM</span>
-                        </li>
-                        <li class="text-gray-300 flex items-center justify-between">
-                            <span>Sunday:</span>
-                            <span>Closed</span>
-                        </li>
-                    </ul>
+                <!-- Office Hours & Availability -->
+                <div class="space-y-4">
+                    <h4 class="text-lg font-semibold text-white">Office Hours & Availability</h4>
+                    <div class="space-y-3">
+                        <!-- Physical Office Hours -->
+                        <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700/30">
+                            <h5 class="text-blue-400 font-medium mb-3 flex items-center">
+                                <i class="fas fa-building mr-2"></i>
+                                Physical Office
+                            </h5>
+                            <ul class="space-y-2 text-sm">
+                                <li class="text-gray-300 flex items-center justify-between">
+                                    <span>Monday - Friday:</span>
+                                    <span class="text-green-400 font-medium">8:00 AM - 10:00 PM</span>
+                                </li>
+                                <li class="text-gray-300 flex items-center justify-between">
+                                    <span>Saturday:</span>
+                                    <span class="text-green-400 font-medium">9:00 AM - 8:00 PM</span>
+                                </li>
+                                <li class="text-gray-300 flex items-center justify-between">
+                                    <span>Sunday:</span>
+                                    <span class="text-yellow-400 font-medium">10:00 AM - 6:00 PM</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Online Support -->
+                        <div class="bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-lg p-4 border border-blue-500/30">
+                            <h5 class="text-blue-300 font-medium mb-3 flex items-center">
+                                <i class="fas fa-globe mr-2"></i>
+                                Online Support
+                            </h5>
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-300">Available:</span>
+                                <div class="flex items-center">
+                                    <div class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
+                                    <span class="text-green-400 font-bold">24/7 Online</span>
+                                </div>
+                            </div>
+                            <p class="text-xs text-gray-400 mt-2">
+                                Chat, email, and remote support available around the clock
+                            </p>
+                        </div>
+                        
+                        <!-- Emergency Support -->
+                        <div class="bg-red-600/10 rounded-lg p-4 border border-red-500/30">
+                            <h5 class="text-red-400 font-medium mb-2 flex items-center">
+                                <i class="fas fa-exclamation-triangle mr-2"></i>
+                                Emergency Support
+                            </h5>
+                            <p class="text-sm text-gray-300">
+                                Critical issues: <a href="tel:+254729983567" class="text-red-400 hover:text-red-300 font-medium">+254-729983567</a>
+                            </p>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Contact Info -->
-                <div class="space-y-6 backdrop-blur-sm bg-slate-900/30 p-6 rounded-2xl border border-gray-800/30">
-                    <h4 class="text-lg font-semibold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Contact Us</h4>
-                    <div class="space-y-4">
-                        <p class="text-gray-300 flex items-center"><i class="fas fa-map-marker-alt text-blue-400 mr-3"></i>Nairobi, Kenya</p>
-                        <p class="text-gray-300 flex items-center"><i class="fas fa-phone text-blue-400 mr-3"></i>+254 700 000000</p>
-                        <p class="text-gray-300 flex items-center"><i class="fas fa-envelope text-blue-400 mr-3"></i>info@dtbtechnologies.co.ke</p>
+                <div class="space-y-4">
+                    <h4 class="text-lg font-semibold text-white">Contact Information</h4>
+                    <div class="space-y-3">
+                        <div class="flex items-center text-gray-300 hover:text-blue-400 transition-colors">
+                            <i class="fas fa-map-marker-alt text-blue-400 mr-3 w-5"></i>
+                            <span>Nairobi, Kenya</span>
+                        </div>
+                        <div class="flex items-center text-gray-300">
+                            <i class="fas fa-phone text-green-400 mr-3 w-5"></i>
+                            <a href="tel:+254729983567" class="hover:text-green-400 transition-colors">+254-729983567</a>
+                        </div>
+                        <div class="flex items-center text-gray-300">
+                            <i class="fas fa-envelope text-purple-400 mr-3 w-5"></i>
+                            <a href="mailto:dtbinfotech@gmail.com" class="hover:text-purple-400 transition-colors">dtbinfotech@gmail.com</a>
+                        </div>
+                        <div class="flex items-center text-gray-300">
+                            <i class="fab fa-whatsapp text-green-500 mr-3 w-5"></i>
+                            <a href="https://wa.me/254729983567" class="hover:text-green-500 transition-colors" target="_blank">WhatsApp Support</a>
+                        </div>
                     </div>
                 </div>
             </div>

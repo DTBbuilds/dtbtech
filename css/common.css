@@ -1,3 +1,10 @@
+/* Font Awesome optimization - suppress glyph bbox warnings */
+.fa, .fas, .far, .fal, .fab {
+    font-display: swap;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 /* Background gradient effect */
 .bg-gradient-animate {
     background: linear-gradient(-45deg, #3b82f6, #8b5cf6, #ec4899);
