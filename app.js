@@ -152,5 +152,13 @@ function logout() {
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('DTB Technologies app loaded successfully');
+    console.log('DTB Technologies app loaded successfully - v1.1');
+    
+    // Force refresh navigation if needed
+    const navHeaders = document.querySelectorAll('nav-header');
+    navHeaders.forEach(nav => {
+        if (!nav.innerHTML.trim()) {
+            nav.connectedCallback();
+        }
+    });
 });
