@@ -3,6 +3,7 @@
   "public": true,
   "cleanUrls": true,
   "trailingSlash": false,
+  "buildCommand": "npm run build",
   "functions": {
     "components/*.js": {
       "includeFiles": "components/**"
@@ -30,7 +31,7 @@
       ]
     },
     {
-      "source": "**/*.@(js|css|png|jpg|jpeg|gif|svg|webp|woff|woff2|ttf|eot)",
+      "source": "**/*.@(js)",
       "headers": [
         {
           "key": "Cache-Control",
@@ -39,6 +40,28 @@
         {
           "key": "Content-Type",
           "value": "application/javascript"
+        }
+      ]
+    },
+    {
+      "source": "**/*.@(css)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        },
+        {
+          "key": "Content-Type",
+          "value": "text/css"
+        }
+      ]
+    },
+    {
+      "source": "**/*.@(png|jpg|jpeg|gif|svg|webp|woff|woff2|ttf|eot)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
         }
       ]
     }
