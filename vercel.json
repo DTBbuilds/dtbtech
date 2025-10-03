@@ -4,14 +4,6 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "buildCommand": "npm run build",
-  "functions": {
-    "components/*.js": {
-      "includeFiles": "components/**"
-    },
-    "js/*.js": {
-      "includeFiles": "js/**"
-    }
-  },
   "headers": [
     {
       "source": "/(.*)",
