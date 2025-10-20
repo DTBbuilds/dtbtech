@@ -1,0 +1,298 @@
+/* Mobile Performance Optimizations */
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+/* Global focus-visible improvements for accessibility */
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+}
+
+/* Safe-area aware positioning for fixed floating actions (FABs/orbs) */
+@media (max-width: 768px) {
+    .fixed.bottom-8 {
+        bottom: calc(env(safe-area-inset-bottom, 0px) + 1rem) !important;
+    }
+    .fixed.left-8 {
+        left: calc(env(safe-area-inset-left, 0px) + 1rem) !important;
+    }
+    .fixed.right-8 {
+        right: calc(env(safe-area-inset-right, 0px) + 1rem) !important;
+    }
+
+    /* Optionally shrink FABs on extra small screens */
+    @media (max-width: 360px) {
+        .fixed.bottom-8 .w-16.h-16 { width: 3.25rem; height: 3.25rem; }
+    }
+}
+
+/* Override problematic vh utilities with dynamic viewport height where supported */
+@supports (height: 100dvh) {
+    /* Tailwind arbitrary class selectors must escape brackets */
+    .min-h-\[100vh\] { min-height: 100dvh !important; }
+    .min-h-\[90vh\] { min-height: 90dvh !important; }
+    .min-h-\[80vh\] { min-height: 80dvh !important; }
+    .min-h-\[70vh\] { min-height: 70dvh !important; }
+}
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 768px) {
+    /* Reduce backdrop blur on mobile for performance */
+    .backdrop-blur-xl {
+        backdrop-filter: blur(8px);
+    }
+    
+    .backdrop-blur-md {
+        backdrop-filter: blur(4px);
+    }
+    
+    /* Simplify animations on mobile */
+    .animate-float,
+    .animate-float-slow,
+    .animate-blob {
+        animation: none;
+    }
+    
+    /* Optimize text rendering */
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeSpeed;
+    }
+    
+    /* Improve touch scrolling */
+    * {
+        -webkit-overflow-scrolling: touch;
+    }
+    
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+    /* Remove hover effects on touch devices */
+    .hover\:scale-105:hover {
+        transform: none;
+    }
+    
+    .hover\:-translate-y-1:hover {
+        transform: none;
+    }
+    
+    /* Increase button sizes for touch */
+    button,
+    .btn-primary,
+    .btn-secondary {
+        min-height: 48px;
+        min-width: 48px;
+    }
+}
+
+/* Mobile typography improvements */
+@media (max-width: 640px) {
+    /* Better line heights for mobile */
+    h1 {
+        line-height: 1.1;
+    }
+    
+    h2 {
+        line-height: 1.2;
+    }
+    
+    p {
+        line-height: 1.6;
+    }
+    
+    /* Prevent text overflow */
+    * {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+}
+
+/* Mobile navigation improvements */
+@media (max-width: 768px) {
+    /* Ensure mobile menu is accessible */
+    #mobile-menu {
+        max-height: calc(100vh - 80px);
+        overflow-y: auto;
+        position: relative; /* establish stacking context for backdrop */
+    }
+    
+    /* Better mobile menu backdrop */
+    #mobile-menu::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 40;
+    }
+
+    /* Keep menu content above backdrop */
+    #mobile-menu > * {
+        position: relative;
+        z-index: 50;
+    }
+}
+
+/* Mobile form improvements */
+@media (max-width: 640px) {
+    input,
+    textarea,
+    select {
+        font-size: 16px; /* Prevent zoom on iOS */
+        min-height: 44px;
+    }
+}
+
+/* Mobile grid improvements */
+@media (max-width: 640px) {
+    .grid-cols-1 {
+        gap: 1rem;
+    }
+    
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+/* Mobile card improvements */
+@media (max-width: 640px) {
+    .glass-card {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    /* Simplify card effects on mobile */
+    .glass-card {
+        background-color: rgba(30, 41, 59, 0.8);
+        backdrop-filter: none;
+    }
+}
+
+/* Mobile hero section improvements */
+@media (max-width: 640px) {
+    /* Targeted Tech Lab hero tweaks */
+    .hero-section {
+        min-height: 70vh;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+    .min-h-\[80vh\] {
+        min-height: 70vh;
+    }
+    /* Force solid color for gradient text line to guarantee contrast */
+    .hero-gradient-line {
+        color: #fff !important;
+        -webkit-text-fill-color: #fff !important;
+        background-image: none !important;
+    }
+    
+    /* Hero decorative elements mobile fixes */
+    .aspect-square {
+        max-width: 280px;
+        margin: 0 auto;
+        padding: 1rem; /* Add padding to prevent edge clipping */
+    }
+    
+    /* Ensure hero visual container doesn't overflow */
+    .order-1.lg\:order-2 {
+        padding: 1rem;
+        overflow: hidden;
+    }
+    
+    /* Ensure icons stay within bounds on very small screens */
+    .absolute.top-4,
+    .absolute.bottom-4,
+    .absolute.left-4,
+    .absolute.right-4 {
+        margin: 0;
+    }
+    
+    /* Reduce animation intensity on mobile */
+    .animate-spin-very-slow,
+    .animate-reverse-spin-very-slow,
+    .animate-spin-extremely-slow {
+        animation-duration: 60s;
+    }
+    /* Hide heaviest spinning ring on small screens */
+    .hero-visual .animate-spin-extremely-slow { display: none; }
+    /* Tone down reverse spinner */
+    .hero-visual .animate-reverse-spin-very-slow { opacity: 0.25; }
+    /* Reduce grid overlay and remove heavy blur layer */
+    .hero-grid { opacity: 0.03 !important; }
+    .hero-blur { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; background: transparent !important; }
+}
+
+/* Extra small mobile devices */
+@media (max-width: 375px) {
+    /* Further reduce container size on very small screens */
+    .aspect-square {
+        max-width: 240px;
+        padding: 0.75rem;
+    }
+    
+    /* Adjust icon positioning for very small screens */
+    .absolute.top-4 { top: 0.75rem; }
+    .absolute.bottom-4 { bottom: 0.75rem; }
+    .absolute.left-4 { left: 0.75rem; }
+    .absolute.right-4 { right: 0.75rem; }
+    
+    /* Smaller icons on very small screens */
+    .w-10.h-10 {
+        width: 2rem;
+        height: 2rem;
+    }
+    
+    /* Reduce circle sizes further on very small screens */
+    .w-56.h-56 {
+        width: 12rem;
+        height: 12rem;
+    }
+}
+
+/* Landscape mobile orientation fixes */
+@media (max-height: 500px) and (orientation: landscape) {
+    /* Hide decorative elements in landscape on short screens */
+    .order-1.lg\:order-2 {
+        display: none;
+    }
+    
+    /* Make hero single column in landscape */
+    .grid.grid-cols-1.lg\:grid-cols-2 {
+        grid-template-columns: 1fr;
+    }
+
+    /* Hide hero scroll indicator on short screens */
+    .hero-section .scroll-indicator {
+        display: none;
+    }
+}
+
+/* Mobile button improvements */
+@media (max-width: 640px) {
+    .flex-col.sm\:flex-row {
+        gap: 0.75rem;
+    }
+    
+    /* Full width buttons on mobile */
+    .flex.flex-col.sm\:flex-row > * {
+        width: 100%;
+        justify-content: center;
+    }
+}

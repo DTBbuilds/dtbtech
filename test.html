@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DTB Tech - Test Page</title>
+    <link rel="stylesheet" href="./dist/output.css">
+    <script src="./app.js" defer></script>
+</head>
+<body class="bg-slate-900 text-white">
+    <div class="container mx-auto p-8">
+        <h1 class="text-4xl font-bold mb-4">DTB Technologies - Test Page</h1>
+        <p class="text-xl mb-8">Testing JavaScript and CSS loading...</p>
+        
+        <!-- Navigation Test -->
+        <nav-header></nav-header>
+        
+        <!-- JavaScript Test -->
+        <div class="mt-8">
+            <button onclick="testJS()" class="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg">
+                Test JavaScript
+            </button>
+            <div id="js-test-result" class="mt-4 p-4 bg-gray-800 rounded-lg hidden">
+                JavaScript is working correctly!
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function testJS() {
+            document.getElementById('js-test-result').classList.remove('hidden');
+            console.log('JavaScript test successful');
+        }
+        
+        // Test if nav-header loaded
+        window.addEventListener('load', function() {
+            const navHeader = document.querySelector('nav-header');
+            if (navHeader) {
+                console.log('Nav header component loaded successfully');
+            } else {
+                console.error('Nav header component failed to load');
+            }
+        });
+    </script>
+</body>
+</html>

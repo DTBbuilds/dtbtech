@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Cybersecurity Services - DTB Technologies</title>
+    <meta name="description" content="Enterprise cybersecurity solutions in Nairobi. Protect your business with advanced security measures and monitoring.">
+    <link rel="stylesheet" href="../dist/output.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css">
+    <script src="../components/nav-header.js" defer></script>
+    <script src="../js/dashboard.js" defer></script>
+</head>
+<body class="bg-slate-900">
+    <!-- Navigation -->
+    <nav-header></nav-header>
+
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <section class="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0">
+                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80" 
+                     alt="Cybersecurity" 
+                     class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-r from-gray-900 to-gray-900/80"></div>
+            </div>
+            <div class="relative container mx-auto px-4 text-center">
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Cybersecurity Services</h1>
+                <p class="text-xl text-gray-300 max-w-2xl mx-auto">Protect your business with enterprise-grade security solutions and continuous monitoring.</p>
+            </div>
+        </section>
+
+        <!-- Features Grid -->
+        <section class="py-16 bg-gray-800">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-white text-center mb-12">Security Solutions</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Threat Detection -->
+                    <div class="bg-gray-900 p-6 rounded-xl">
+                        <div class="text-blue-400 text-3xl mb-4">
+                            <i class="fas fa-shield-virus"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-3">Threat Detection</h3>
+                        <p class="text-gray-300">Advanced threat detection and prevention systems to identify and block security risks.</p>
+                    </div>
+                    
+                    <!-- Network Security -->
+                    <div class="bg-gray-900 p-6 rounded-xl">
+                        <div class="text-blue-400 text-3xl mb-4">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-3">Network Security</h3>
+                        <p class="text-gray-300">Comprehensive network protection with firewalls, VPNs, and intrusion prevention.</p>
+                    </div>
+                    
+                    <!-- Security Monitoring -->
+                    <div class="bg-gray-900 p-6 rounded-xl">
+                        <div class="text-blue-400 text-3xl mb-4">
+                            <i class="fas fa-desktop"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-3">24/7 Monitoring</h3>
+                        <p class="text-gray-300">Round-the-clock security monitoring and incident response services.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section class="py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-white text-center mb-12">Security Packages</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                    <!-- Basic Security -->
+                    <div class="bg-gray-800 rounded-xl p-8 transform hover:scale-105 transition-transform duration-300">
+                        <h3 class="text-xl font-semibold text-white mb-4">Basic Security</h3>
+                        <div class="text-blue-400 text-4xl font-bold mb-4">KSh 15,000<span class="text-lg">/mo</span></div>
+                        <ul class="text-gray-300 space-y-3 mb-8">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-400 mr-2"></i>
+                                Firewall Protection
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-400 mr-2"></i>
+                                Antivirus Solutions
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-400 mr-2"></i>
+                                Basic Monitoring
+                            </li>
+                        </ul>
+                        <button onclick="addToCart('Basic Security', 15000)" class="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition-colors">
+                            Get Started
+                        </button>
+                    </div>
+
+                    <!-- Advanced Security -->
+                    <div class="bg-gray-800 rounded-xl p-8 transform hover:scale-105 transition-transform duration-300 border-2 border-blue-400">
+                        <div class="absolute top-0 right-0 bg-blue-400 text-white px-4 py-1 rounded-bl-lg text-sm">Popular</div>
+                        <h3 class="text-xl font-semibold text-white mb-4">Advanced Security</h3>
+                        <div class="text-blue-400 text-4xl font-bold mb-4">KSh 35,000<span class="text-lg">/mo</span></div>
+                        <ul class="text-gray-300 space-y-3 mb-8">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-400 mr-2"></i>
+                                All Basic Features
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-400 mr-2"></i>
+                                24/7 Monitoring
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-400 mr-2"></i>
+                                Intrusion Detection
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-400 mr-2"></i>
+                                VPN Services
+                            </li>
+                        </ul>
+                        <button onclick="addToCart('Advanced Security', 35000)" class="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition-colors">
+                            Get Started
+                        </button>
+                    </div>
+
+                    <!-- Enterprise Security -->
+                    <div class="bg-gray-800 rounded-xl p-8 transform hover:scale-105 transition-transform duration-300">
+                        <h3 class="text-xl font-semibold text-white mb-4">Enterprise Security</h3>
+                        <div class="text-blue-400 text-4xl font-bold mb-4">Custom</div>
+                        <ul class="text-gray-300 space-y-3 mb-8">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-400 mr-2"></i>
+                                All Advanced Features
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-400 mr-2"></i>
+                                SIEM Integration
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-400 mr-2"></i>
+                                Custom Security Policies
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-400 mr-2"></i>
+                                Dedicated SOC Team
+                            </li>
+                        </ul>
+                        <a href="../contact.html" class="block w-full bg-gray-700 text-white py-3 rounded-lg hover:bg-gray-600 transition-colors text-center">
+                            Contact Sales
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="py-16 bg-gray-800">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-white text-center mb-12">Frequently Asked Questions</h2>
+                <div class="max-w-3xl mx-auto space-y-6">
+                    <div class="bg-gray-900 rounded-xl p-6">
+                        <h3 class="text-xl text-white font-semibold mb-3">How do you handle security incidents?</h3>
+                        <p class="text-gray-300">We have a dedicated incident response team that monitors threats 24/7. When an incident is detected, we immediately implement containment measures and work to resolve the issue while keeping you informed.</p>
+                    </div>
+                    <div class="bg-gray-900 rounded-xl p-6">
+                        <h3 class="text-xl text-white font-semibold mb-3">What security certifications do you have?</h3>
+                        <p class="text-gray-300">Our team holds various industry certifications including ISO 27001, CISSP, and CompTIA Security+. We regularly update our certifications and stay current with the latest security standards.</p>
+                    </div>
+                    <div class="bg-gray-900 rounded-xl p-6">
+                        <h3 class="text-xl text-white font-semibold mb-3">Can you customize security solutions?</h3>
+                        <p class="text-gray-300">Yes, we can tailor our security solutions to meet your specific needs and compliance requirements. Our enterprise plans offer fully customizable security policies and implementations.</p>
+                    </div>
+                </div>
+
+        <div id="cart-sidebar" class="fixed top-0 right-0 w-full md:w-96 h-full bg-gray-900 z-50 transform translate-x-full transition-transform duration-300 shadow-2xl">
+            <div class="flex flex-col h-full">
+                <div class="p-4 border-b border-gray-800 flex justify-between items-center">
+                    <h2 class="text-xl font-bold text-white">Your Cart</h2>
+                    <button class="text-gray-400 hover:text-white transition-colors close-cart">
+                        <i class="fas fa-times text-xl"></i>
+                    <button onclick="document.getElementById('pricing-section').scrollIntoView({behavior: 'smooth'})" class="inline-block bg-gray-700 text-white px-8 py-3 rounded-lg hover:bg-gray-600 transition-colors">
+                        View Pricing
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Cart Components -->
+    <div id="cart-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+
+    <div id="cart-sidebar" class="fixed top-0 right-0 w-full md:w-96 h-full bg-gray-900 z-50 transform translate-x-full transition-transform duration-300 shadow-2xl">
+        <div class="flex flex-col h-full">
+            <div class="p-4 border-b border-gray-800 flex justify-between items-center">
+                <h2 class="text-xl font-bold text-white">Your Cart</h2>
+                <button class="text-gray-400 hover:text-white transition-colors close-cart">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div id="cart-items" class="flex-1 overflow-y-auto p-4 space-y-4"></div>
+            <div class="p-4 border-t border-gray-800">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-white text-lg">Total:</span>
+                    <span id="cart-total" class="text-2xl font-bold text-white"></span>
+                </div>
+                <button id="checkout-btn" class="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition-colors flex items-center justify-center">
+                    <i class="fas fa-lock mr-2"></i>
+                    Proceed to Checkout
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <button id="cart-button" class="fixed bottom-8 right-8 bg-blue-500 text-white w-16 h-16 rounded-full shadow-lg hover:bg-blue-600 transition-colors z-30 flex items-center justify-center">
+        <i class="fas fa-shopping-cart text-2xl cart-icon"></i>
+        <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-6 h-6 rounded-full flex items-center justify-center transform scale-0 transition-transform"></span>
+    </button>
+
+    <script src="../cart.js"></script>
+</body>
+</html>

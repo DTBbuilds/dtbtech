@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile - DTB Technologies Digital Museum</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css">
+  <style>
+    body { background: linear-gradient(to bottom right, #0f172a, #1e293b); min-height: 100vh; color: #f8fafc; font-family: 'Inter', 'Segoe UI', Arial, sans-serif; }
+    .glass-card { background-color: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+    .avatar { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 2px solid #38bdf8; }
+    .theme-option.selected { border: 2px solid #38bdf8; background: #0ea5e9; color: #fff; }
+  </style>
+</head>
+<body class="p-4">
+  <header class="max-w-3xl mx-auto mb-8">
+    <nav class="flex justify-between items-center">
+      <div class="flex items-center space-x-4">
+        <div class="text-2xl text-white font-bold flex items-center">
+          <i class="fas fa-user-circle text-blue-400 mr-2"></i> Profile
+        </div>
+        <a href="welcome.html" class="text-gray-300 hover:text-white ml-6">Back to Dashboard</a>
+      </div>
+    </nav>
+  </header>
+  <main class="max-w-3xl mx-auto">
+    <!-- Profile Card -->
+    <div class="glass-card rounded-2xl p-8 flex flex-col items-center mb-10">
+      <img id="profile-avatar" src="https://ui-avatars.com/api/?name=User&background=0ea5e9&color=fff" class="avatar shadow-lg mb-3" alt="User Avatar">
+      <h2 id="profile-name" class="text-2xl font-bold mb-1">User Name</h2>
+      <p id="profile-email" class="text-gray-300 mb-2">user@email.com</p>
+      <button id="change-avatar-btn" class="px-3 py-1 bg-slate-700 hover:bg-slate-600 text-gray-200 rounded text-sm mb-2">Change Avatar</button>
+    </div>
+    <!-- Settings Sections -->
+    <form id="profile-settings-form" class="space-y-8">
+      <!-- Theme Preferences -->
+      <div class="glass-card rounded-xl p-6">
+        <h3 class="text-xl font-semibold mb-3">Appearance</h3>
+        <div class="flex gap-4">
+          <button type="button" class="theme-option px-4 py-2 rounded-lg bg-slate-700 text-white" data-theme="light">Light</button>
+          <button type="button" class="theme-option px-4 py-2 rounded-lg bg-slate-700 text-white" data-theme="dark">Dark</button>
+          <button type="button" class="theme-option px-4 py-2 rounded-lg bg-slate-700 text-white" data-theme="system">System</button>
+        </div>
+      </div>
+      <!-- Layout Preferences -->
+      <div class="glass-card rounded-xl p-6">
+        <h3 class="text-xl font-semibold mb-3">Layout</h3>
+        <label class="block mb-2 text-gray-300">View Style</label>
+        <select id="layout-preference" class="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white">
+          <option value="card">Card View</option>
+          <option value="list">List View</option>
+          <option value="compact">Compact</option>
+        </select>
+      </div>
+      <!-- Notification Preferences -->
+      <div class="glass-card rounded-xl p-6">
+        <h3 class="text-xl font-semibold mb-3">Notifications</h3>
+        <label class="inline-flex items-center mb-2">
+          <input type="checkbox" id="notify-feedback" class="form-checkbox h-5 w-5 text-blue-600"> <span class="ml-2">Feedback responses</span>
+        </label><br>
+        <label class="inline-flex items-center">
+          <input type="checkbox" id="notify-news" class="form-checkbox h-5 w-5 text-blue-600"> <span class="ml-2">News & updates</span>
+        </label>
+      </div>
+      <!-- Privacy Settings -->
+      <div class="glass-card rounded-xl p-6">
+        <h3 class="text-xl font-semibold mb-3">Privacy</h3>
+        <label class="inline-flex items-center mb-2">
+          <input type="checkbox" id="private-profile" class="form-checkbox h-5 w-5 text-blue-600"> <span class="ml-2">Make my profile private</span>
+        </label>
+      </div>
+      <!-- Password Change -->
+      <div class="glass-card rounded-xl p-6">
+        <h3 class="text-xl font-semibold mb-3">Account Security</h3>
+        <label class="block mb-2 text-gray-300">Change Password</label>
+        <input type="password" id="new-password" class="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white mb-2" placeholder="New password">
+        <input type="password" id="confirm-password" class="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white mb-2" placeholder="Confirm new password">
+        <button type="button" id="change-password-btn" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg">Change Password</button>
+        <div id="password-message" class="mt-2 text-sm"></div>
+      </div>
+      <div class="flex justify-end">
+        <button type="submit" class="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold">Save Changes</button>
+      </div>
+    </form>
+  </main>
+  <script type="module">
+    import profileManager from '../js/auth/profile-manager.js';
+    import authService from '../js/auth/auth-service.js';
+    // Load user info
+    async function loadProfile() {
+      const user = await authService.getCurrentUser();
+      if (!user) return;
+      document.getElementById('profile-name').textContent = user.displayName || 'User';
+      document.getElementById('profile-email').textContent = user.email || '';
+      document.getElementById('profile-avatar').src = user.photoURL || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.displayName||'User')}&background=0ea5e9&color=fff`;
+      // Load preferences
+      const prefs = await profileManager.getPreferences();
+      if (prefs.theme) setThemeSelected(prefs.theme);
+      if (prefs.layout) document.getElementById('layout-preference').value = prefs.layout;
+      if (prefs.notifications) {
+        document.getElementById('notify-feedback').checked = !!prefs.notifications.feedback;
+        document.getElementById('notify-news').checked = !!prefs.notifications.news;
+      }
+      if (prefs.privacy) document.getElementById('private-profile').checked = !!prefs.privacy.privateProfile;
+    }
+    function setThemeSelected(theme) {
+      document.querySelectorAll('.theme-option').forEach(btn => {
+        btn.classList.remove('selected');
+        if (btn.dataset.theme === theme) btn.classList.add('selected');
+      });
+    }
+    // Theme selection
+    document.querySelectorAll('.theme-option').forEach(btn => {
+      btn.addEventListener('click', () => {
+        setThemeSelected(btn.dataset.theme);
+      });
+    });
+    // Save profile settings
+    document.getElementById('profile-settings-form').addEventListener('submit', async e => {
+      e.preventDefault();
+      const theme = document.querySelector('.theme-option.selected').dataset.theme;
+      const layout = document.getElementById('layout-preference').value;
+      const notifications = {
+        feedback: document.getElementById('notify-feedback').checked,
+        news: document.getElementById('notify-news').checked
+      };
+      const privacy = { privateProfile: document.getElementById('private-profile').checked };
+      await profileManager.updatePreferences({ theme, layout, notifications, privacy });
+      alert('Preferences updated!');
+    });
+    // Change password
+    document.getElementById('change-password-btn').addEventListener('click', async () => {
+      const newPassword = document.getElementById('new-password').value;
+      const confirmPassword = document.getElementById('confirm-password').value;
+      const msg = document.getElementById('password-message');
+      if (!newPassword || newPassword !== confirmPassword) {
+        msg.textContent = 'Passwords do not match.';
+        msg.className = 'text-red-400 mt-2 text-sm';
+        return;
+      }
+      try {
+        await authService.changePassword(newPassword);
+        msg.textContent = 'Password changed successfully!';
+        msg.className = 'text-green-400 mt-2 text-sm';
+      } catch (e) {
+        msg.textContent = 'Error changing password.';
+        msg.className = 'text-red-400 mt-2 text-sm';
+      }
+    });
+    // Avatar change (demo only)
+    document.getElementById('change-avatar-btn').addEventListener('click', () => {
+      alert('Avatar change functionality coming soon!');
+    });
+    // Load profile on page load
+    loadProfile();
+  </script>
+</body>
+</html>

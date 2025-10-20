@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>About DTB Technologies - Kenya's Premier Tech Solutions Company</title>
+    <meta name="title" content="About DTB Technologies - Kenya's Premier Tech Solutions Company">
+    <meta name="description" content="Learn about DTB Technologies, a leading Kenyan IT company with 200+ satisfied clients. Expert team delivering innovative tech solutions since 2020. Join our success story.">
+    <meta name="keywords" content="DTB Technologies Kenya, IT company Nairobi, tech solutions East Africa, Donald Kiprop System Admin, Kenyan IT experts, technology consultancy Nairobi, digital transformation Kenya">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="author" content="DTB Technologies">
+    <meta name="geo.region" content="KE">
+    <meta name="geo.placename" content="Nairobi">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dtbtech.org/about">
+    <meta property="og:title" content="About DTB Technologies - Kenya's Premier Tech Solutions Company">
+    <meta property="og:description" content="Meet the team behind DTB Technologies. 200+ satisfied clients, expert consultancy, and innovative solutions for businesses across East Africa.">
+    <meta property="og:image" content="https://dtbtech.org/assets/about-og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://dtbtech.org/about">
+    <meta property="twitter:title" content="About DTB Technologies - Kenya's Premier Tech Solutions Company">
+    <meta property="twitter:description" content="Meet the team behind DTB Technologies. 200+ satisfied clients, expert consultancy, and innovative solutions for businesses across East Africa.">
+    <meta property="twitter:image" content="https://dtbtech.org/assets/about-twitter-image.jpg">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://dtbtech.org/about">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <!-- <link rel="manifest" href="/site.webmanifest"> -->
+
+    <!-- Stylesheets and Scripts -->
+    
+    <link rel="stylesheet" href="./dist/output.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/animations.css">
+    <link rel="stylesheet" href="./css/mobile-optimizations.css">
+    <script src="./app.js" defer></script>
+
+    <!-- Schema.org Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "mainEntity": {
+            "@type": "Organization",
+            "name": "DTB Technologies",
+            "url": "https://dtbtech.org",
+            "logo": "https://dtbtech.org/assets/logo.png",
+            "description": "Leading IT solutions provider in Kenya offering web development, tech support, and innovative digital solutions.",
+            "foundingDate": "2020",
+            "founder": {
+                "@type": "Person",
+                "name": "Donald Kiprop",
+                "jobTitle": "System Administrator"
+            },
+            "numberOfEmployees": {
+                "@type": "QuantitativeValue",
+                "value": "20+"
+            },
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Nairobi",
+                "addressRegion": "Nairobi",
+                "addressCountry": "KE"
+            },
+            "employee": [
+                {
+                    "@type": "Person",
+                    "name": "Lisa Chepkoech",
+                    "jobTitle": "Chief Technology Officer"
+                },
+                {
+                    "@type": "Person",
+                    "name": "Brian Odhiambo",
+                    "jobTitle": "Lead Developer"
+                },
+                {
+                    "@type": "Person",
+                    "name": "Anne Maina",
+                    "jobTitle": "Operations Manager"
+                }
+            ]
+        }
+    }
+    </script>
+    
+    <style>
+        /* Team member image placeholder styles */
+        .team-image-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Role-specific placeholder backgrounds and icons */
+        .placeholder-sysadmin {
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+        }
+        .placeholder-sysadmin::before {
+            content: "\f233"; /* fa-server */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+        }
+        
+        .placeholder-cto {
+            background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+        }
+        .placeholder-cto::before {
+            content: "\f0e7"; /* fa-bolt */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+        }
+        
+        .placeholder-developer {
+            background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+        }
+        .placeholder-developer::before {
+            content: "\f121"; /* fa-code */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+        }
+        
+        .placeholder-operations {
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+        }
+        .placeholder-operations::before {
+            content: "\f0ae"; /* fa-tasks */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+        }
+        
+        /* Animated background effect */
+        .team-image-placeholder::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            animation: shimmer 3s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        
+        /* Ensure images load gracefully */
+        .team-image {
+            background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
+        }
+    </style>
+</head>
+<body class="bg-slate-900">
+    <!-- Navigation -->
+    <nav-header></nav-header>
+
+    <main class="pt-24">
+        <!-- Hero Section -->
+        <section class="relative py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
+            <div class="absolute inset-0 bg-blue-500/10 backdrop-blur-3xl"></div>
+            <!-- Animated Background Elements -->
+            <div class="absolute inset-0 overflow-hidden">
+                <div class="absolute -left-4 -top-4 w-24 h-24 bg-blue-500/20 rounded-full blur-xl"></div>
+                <div class="absolute right-1/4 top-1/3 w-32 h-32 bg-purple-500/20 rounded-full blur-xl"></div>
+                <div class="absolute left-1/3 bottom-1/4 w-28 h-28 bg-green-500/20 rounded-full blur-xl"></div>
+            </div>
+            <div class="container mx-auto px-4 relative z-10">
+
+                <div class="max-w-4xl mx-auto text-center">
+                    <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">About DTB Technologies</h1>
+                    <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                        Empowering Kenyan businesses through innovative technology solutions since 2020.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="py-16 relative z-10">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+                    <div class="bg-gray-800/50 backdrop-blur-xl p-6 rounded-2xl border border-gray-700/30 text-center transform hover:scale-105 transition-all">
+                        <div class="text-3xl md:text-4xl font-bold text-blue-400 mb-2">200+</div>
+                        <div class="text-gray-300 text-sm md:text-base">Satisfied Clients</div>
+                    </div>
+                    <div class="bg-gray-800/50 backdrop-blur-xl p-6 rounded-2xl border border-gray-700/30 text-center transform hover:scale-105 transition-all">
+                        <div class="text-3xl md:text-4xl font-bold text-green-400 mb-2">98%</div>
+                        <div class="text-gray-300 text-sm md:text-base">Client Retention</div>
+                    </div>
+                    <div class="bg-gray-800/50 backdrop-blur-xl p-6 rounded-2xl border border-gray-700/30 text-center transform hover:scale-105 transition-all">
+                        <div class="text-3xl md:text-4xl font-bold text-purple-400 mb-2">20+</div>
+                        <div class="text-gray-300 text-sm md:text-base">Team Members</div>
+                    </div>
+                    <div class="bg-gray-800/50 backdrop-blur-xl p-6 rounded-2xl border border-gray-700/30 text-center transform hover:scale-105 transition-all">
+                        <div class="text-3xl md:text-4xl font-bold text-orange-400 mb-2">24/7</div>
+                        <div class="text-gray-300 text-sm md:text-base">Support Available</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Story & Mission Section -->
+        <section class="py-16">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <!-- Our Story -->
+                    <div class="bg-gray-800/50 backdrop-blur-xl p-8 rounded-2xl border border-gray-700/30">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mr-4">
+                                <i class="fas fa-book-open text-2xl text-blue-400"></i>
+                            </div>
+                            <h2 class="text-3xl font-bold text-white">Our Story</h2>
+                        </div>
+                        <p class="text-gray-300 leading-relaxed mb-6">
+                            Founded in Nairobi in 2020, DTB Technologies emerged from a vision to bridge the digital divide in East Africa. 
+                            What started as a small IT consultancy has grown into a comprehensive technology solutions provider, serving 
+                            businesses across Kenya and the wider East African region.
+                        </p>
+                        <div class="mt-6 p-4 bg-blue-500/10 rounded-xl border border-blue-500/20">
+                            <p class="text-blue-400 font-medium">
+                                <i class="fas fa-quote-left mr-2"></i>
+                                Transforming businesses through technology, one solution at a time.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Mission & Vision -->
+                    <div class="space-y-8">
+                        <div class="bg-gray-800/50 backdrop-blur-xl p-8 rounded-2xl border border-gray-700/30">
+                            <div class="flex items-center mb-6">
+                                <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center mr-4">
+                                    <i class="fas fa-bullseye text-2xl text-purple-400"></i>
+                                </div>
+                                <h2 class="text-3xl font-bold text-white">Our Mission</h2>
+                            </div>
+                            <p class="text-gray-300 leading-relaxed">
+                                To provide cutting-edge technology solutions that empower African businesses to compete globally while 
+                                contributing to the digital transformation of our continent.
+                            </p>
+                        </div>
+
+                        <div class="bg-gray-800/50 backdrop-blur-xl p-8 rounded-2xl border border-gray-700/30">
+                            <div class="flex items-center mb-6">
+                                <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mr-4">
+                                    <i class="fas fa-binoculars text-2xl text-green-400"></i>
+                                </div>
+                                <h2 class="text-3xl font-bold text-white">Our Vision</h2>
+                            </div>
+                            <p class="text-gray-300 leading-relaxed">
+                                To be East Africa's leading technology solutions provider, known for innovation, reliability, and 
+                                excellence in service delivery.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Values -->
+        <section class="py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-12">Our Core Values</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="group bg-gray-800/50 backdrop-blur-xl p-8 rounded-2xl border border-gray-700/30 hover:bg-gray-800/70 transition-all duration-300">
+                        <div class="w-16 h-16 bg-blue-500/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-star text-3xl text-blue-400"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-4">Excellence</h3>
+                        <p class="text-gray-300">Delivering superior quality in everything we do, ensuring our solutions exceed expectations.</p>
+                    </div>
+
+                    <div class="group bg-gray-800/50 backdrop-blur-xl p-8 rounded-2xl border border-gray-700/30 hover:bg-gray-800/70 transition-all duration-300">
+                        <div class="w-16 h-16 bg-purple-500/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-handshake text-3xl text-purple-400"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-4">Integrity</h3>
+                        <p class="text-gray-300">Operating with honesty and transparency in all our business dealings and relationships.</p>
+                    </div>
+
+                    <div class="group bg-gray-800/50 backdrop-blur-xl p-8 rounded-2xl border border-gray-700/30 hover:bg-gray-800/70 transition-all duration-300">
+                        <div class="w-16 h-16 bg-green-500/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-lightbulb text-3xl text-green-400"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-4">Innovation</h3>
+                        <p class="text-gray-300">Embracing new technologies and ideas to deliver cutting-edge solutions for our clients.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="py-16">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">Meet Our Expert Team</h2>
+                    <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">Our passionate professionals bring years of experience and innovation to deliver exceptional IT solutions for your business success.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- System Administrator -->
+                    <div class="group">
+                        <div class="bg-gray-800/50 backdrop-blur-xl rounded-2xl border border-gray-700/30 overflow-hidden hover:border-blue-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/20">
+                            <div class="aspect-w-1 aspect-h-1 relative">
+                                <img src="assets/team/donald-kiprop.jpg" alt="Donald Kiprop - System Administrator" class="team-image object-cover w-full h-full group-hover:scale-110 transition-transform duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" onload="this.style.display='block'; this.nextElementSibling.style.display='none';" style="display: none;">
+                                <div class="team-image-placeholder placeholder-sysadmin w-full h-full" style="display: flex;"></div>
+                                <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-blue-300 transition-colors">Donald Kiprop</h3>
+                                <p class="text-blue-400 mb-4 font-semibold">System Administrator</p>
+                                <p class="text-gray-300 text-sm leading-relaxed">Visionary leader with 5+ years in tech industry, specializing in system optimization and infrastructure management</p>
+                                <div class="mt-4 flex space-x-3">
+                                    <div class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
+                                    <div class="w-2 h-2 bg-purple-400 rounded-full animate-pulse" style="animation-delay: 0.2s"></div>
+                                    <div class="w-2 h-2 bg-pink-400 rounded-full animate-pulse" style="animation-delay: 0.4s"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CTO -->
+                    <div class="group">
+                        <div class="bg-gray-800/50 backdrop-blur-xl rounded-2xl border border-gray-700/30 overflow-hidden hover:border-purple-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20">
+                            <div class="aspect-w-1 aspect-h-1 relative">
+                                <img src="assets/team/lisa-chepkoech.jpg" alt="Lisa Chepkoech - CTO" class="team-image object-cover w-full h-full group-hover:scale-110 transition-transform duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" onload="this.style.display='block'; this.nextElementSibling.style.display='none';" style="display: none;">
+                                <div class="team-image-placeholder placeholder-cto w-full h-full" style="display: flex;"></div>
+                                <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-purple-300 transition-colors">Lisa Chepkoech</h3>
+                                <p class="text-purple-400 mb-4 font-semibold">Chief Technology Officer</p>
+                                <p class="text-gray-300 text-sm leading-relaxed">Tech innovator specializing in cloud solutions and emerging technologies with expertise in scalable architectures</p>
+                                <div class="mt-4 flex space-x-3">
+                                    <div class="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
+                                    <div class="w-2 h-2 bg-pink-400 rounded-full animate-pulse" style="animation-delay: 0.2s"></div>
+                                    <div class="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style="animation-delay: 0.4s"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lead Developer -->
+                    <div class="group">
+                        <div class="bg-gray-800/50 backdrop-blur-xl rounded-2xl border border-gray-700/30 overflow-hidden hover:border-green-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-green-500/20">
+                            <div class="aspect-w-1 aspect-h-1 relative">
+                                <img src="assets/team/brian-odhiambo.jpg" alt="Brian Odhiambo - Lead Developer" class="team-image object-cover w-full h-full group-hover:scale-110 transition-transform duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" onload="this.style.display='block'; this.nextElementSibling.style.display='none';" style="display: none;">
+                                <div class="team-image-placeholder placeholder-developer w-full h-full" style="display: flex;"></div>
+                                <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-green-300 transition-colors">Brian Odhiambo</h3>
+                                <p class="text-green-400 mb-4 font-semibold">Lead Developer</p>
+                                <p class="text-gray-300 text-sm leading-relaxed">Full-stack expert with focus on scalable solutions, modern frameworks, and performance optimization</p>
+                                <div class="mt-4 flex space-x-3">
+                                    <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                                    <div class="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style="animation-delay: 0.2s"></div>
+                                    <div class="w-2 h-2 bg-purple-400 rounded-full animate-pulse" style="animation-delay: 0.4s"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Operations Manager -->
+                    <div class="group">
+                        <div class="bg-gray-800/50 backdrop-blur-xl rounded-2xl border border-gray-700/30 overflow-hidden hover:border-orange-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-500/20">
+                            <div class="aspect-w-1 aspect-h-1 relative">
+                                <img src="assets/team/anne-maina.jpg" alt="Anne Maina - Operations Manager" class="team-image object-cover w-full h-full group-hover:scale-110 transition-transform duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" onload="this.style.display='block'; this.nextElementSibling.style.display='none';" style="display: none;">
+                                <div class="team-image-placeholder placeholder-operations w-full h-full" style="display: flex;"></div>
+                                <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-orange-300 transition-colors">Anne Maina</h3>
+                                <p class="text-orange-400 mb-4 font-semibold">Operations Manager</p>
+                                <p class="text-gray-300 text-sm leading-relaxed">Efficiency expert ensuring smooth project delivery with strategic planning and process optimization</p>
+                                <div class="mt-4 flex space-x-3">
+                                    <div class="w-2 h-2 bg-orange-400 rounded-full animate-pulse"></div>
+                                    <div class="w-2 h-2 bg-pink-400 rounded-full animate-pulse" style="animation-delay: 0.2s"></div>
+                                    <div class="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style="animation-delay: 0.4s"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-16">
+            <div class="container mx-auto px-4">
+                <div class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 md:p-12 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-black/20 backdrop-blur-sm"></div>
+                    <div class="relative z-10 text-center">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Transform Your Business?</h2>
+                        <p class="text-gray-100 text-lg mb-8 max-w-2xl mx-auto">
+                            Join hundreds of businesses that trust DTB Technologies for their technology needs.
+                        </p>
+                        <a href="contact.html" class="inline-flex items-center px-8 py-4 bg-white text-blue-600 rounded-xl font-semibold hover:bg-gray-100 transition-colors group">
+                            Get Started
+                            <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modern Footer -->
+    <footer class="bg-gray-900 text-gray-300">
+        <div class="max-w-7xl mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="space-y-4">
+                    <h3 class="text-2xl font-bold text-blue-400">DTB Technologies</h3>
+                    <p class="text-sm">Empowering innovation through cutting-edge technology solutions since 2020.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="space-y-4">
+                    <h4 class="text-lg font-semibold text-white">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="hover:text-blue-400 transition-colors">Home</a></li>
+                        <li><a href="about.html" class="hover:text-blue-400 transition-colors">About Us</a></li>
+                        <li><a href="services.html" class="hover:text-blue-400 transition-colors">Services</a></li>
+                        <li><a href="tech-lab.html" class="hover:text-blue-400 transition-colors">Tech Lab</a></li>
+                        <li><a href="contact.html" class="hover:text-blue-400 transition-colors">Contact</a></li>
+                        <li><a href="help.html" class="hover:text-blue-400 transition-colors">Help</a></li>
+                        <li><a href="cart.html" class="hover:text-blue-400 transition-colors">Cart</a></li>
+                    </ul>
+                </div>
+
+                <!-- Resources -->
+                <div class="space-y-4">
+                    <h4 class="text-lg font-semibold text-white">Resources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-blue-400 transition-colors">Blog</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors">Documentation</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors">Support Center</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors">API Access</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="space-y-4">
+                    <h4 class="text-lg font-semibold text-white">Stay Updated</h4>
+                    <p class="text-sm">Subscribe to our newsletter for the latest updates and tech insights.</p>
+                    <form class="flex gap-2">
+                        <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-2 bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="mt-16 pt-10 border-t border-slate-800 bg-gradient-to-tr from-blue-900/30 via-slate-900/70 to-purple-900/30 backdrop-blur-2xl relative rounded-t-3xl shadow-inner flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0">
+                <p class="text-gray-300 text-base font-medium tracking-wide py-3 px-8 rounded-2xl border border-slate-800/40 hover:border-blue-500/40 transition-colors mx-auto bg-slate-900/40 shadow-lg">&copy; 2025 DTB Technologies. All rights reserved.</p>
+                <div class="flex flex-wrap items-center justify-center gap-5 text-sm">
+                    <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Contact Orb Button -->
+    <div class="fixed bottom-8 left-8 z-50">
+        <div class="relative group">
+            <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-blue-400 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
+            <a href="contact.html" aria-label="Contact support" class="relative flex items-center justify-center w-16 h-16 bg-slate-900 rounded-full hover:bg-slate-800 transition-colors">
+                <i class="fas fa-headset text-2xl text-blue-400"></i>
+            </a>
+            <div class="absolute bottom-full right-0 mb-2 w-48 p-2 bg-slate-800 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
+                Need help? Click me!
+            </div>
+        </div>
+    </div>
+
+    <!-- Book Services Button -->
+    <div class="fixed bottom-8 right-8 z-50">
+        <div class="relative group">
+            <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-blue-400 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+            <a href="services.html" aria-label="Book services" class="relative flex items-center gap-3 px-6 py-3 bg-slate-900 text-white rounded-full hover:bg-slate-800 transition-colors">
+                <div class="relative">
+                    <i class="fas fa-briefcase text-xl text-blue-400"></i>
+                </div>
+                <span class="font-medium tracking-wide">Book Services</span>
+            </a>
+            <div class="absolute bottom-full right-0 mb-2 w-48 p-2 bg-slate-800 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
+                View and book our services
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="cart.js"></script>
+</body>
+</html>

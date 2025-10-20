@@ -1,0 +1,113 @@
+/**
+ * DTB Technologies Digital Museum - Analytics Styles
+ * Custom styles and animations for the analytics dashboard
+ */
+
+/* Chart bar animation */
+@keyframes grow-up {
+  from { height: 0; }
+  to { height: var(--target-height); }
+}
+
+/* Value counter animation */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Stat card hover effects */
+.stat-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.5);
+}
+
+/* Chart overlay gradient */
+.chart-gradient-overlay {
+  background: linear-gradient(to bottom,
+    rgba(30, 41, 59, 0.8) 0%,
+    rgba(30, 41, 59, 0) 40%,
+    rgba(30, 41, 59, 0) 60%,
+    rgba(30, 41, 59, 0.8) 100%
+  );
+  pointer-events: none;
+}
+
+/* Value indicator for chart bars */
+.chart-bar::after {
+  content: attr(data-value);
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(59, 130, 246, 0.2);
+  color: rgb(147, 197, 253);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 10px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.chart-bar:hover::after {
+  opacity: 1;
+}
+
+/* Slow spin animation for 3D elements */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 15s linear infinite;
+}
+
+/* Stat change indicators */
+.stat-change-up {
+  color: rgba(52, 211, 153, 1);
+}
+
+.stat-change-down {
+  color: rgba(248, 113, 113, 1);
+}
+
+.stat-change-neutral {
+  color: rgba(250, 204, 21, 1);
+}
+
+/* Timeframe button transitions */
+.timeframe-btn {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Tooltip styles */
+.analytics-tooltip {
+  position: relative;
+}
+
+.analytics-tooltip::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px 10px;
+  background-color: rgba(15, 23, 42, 0.9);
+  color: white;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 10;
+}
+
+.analytics-tooltip:hover::before {
+  opacity: 1;
+}

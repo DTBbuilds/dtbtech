@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DTB Technologies - Feedback Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(to bottom right, #0f172a, #1e293b);
+            min-height: 100vh;
+            color: #f8fafc;
+            font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+        }
+        
+        .glass-card {
+            background-color: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="p-4">
+    <!-- Navigation -->
+    <header class="max-w-7xl mx-auto mb-8">
+        <nav class="flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <div class="text-3xl text-white font-bold flex items-center">
+                    <i class="fas fa-landmark text-blue-400 mr-3"></i>
+                    <span>DTB Technologies</span>
+                </div>
+                <div class="hidden md:flex space-x-6 ml-10">
+                    <a href="welcome.html" class="text-gray-300 hover:text-white transition-colors">Dashboard</a>
+                    <a href="#" class="text-blue-400 hover:text-blue-300 transition-colors">Feedback Admin</a>
+                </div>
+            </div>
+            <div id="user-profile-container" class="relative z-50">
+                <!-- User profile dropdown will be inserted here by JS -->
+            </div>
+        </nav>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto">
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold mb-2">Feedback Management</h1>
+            <p class="text-gray-300">Review and respond to visitor feedback for the Digital Museum.</p>
+        </div>
+        
+        <!-- Dashboard Stats -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+            <div class="glass-card rounded-xl p-4 flex flex-col items-center">
+                <div class="text-3xl font-bold text-white mb-1" id="total-feedback">0</div>
+                <div class="text-sm text-gray-400">Total Submissions</div>
+            </div>
+            
+            <div class="glass-card rounded-xl p-4 flex flex-col items-center">
+                <div class="text-3xl font-bold text-white mb-1" id="avg-rating">0.0</div>
+                <div class="text-sm text-gray-400">Avg. Rating</div>
+            </div>
+            
+            <div class="glass-card rounded-xl p-4 flex flex-col items-center">
+                <div class="text-3xl font-bold text-white mb-1" id="pending-count">0</div>
+                <div class="text-sm text-gray-400">Pending Review</div>
+            </div>
+            
+            <div class="glass-card rounded-xl p-4 flex flex-col items-center">
+                <div class="text-3xl font-bold text-white mb-1" id="addressed-count">0</div>
+                <div class="text-sm text-gray-400">Addressed</div>
+            </div>
+        </div>
+        
+        <!-- Filters -->
+        <div class="glass-card rounded-xl p-4 mb-6">
+            <div class="flex flex-wrap gap-4">
+                <div class="w-full md:w-auto">
+                    <label class="block text-sm text-gray-400 mb-1">Filter by Type</label>
+                    <select id="filter-type" class="w-full md:w-auto px-3 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white">
+                        <option value="">All Types</option>
+                        <option value="project">Project Feedback</option>
+                        <option value="exhibit">Exhibit Feedback</option>
+                        <option value="experience">General Experience</option>
+                        <option value="suggestion">Suggestions</option>
+                        <option value="bug">Bug Reports</option>
+                    </select>
+                </div>
+                
+                <div class="w-full md:w-auto">
+                    <label class="block text-sm text-gray-400 mb-1">Filter by Status</label>
+                    <select id="filter-status" class="w-full md:w-auto px-3 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white">
+                        <option value="">All Statuses</option>
+                        <option value="pending">Pending</option>
+                        <option value="reviewed">Reviewed</option>
+                        <option value="addressed">Addressed</option>
+                        <option value="closed">Closed</option>
+                    </select>
+                </div>
+                
+                <div class="w-full md:w-auto">
+                    <label class="block text-sm text-gray-400 mb-1">Filter by Rating</label>
+                    <select id="filter-rating" class="w-full md:w-auto px-3 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white">
+                        <option value="">All Ratings</option>
+                        <option value="5">5 Stars</option>
+                        <option value="4">4 Stars</option>
+                        <option value="3">3 Stars</option>
+                        <option value="2">2 Stars</option>
+                        <option value="1">1 Star</option>
+                    </select>
+                </div>
+                
+                <div class="w-full md:w-auto ml-auto self-end">
+                    <button id="export-csv" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg flex items-center">
+                        <i class="fas fa-download mr-2"></i> Export CSV
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Feedback Table -->
+        <div class="glass-card rounded-xl overflow-hidden">
+            <div class="overflow-x-auto">
+                <table class="min-w-full">
+                    <thead>
+                        <tr class="bg-slate-800">
+                            <th class="py-3 px-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Date</th>
+                            <th class="py-3 px-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Type</th>
+                            <th class="py-3 px-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Item</th>
+                            <th class="py-3 px-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Rating</th>
+                            <th class="py-3 px-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Comment</th>
+                            <th class="py-3 px-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">User</th>
+                            <th class="py-3 px-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Status</th>
+                            <th class="py-3 px-4 text-right text-xs font-medium text-gray-400 uppercase tracking-wider">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="feedback-table-body" class="bg-slate-800/50 divide-y divide-slate-700">
+                        <!-- Feedback rows will be inserted here by JS -->
+                        <tr>
+                            <td colspan="8" class="py-4 px-4 text-center text-gray-400">Loading feedback data...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Feedback Detail Modal -->
+    <div id="feedback-detail-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/90 backdrop-blur-sm hidden">
+        <div class="modal-container bg-slate-800 rounded-2xl w-full max-w-2xl mx-4 overflow-hidden shadow-2xl">
+            <div class="modal-header relative">
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20"></div>
+                <div class="relative p-6">
+                    <div class="flex justify-between items-center">
+                        <h2 class="text-2xl font-bold text-white">Feedback Details</h2>
+                        <button class="modal-close text-gray-400 hover:text-white transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-body p-6 pt-2" id="feedback-detail-content">
+                <!-- Feedback details will be inserted here by JS -->
+            </div>
+            
+            <div class="modal-footer p-6 pt-2 border-t border-slate-700">
+                <form id="response-form" class="mb-4">
+                    <label class="block text-sm font-medium text-gray-300 mb-2">Response</label>
+                    <textarea id="response-text" rows="3" class="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Type your response here..."></textarea>
+                    
+                    <div class="flex justify-end space-x-3 mt-4">
+                        <button type="button" id="update-status-btn" class="px-4 py-2 bg-gray-600 hover:bg-gray-500 text-white rounded-lg transition-colors">
+                            Mark as Reviewed
+                        </button>
+                        <button type="submit" id="submit-response-btn" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors">
+                            Send Response
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script type="module">
+        // Import feedback service
+        import { feedbackService } from '../js/feedback/feedback-service.js';
+        import initDashboardAuth from '../js/auth/dashboard-auth.js';
+        
+        // Current selected feedback item
+        let currentFeedbackId = null;
+        
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize authentication
+            initDashboardAuth();
+            
+            // Load feedback data
+            loadFeedbackData();
+            
+            // Set up event listeners
+            setupEventListeners();
+        });
+        
+        // Load feedback data and update dashboard
+        function loadFeedbackData() {
+            // Get feedback statistics
+            const stats = feedbackService.getFeedbackStats();
+            updateDashboardStats(stats);
+            
+            // Get filters
+            const filters = getFilters();
+            
+            // Get all feedback with filters
+            const feedbackItems = feedbackService.getAllFeedback(filters);
+            updateFeedbackTable(feedbackItems);
+        }
+        
+        // Update dashboard statistics
+        function updateDashboardStats(stats) {
+            document.getElementById('total-feedback').textContent = stats.total;
+            document.getElementById('avg-rating').textContent = stats.averageRating.toFixed(1);
+            document.getElementById('pending-count').textContent = stats.byStatus.pending || 0;
+            document.getElementById('addressed-count').textContent = stats.byStatus.addressed || 0;
+        }
+        
+        // Get current filters
+        function getFilters() {
+            const typeFilter = document.getElementById('filter-type').value;
+            const statusFilter = document.getElementById('filter-status').value;
+            const ratingFilter = document.getElementById('filter-rating').value;
+            
+            const filters = {};
+            
+            if (typeFilter) filters.type = typeFilter;
+            if (statusFilter) filters.status = statusFilter;
+            if (ratingFilter) filters.minRating = parseInt(ratingFilter);
+            
+            return filters;
+        }
+        
+        // Update the feedback table
+        function updateFeedbackTable(feedbackItems) {
+            const tableBody = document.getElementById('feedback-table-body');
+            
+            if (!tableBody) return;
+            
+            if (feedbackItems.length === 0) {
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="8" class="py-4 px-4 text-center text-gray-400">No feedback items found</td>
+                    </tr>
+                `;
+                return;
+            }
+            
+            // Sort by date (newest first)
+            feedbackItems.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+            
+            let tableHTML = '';
+            
+            feedbackItems.forEach(item => {
+                // Format date
+                const date = new Date(item.createdAt);
+                const formattedDate = date.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric'
+                });
+                
+                // Get rating stars
+                const ratingStars = getRatingStars(item.emotionRating);
+                
+                // Get status badge
+                const statusBadge = getStatusBadge(item.status);
+                
+                // Truncate comment
+                const comment = item.comment ? (item.comment.length > 50 ? item.comment.substring(0, 50) + '...' : item.comment) : '-';
+                
+                tableHTML += `
+                    <tr class="hover:bg-slate-700/50 transition-colors cursor-pointer feedback-row" data-id="${item.id}">
+                        <td class="py-3 px-4 text-sm text-gray-300">${formattedDate}</td>
+                        <td class="py-3 px-4 text-sm text-gray-300 capitalize">${item.type}</td>
+                        <td class="py-3 px-4 text-sm text-gray-300">${item.itemName || '-'}</td>
+                        <td class="py-3 px-4 text-sm text-gray-300">${ratingStars}</td>
+                        <td class="py-3 px-4 text-sm text-gray-300">${comment}</td>
+                        <td class="py-3 px-4 text-sm text-gray-300">${item.user.displayName}</td>
+                        <td class="py-3 px-4 text-sm">${statusBadge}</td>
+                        <td class="py-3 px-4 text-sm text-right">
+                            <button class="view-feedback-btn p-1 text-blue-400 hover:text-blue-300 transition-colors" data-id="${item.id}">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            });
+            
+            tableBody.innerHTML = tableHTML;
+            
+            // Add click event to rows
+            document.querySelectorAll('.feedback-row').forEach(row => {
+                row.addEventListener('click', () => {
+                    const feedbackId = row.dataset.id;
+                    showFeedbackDetail(feedbackId);
+                });
+            });
+        }
+        
+        // Generate rating stars HTML
+        function getRatingStars(rating) {
+            let starsHTML = '';
+            for (let i = 1; i <= 5; i++) {
+                if (i <= rating) {
+                    starsHTML += '<i class="fas fa-star text-yellow-400"></i>';
+                } else {
+                    starsHTML += '<i class="far fa-star text-gray-500"></i>';
+                }
+            }
+            return starsHTML;
+        }
+        
+        // Generate status badge HTML
+        function getStatusBadge(status) {
+            let badgeClass = '';
+            let badgeText = status.charAt(0).toUpperCase() + status.slice(1);
+            
+            switch (status) {
+                case 'pending':
+                    badgeClass = 'bg-yellow-600/20 text-yellow-400';
+                    break;
+                case 'reviewed':
+                    badgeClass = 'bg-blue-600/20 text-blue-400';
+                    break;
+                case 'addressed':
+                    badgeClass = 'bg-green-600/20 text-green-400';
+                    break;
+                case 'closed':
+                    badgeClass = 'bg-gray-600/20 text-gray-400';
+                    break;
+                default:
+                    badgeClass = 'bg-gray-600/20 text-gray-400';
+            }
+            
+            return `<span class="px-2 py-1 rounded-full text-xs font-medium ${badgeClass}">${badgeText}</span>`;
+        }
+        
+        // Show feedback detail modal
+        function showFeedbackDetail(feedbackId) {
+            // Find the feedback item
+            const feedbackItems = feedbackService.getAllFeedback();
+            const item = feedbackItems.find(item => item.id === feedbackId);
+            
+            if (!item) return;
+            
+            // Store current feedback ID
+            currentFeedbackId = feedbackId;
+            
+            // Update modal content
+            const detailContent = document.getElementById('feedback-detail-content');
+            if (!detailContent) return;
+            
+            // Format date
+            const date = new Date(item.createdAt);
+            const formattedDate = date.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+            
+            // Get rating stars
+            const ratingStars = getRatingStars(item.emotionRating);
+            
+            // Sentiment analysis
+            let sentimentHTML = '';
+            if (item.comment) {
+                const sentiment = feedbackService.analyzeSentiment(item.comment);
+                let sentimentClass = '';
+                
+                switch (sentiment.sentiment) {
+                    case 'positive':
+                    case 'somewhat positive':
+                        sentimentClass = 'text-green-400';
+                        break;
+                    case 'negative':
+                    case 'somewhat negative':
+                        sentimentClass = 'text-red-400';
+                        break;
+                    default:
+                        sentimentClass = 'text-gray-400';
+                }
+                
+                sentimentHTML = `
+                    <div class="mt-2 text-sm">
+                        <span class="text-gray-400">Sentiment: </span>
+                        <span class="${sentimentClass}">${sentiment.sentiment}</span>
+                    </div>
+                `;
+            }
+            
+            // Response section
+            let responseHTML = '';
+            if (item.response) {
+                responseHTML = `
+                    <div class="mt-4 p-3 bg-blue-600/10 rounded-lg border border-blue-500/20">
+                        <div class="flex justify-between">
+                            <p class="text-sm font-medium text-blue-400">Response from ${item.response.respondent}</p>
+                            <p class="text-xs text-gray-400">${new Date(item.response.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</p>
+                        </div>
+                        <p class="mt-2 text-sm text-gray-300">${item.response.text}</p>
+                    </div>
+                `;
+            }
+            
+            detailContent.innerHTML = `
+                <div class="space-y-4">
+                    <div class="flex justify-between">
+                        <div>
+                            <h3 class="text-lg font-medium text-white">${item.type.charAt(0).toUpperCase() + item.type.slice(1)} Feedback</h3>
+                            <p class="text-sm text-gray-400">${formattedDate}</p>
+                        </div>
+                        <div>
+                            ${getStatusBadge(item.status)}
+                        </div>
+                    </div>
+                    
+                    <div class="p-3 bg-slate-700/50 rounded-lg">
+                        <div class="flex justify-between">
+                            <div>
+                                <p class="text-sm text-gray-400">Rating</p>
+                                <div class="mt-1">${ratingStars}</div>
+                            </div>
+                            
+                            <div>
+                                <p class="text-sm text-gray-400">Submitted by</p>
+                                <p class="text-sm text-white">${item.user.displayName}</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    ${item.itemName ? `
+                        <div>
+                            <p class="text-sm text-gray-400">Item</p>
+                            <p class="text-sm text-white">${item.itemName}</p>
+                        </div>
+                    ` : ''}
+                    
+                    <div>
+                        <p class="text-sm text-gray-400">Comment</p>
+                        <p class="mt-1 text-sm text-white">${item.comment || 'No comment provided'}</p>
+                        ${sentimentHTML}
+                    </div>
+                    
+                    ${item.tags && item.tags.length > 0 ? `
+                        <div>
+                            <p class="text-sm text-gray-400">Tags</p>
+                            <div class="flex flex-wrap gap-1 mt-1">
+                                ${item.tags.map(tag => `<span class="px-2 py-0.5 bg-slate-700 text-gray-300 rounded-full text-xs">${tag}</span>`).join('')}
+                            </div>
+                        </div>
+                    ` : ''}
+                    
+                    ${responseHTML}
+                </div>
+            `;
+            
+            // Update response form
+            const responseForm = document.getElementById('response-form');
+            const updateStatusBtn = document.getElementById('update-status-btn');
+            const submitResponseBtn = document.getElementById('submit-response-btn');
+            
+            if (item.status === 'addressed' || item.status === 'closed') {
+                responseForm.classList.add('hidden');
+            } else {
+                responseForm.classList.remove('hidden');
+                
+                // Update button text based on current status
+                if (item.status === 'pending') {
+                    updateStatusBtn.textContent = 'Mark as Reviewed';
+                } else if (item.status === 'reviewed') {
+                    updateStatusBtn.textContent = 'Close Feedback';
+                }
+            }
+            
+            // Show the modal
+            const modal = document.getElementById('feedback-detail-modal');
+            if (modal) {
+                modal.classList.remove('hidden');
+            }
+        }
+        
+        // Set up event listeners
+        function setupEventListeners() {
+            // Filter change events
+            document.getElementById('filter-type')?.addEventListener('change', loadFeedbackData);
+            document.getElementById('filter-status')?.addEventListener('change', loadFeedbackData);
+            document.getElementById('filter-rating')?.addEventListener('change', loadFeedbackData);
+            
+            // Export CSV button
+            document.getElementById('export-csv')?.addEventListener('click', exportFeedbackCSV);
+            
+            // Modal close button
+            document.querySelector('.modal-close')?.addEventListener('click', () => {
+                const modal = document.getElementById('feedback-detail-modal');
+                if (modal) {
+                    modal.classList.add('hidden');
+                    currentFeedbackId = null;
+                }
+            });
+            
+            // Update status button
+            document.getElementById('update-status-btn')?.addEventListener('click', updateFeedbackStatus);
+            
+            // Response form submission
+            document.getElementById('response-form')?.addEventListener('submit', (e) => {
+                e.preventDefault();
+                submitFeedbackResponse();
+            });
+        }
+        
+        // Update feedback status
+        async function updateFeedbackStatus() {
+            if (!currentFeedbackId) return;
+            
+            try {
+                // Find the feedback item
+                const feedbackItems = feedbackService.getAllFeedback();
+                const item = feedbackItems.find(item => item.id === currentFeedbackId);
+                
+                if (!item) return;
+                
+                // Determine next status
+                let newStatus = 'reviewed';
+                if (item.status === 'reviewed') {
+                    newStatus = 'closed';
+                }
+                
+                // Update status
+                await feedbackService.updateFeedbackStatus(currentFeedbackId, newStatus);
+                
+                // Reload data
+                loadFeedbackData();
+                
+                // Update detail view
+                showFeedbackDetail(currentFeedbackId);
+            } catch (error) {
+                console.error('Error updating feedback status:', error);
+                alert('Failed to update feedback status');
+            }
+        }
+        
+        // Submit feedback response
+        async function submitFeedbackResponse() {
+            if (!currentFeedbackId) return;
+            
+            const responseText = document.getElementById('response-text').value.trim();
+            
+            if (!responseText) {
+                alert('Please enter a response');
+                return;
+            }
+            
+            try {
+                // Add response
+                await feedbackService.addFeedbackResponse(currentFeedbackId, responseText);
+                
+                // Clear response text
+                document.getElementById('response-text').value = '';
+                
+                // Reload data
+                loadFeedbackData();
+                
+                // Update detail view
+                showFeedbackDetail(currentFeedbackId);
+            } catch (error) {
+                console.error('Error submitting feedback response:', error);
+                alert('Failed to submit response');
+            }
+        }
+        
+        // Export feedback as CSV
+        function exportFeedbackCSV() {
+            const csv = feedbackService.exportAsCSV();
+            
+            // Create download link
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.setAttribute('href', url);
+            link.setAttribute('download', `dtb-feedback-export-${new Date().toISOString().slice(0, 10)}.csv`);
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+</body>
+</html>

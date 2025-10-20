@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DTB Technologies - Virtual Office Tour</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css">
+    <!-- Pannellum for 360° viewer -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+    <style>
+        /* Overall page styling */
+        body {
+            background: linear-gradient(to bottom right, #0f172a, #1e293b);
+            min-height: 100vh;
+            color: #f8fafc;
+            font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+        }
+        
+        /* Panorama viewer container */
+        .panorama-container {
+            width: 100%;
+            height: 70vh;
+            position: relative;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Override Pannellum styling */
+        .pnlm-container {
+            background-color: #1e293b !important;
+        }
+        
+        .pnlm-load-button {
+            background-color: rgba(51, 65, 85, 0.7);
+            color: #e2e8f0;
+        }
+        
+        /* Hotspot styling */
+        .info-hotspot .pnlm-hotspot-base {
+            background-color: rgba(59, 130, 246, 0.75);
+        }
+        
+        .scene-hotspot .pnlm-hotspot-base {
+            background-color: rgba(139, 92, 246, 0.75);
+        }
+        
+        /* Location marker on map */
+        .location-marker {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            z-index: 10;
+        }
+        
+        .marker-dot {
+            width: 12px;
+            height: 12px;
+            background-color: #3b82f6;
+            border-radius: 50%;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .marker-pulse {
+            width: 24px;
+            height: 24px;
+            background-color: rgba(59, 130, 246, 0.3);
+            border-radius: 50%;
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            z-index: 1;
+            animation: pulse 2s infinite;
+        }
+        
+        .location-marker.active .marker-dot {
+            background-color: #ef4444;
+        }
+        
+        .location-marker.active .marker-pulse {
+            background-color: rgba(239, 68, 68, 0.3);
+            animation: pulse-active 1.5s infinite;
+        }
+        
+        .marker-label {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 4px 8px;
+            background-color: rgba(15, 23, 42, 0.8);
+            color: #e2e8f0;
+            font-size: 0.75rem;
+            white-space: nowrap;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            opacity: 0;
+            transition: opacity 0.2s;
+            pointer-events: none;
+        }
+        
+        .location-marker:hover .marker-label {
+            opacity: 1;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(0.8); opacity: 1; }
+            70% { transform: scale(1.5); opacity: 0; }
+            100% { transform: scale(0.8); opacity: 0; }
+        }
+        
+        @keyframes pulse-active {
+            0% { transform: scale(0.8); opacity: 1; }
+            70% { transform: scale(1.8); opacity: 0; }
+            100% { transform: scale(0.8); opacity: 0; }
+        }
+        
+        /* Tour controls */
+        .tour-controls {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1rem;
+            z-index: 100;
+            background-color: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(5px);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+        }
+        
+        .tour-btn {
+            padding: 0.5rem;
+            border-radius: 50%;
+            background-color: rgba(51, 65, 85, 0.5);
+            color: #e2e8f0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        
+        .tour-btn:hover {
+            background-color: rgba(59, 130, 246, 0.5);
+            color: #bfdbfe;
+        }
+        
+        .tour-btn.active {
+            background-color: rgba(59, 130, 246, 0.7);
+            color: white;
+        }
+    </style>
+</head>
+<body class="p-4">
+    <!-- Navigation Bar -->
+    <header class="max-w-7xl mx-auto mb-8">
+        <nav class="flex justify-between items-center">
+            <a href="../dashboard/welcome.html" class="flex items-center text-xl font-bold">
+                <i class="fas fa-landmark text-blue-400 mr-3"></i>
+                <span>DTB Technologies</span>
+                <span class="text-blue-400 mx-2">|</span>
+                <span class="text-sm font-normal">Digital Museum</span>
+            </a>
+            <div class="flex space-x-4">
+                <a href="../dashboard/welcome.html" class="text-gray-300 hover:text-white transition-colors">
+                    <i class="fas fa-home mr-1"></i> Dashboard
+                </a>
+                <a href="../viewer/3d-project-viewer.html" class="text-gray-300 hover:text-white transition-colors">
+                    <i class="fas fa-cube mr-1"></i> 3D Explorer
+                </a>
+                <a href="#" class="text-blue-400 hover:text-blue-300 transition-colors">
+                    <i class="fas fa-street-view mr-1"></i> Virtual Tour
+                </a>
+            </div>
+        </nav>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto">
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold mb-2 flex items-center">
+                <i class="fas fa-street-view text-blue-400 mr-3"></i>
+                Office Virtual Tour
+            </h1>
+            <p class="text-gray-300 max-w-3xl">
+                Explore our office space with this interactive 360° tour. Navigate between locations, discover points of interest, and experience our workspace virtually.
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            <!-- Panorama Viewer (3 columns wide) -->
+            <div class="lg:col-span-3">
+                <div class="panorama-container">
+                    <!-- Panorama viewer container -->
+                    <div id="panorama-viewer" class="w-full h-full"></div>
+                    
+                    <!-- Tour controls -->
+                    <div class="tour-controls">
+                        <button id="prev-location" class="tour-btn" title="Previous Location">
+                            <i class="fas fa-arrow-left"></i>
+                        </button>
+                        <button id="auto-tour" class="tour-btn" title="Start Automated Tour">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <button id="next-location" class="tour-btn" title="Next Location">
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Location description -->
+                <div class="bg-slate-800/70 rounded-xl p-4 mt-4 backdrop-blur-sm">
+                    <div id="location-info" class="location-info">
+                        <!-- Location info will be populated by JS -->
+                        <h2 class="text-xl font-bold mb-2">Loading tour...</h2>
+                        <p class="text-gray-300">Please wait while we prepare your virtual tour experience.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tour Info Sidebar (1 column wide) -->
+            <div class="lg:col-span-1">
+                <!-- Office Map -->
+                <div class="bg-slate-800/70 rounded-xl p-4 mb-6 backdrop-blur-sm">
+                    <h3 class="text-lg font-medium mb-3 flex items-center">
+                        <i class="fas fa-map text-emerald-400 mr-2"></i>Office Map
+                    </h3>
+                    <div id="office-map" class="office-map">
+                        <!-- Map will be populated by JS -->
+                    </div>
+                </div>
+                
+                <!-- Tour Guide -->
+                <div class="bg-slate-800/70 rounded-xl p-4 backdrop-blur-sm">
+                    <h3 class="text-lg font-medium mb-3 flex items-center">
+                        <i class="fas fa-info-circle text-blue-400 mr-2"></i>Tour Guide
+                    </h3>
+                    
+                    <div class="space-y-4 text-sm">
+                        <div class="flex items-start">
+                            <div class="rounded-full bg-blue-500/50 p-2 mr-3 text-blue-200">
+                                <i class="fas fa-mouse-pointer"></i>
+                            </div>
+                            <p class="text-gray-300">Click and drag to look around in any direction</p>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="rounded-full bg-purple-500/50 p-2 mr-3 text-purple-200">
+                                <i class="fas fa-search-plus"></i>
+                            </div>
+                            <p class="text-gray-300">Use mouse wheel or pinch gestures to zoom in and out</p>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="rounded-full bg-pink-500/50 p-2 mr-3 text-pink-200">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <p class="text-gray-300">Click on purple markers to navigate to different locations</p>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="rounded-full bg-emerald-500/50 p-2 mr-3 text-emerald-200">
+                                <i class="fas fa-info-circle"></i>
+                            </div>
+                            <p class="text-gray-300">Click on blue markers to learn about points of interest</p>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t border-gray-700 my-4 pt-4">
+                        <a href="../dashboard/welcome.html" class="block w-full py-2 px-4 bg-blue-600/20 hover:bg-blue-600/40 text-blue-300 rounded text-center transition-colors">
+                            <i class="fas fa-arrow-left mr-2"></i> Back to Museum
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="max-w-7xl mx-auto mt-16 mb-8 pt-8 border-t border-gray-800 text-center text-gray-400">
+        <p class="mb-4">
+            © 2025 DTB Technologies. All rights reserved.
+        </p>
+        <div class="flex justify-center space-x-8 text-sm">
+            <a href="../about.html" class="hover:text-gray-200 transition-colors">About Us</a>
+            <a href="../contact.html" class="hover:text-gray-200 transition-colors">Contact</a>
+            <a href="../tech-lab.html" class="hover:text-gray-200 transition-colors">Tech Lab</a>
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script type="module">
+        import { VirtualTourManager, TourLocations } from '../js/virtual-tour/tour-manager.js';
+        
+        // Initialize variables
+        let tourManager;
+        let isAutoTourActive = false;
+        
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            initVirtualTour();
+            setupEventListeners();
+        });
+        
+        // Initialize the virtual tour
+        function initVirtualTour() {
+            // Create a new tour manager instance
+            tourManager = new VirtualTourManager(
+                'panorama-viewer',
+                'location-info',
+                'office-map',
+                {
+                    startLocationId: 'reception',
+                    usePlaceholders: true, // Use placeholder panoramas for now
+                    showControls: true,
+                    autoRotate: 0 // Start with auto-rotation disabled
+                }
+            );
+        }
+        
+        // Set up event listeners
+        function setupEventListeners() {
+            // Previous location button
+            const prevBtn = document.getElementById('prev-location');
+            if (prevBtn) {
+                prevBtn.addEventListener('click', navigateToPreviousLocation);
+            }
+            
+            // Next location button
+            const nextBtn = document.getElementById('next-location');
+            if (nextBtn) {
+                nextBtn.addEventListener('click', navigateToNextLocation);
+            }
+            
+            // Auto tour button
+            const autoTourBtn = document.getElementById('auto-tour');
+            if (autoTourBtn) {
+                autoTourBtn.addEventListener('click', toggleAutoTour);
+            }
+        }
+        
+        // Navigate to the previous location
+        function navigateToPreviousLocation() {
+            if (!tourManager) return;
+            
+            // Find the current location index
+            const currentLocationId = tourManager.currentLocation.id;
+            const currentIndex = TourLocations.findIndex(loc => loc.id === currentLocationId);
+            
+            // Calculate the previous index (with wrap-around)
+            const prevIndex = (currentIndex - 1 + TourLocations.length) % TourLocations.length;
+            
+            // Navigate to the previous location
+            tourManager.navigateToLocation(TourLocations[prevIndex].id);
+        }
+        
+        // Navigate to the next location
+        function navigateToNextLocation() {
+            if (!tourManager) return;
+            
+            // Find the current location index
+            const currentLocationId = tourManager.currentLocation.id;
+            const currentIndex = TourLocations.findIndex(loc => loc.id === currentLocationId);
+            
+            // Calculate the next index (with wrap-around)
+            const nextIndex = (currentIndex + 1) % TourLocations.length;
+            
+            // Navigate to the next location
+            tourManager.navigateToLocation(TourLocations[nextIndex].id);
+        }
+        
+        // Toggle automated tour
+        function toggleAutoTour() {
+            if (!tourManager) return;
+            
+            const autoTourBtn = document.getElementById('auto-tour');
+            
+            if (isAutoTourActive) {
+                // Stop automated tour
+                tourManager.stopAutomatedTour();
+                isAutoTourActive = false;
+                
+                // Update button icon
+                if (autoTourBtn) {
+                    autoTourBtn.innerHTML = '<i class="fas fa-play"></i>';
+                    autoTourBtn.classList.remove('active');
+                    autoTourBtn.title = 'Start Automated Tour';
+                }
+            } else {
+                // Start automated tour
+                tourManager.startAutomatedTour(8000); // Change location every 8 seconds
+                isAutoTourActive = true;
+                
+                // Update button icon
+                if (autoTourBtn) {
+                    autoTourBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                    autoTourBtn.classList.add('active');
+                    autoTourBtn.title = 'Stop Automated Tour';
+                }
+            }
+        }
+        
+        // Clean up resources when leaving the page
+        window.addEventListener('beforeunload', () => {
+            if (tourManager) {
+                tourManager.destroy();
+            }
+        });
+    </script>
+</body>
+</html>

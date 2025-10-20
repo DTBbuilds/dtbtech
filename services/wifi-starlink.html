@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WiFi & Starlink Networks - DTB Technologies</title>
+    <link rel="stylesheet" href="../dist/output.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css">
+    <script src="../components/nav-header.js" defer></script>
+    <script src="../js/dashboard.js" defer></script>
+</head>
+<body class="bg-slate-900">
+    <!-- Navigation -->
+    <nav-header></nav-header>
+
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <section class="relative h-[60vh] min-h-[400px] flex items-center justify-center">
+            <div class="absolute inset-0">
+                <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80" 
+                     alt="WiFi and Starlink Networks" 
+                     class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-r from-gray-900 to-gray-900/80"></div>
+            </div>
+            <div class="relative container mx-auto px-4 text-center">
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">WiFi & Starlink Networks</h1>
+                <p class="text-xl text-gray-300 max-w-2xl mx-auto">High-speed internet solutions for homes and businesses</p>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="py-16 bg-gray-800">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-white text-center mb-12">Our Network Solutions</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-gray-900 p-6 rounded-xl">
+                        <div class="text-blue-400 text-3xl mb-4">
+                            <i class="fas fa-wifi"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-3">WiFi Installation</h3>
+                        <p class="text-gray-300">Professional WiFi network setup with optimal coverage and performance.</p>
+                    </div>
+                    
+                    <div class="bg-gray-900 p-6 rounded-xl">
+                        <div class="text-blue-400 text-3xl mb-4">
+                            <i class="fas fa-satellite"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-3">Starlink Setup</h3>
+                        <p class="text-gray-300">Authorized Starlink installation and configuration services.</p>
+                    </div>
+                    
+                    <div class="bg-gray-900 p-6 rounded-xl">
+                        <div class="text-blue-400 text-3xl mb-4">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-3">Network Management</h3>
+                        <p class="text-gray-300">Ongoing monitoring and maintenance of your network infrastructure.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing -->
+        <section class="py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-white text-center mb-12">Service Plans</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                    <div class="bg-gray-800 rounded-xl p-8">
+                        <h3 class="text-xl font-semibold text-white mb-4">Basic WiFi</h3>
+                        <div class="text-blue-400 text-4xl font-bold mb-4">KSh 15,000</div>
+                        <ul class="text-gray-300 space-y-3 mb-8">
+                            <li>Standard WiFi Router</li>
+                            <li>Basic Installation</li>
+                            <li>1 Year Support</li>
+                        </ul>
+                        <button onclick="addToCart('Basic WiFi', 15000)" class="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600">
+                            Get Started
+                        </button>
+                    </div>
+
+                    <div class="bg-gray-800 rounded-xl p-8 border-2 border-blue-400">
+                        <h3 class="text-xl font-semibold text-white mb-4">Starlink Setup</h3>
+                        <div class="text-blue-400 text-4xl font-bold mb-4">KSh 35,000</div>
+                        <ul class="text-gray-300 space-y-3 mb-8">
+                            <li>Professional Installation</li>
+                            <li>Hardware Setup</li>
+                            <li>Network Configuration</li>
+                            <li>24/7 Support</li>
+                        </ul>
+                        <button onclick="addToCart('Starlink Setup', 35000)" class="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600">
+                            Get Started
+                        </button>
+                    </div>
+
+                    <div class="bg-gray-800 rounded-xl p-8">
+                        <h3 class="text-xl font-semibold text-white mb-4">Enterprise</h3>
+                        <div class="text-blue-400 text-4xl font-bold mb-4">Custom</div>
+                        <ul class="text-gray-300 space-y-3 mb-8">
+                            <li>Custom Network Design</li>
+                            <li>Multiple Access Points</li>
+                            <li>Advanced Security</li>
+                            <li>Priority Support</li>
+                        </ul>
+                        <a href="../contact.html" class="block w-full bg-gray-700 text-white py-3 rounded-lg hover:bg-gray-600 text-center">
+                            Contact Sales
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="../cart.js"></script>
+</body>
+</html>
