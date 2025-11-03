@@ -49,47 +49,47 @@
     <nav-header></nav-header>
 
     <!-- Tech Lab Hero Section -->
-    <section class="hero-section relative min-h-[65vh] md:min-h-[80vh] lg:min-h-[90vh] flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
+    <section class="hero-section relative pt-24 md:pt-28 min-h-[70vh] md:min-h-[80vh] lg:min-h-[90vh] flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
         <!-- Subtle Grid Pattern Background -->
         <div class="absolute inset-0 opacity-[0.02]">
             <div class="absolute inset-0" style="background-image: linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px), linear-gradient(to right, rgba(59, 130, 246, 0.1) 1px, transparent 1px); background-size: 40px 40px;"></div>
         </div>
         
         <!-- Laboratory Equipment Icons - Strategically Positioned -->
-        <div class="absolute inset-0 pointer-events-none hidden md:block">
-            <!-- Top Left - DNA/Research -->
-            <div class="absolute top-20 left-16 opacity-[0.10] md:animate-pulse" style="animation-delay: 0s;">
-                <i class="fas fa-dna text-4xl md:text-5xl lg:text-6xl text-blue-400"></i>
+        <div class="absolute inset-0 pointer-events-none">
+            <!-- Top Left - Processor -->
+            <div class="hidden md:block absolute top-16 left-16 opacity-[0.12] md:animate-pulse" style="animation-delay: 0s;">
+                <i class="fas fa-microchip text-5xl lg:text-6xl text-blue-400"></i>
             </div>
             
-            <!-- Top Right - Atom/Science -->
-            <div class="absolute top-24 right-20 opacity-[0.15] md:animate-pulse" style="animation-delay: 1s;">
-                <i class="fas fa-atom text-4xl md:text-5xl lg:text-6xl text-cyan-400"></i>
+            <!-- Top Right - Server Rack -->
+            <div class="hidden md:block absolute top-16 right-16 opacity-[0.12] md:animate-pulse" style="animation-delay: 1s;">
+                <i class="fas fa-server text-5xl lg:text-6xl text-cyan-400"></i>
             </div>
             
-            <!-- Left Side - Microscope -->
-            <div class="absolute left-12 top-1/2 transform -translate-y-1/2 opacity-[0.08] md:animate-pulse" style="animation-delay: 2s;">
-                <i class="fas fa-microscope text-5xl md:text-6xl lg:text-7xl text-indigo-400"></i>
+            <!-- Mid Left - Network Topology -->
+            <div class="hidden md:block absolute left-16 top-1/2 -translate-y-1/2 opacity-[0.10] md:animate-pulse" style="animation-delay: 2s;">
+                <i class="fas fa-network-wired text-5xl lg:text-6xl text-indigo-400"></i>
             </div>
             
-            <!-- Right Side - Flask -->
-            <div class="absolute right-16 top-1/2 transform -translate-y-1/2 opacity-[0.12] md:animate-pulse" style="animation-delay: 3s;">
-                <i class="fas fa-flask text-4xl md:text-5xl lg:text-6xl text-purple-400"></i>
+            <!-- Mid Right - Robotics -->
+            <div class="hidden md:block absolute right-16 top-1/2 -translate-y-1/2 opacity-[0.10] md:animate-pulse" style="animation-delay: 3s;">
+                <i class="fas fa-robot text-5xl lg:text-6xl text-purple-400"></i>
             </div>
             
-            <!-- Bottom Left - Circuit Board -->
-            <div class="absolute bottom-20 left-20 opacity-[0.10] md:animate-pulse" style="animation-delay: 4s;">
-                <i class="fas fa-microchip text-4xl md:text-5xl text-green-400"></i>
+            <!-- Bottom Left - Code Branch -->
+            <div class="hidden md:block absolute bottom-16 left-16 opacity-[0.12] md:animate-pulse" style="animation-delay: 4s;">
+                <i class="fas fa-code-branch text-5xl lg:text-6xl text-green-400"></i>
             </div>
             
-            <!-- Bottom Right - Cogs -->
-            <div class="absolute bottom-24 right-24 opacity-[0.15] md:animate-pulse" style="animation-delay: 5s;">
-                <i class="fas fa-cogs text-4xl md:text-5xl lg:text-6xl text-blue-300"></i>
+            <!-- Bottom Right - Satellite Link -->
+            <div class="hidden md:block absolute bottom-16 right-16 opacity-[0.12] md:animate-pulse" style="animation-delay: 5s;">
+                <i class="fas fa-satellite-dish text-5xl lg:text-6xl text-blue-300"></i>
             </div>
             
             <!-- Center Background - Large Subtle Icon -->
             <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-[0.03] hidden md:block">
-                <i class="fas fa-atom sm:text-[14rem] md:text-[18rem] lg:text-[20rem] text-blue-500"></i>
+                <i class="fas fa-cubes sm:text-[14rem] md:text-[18rem] lg:text-[20rem] text-blue-500"></i>
             </div>
         </div>
         
@@ -118,17 +118,7 @@
                 creating tomorrow's solutions today.
             </p>
             
-            <!-- CTA Buttons -->
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a href="#research" class="group inline-flex items-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-all duration-300 font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400">
-                    <i class="fas fa-microscope mr-3 group-hover:scale-110 transition-transform"></i>
-                    Explore Research
-                </a>
-                <a href="contact.html" class="group inline-flex items-center px-8 py-4 bg-transparent border border-slate-600 hover:border-blue-500 text-slate-300 hover:text-white rounded-lg transition-all duration-300 font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-300">
-                    <i class="fas fa-flask mr-3 group-hover:scale-110 transition-transform"></i>
-                    Join Lab
-                </a>
-            </div>
+            
         </div>
         
         <!-- Floating Particles -->
