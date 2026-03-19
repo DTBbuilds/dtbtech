@@ -1,0 +1,43 @@
+{
+  "name": "dtb-technologies",
+  "version": "1.0.0",
+  "description": "DTB Technologies Website",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "build": "npm run build:css",
+    "build:css": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify",
+    "watch:css": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
+    "vercel-build": "npm run build:css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://DTBbuilds@github.com/DTBbuilds/dtbtechnologies.git"
+  },
+  "keywords": [
+    "web",
+    "technology",
+    "services"
+  ],
+  "author": "DTB Technologies",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DTBbuilds/dtbtechnologies/issues"
+  },
+  "homepage": "https://github.com/DTBbuilds/dtbtechnologies#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongodb": "^6.15.0",
+    "mongoose": "^8.13.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/forms": "^0.5.3",
+    "@tailwindcss/typography": "^0.5.9",
+    "autoprefixer": "^10.4.14",
+    "nodemon": "^3.1.9",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.4.17"
+  }
+}

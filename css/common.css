@@ -1,0 +1,81 @@
+/* Font Awesome optimization - suppress glyph bbox warnings */
+.fa, .fas, .far, .fal, .fab {
+    font-display: swap;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Background accent */
+.bg-gradient-animate {
+    background: #3b82f6;
+}
+
+/* Common layout styles */
+.page-container {
+    min-height: 100vh;
+    background-color: rgb(15, 23, 42);
+    color: rgb(209, 213, 219);
+}
+
+.content-wrapper {
+    padding-top: 5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    max-width: 80rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Card styles */
+.glass-card {
+    background-color: rgba(30, 41, 59, 0.5);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(51, 65, 85, 0.3);
+    border-radius: 1rem;
+    padding: 1.5rem;
+}
+
+/* Button styles */
+.btn-primary {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    background-color: rgba(37, 99, 235, 0.2);
+    color: rgb(96, 165, 250);
+    border: 1px solid rgba(37, 99, 235, 0.3);
+    transition: all 300ms;
+}
+
+.btn-primary:hover {
+    background-color: rgba(37, 99, 235, 0.3);
+    border-color: rgba(37, 99, 235, 0.5);
+}
+
+.btn-secondary {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    background-color: rgba(51, 65, 85, 0.5);
+    color: rgb(209, 213, 219);
+    transition: all 300ms;
+}
+
+.btn-secondary:hover {
+    background-color: rgba(51, 65, 85, 0.8);
+    color: white;
+}
+
+/* Link styles */
+.nav-link {
+    color: rgb(209, 213, 219);
+    transition: color 300ms;
+}
+
+.nav-link:hover {
+    color: rgb(96, 165, 250);
+}
+
+/* Grid layouts */
+.grid-cols-auto-fit {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
