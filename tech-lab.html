@@ -302,7 +302,7 @@
                     <div class="space-y-4">
                         <p class="text-gray-300 flex items-center"><i class="fas fa-map-marker-alt text-blue-400 mr-3"></i>Uthiru Muthua, Nairobi, Kenya</p>
                         <p class="text-gray-300 flex items-center"><i class="fas fa-phone text-blue-400 mr-3"></i>+254 700 000000</p>
-                        <p class="text-gray-300 flex items-center"><i class="fas fa-envelope text-blue-400 mr-3"></i><a href="mailto:dtbinfotech@gmail.com" class="hover:text-blue-400 transition-colors">dtbinfotech@gmail.com</a></p>
+                        <p class="text-gray-300 flex items-center"><i class="fas fa-envelope text-blue-400 mr-3"></i><a href="mailto:dtbbuildsoffice@gmail.com" class="hover:text-blue-400 transition-colors">dtbbuildsoffice@gmail.com</a></p>
                     </div>
                 </div>
             </div>
@@ -327,110 +327,6 @@
         </div>
     </footer>
 
-    <script type="module">
-        import authModal from './components/auth-modal.js';
-        import './components/auth-buttons.js';
-        window.authModal = authModal;
 
-        // Handle authentication state
-        function updateAuthUI() {
-            const token = localStorage.getItem('token');
-            const user = JSON.parse(localStorage.getItem('user') || 'null');
-            const authButtons = document.querySelector('.auth-buttons');
-            const userMenu = document.querySelector('.user-menu');
-            const username = document.querySelector('.username');
-            const userDropdown = document.getElementById('userDropdown');
-
-            if (token && user) {
-                authButtons.classList.add('hidden');
-                userMenu.classList.remove('hidden');
-                username.textContent = user.username;
-            } else {
-                authButtons.classList.remove('hidden');
-                userMenu.classList.add('hidden');
-                userDropdown.classList.add('hidden');
-            }
-        }
-
-        // Toggle user dropdown with animation
-        const userMenuBtn = document.getElementById('userMenuBtn');
-        const userDropdown = document.getElementById('userDropdown');
-        if (userMenuBtn) {
-            userMenuBtn.addEventListener('click', () => {
-                const isHidden = userDropdown.classList.contains('hidden');
-                if (isHidden) {
-                    userDropdown.classList.remove('hidden');
-                    setTimeout(() => {
-                        userDropdown.classList.remove('opacity-0', 'scale-95');
-                        userDropdown.classList.add('opacity-100', 'scale-100');
-                        userMenuBtn.querySelector('svg:last-child').classList.add('rotate-180');
-                    }, 10);
-                } else {
-                    userDropdown.classList.remove('opacity-100', 'scale-100');
-                    userDropdown.classList.add('opacity-0', 'scale-95');
-                    userMenuBtn.querySelector('svg:last-child').classList.remove('rotate-180');
-                    setTimeout(() => {
-                        userDropdown.classList.add('hidden');
-                    }, 200);
-                }
-            });
-
-            // Close dropdown when clicking outside
-            document.addEventListener('click', (e) => {
-                if (!userMenuBtn.contains(e.target) && !userDropdown.contains(e.target) && !userDropdown.classList.contains('hidden')) {
-                    userDropdown.classList.remove('opacity-100', 'scale-100');
-                    userDropdown.classList.add('opacity-0', 'scale-95');
-                    userMenuBtn.querySelector('svg:last-child').classList.remove('rotate-180');
-                    setTimeout(() => {
-                        userDropdown.classList.add('hidden');
-                    }, 200);
-                }
-            });
-        }
-
-        // Handle logout with animation
-        window.handleLogout = () => {
-            const userMenu = document.querySelector('.user-menu');
-            userMenu.style.opacity = '0';
-            setTimeout(() => {
-                localStorage.removeItem('token');
-                localStorage.removeItem('user');
-                updateAuthUI();
-                userMenu.style.opacity = '';
-            }, 300);
-        };
-
-        // Update UI on page load
-        updateAuthUI();
-
-        // Add password strength indicator
-        const passwordInput = document.getElementById('signupPassword');
-        if (passwordInput) {
-            passwordInput.addEventListener('input', (e) => {
-                const password = e.target.value;
-                const strength = getPasswordStrength(password);
-                updatePasswordStrength(strength);
-            });
-        }
-
-        function getPasswordStrength(password) {
-            let strength = 0;
-            if (password.length >= 8) strength++;
-            if (/[A-Z]/.test(password)) strength++;
-            if (/[0-9]/.test(password)) strength++;
-            if (/[^A-Za-z0-9]/.test(password)) strength++;
-            return strength;
-        }
-
-        function updatePasswordStrength(strength) {
-            const indicator = document.querySelector('.password-strength');
-            indicator.className = 'password-strength';
-            if (strength === 1) indicator.classList.add('strength-weak');
-            else if (strength === 2) indicator.classList.add('strength-medium');
-            else if (strength >= 3) indicator.classList.add('strength-strong');
-        }
-    </script>
-    <script src="script.js"></script>
-    <script src="cart.js"></script>
 </body>
 </html>

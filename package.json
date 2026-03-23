@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://DTBbuilds@github.com/DTBbuilds/dtbtechnologies.git"
+    "url": "git+https://github.com/DTBbuilds/dtbtech.git"
   },
   "keywords": [
     "web",
@@ -23,13 +23,11 @@
   "author": "DTB Technologies",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/DTBbuilds/dtbtechnologies/issues"
+    "url": "https://github.com/DTBbuilds/dtbtech/issues"
   },
-  "homepage": "https://github.com/DTBbuilds/dtbtechnologies#readme",
+  "homepage": "https://github.com/DTBbuilds/dtbtech#readme",
   "dependencies": {
-    "express": "^4.18.2",
-    "mongodb": "^6.15.0",
-    "mongoose": "^8.13.2"
+    "express": "^4.18.2"
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.2",
