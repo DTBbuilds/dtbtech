@@ -50,7 +50,7 @@ class NavHeader extends HTMLElement {
                                 <a href="${prefix}dashboard/welcome.html" class="ml-2 px-3 py-2 text-slate-300 hover:text-white border-b-2 border-transparent transition-colors">Dashboard</a>
                                 <button onclick="logout()" class="ml-3 px-3 py-2 rounded-md bg-slate-800/50 text-slate-200 hover:bg-slate-700/70 transition-colors">Logout</button>
                             ` : `
-                                <a href="${prefix}dashboard.html" class="ml-2 px-4 py-2 rounded-md bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-500 hover:to-indigo-500 transition-colors">Dashboard</a>
+                                <a href="${prefix}contact.html" class="ml-3 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium transition-colors">Get a Website</a>
                             `}
                         </div>
 
@@ -87,9 +87,11 @@ class NavHeader extends HTMLElement {
                                 <i class="fas fa-sign-out-alt mr-3 w-4"></i>Logout
                             </button>
                         ` : `
-                            <a href="${prefix}dashboard.html" class="w-full mt-2 px-4 py-3 min-h-[44px] text-left text-blue-400 hover:text-blue-300 hover:bg-slate-700/50 rounded-lg transition-colors flex items-center">
-                                <i class="fas fa-tachometer-alt mr-3 w-4"></i>Dashboard
-                            </a>
+                            <div class="mt-3 pt-3 border-t border-slate-800/60">
+                                <a href="${prefix}contact.html" class="block w-full px-4 py-3 min-h-[44px] bg-blue-600 hover:bg-blue-700 text-white text-center rounded-lg font-medium transition-colors">
+                                    <i class="fas fa-rocket mr-2 text-xs"></i>Get a Website
+                                </a>
+                            </div>
                         `}
                     </div>
                 </div>

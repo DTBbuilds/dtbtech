@@ -47,18 +47,18 @@ class NavHeader extends HTMLElement {
                             </div>
                         </div>
 
-                        <!-- Dashboard Button -->
+                        <!-- CTA Button -->
                         <div class="hidden md:block">
                             ${isLoggedIn ? 
                                 `<div class="flex items-center space-x-4">
-                                    <span class="text-green-400 text-sm">Dashboard Active</span>
-                                    <button onclick="logout()" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                                    <a href="${prefix}dashboard/welcome.html" class="text-green-400 text-sm hover:text-green-300 transition-colors">Dashboard</a>
+                                    <button onclick="logout()" class="bg-slate-700 hover:bg-slate-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
                                         Logout
                                     </button>
                                 </div>` :
-                                `<button onclick="accessDashboard()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
-                                    Access Dashboard
-                                </button>`
+                                `<a href="${prefix}contact.html" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                                    Get a Website
+                                </a>`
                             }
                         </div>
 
@@ -82,18 +82,18 @@ class NavHeader extends HTMLElement {
                             <a href="${prefix}contact.html" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium ${getActiveClass('contact')}" onclick="this.closest('nav-header').closeMobileMenu()">Contact</a>
                             <a href="${prefix}help.html" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium ${getActiveClass('help')}" onclick="this.closest('nav-header').closeMobileMenu()">Help</a>
                             
-                            <!-- Mobile Dashboard Button -->
+                            <!-- Mobile CTA -->
                             <div class="pt-4 border-t border-slate-700">
                                 ${isLoggedIn ? 
                                     `<div class="space-y-2">
-                                        <span class="text-green-400 text-sm block px-3">Dashboard Active</span>
-                                        <button onclick="logout()" class="w-full text-left bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded-md text-base font-medium">
+                                        <a href="${prefix}dashboard/welcome.html" class="text-green-400 text-sm block px-3">Dashboard</a>
+                                        <button onclick="logout()" class="w-full text-left bg-slate-700 hover:bg-slate-600 text-white px-3 py-2 rounded-md text-base font-medium">
                                             Logout
                                         </button>
                                     </div>` :
-                                    `<button onclick="accessDashboard()" class="w-full text-left bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-md text-base font-medium">
-                                        Access Dashboard
-                                    </button>`
+                                    `<a href="${prefix}contact.html" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white px-3 py-3 rounded-lg text-base font-medium transition-colors">
+                                        <i class="fas fa-rocket mr-2 text-xs"></i>Get a Website
+                                    </a>`
                                 }
                             </div>
                         </div>
