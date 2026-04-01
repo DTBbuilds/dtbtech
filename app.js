@@ -30,7 +30,7 @@ class NavHeader extends HTMLElement {
                         <!-- Logo -->
                         <div class="flex-shrink-0 flex items-center">
                             <a href="${prefix}index.html" class="flex items-center space-x-2.5">
-                                <img src="${prefix}assets/dtb-logo.png" alt="DTB Technologies" class="h-9 w-9 rounded-lg object-cover">
+                                <img src="${prefix}assets/dtb-logo.png" alt="DTB Technologies" class="h-9 w-9 rounded-full object-cover">
                                 <span class="text-white font-semibold text-lg hidden sm:block">DTB Technologies</span>
                             </a>
                         </div>

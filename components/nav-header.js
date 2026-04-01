@@ -31,11 +31,9 @@ class NavHeader extends HTMLElement {
                     <div class="flex items-center justify-between h-16">
                         <!-- Logo -->
                         <div class="flex-shrink-0">
-                            <a href="${prefix}index.html" class="group inline-flex items-center">
-                                <span class="inline-flex items-center px-3 py-1.5 rounded-lg bg-slate-950/90 border border-slate-700/70 shadow-lg shadow-blue-900/30 transition-colors duration-300 group-hover:border-blue-500/60">
-                                    <span class="mr-2 w-3 h-3 rounded-sm bg-gradient-to-tr from-blue-900 via-indigo-800 to-purple-800 shadow-inner shadow-blue-900/60"></span>
-                                    <span class="text-white font-semibold text-lg tracking-tight group-hover:text-blue-100 transition-colors">DTB Technologies</span>
-                                </span>
+                            <a href="${prefix}index.html" class="group inline-flex items-center space-x-2.5">
+                                <img src="${prefix}assets/dtb-logo.png" alt="DTB Technologies" class="h-9 w-9 rounded-full object-cover">
+                                <span class="text-white font-semibold text-lg tracking-tight hidden sm:block">DTB Technologies</span>
                             </a>
                         </div>
                         
