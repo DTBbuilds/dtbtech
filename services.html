@@ -12,6 +12,8 @@
     <meta name="robots" content="index, follow">
     <meta name="language" content="English">
     <meta name="author" content="DTB Technologies">
+    <meta name="geo.region" content="AU">
+    <meta name="geo.placename" content="Sydney">
     <meta name="geo.region" content="KE">
     <meta name="geo.placename" content="Nairobi">
 
@@ -52,18 +54,41 @@
       "name": "DTB Technologies",
       "url": "https://dtbtech.org",
       "logo": "https://dtbtech.org/assets/dtb-logo.png",
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+254-729-983-567",
-        "contactType": "customer service",
-        "areaServed": "KE",
-        "availableLanguage": "English"
-      },
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Nairobi",
-        "addressCountry": "KE"
-      },
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+61-450-275-013",
+          "contactType": "customer service",
+          "areaServed": "AU",
+          "availableLanguage": "English"
+        },
+        {
+          "@type": "ContactPoint",
+          "telephone": "+254-729-983-567",
+          "contactType": "customer service",
+          "areaServed": "KE",
+          "availableLanguage": "English"
+        }
+      ],
+      "areaServed": [
+        { "@type": "Country", "name": "Australia" },
+        { "@type": "Country", "name": "Kenya" }
+      ],
+      "address": [
+        {
+          "@type": "PostalAddress",
+          "streetAddress": "Greystanes",
+          "addressLocality": "Sydney",
+          "addressRegion": "NSW",
+          "postalCode": "2145",
+          "addressCountry": "AU"
+        },
+        {
+          "@type": "PostalAddress",
+          "addressLocality": "Nairobi",
+          "addressCountry": "KE"
+        }
+      ],
       "sameAs": [
         "https://facebook.com/dtbtechnologies",
         "https://twitter.com/dtbtechnologies",
@@ -154,7 +179,7 @@
                             <i class="fas fa-rocket mr-2 text-xs"></i>
                             Get a Website
                         </a>
-                        <a href="https://wa.me/254729983567" target="_blank" class="inline-flex items-center justify-center px-7 py-3.5 rounded-xl bg-slate-800 text-white font-semibold text-sm border border-slate-700 hover:border-slate-600 transition-all duration-200">
+                        <a href="https://wa.me/61450275013" target="_blank" class="inline-flex items-center justify-center px-7 py-3.5 rounded-xl bg-slate-800 text-white font-semibold text-sm border border-slate-700 hover:border-slate-600 transition-all duration-200">
                             <i class="fab fa-whatsapp mr-2 text-green-400"></i>
                             Chat With Us
                         </a>
@@ -339,7 +364,7 @@
                             <span class="mr-2">Schedule Consultation</span>
                             <i class="fas fa-calendar-alt"></i>
                         </a>
-                        <a href="https://wa.me/254729983567" class="inline-flex items-center justify-center px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors duration-200">
+                        <a href="https://wa.me/61450275013" class="inline-flex items-center justify-center px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors duration-200">
                             <i class="fab fa-whatsapp mr-2"></i>
                             <span>WhatsApp Us</span>
                         </a>
@@ -412,13 +437,19 @@
                 <div class="space-y-4">
                     <h4 class="text-lg font-semibold text-white">Contact Information</h4>
                     <div class="space-y-3">
-                        <div class="flex items-center text-gray-300">
-                            <i class="fas fa-map-marker-alt text-blue-400 mr-3 w-5"></i>
-                            <span>Uthiru Muthua, Nairobi, Kenya</span>
+                        <div class="flex items-start text-gray-300">
+                            <i class="fas fa-map-marker-alt text-blue-400 mr-3 w-5 mt-1"></i>
+                            <div>
+                                <div>Greystanes, Sydney NSW 2145, Australia</div>
+                                <div class="text-gray-400 text-sm">Uthiru Muthua, Nairobi, Kenya</div>
+                            </div>
                         </div>
-                        <div class="flex items-center text-gray-300">
-                            <i class="fas fa-phone text-green-400 mr-3 w-5"></i>
-                            <a href="tel:+254729983567" class="hover:text-green-400 transition-colors">+254-729983567</a>
+                        <div class="flex items-start text-gray-300">
+                            <i class="fas fa-phone text-green-400 mr-3 w-5 mt-1"></i>
+                            <div>
+                                <div><a href="tel:+61450275013" class="hover:text-green-400 transition-colors">+61 450 275 013</a> <span class="text-gray-500 text-xs">(AU)</span></div>
+                                <div><a href="tel:+254729983567" class="hover:text-green-400 transition-colors">+254 729 983 567</a> <span class="text-gray-500 text-xs">(KE)</span></div>
+                            </div>
                         </div>
                         <div class="flex items-center text-gray-300">
                             <i class="fas fa-envelope text-blue-400 mr-3 w-5"></i>
@@ -426,7 +457,7 @@
                         </div>
                         <div class="flex items-center text-gray-300">
                             <i class="fab fa-whatsapp text-green-500 mr-3 w-5"></i>
-                            <a href="https://wa.me/254729983567" class="hover:text-green-500 transition-colors" target="_blank">WhatsApp Support</a>
+                            <a href="https://wa.me/61450275013" class="hover:text-green-500 transition-colors" target="_blank">WhatsApp Support</a>
                         </div>
                     </div>
                     
