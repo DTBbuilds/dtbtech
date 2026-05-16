@@ -2,216 +2,361 @@
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Cloud Solutions - DTB Technologies</title>
-    <meta name="description" content="Enterprise cloud solutions in Nairobi. Migration, hosting, and management services for businesses.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Migration &amp; Hosting | AWS, Azure, GCP | DTB Technologies</title>
+    <meta name="description" content="Cloud migration, hosting and management for Australian businesses. AWS, Azure, Google Cloud setup, migration and ongoing support. Move to the cloud without the headaches.">
+    <meta name="keywords" content="cloud migration Sydney, cloud hosting Australia, AWS migration, Azure setup, Google Cloud, cloud management, DTB Technologies">
+    <meta name="author" content="DTB Technologies">
+    <link rel="canonical" href="https://dtbtech.org/services/cloud-solutions.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dtbtech.org/services/cloud-solutions.html">
+    <meta property="og:title" content="Cloud Migration &amp; Hosting | DTB Technologies">
+    <meta property="og:description" content="Cloud setup, migration and management. AWS, Azure, Google Cloud. We handle the complexity.">
+
     <link rel="stylesheet" href="../dist/output.css">
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/animations.css">
     <link rel="stylesheet" href="../css/mobile-optimizations.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css">
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <script src="../components/nav-header.js" defer></script>
-    <script src="../js/dashboard.js" defer></script>
+
+    <meta name="geo.region" content="AU-NSW">
+    <meta name="geo.placename" content="Sydney">
+    <meta name="geo.position" content="-33.8388;150.9551">
+    <meta name="ICBM" content="-33.8388, 150.9551">
+    <meta property="og:locale" content="en_AU">
+
+    <!-- Service + FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Cloud Migration and Hosting",
+      "name": "Cloud Migration &amp; Managed Hosting",
+      "url": "https://dtbtech.org/services/cloud-solutions.html",
+      "description": "Cloud migration, setup and ongoing management for AWS, Azure and Google Cloud. We move your systems to the cloud and keep them running.",
+      "provider": { "@id": "https://dtbtech.org/#organization" },
+      "areaServed": [
+        { "@type": "Country", "name": "Australia" },
+        { "@type": "City", "name": "Sydney" },
+        { "@type": "Country", "name": "Kenya" }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How long does cloud migration take?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Simple migrations take a few days. Larger business systems typically take 2 to 6 weeks. We plan everything upfront so there are no surprises." }
+        },
+        {
+          "@type": "Question",
+          "name": "Which cloud platform should I use?",
+          "acceptedAnswer": { "@type": "Answer", "text": "It depends on your needs. AWS has the most services, Azure works best with Microsoft tools, Google Cloud excels at data and AI. We recommend the right fit after understanding your setup." }
+        },
+        {
+          "@type": "Question",
+          "name": "Will my data be secure in the cloud?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. We configure encryption, access controls, firewalls and backup systems. Your data is often safer in the cloud than on local servers." }
+        },
+        {
+          "@type": "Question",
+          "name": "What does cloud setup and migration cost?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Pricing varies based on your current setup, data volume and complexity. We provide a fixed quote after an initial assessment. No hidden fees." }
+        }
+      ]
+    }
+    </script>
 </head>
-<body class="bg-slate-900">
-    <!-- Navigation -->
+<body class="bg-slate-900 text-slate-100">
     <nav-header></nav-header>
 
-    <main class="pt-20">
-        <!-- Hero Section -->
-        <section class="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden">
-            <div class="absolute inset-0">
-                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80" 
-                     alt="Cloud Solutions" 
-                     class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-r from-gray-900 to-gray-900/80"></div>
-            </div>
-            <div class="relative container mx-auto px-4 text-center">
-                <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Cloud Solutions</h1>
-                <p class="text-xl text-gray-300 max-w-2xl mx-auto">Cloud hosting and migration — set up properly and managed for you.</p>
-            </div>
-        </section>
-
-        <!-- Features Grid -->
-        <section class="py-16 bg-gray-800">
-            <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold text-white text-center mb-12">Cloud Services Overview</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Cloud Migration -->
-                    <div class="bg-gray-900 p-6 rounded-xl">
-                        <div class="text-blue-400 text-3xl mb-4">
-                            <i class="fas fa-cloud-upload-alt"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-white mb-3">Cloud Migration</h3>
-                        <p class="text-gray-300">Move your systems to the cloud without breaking what's working.</p>
+    <main class="pt-16">
+        <!-- Hero -->
+        <section class="relative py-16 sm:py-20 bg-slate-950 overflow-hidden">
+            <div class="absolute -top-40 -left-40 w-96 h-96 bg-blue-600/[0.06] rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -bottom-40 -right-40 w-96 h-96 bg-blue-600/[0.05] rounded-full blur-3xl pointer-events-none"></div>
+            <div class="container mx-auto px-5 sm:px-6 relative z-10">
+                <div class="max-w-3xl mx-auto text-center">
+                    <div class="inline-flex items-center py-1.5 px-3 mb-5 rounded-full bg-blue-600/10 border border-blue-500/20">
+                        <i class="fas fa-cloud text-blue-400 text-xs mr-2"></i>
+                        <span class="text-blue-300 text-xs font-medium">Cloud Solutions</span>
                     </div>
-                    
-                    <!-- Cloud Hosting -->
-                    <div class="bg-gray-900 p-6 rounded-xl">
-                        <div class="text-blue-400 text-3xl mb-4">
-                            <i class="fas fa-server"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-white mb-3">Cloud Hosting</h3>
-                        <p class="text-gray-300">Reliable and scalable hosting solutions for applications, websites, and databases.</p>
-                    </div>
-                    
-                    <!-- Cloud Management -->
-                    <div class="bg-gray-900 p-6 rounded-xl">
-                        <div class="text-blue-400 text-3xl mb-4">
-                            <i class="fas fa-cogs"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-white mb-3">Cloud Management</h3>
-                        <p class="text-gray-300">Continuous monitoring, optimization, and management of your cloud infrastructure.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Pricing Section -->
-        <section class="py-16">
-            <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold text-white text-center mb-12">Cloud Solution Plans</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                    <!-- Starter Plan -->
-                    <div class="bg-gray-800 rounded-xl p-8 transform hover:scale-105 transition-transform duration-300">
-                        <h3 class="text-xl font-semibold text-white mb-4">Starter Cloud</h3>
-                        <div class="text-blue-400 text-4xl font-bold mb-4">KSh 10,000<span class="text-lg">/mo</span></div>
-                        <ul class="text-gray-300 space-y-3 mb-8">
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-green-400 mr-2"></i>
-                                2 Virtual CPUs
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-green-400 mr-2"></i>
-                                4GB RAM
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-green-400 mr-2"></i>
-                                100GB Storage
-                            </li>
-                        </ul>
-                        <button onclick="addToCart('Starter Cloud', 10000)" class="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition-colors">
-                            Get Started
-                        </button>
-                    </div>
-
-                    <!-- Business Plan -->
-                    <div class="bg-gray-800 rounded-xl p-8 transform hover:scale-105 transition-transform duration-300 border-2 border-blue-400">
-                        <div class="absolute top-0 right-0 bg-blue-400 text-white px-4 py-1 rounded-bl-lg text-sm">Popular</div>
-                        <h3 class="text-xl font-semibold text-white mb-4">Business Cloud</h3>
-                        <div class="text-blue-400 text-4xl font-bold mb-4">KSh 25,000<span class="text-lg">/mo</span></div>
-                        <ul class="text-gray-300 space-y-3 mb-8">
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-green-400 mr-2"></i>
-                                4 Virtual CPUs
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-green-400 mr-2"></i>
-                                8GB RAM
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-green-400 mr-2"></i>
-                                250GB Storage
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-green-400 mr-2"></i>
-                                Load Balancing
-                            </li>
-                        </ul>
-                        <button onclick="addToCart('Business Cloud', 25000)" class="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition-colors">
-                            Get Started
-                        </button>
-                    </div>
-
-                    <!-- Enterprise Plan -->
-                    <div class="bg-gray-800 rounded-xl p-8 transform hover:scale-105 transition-transform duration-300">
-                        <h3 class="text-xl font-semibold text-white mb-4">Enterprise Cloud</h3>
-                        <div class="text-blue-400 text-4xl font-bold mb-4">Custom</div>
-                        <ul class="text-gray-300 space-y-3 mb-8">
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-green-400 mr-2"></i>
-                                Custom Resources
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-green-400 mr-2"></i>
-                                High Availability
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-green-400 mr-2"></i>
-                                Dedicated Support
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-green-400 mr-2"></i>
-                                Custom SLA
-                            </li>
-                        </ul>
-                        <a href="../contact.html" class="block w-full bg-gray-700 text-white py-3 rounded-lg hover:bg-gray-600 transition-colors text-center">
-                            Contact Sales
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-5 leading-tight">
+                        Move to the <span class="text-blue-400">Cloud</span> Without the Headaches
+                    </h1>
+                    <p class="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto mb-7">
+                        Cloud migration, setup and management for Australian businesses. AWS, Azure, Google Cloud — we handle the complexity so you can focus on your business.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                        <a href="../contact.html" class="px-7 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm transition-colors inline-flex items-center justify-center">
+                            <i class="fas fa-rocket mr-2 text-xs"></i> Discuss Your Migration
+                        </a>
+                        <a href="https://wa.me/61450275013?text=Hi%2C%20I'm%20interested%20in%20cloud%20migration." target="_blank" rel="noopener" class="px-7 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-semibold text-sm transition-all inline-flex items-center justify-center">
+                            <i class="fab fa-whatsapp mr-2 text-green-400"></i> Chat on WhatsApp
                         </a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- FAQ Section -->
-        <section class="py-16 bg-gray-800">
-            <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold text-white text-center mb-12">Frequently Asked Questions</h2>
-                <div class="max-w-3xl mx-auto space-y-6">
-                    <div class="bg-gray-900 rounded-xl p-6">
-                        <h3 class="text-xl text-white font-semibold mb-3">How long does cloud migration take?</h3>
-                        <p class="text-gray-300">Migration timelines vary based on your infrastructure complexity. Simple migrations can take a few days, while larger systems might take several weeks. We'll provide a detailed timeline after assessment.</p>
+        <!-- Pain Points -->
+        <section class="py-14 sm:py-16 bg-slate-900">
+            <div class="container mx-auto px-5 sm:px-6">
+                <div class="max-w-5xl mx-auto">
+                    <div class="text-center mb-10">
+                        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">Is Your Current Setup Holding You Back?</h2>
+                        <p class="text-slate-400 max-w-2xl mx-auto text-sm sm:text-base">Many businesses know they should move to the cloud, but worry about disruption. Here's what we hear.</p>
                     </div>
-                    <div class="bg-gray-900 rounded-xl p-6">
-                        <h3 class="text-xl text-white font-semibold mb-3">Is my data secure in the cloud?</h3>
-                        <p class="text-gray-300">Yes, we implement enterprise-grade security measures including encryption, firewalls, and regular security audits. Your data is backed up regularly and protected by industry-standard protocols.</p>
-                    </div>
-                    <div class="bg-gray-900 rounded-xl p-6">
-                        <h3 class="text-xl text-white font-semibold mb-3">Can I scale my resources as needed?</h3>
-                        <p class="text-gray-300">Absolutely! Our cloud solutions are designed to scale up or down based on your needs. You can adjust resources instantly through our management portal or contact us for assistance.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <div class="bg-slate-800/40 rounded-xl p-6 border border-slate-700/30">
+                            <div class="flex items-start gap-3">
+                                <div class="text-red-400 text-xl flex-shrink-0 mt-0.5"><i class="fas fa-times-circle"></i></div>
+                                <div>
+                                    <h3 class="text-white font-semibold mb-1">"I'm worried everything will break during migration"</h3>
+                                    <p class="text-slate-400 text-sm">Downtime during migration means lost revenue and frustrated customers.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-slate-800/40 rounded-xl p-6 border border-slate-700/30">
+                            <div class="flex items-start gap-3">
+                                <div class="text-red-400 text-xl flex-shrink-0 mt-0.5"><i class="fas fa-times-circle"></i></div>
+                                <div>
+                                    <h3 class="text-white font-semibold mb-1">"Our server costs keep climbing every month"</h3>
+                                    <p class="text-slate-400 text-sm">You're paying for capacity you don't use, or running out when you need it.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-slate-800/40 rounded-xl p-6 border border-slate-700/30">
+                            <div class="flex items-start gap-3">
+                                <div class="text-red-400 text-xl flex-shrink-0 mt-0.5"><i class="fas fa-times-circle"></i></div>
+                                <div>
+                                    <h3 class="text-white font-semibold mb-1">"I don't know which cloud platform to choose"</h3>
+                                    <p class="text-slate-400 text-sm">AWS, Azure, Google Cloud — they all sound similar but differ significantly.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-slate-800/40 rounded-xl p-6 border border-slate-700/30">
+                            <div class="flex items-start gap-3">
+                                <div class="text-red-400 text-xl flex-shrink-0 mt-0.5"><i class="fas fa-times-circle"></i></div>
+                                <div>
+                                    <h3 class="text-white font-semibold mb-1">"We're not sure our data will be secure"</h3>
+                                    <p class="text-slate-400 text-sm">Keeping data on-site feels safer, but local servers often have worse security.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </section>
 
-        <div id="cart-sidebar" class="fixed top-0 right-0 w-full md:w-96 h-full bg-gray-900 z-50 transform translate-x-full transition-transform duration-300 shadow-2xl">
-            <div class="flex flex-col h-full">
-                <div class="p-4 border-b border-gray-800 flex justify-between items-center">
-                    <h2 class="text-xl font-bold text-white">Your Cart</h2>
-                    <button class="text-gray-400 hover:text-white transition-colors close-cart">
-                        <i class="fas fa-times text-xl"></i>
-                    <button onclick="document.getElementById('pricing-section').scrollIntoView({behavior: 'smooth'})" class="inline-block bg-gray-700 text-white px-8 py-3 rounded-lg hover:bg-gray-600 transition-colors">
-                        View Pricing
-                    </button>
+        <!-- What You Get -->
+        <section class="py-14 sm:py-16 bg-slate-950">
+            <div class="container mx-auto px-5 sm:px-6">
+                <div class="max-w-6xl mx-auto">
+                    <div class="text-center mb-10">
+                        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">What You Get</h2>
+                        <p class="text-slate-400 max-w-2xl mx-auto text-sm sm:text-base">End-to-end cloud services from migration through ongoing management.</p>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                        <div class="bg-slate-800/40 rounded-xl p-6 border border-slate-700/30 hover:border-blue-500/30 transition">
+                            <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center mb-3"><i class="fas fa-cloud-upload-alt text-blue-400"></i></div>
+                            <h3 class="text-white font-semibold mb-2">Cloud Migration</h3>
+                            <p class="text-slate-400 text-sm">Move your servers, databases and applications to the cloud with zero or minimal downtime.</p>
+                        </div>
+                        <div class="bg-slate-800/40 rounded-xl p-6 border border-slate-700/30 hover:border-blue-500/30 transition">
+                            <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center mb-3"><i class="fas fa-server text-blue-400"></i></div>
+                            <h3 class="text-white font-semibold mb-2">Cloud Hosting</h3>
+                            <p class="text-slate-400 text-sm">Reliable hosting on AWS, Azure or Google Cloud. Auto-scaling, load balancing, global CDN.</p>
+                        </div>
+                        <div class="bg-slate-800/40 rounded-xl p-6 border border-slate-700/30 hover:border-blue-500/30 transition">
+                            <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center mb-3"><i class="fas fa-cogs text-blue-400"></i></div>
+                            <h3 class="text-white font-semibold mb-2">Cloud Management</h3>
+                            <p class="text-slate-400 text-sm">24/7 monitoring, optimization, security patches and cost management. We keep it running.</p>
+                        </div>
+                        <div class="bg-slate-800/40 rounded-xl p-6 border border-slate-700/30 hover:border-blue-500/30 transition">
+                            <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center mb-3"><i class="fas fa-shield-halved text-blue-400"></i></div>
+                            <h3 class="text-white font-semibold mb-2">Security Setup</h3>
+                            <p class="text-slate-400 text-sm">Encryption, access controls, firewalls, VPNs and compliance configuration (ISO, SOC2).</p>
+                        </div>
+                        <div class="bg-slate-800/40 rounded-xl p-6 border border-slate-700/30 hover:border-blue-500/30 transition">
+                            <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center mb-3"><i class="fas fa-database text-blue-400"></i></div>
+                            <h3 class="text-white font-semibold mb-2">Backup &amp; Recovery</h3>
+                            <p class="text-slate-400 text-sm">Automated backups, disaster recovery plans and tested restore procedures.</p>
+                        </div>
+                        <div class="bg-slate-800/40 rounded-xl p-6 border border-slate-700/30 hover:border-blue-500/30 transition">
+                            <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center mb-3"><i class="fas fa-chart-line text-blue-400"></i></div>
+                            <h3 class="text-white font-semibold mb-2">Cost Optimization</h3>
+                            <p class="text-slate-400 text-sm">Right-sizing resources, reserved instance planning and monthly cost reviews.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Platforms -->
+        <section class="py-14 sm:py-16 bg-slate-900">
+            <div class="container mx-auto px-5 sm:px-6">
+                <div class="max-w-4xl mx-auto">
+                    <div class="text-center mb-10">
+                        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">Platforms We Work With</h2>
+                        <p class="text-slate-400 max-w-2xl mx-auto text-sm sm:text-base">We recommend the right platform based on your existing tools and future needs.</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                        <div class="bg-slate-800/60 rounded-xl p-6 border border-slate-700/30 text-center">
+                            <div class="w-14 h-14 bg-orange-500/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                                <i class="fab fa-aws text-2xl text-orange-400"></i>
+                            </div>
+                            <h3 class="text-white font-semibold mb-2">AWS</h3>
+                            <p class="text-slate-400 text-sm">The most comprehensive platform. Best for complex applications and maximum flexibility.</p>
+                        </div>
+                        <div class="bg-slate-800/60 rounded-xl p-6 border border-slate-700/30 text-center">
+                            <div class="w-14 h-14 bg-blue-500/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                                <i class="fab fa-microsoft text-2xl text-blue-400"></i>
+                            </div>
+                            <h3 class="text-white font-semibold mb-2">Azure</h3>
+                            <p class="text-slate-400 text-sm">Best if you use Microsoft 365, Windows servers or .NET applications. Tight integration.</p>
+                        </div>
+                        <div class="bg-slate-800/60 rounded-xl p-6 border border-slate-700/30 text-center">
+                            <div class="w-14 h-14 bg-green-500/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                                <i class="fab fa-google text-2xl text-green-400"></i>
+                            </div>
+                            <h3 class="text-white font-semibold mb-2">Google Cloud</h3>
+                            <p class="text-slate-400 text-sm">Best for data analytics, machine learning and containerized applications.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Approach -->
+        <section class="py-14 sm:py-16 bg-slate-950">
+            <div class="container mx-auto px-5 sm:px-6">
+                <div class="max-w-4xl mx-auto">
+                    <div class="text-center mb-10">
+                        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">Custom Pricing For Your Needs</h2>
+                        <p class="text-slate-400 max-w-2xl mx-auto text-sm sm:text-base">Cloud costs vary based on your current setup, data volume and required services. We provide fixed quotes after understanding your situation.</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                        <div class="bg-slate-800/40 rounded-xl p-6 border border-slate-700/30">
+                            <h3 class="text-lg font-semibold text-white mb-3">Small Business</h3>
+                            <p class="text-slate-400 text-sm mb-4">Single server or simple website migration. Basic hosting and monitoring.</p>
+                            <div class="text-blue-400 font-semibold">Custom Quote</div>
+                        </div>
+                        <div class="bg-slate-800/40 rounded-xl p-6 border border-blue-500/30 relative">
+                            <div class="absolute -top-3 right-4 bg-blue-500 text-white px-3 py-1 rounded-full text-xs">Most Common</div>
+                            <h3 class="text-lg font-semibold text-white mb-3">Growing Business</h3>
+                            <p class="text-slate-400 text-sm mb-4">Multiple applications, databases, scaling needs. Full management included.</p>
+                            <div class="text-blue-400 font-semibold">Custom Quote</div>
+                        </div>
+                        <div class="bg-slate-800/40 rounded-xl p-6 border border-slate-700/30">
+                            <h3 class="text-lg font-semibold text-white mb-3">Enterprise</h3>
+                            <p class="text-slate-400 text-sm mb-4">Complex infrastructure, high availability, compliance requirements, dedicated support.</p>
+                            <div class="text-blue-400 font-semibold">Custom Quote</div>
+                        </div>
+                    </div>
+                    <p class="text-center text-slate-400 text-sm mt-8">All quotes include migration, setup, documentation and handover. No hidden fees.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process -->
+        <section class="py-14 sm:py-16 bg-slate-900">
+            <div class="container mx-auto px-5 sm:px-6">
+                <div class="max-w-5xl mx-auto">
+                    <div class="text-center mb-10">
+                        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">How Cloud Migration Works</h2>
+                        <p class="text-slate-400 max-w-2xl mx-auto text-sm sm:text-base">A proven process that minimizes risk and keeps your business running.</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-5">
+                        <div class="bg-slate-800/40 rounded-xl p-5 border border-slate-700/30">
+                            <div class="w-9 h-9 rounded-full bg-blue-600 text-white font-bold text-sm flex items-center justify-center mb-3">1</div>
+                            <h3 class="text-white font-semibold mb-2 text-sm">Assessment</h3>
+                            <p class="text-slate-400 text-xs">We audit your current systems and design a migration plan with timelines.</p>
+                        </div>
+                        <div class="bg-slate-800/40 rounded-xl p-5 border border-slate-700/30">
+                            <div class="w-9 h-9 rounded-full bg-blue-600 text-white font-bold text-sm flex items-center justify-center mb-3">2</div>
+                            <h3 class="text-white font-semibold mb-2 text-sm">Setup &amp; Test</h3>
+                            <p class="text-slate-400 text-xs">We build your cloud environment and test everything before going live.</p>
+                        </div>
+                        <div class="bg-slate-800/40 rounded-xl p-5 border border-slate-700/30">
+                            <div class="w-9 h-9 rounded-full bg-blue-600 text-white font-bold text-sm flex items-center justify-center mb-3">3</div>
+                            <h3 class="text-white font-semibold mb-2 text-sm">Migration</h3>
+                            <p class="text-slate-400 text-xs">Data and applications move to the cloud, often with zero downtime.</p>
+                        </div>
+                        <div class="bg-slate-800/40 rounded-xl p-5 border border-slate-700/30">
+                            <div class="w-9 h-9 rounded-full bg-blue-600 text-white font-bold text-sm flex items-center justify-center mb-3">4</div>
+                            <h3 class="text-white font-semibold mb-2 text-sm">Handover &amp; Support</h3>
+                            <p class="text-slate-400 text-xs">Training, documentation and ongoing management so you stay in control.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="py-14 sm:py-16 bg-slate-950">
+            <div class="container mx-auto px-5 sm:px-6">
+                <div class="max-w-3xl mx-auto">
+                    <div class="text-center mb-10">
+                        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">Common Questions</h2>
+                    </div>
+                    <div class="space-y-4">
+                        <details class="bg-slate-800/40 rounded-xl border border-slate-700/30 p-5 group">
+                            <summary class="text-white font-semibold cursor-pointer flex items-center justify-between text-sm sm:text-base">
+                                <span>How long does cloud migration take?</span>
+                                <i class="fas fa-plus text-blue-400 text-xs group-open:rotate-45 transition-transform"></i>
+                            </summary>
+                            <p class="text-slate-400 text-sm mt-3">Simple migrations take a few days. Larger business systems typically take 2 to 6 weeks. We plan everything upfront so there are no surprises.</p>
+                        </details>
+                        <details class="bg-slate-800/40 rounded-xl border border-slate-700/30 p-5 group">
+                            <summary class="text-white font-semibold cursor-pointer flex items-center justify-between text-sm sm:text-base">
+                                <span>Which cloud platform should I use?</span>
+                                <i class="fas fa-plus text-blue-400 text-xs group-open:rotate-45 transition-transform"></i>
+                            </summary>
+                            <p class="text-slate-400 text-sm mt-3">It depends on your needs. AWS has the most services, Azure works best with Microsoft tools, Google Cloud excels at data and AI. We recommend the right fit after understanding your setup.</p>
+                        </details>
+                        <details class="bg-slate-800/40 rounded-xl border border-slate-700/30 p-5 group">
+                            <summary class="text-white font-semibold cursor-pointer flex items-center justify-between text-sm sm:text-base">
+                                <span>Will my data be secure in the cloud?</span>
+                                <i class="fas fa-plus text-blue-400 text-xs group-open:rotate-45 transition-transform"></i>
+                            </summary>
+                            <p class="text-slate-400 text-sm mt-3">Yes. We configure encryption, access controls, firewalls and backup systems. Your data is often safer in the cloud than on local servers.</p>
+                        </details>
+                        <details class="bg-slate-800/40 rounded-xl border border-slate-700/30 p-5 group">
+                            <summary class="text-white font-semibold cursor-pointer flex items-center justify-between text-sm sm:text-base">
+                                <span>What does cloud setup and migration cost?</span>
+                                <i class="fas fa-plus text-blue-400 text-xs group-open:rotate-45 transition-transform"></i>
+                            </summary>
+                            <p class="text-slate-400 text-sm mt-3">Pricing varies based on your current setup, data volume and complexity. We provide a fixed quote after an initial assessment. No hidden fees.</p>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="py-14 sm:py-16 bg-slate-900">
+            <div class="container mx-auto px-5 sm:px-6">
+                <div class="max-w-3xl mx-auto text-center bg-gradient-to-br from-blue-600/10 to-blue-500/5 rounded-2xl border border-blue-500/20 p-8 sm:p-10">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">Ready to Move to the Cloud?</h2>
+                    <p class="text-slate-400 mb-7 max-w-xl mx-auto text-sm sm:text-base">Tell us about your current setup. We'll assess your needs and provide a clear migration plan and quote. Almost instant reply.</p>
+                    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                        <a href="../contact.html" class="px-7 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm transition-colors inline-flex items-center justify-center">
+                            <i class="fas fa-rocket mr-2 text-xs"></i> Get a Custom Quote
+                        </a>
+                        <a href="https://wa.me/61450275013" target="_blank" rel="noopener" class="px-7 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-semibold text-sm transition-all inline-flex items-center justify-center">
+                            <i class="fab fa-whatsapp mr-2 text-green-400"></i> WhatsApp Us
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
-
-    <!-- Cart Components -->
-    <div id="cart-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 opacity-0 pointer-events-none transition-opacity duration-300"></div>
-
-    <div id="cart-sidebar" class="fixed top-0 right-0 w-full md:w-96 h-full bg-gray-900 z-50 transform translate-x-full transition-transform duration-300 shadow-2xl">
-        <div class="flex flex-col h-full">
-            <div class="p-4 border-b border-gray-800 flex justify-between items-center">
-                <h2 class="text-xl font-bold text-white">Your Cart</h2>
-                <button class="text-gray-400 hover:text-white transition-colors close-cart">
-                    <i class="fas fa-times text-xl"></i>
-                </button>
-            </div>
-            <div id="cart-items" class="flex-1 overflow-y-auto p-4 space-y-4"></div>
-            <div class="p-4 border-t border-gray-800">
-                <div class="flex justify-between items-center mb-4">
-                    <span class="text-white text-lg">Total:</span>
-                    <span id="cart-total" class="text-2xl font-bold text-white"></span>
-                </div>
-                <button id="checkout-btn" class="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition-colors flex items-center justify-center">
-                    <i class="fas fa-lock mr-2"></i>
-                    Proceed to Checkout
-                </button>
-            </div>
-        </div>
-    </div>
-
-
 </body>
 </html>
