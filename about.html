@@ -59,17 +59,8 @@
             "name": "DTB Technologies",
             "url": "https://dtbtech.org",
             "logo": "https://dtbtech.org/assets/logo.png",
-            "description": "Leading IT solutions provider offering web development, tech support, and innovative digital solutions worldwide.",
+            "description": "Software studio building custom websites, mobile and desktop apps, hosting and IT support for businesses in Australia and Kenya.",
             "foundingDate": "2020",
-            "founder": {
-                "@type": "Person",
-                "name": "Donald Kiprop",
-                "jobTitle": "System Administrator"
-            },
-            "numberOfEmployees": {
-                "@type": "QuantitativeValue",
-                "value": "5"
-            },
             "address": [
                 {
                     "@type": "PostalAddress",
@@ -88,87 +79,11 @@
             "areaServed": [
                 { "@type": "Country", "name": "Australia" },
                 { "@type": "Country", "name": "Kenya" }
-            ],
-            "employee": [
-                {
-                    "@type": "Person",
-                    "name": "Lisa Chepkoech",
-                    "jobTitle": "Chief Technology Officer"
-                },
-                {
-                    "@type": "Person",
-                    "name": "Brian Odhiambo",
-                    "jobTitle": "Lead Developer"
-                },
-                {
-                    "@type": "Person",
-                    "name": "Anne Maina",
-                    "jobTitle": "Operations Manager"
-                }
             ]
         }
     }
     </script>
     
-    <style>
-        /* Team member image placeholder styles */
-        .team-image-placeholder {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #ffffff;
-            font-size: 4rem;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        /* Role-specific placeholder backgrounds and icons */
-        .placeholder-sysadmin {
-            background: #2563eb;
-        }
-        .placeholder-sysadmin::before {
-            content: "\f233"; /* fa-server */
-            font-family: "Font Awesome 6 Free";
-            font-weight: 900;
-        }
-        
-        .placeholder-cto {
-            background: #1e40af;
-        }
-        .placeholder-cto::before {
-            content: "\f0e7"; /* fa-bolt */
-            font-family: "Font Awesome 6 Free";
-            font-weight: 900;
-        }
-        
-        .placeholder-developer {
-            background: #1d4ed8;
-        }
-        .placeholder-developer::before {
-            content: "\f121"; /* fa-code */
-            font-family: "Font Awesome 6 Free";
-            font-weight: 900;
-        }
-        
-        .placeholder-operations {
-            background: #1e3a5f;
-        }
-        .placeholder-operations::before {
-            content: "\f0ae"; /* fa-tasks */
-            font-family: "Font Awesome 6 Free";
-            font-weight: 900;
-        }
-        
-        /* Animated background effect */
-        .team-image-placeholder::after {
-            display: none;
-        }
-        
-        /* Ensure images load gracefully */
-        .team-image {
-            background: #1e293b;
-        }
-    </style>
 </head>
 <body class="bg-slate-900">
     <!-- Navigation -->
@@ -176,14 +91,20 @@
 
     <main class="pt-24">
         <!-- Hero Section -->
-        <section class="relative py-20 bg-slate-950 overflow-hidden">
-            <div class="absolute inset-0 bg-blue-950/20"></div>
-            <div class="container mx-auto px-4 relative z-10">
-
-                <div class="max-w-4xl mx-auto text-center">
-                    <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">About DTB Technologies</h1>
-                    <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                        A software studio building websites, apps and business systems for clients in Australia and Kenya since 2020.
+        <section class="relative py-16 sm:py-20 bg-slate-950 overflow-hidden">
+            <div class="absolute -top-40 -left-40 w-96 h-96 bg-blue-600/[0.06] rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -bottom-40 -right-40 w-96 h-96 bg-blue-600/[0.05] rounded-full blur-3xl pointer-events-none"></div>
+            <div class="container mx-auto px-5 sm:px-6 relative z-10">
+                <div class="max-w-3xl mx-auto text-center">
+                    <div class="inline-flex items-center py-1.5 px-3 mb-5 rounded-full bg-blue-600/10 border border-blue-500/20">
+                        <i class="fas fa-building text-blue-400 text-xs mr-2"></i>
+                        <span class="text-blue-300 text-xs font-medium">About DTB Technologies</span>
+                    </div>
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-5 tracking-tight leading-tight">
+                        The <span class="text-blue-400">Bridge</span> Between Your Business and the Internet
+                    </h1>
+                    <p class="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
+                        A software studio building websites, mobile apps, desktop software and business systems for clients in Australia and Kenya. Founded in 2020, still small enough to care, big enough to deliver.
                     </p>
                 </div>
             </div>
@@ -202,8 +123,8 @@
                         <div class="text-gray-300 text-sm md:text-base">Client Retention</div>
                     </div>
                     <div class="bg-slate-800/60 p-6 rounded-2xl border border-slate-700/30 text-center hover:border-blue-500/30 transition-all">
-                        <div class="text-3xl md:text-4xl font-bold text-blue-400 mb-2">5</div>
-                        <div class="text-gray-300 text-sm md:text-base">Team Members</div>
+                        <div class="text-3xl md:text-4xl font-bold text-blue-400 mb-2">2</div>
+                        <div class="text-gray-300 text-sm md:text-base">Countries Served</div>
                     </div>
                     <div class="bg-slate-800/60 p-6 rounded-2xl border border-slate-700/30 text-center hover:border-blue-500/30 transition-all">
                         <div class="text-3xl md:text-4xl font-bold text-blue-400 mb-2">24/7</div>
@@ -226,9 +147,7 @@
                             <h2 class="text-3xl font-bold text-white">Our Story</h2>
                         </div>
                         <p class="text-gray-300 leading-relaxed mb-6">
-                            Founded in Nairobi in 2020, DTB Technologies emerged from a vision to bridge the digital divide in East Africa. 
-                            What started as a small IT consultancy has grown into a software studio building for clients in 
-                            businesses across Kenya and the wider East African region.
+                            DTB Technologies started in 2020 as a small IT consultancy in Nairobi, helping local businesses get online and stay running. Today we operate from Sydney and Nairobi, building custom websites, mobile and desktop apps, and the hosting that keeps it all online. Different scale, same principles: solid software, honest work, clear pricing.
                         </p>
                         <div class="mt-6 p-4 bg-blue-500/10 rounded-xl border border-blue-500/20">
                             <p class="text-blue-400 font-medium">
@@ -286,84 +205,91 @@
                             <i class="fas fa-handshake text-3xl text-blue-400"></i>
                         </div>
                         <h3 class="text-xl font-bold text-white mb-4">Integrity</h3>
-                        <p class="text-gray-300">Operating with honesty and transparency in all our business dealings and relationships.</p>
+                        <p class="text-gray-300">Honest quotes, clear timelines, and no surprise bills. We tell you what we can and cannot do.</p>
                     </div>
 
                     <div class="group bg-slate-800/60 p-8 rounded-2xl border border-slate-700/30 hover:border-blue-500/30 transition-all duration-300">
                         <div class="w-16 h-16 bg-blue-600/10 rounded-2xl flex items-center justify-center mb-6">
-                            <i class="fas fa-lightbulb text-3xl text-blue-400"></i>
+                            <i class="fas fa-tools text-3xl text-blue-400"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-4">Innovation</h3>
-                        <p class="text-gray-300">Choose the right tool for the job and ship software that lasts.</p>
+                        <h3 class="text-xl font-bold text-white mb-4">Craft</h3>
+                        <p class="text-gray-300">We pick the right tool for the job and ship software that lasts. Quality over hype, every time.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Team Section -->
+        <!-- Capabilities / What Our Team Does -->
         <section class="py-16">
             <div class="container mx-auto px-4">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Meet the Team</h2>
-                    <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">The people who design, build and support the software we ship.</p>
+                <div class="text-center mb-12">
+                    <div class="inline-flex items-center py-1.5 px-3 mb-4 rounded-full bg-blue-600/10 border border-blue-500/20">
+                        <i class="fas fa-users text-blue-400 text-xs mr-2"></i>
+                        <span class="text-blue-300 text-xs font-medium">What Our Team Does</span>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">One Team, Every Discipline</h2>
+                    <p class="text-slate-400 max-w-2xl mx-auto text-sm sm:text-base">No outsourcing chain, no handoffs between agencies. The same small team designs, builds, hosts and supports your software end to end.</p>
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <!-- System Administrator -->
-                    <div class="group">
-                        <div class="bg-slate-800/60 rounded-2xl border border-slate-700/30 overflow-hidden hover:border-blue-500/30 transition-all duration-300">
-                            <div class="aspect-w-1 aspect-h-1 relative">
-                                <img src="assets/team/donald-kiprop.jpg" alt="Donald Kiprop - System Administrator" class="team-image object-cover w-full h-full" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" onload="this.style.display='block'; this.nextElementSibling.style.display='none';" style="display: none;">
-                                <div class="team-image-placeholder placeholder-sysadmin w-full h-full" style="display: flex;"></div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-slate-800/60 rounded-2xl p-6 border border-slate-700/30 hover:border-blue-500/30 transition-all duration-300">
+                        <div class="w-12 h-12 bg-blue-600/10 rounded-xl flex items-center justify-center mb-4">
+                            <i class="fas fa-pen-ruler text-xl text-blue-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Design</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">UI and UX designed around your brand and your users. Mockups before code, no guesswork.</p>
+                    </div>
+                    <div class="bg-slate-800/60 rounded-2xl p-6 border border-slate-700/30 hover:border-blue-500/30 transition-all duration-300">
+                        <div class="w-12 h-12 bg-blue-600/10 rounded-xl flex items-center justify-center mb-4">
+                            <i class="fas fa-code text-xl text-blue-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Development</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">Full-stack engineering across web, mobile and desktop. Built from scratch, tested properly.</p>
+                    </div>
+                    <div class="bg-slate-800/60 rounded-2xl p-6 border border-slate-700/30 hover:border-blue-500/30 transition-all duration-300">
+                        <div class="w-12 h-12 bg-blue-600/10 rounded-xl flex items-center justify-center mb-4">
+                            <i class="fas fa-server text-xl text-blue-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Hosting &amp; DevOps</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">Domains, email, SSL, servers, monitoring and backups. Your site stays fast and online.</p>
+                    </div>
+                    <div class="bg-slate-800/60 rounded-2xl p-6 border border-slate-700/30 hover:border-blue-500/30 transition-all duration-300">
+                        <div class="w-12 h-12 bg-blue-600/10 rounded-xl flex items-center justify-center mb-4">
+                            <i class="fas fa-headset text-xl text-blue-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Support</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">Updates, maintenance, IT support and one number to call when something needs fixing.</p>
+                    </div>
+                </div>
+
+                <!-- How We Work With You -->
+                <div class="mt-12 bg-slate-800/40 rounded-2xl border border-slate-700/30 p-6 sm:p-8">
+                    <h3 class="text-xl font-bold text-white mb-6 text-center">How We Work With You</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-user-check text-blue-400"></i>
                             </div>
-                            <div class="p-6">
-                                <h3 class="text-xl font-bold text-white mb-2">Donald Kiprop</h3>
-                                <p class="text-blue-400 mb-4 font-semibold">System Administrator</p>
-                                <p class="text-gray-300 text-sm leading-relaxed">Visionary leader with 5+ years in tech industry, specializing in system optimization and infrastructure management</p>
+                            <div>
+                                <h4 class="text-white font-semibold text-sm mb-1">Direct Access</h4>
+                                <p class="text-slate-400 text-xs leading-relaxed">You talk to the people building your software. No account managers, no telephone trees.</p>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- CTO -->
-                    <div class="group">
-                        <div class="bg-slate-800/60 rounded-2xl border border-slate-700/30 overflow-hidden hover:border-blue-500/30 transition-all duration-300">
-                            <div class="aspect-w-1 aspect-h-1 relative">
-                                <img src="assets/team/lisa-chepkoech.jpg" alt="Lisa Chepkoech - CTO" class="team-image object-cover w-full h-full" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" onload="this.style.display='block'; this.nextElementSibling.style.display='none';" style="display: none;">
-                                <div class="team-image-placeholder placeholder-cto w-full h-full" style="display: flex;"></div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-eye text-blue-400"></i>
                             </div>
-                            <div class="p-6">
-                                <h3 class="text-xl font-bold text-white mb-2">Lisa Chepkoech</h3>
-                                <p class="text-blue-400 mb-4 font-semibold">Chief Technology Officer</p>
-                                <p class="text-gray-300 text-sm leading-relaxed">Leads cloud and infrastructure work — AWS, Azure, and server management.</p>
+                            <div>
+                                <h4 class="text-white font-semibold text-sm mb-1">See Progress Weekly</h4>
+                                <p class="text-slate-400 text-xs leading-relaxed">Working previews every week so you know what's being built and can give feedback early.</p>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- Lead Developer -->
-                    <div class="group">
-                        <div class="bg-slate-800/60 rounded-2xl border border-slate-700/30 overflow-hidden hover:border-blue-500/30 transition-all duration-300">
-                            <div class="aspect-w-1 aspect-h-1 relative">
-                                <img src="assets/team/brian-odhiambo.jpg" alt="Brian Odhiambo - Lead Developer" class="team-image object-cover w-full h-full" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" onload="this.style.display='block'; this.nextElementSibling.style.display='none';" style="display: none;">
-                                <div class="team-image-placeholder placeholder-developer w-full h-full" style="display: flex;"></div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-anchor text-blue-400"></i>
                             </div>
-                            <div class="p-6">
-                                <h3 class="text-xl font-bold text-white mb-2">Brian Odhiambo</h3>
-                                <p class="text-blue-400 mb-4 font-semibold">Lead Developer</p>
-                                <p class="text-gray-300 text-sm leading-relaxed">Full-stack developer — web, mobile, and desktop apps from scratch.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Operations Manager -->
-                    <div class="group">
-                        <div class="bg-slate-800/60 rounded-2xl border border-slate-700/30 overflow-hidden hover:border-blue-500/30 transition-all duration-300">
-                            <div class="aspect-w-1 aspect-h-1 relative">
-                                <img src="assets/team/anne-maina.jpg" alt="Anne Maina - Operations Manager" class="team-image object-cover w-full h-full" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" onload="this.style.display='block'; this.nextElementSibling.style.display='none';" style="display: none;">
-                                <div class="team-image-placeholder placeholder-operations w-full h-full" style="display: flex;"></div>
-                            </div>
-                            <div class="p-6">
-                                <h3 class="text-xl font-bold text-white mb-2">Anne Maina</h3>
-                                <p class="text-blue-400 mb-4 font-semibold">Operations Manager</p>
-                                <p class="text-gray-300 text-sm leading-relaxed">Keeps projects on track and clients in the loop.</p>
+                            <div>
+                                <h4 class="text-white font-semibold text-sm mb-1">We Stay Around</h4>
+                                <p class="text-slate-400 text-xs leading-relaxed">After launch we maintain, host and support your software. No vanishing developers.</p>
                             </div>
                         </div>
                     </div>
@@ -373,16 +299,16 @@
 
         <!-- CTA Section -->
         <section class="py-16">
-            <div class="container mx-auto px-4">
-                <div class="bg-blue-600 rounded-2xl p-8 md:p-12 relative overflow-hidden">
-                    <div class="relative text-center">
-                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Need Software or IT Support?</h2>
-                        <p class="text-gray-100 text-lg mb-8 max-w-2xl mx-auto">
-                            Join hundreds of businesses that trust DTB Technologies for their technology needs.
-                        </p>
-                        <a href="contact.html" class="inline-flex items-center px-8 py-4 bg-white text-blue-600 rounded-xl font-semibold hover:bg-gray-100 transition-colors group">
-                            Get Started
-                            <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+            <div class="container mx-auto px-5 sm:px-6">
+                <div class="max-w-3xl mx-auto text-center bg-gradient-to-br from-blue-600/10 to-blue-500/5 rounded-2xl border border-blue-500/20 p-8 sm:p-10">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">Ready to Work With Us?</h2>
+                    <p class="text-slate-400 mb-7 max-w-xl mx-auto text-sm sm:text-base">Tell us what you need. We'll come back with a clear plan, timeline and fixed quote. Almost instant reply.</p>
+                    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                        <a href="contact.html" class="px-7 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm transition-colors inline-flex items-center justify-center">
+                            <i class="fas fa-rocket mr-2 text-xs"></i> Start a Project
+                        </a>
+                        <a href="https://wa.me/61450275013" target="_blank" rel="noopener" class="px-7 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-semibold text-sm transition-all inline-flex items-center justify-center">
+                            <i class="fab fa-whatsapp mr-2 text-green-400"></i> WhatsApp Us
                         </a>
                     </div>
                 </div>
