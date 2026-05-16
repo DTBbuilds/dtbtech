@@ -1,4 +1,15 @@
+# DTB Technologies - robots.txt
+# https://dtbtech.org
+
 User-agent: *
 Allow: /
+Disallow: /dashboard/
+Disallow: /dashboard.html
+Disallow: /node_modules/
+Disallow: /reports/
+Disallow: /src/
+
+# Crawl-delay courtesy
+Crawl-delay: 1
 
 Sitemap: https://dtbtech.org/sitemap.xml

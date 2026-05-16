@@ -20,6 +20,58 @@
     <link rel="stylesheet" href="../css/mobile-optimizations.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css">
     <script src="../components/nav-header.js" defer></script>
+
+    <meta name="geo.region" content="AU-NSW">
+    <meta name="geo.placename" content="Sydney">
+    <meta name="geo.position" content="-33.8388;150.9551">
+    <meta name="ICBM" content="-33.8388, 150.9551">
+    <meta property="og:locale" content="en_AU">
+
+    <!-- Service + FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Mobile App Development",
+      "name": "Mobile App Development (Android &amp; iOS)",
+      "url": "https://dtbtech.org/services/mobile-apps.html",
+      "description": "Custom mobile apps for Android and iOS. Booking, delivery, loyalty and customer apps published to the stores under your brand.",
+      "provider": { "@id": "https://dtbtech.org/#organization" },
+      "areaServed": [
+        { "@type": "Country", "name": "Australia" },
+        { "@type": "City", "name": "Sydney" },
+        { "@type": "Country", "name": "Kenya" }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do I need separate apps for Android and iOS?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. We use cross-platform tools to build one app that runs natively on both Android and iOS, with the same features on each platform." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you publish to the Play Store and App Store?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. We handle developer account setup, store submission, listing copy, screenshots and approvals. The app is published under your business name." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can the app connect to my existing systems?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. We integrate with existing websites, POS, CRM, payment processors and databases. If it has an API, we can plug into it." }
+        },
+        {
+          "@type": "Question",
+          "name": "What about updates after launch?",
+          "acceptedAnswer": { "@type": "Answer", "text": "We offer ongoing support plans covering bug fixes, OS updates and new features so the app keeps working long after launch." }
+        }
+      ]
+    }
+    </script>
 </head>
 <body class="bg-slate-900 text-slate-100">
     <nav-header></nav-header>

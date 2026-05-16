@@ -20,6 +20,63 @@
     <link rel="stylesheet" href="../css/mobile-optimizations.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css">
     <script src="../components/nav-header.js" defer></script>
+
+    <meta name="geo.region" content="AU-NSW">
+    <meta name="geo.placename" content="Sydney">
+    <meta name="geo.position" content="-33.8388;150.9551">
+    <meta name="ICBM" content="-33.8388, 150.9551">
+    <meta property="og:locale" content="en_AU">
+
+    <!-- Service + FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Web Hosting and Domain Registration",
+      "name": "Managed Web Hosting &amp; Domain Registration",
+      "url": "https://dtbtech.org/services/hosting-domains.html",
+      "description": "Domain registration, managed web hosting, professional email, SSL, daily backups and uptime monitoring for businesses in Australia and Kenya.",
+      "provider": { "@id": "https://dtbtech.org/#organization" },
+      "areaServed": [
+        { "@type": "Country", "name": "Australia" },
+        { "@type": "City", "name": "Sydney" },
+        { "@type": "Country", "name": "Kenya" }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Will I own my domain name?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes, always. Your domain is registered in your business name with your contact details on the WHOIS record. You can move it at any time." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you move my existing website to your hosting?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. We perform migrations with zero downtime. We copy the site to our servers, test everything, then switch the DNS." }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if my site goes down?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Our monitoring alerts us within minutes and we get it back up. If something is broken, we restore from our daily backups." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you host sites you did not build?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. WordPress, static sites, custom builds and ecommerce stores. We can take over support too if your previous developer is gone." }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does managed hosting cost?",
+          "acceptedAnswer": { "@type": "Answer", "text": "We offer simple monthly plans bundling domain renewal, hosting, email, SSL and ongoing care. Tell us your setup and we quote a fixed monthly rate." }
+        }
+      ]
+    }
+    </script>
 </head>
 <body class="bg-slate-900 text-slate-100">
     <nav-header></nav-header>

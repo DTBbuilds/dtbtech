@@ -20,6 +20,58 @@
     <link rel="stylesheet" href="../css/mobile-optimizations.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css">
     <script src="../components/nav-header.js" defer></script>
+
+    <meta name="geo.region" content="AU-NSW">
+    <meta name="geo.placename" content="Sydney">
+    <meta name="geo.position" content="-33.8388;150.9551">
+    <meta name="ICBM" content="-33.8388, 150.9551">
+    <meta property="og:locale" content="en_AU">
+
+    <!-- Service + FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "E-Commerce Website Development",
+      "name": "Custom E-Commerce Website Development",
+      "url": "https://dtbtech.org/services/e-commerce.html",
+      "description": "Custom online stores with Stripe, PayPal, M-Pesa, Afterpay, cards and bank transfers. Inventory, shipping, mobile-first checkout.",
+      "provider": { "@id": "https://dtbtech.org/#organization" },
+      "areaServed": [
+        { "@type": "Country", "name": "Australia" },
+        { "@type": "City", "name": "Sydney" },
+        { "@type": "Country", "name": "Kenya" }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is your e-commerce Shopify, WooCommerce, or custom?",
+          "acceptedAnswer": { "@type": "Answer", "text": "We build custom stores using modern frameworks, or work with Shopify and WooCommerce if that suits your business. We pick the platform based on your needs." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you migrate my existing online store?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. We migrate products, customers, orders, URLs (with SEO redirects) and reviews from your old store to a new one with zero downtime." }
+        },
+        {
+          "@type": "Question",
+          "name": "How do payments work for Australian and Kenyan customers?",
+          "acceptedAnswer": { "@type": "Answer", "text": "For Australia we integrate Stripe, Afterpay, PayPal, cards and bank transfer. For Kenya we integrate M-Pesa STK Push, Pesapal, Flutterwave and cards." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can my online store connect to my POS or accounting software?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. We sync inventory between online store and physical POS, and push orders into Xero, QuickBooks or similar accounting systems." }
+        }
+      ]
+    }
+    </script>
 </head>
 <body class="bg-slate-900 text-slate-100">
     <nav-header></nav-header>

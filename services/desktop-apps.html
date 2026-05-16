@@ -20,6 +20,58 @@
     <link rel="stylesheet" href="../css/mobile-optimizations.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css">
     <script src="../components/nav-header.js" defer></script>
+
+    <meta name="geo.region" content="AU-NSW">
+    <meta name="geo.placename" content="Sydney">
+    <meta name="geo.position" content="-33.8388;150.9551">
+    <meta name="ICBM" content="-33.8388, 150.9551">
+    <meta property="og:locale" content="en_AU">
+
+    <!-- Service + FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Desktop Application Development",
+      "name": "Custom Desktop App Development",
+      "url": "https://dtbtech.org/services/desktop-apps.html",
+      "description": "Custom desktop software for Windows, macOS and Linux. Inventory, accounting, internal tools, offline-first workflows.",
+      "provider": { "@id": "https://dtbtech.org/#organization" },
+      "areaServed": [
+        { "@type": "Country", "name": "Australia" },
+        { "@type": "City", "name": "Sydney" },
+        { "@type": "Country", "name": "Kenya" }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can multiple computers share the same data?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. We can set up a shared database on your local network or in the cloud, so every staff member sees the same data in real time." }
+        },
+        {
+          "@type": "Question",
+          "name": "Will it run on old computers?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Usually yes. We build lightweight apps that run on modest hardware. We target your existing computer specs." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can a desktop app sync with my website or cloud account?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. We build desktop apps that talk to websites, online stores, accounting software and any service with an API." }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens when Windows or macOS updates?",
+          "acceptedAnswer": { "@type": "Answer", "text": "We use modern frameworks that handle OS updates well. Our support plans cover any fixes needed after major OS releases." }
+        }
+      ]
+    }
+    </script>
 </head>
 <body class="bg-slate-900 text-slate-100">
     <nav-header></nav-header>
