@@ -7,7 +7,7 @@
     <!-- Primary Meta Tags -->
     <title>Web &amp; App Developers Sydney | Custom Software Australia | DTB Technologies</title>
     <meta name="title" content="Web &amp; App Developers Sydney | Custom Software Australia | DTB Technologies">
-    <meta name="description" content="Sydney-based software studio building custom websites, mobile apps, desktop software, e-commerce stores, POS and managed hosting for Australian businesses. Also serving Kenya. Built from scratch, no templates. Almost instant reply.">
+    <meta name="description" content="Sydney-based software studio building custom websites, web and mobile apps, e-commerce stores, POS systems and managed hosting for Australian businesses. Also serving Kenya.">
     <meta name="keywords" content="web developer Sydney, app developer Sydney, software development Australia, custom website Sydney, mobile app developer Australia, ecommerce developer Sydney, POS system Australia, web hosting Australia, domain registration Australia, IT support Sydney, software developer Nairobi, app developer Kenya, web developer Kenya, DTB Technologies">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
     <meta name="language" content="English">
@@ -25,19 +25,20 @@
     <meta property="og:url" content="https://dtbtech.org/">
     <meta property="og:site_name" content="DTB Technologies">
     <meta property="og:title" content="Web &amp; App Developers Sydney | Custom Software Australia | DTB Technologies">
-    <meta property="og:description" content="Sydney-based software studio. Custom websites, mobile apps, desktop software, e-commerce, POS and managed hosting for Australian businesses. Also serving Kenya.">
+    <meta property="og:description" content="Sydney-based software studio. Custom websites, web and mobile apps, e-commerce, POS and managed hosting for Australian businesses. Also serving Kenya.">
     <meta property="og:image" content="https://dtbtech.org/assets/home-og-image.jpg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://dtbtech.org/">
     <meta property="twitter:title" content="Web &amp; App Developers Sydney | Custom Software Australia">
-    <meta property="twitter:description" content="Sydney-based software studio. Custom websites, apps, e-commerce, POS and managed hosting. Almost instant reply.">
+    <meta property="twitter:description" content="Sydney-based software studio. Custom websites, apps, e-commerce, POS and managed hosting.">
     <meta property="twitter:image" content="https://dtbtech.org/assets/home-twitter-image.jpg">
 
     <!-- Favicons -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" href="assets/dtb-logo.png">
+    <link rel="apple-touch-icon" href="assets/dtb-logo.png">
     
     <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
@@ -52,6 +53,7 @@
     
     <!-- Scripts -->
     <script src="./app.js" defer></script>
+    <script src="./components/nav-header.js" defer></script>
     
     <!-- LocalBusiness / ProfessionalService Schema (Sydney HQ) -->
     <script type="application/ld+json">
@@ -137,27 +139,14 @@
       }
     }
     </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "url": "https://dtbtech.org/",
-      "name": "DTB Technologies",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://dtbtech.org/search?q={search_term_string}",
-        "query-input": "required name=search_term_string"
-      }
-    }
-    </script>
-    
 </head>
 <body class="bg-slate-900">
     <!-- Navigation -->
     <nav-header></nav-header>
 
+    <main>
     <!-- Hero Section -->
-    <section class="relative min-h-[calc(100vh-4rem)] flex items-center overflow-hidden pt-8 pb-12 sm:py-0">
+    <section class="relative min-h-[calc(100vh-4rem)] flex items-center overflow-hidden pt-20 pb-12 sm:py-0">
         <!-- Background -->
         <div class="absolute inset-0 bg-slate-950 pointer-events-none"></div>
         <div class="absolute -top-32 -right-32 w-96 h-96 bg-blue-600/[0.04] rounded-full blur-3xl pointer-events-none"></div>
@@ -200,8 +189,8 @@
                             <i class="fas fa-rocket mr-2 text-xs"></i>
                             Discuss Your Project
                         </a>
-                        <a href="dashboard.html" class="px-6 py-3 min-h-[44px] rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 hover:border-slate-600 text-white font-semibold text-sm transition-all duration-200 flex items-center justify-center">
-                            Explore Our Work
+                        <a href="projects.html" class="px-6 py-3 min-h-[44px] rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 hover:border-slate-600 text-white font-semibold text-sm transition-all duration-200 flex items-center justify-center">
+                            See Our Projects
                             <i class="fas fa-arrow-right ml-2 text-xs"></i>
                         </a>
                     </div>
@@ -251,8 +240,99 @@
         </div>
     </section>
 
+    <!-- Featured Projects Section -->
+    <section class="py-14 sm:py-16 relative overflow-hidden bg-slate-900">
+        <div class="absolute -top-40 -left-40 w-80 h-80 bg-blue-600/[0.04] rounded-full blur-3xl pointer-events-none"></div>
+        <div class="container mx-auto px-5 sm:px-6 relative z-10">
+            <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
+                <div class="max-w-xl">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">See What We've Built</h2>
+                    <p class="text-slate-400 text-sm sm:text-base">Websites, applications and business systems designed for real-world use.</p>
+                </div>
+                <a href="projects.html" class="inline-flex items-center text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors flex-shrink-0">
+                    View All Projects <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                </a>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- Jack of All Trades -->
+                <a href="projects/jack-of-all-trades.html" class="group flex flex-col h-full bg-slate-800/60 rounded-2xl border border-slate-700/30 hover:border-blue-500/40 transition-all duration-300 overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500">
+                    <div class="aspect-video bg-slate-900 relative overflow-hidden">
+                        <div class="absolute -top-10 -right-10 w-40 h-40 bg-blue-600/10 rounded-full blur-2xl"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-briefcase text-4xl text-blue-400/60"></i>
+                        </div>
+                        <span class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-blue-600/15 border border-blue-500/30 text-blue-300 text-[11px] font-semibold">Private Beta</span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-1">
+                        <p class="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-1.5">Community Job Marketplace</p>
+                        <h3 class="text-lg font-bold text-white mb-2.5">Jack of All Trades</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-4 flex-1">A mobile-first marketplace that helps communities post available work, discover opportunities and coordinate jobs more clearly than a busy group chat.</p>
+                        <div class="flex flex-wrap gap-1.5 mb-5">
+                            <span class="px-2.5 py-1 rounded-full bg-slate-700/50 text-slate-300 text-[11px] font-medium">Marketplace</span>
+                            <span class="px-2.5 py-1 rounded-full bg-slate-700/50 text-slate-300 text-[11px] font-medium">Web App</span>
+                            <span class="px-2.5 py-1 rounded-full bg-slate-700/50 text-slate-300 text-[11px] font-medium">Australia</span>
+                        </div>
+                        <span class="inline-flex items-center text-blue-400 text-sm font-medium mt-auto group-hover:text-blue-300 transition-colors">
+                            View Project <i class="fas fa-arrow-right ml-2 text-xs group-hover:translate-x-0.5 transition-transform"></i>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- SmartDuka -->
+                <a href="https://www.smartduka.org" target="_blank" rel="noopener noreferrer" class="group flex flex-col h-full bg-slate-800/60 rounded-2xl border border-slate-700/30 hover:border-blue-500/40 transition-all duration-300 overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500">
+                    <div class="aspect-video bg-slate-900 relative overflow-hidden">
+                        <div class="absolute -top-10 -right-10 w-40 h-40 bg-blue-600/10 rounded-full blur-2xl"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-cash-register text-4xl text-blue-400/60"></i>
+                        </div>
+                        <span class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-green-500/15 border border-green-500/30 text-green-300 text-[11px] font-semibold">Live</span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-1">
+                        <p class="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-1.5">Retail POS &amp; Inventory Platform</p>
+                        <h3 class="text-lg font-bold text-white mb-2.5">SmartDuka</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-4 flex-1">A point-of-sale and inventory platform for retail businesses. Sales, stock tracking and reporting from one web app.</p>
+                        <div class="flex flex-wrap gap-1.5 mb-5">
+                            <span class="px-2.5 py-1 rounded-full bg-slate-700/50 text-slate-300 text-[11px] font-medium">POS</span>
+                            <span class="px-2.5 py-1 rounded-full bg-slate-700/50 text-slate-300 text-[11px] font-medium">Web App</span>
+                            <span class="px-2.5 py-1 rounded-full bg-slate-700/50 text-slate-300 text-[11px] font-medium">Retail</span>
+                        </div>
+                        <span class="inline-flex items-center text-blue-400 text-sm font-medium mt-auto group-hover:text-blue-300 transition-colors">
+                            Visit Site <i class="fas fa-external-link-alt ml-2 text-xs"></i>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Linda's Nut Butter -->
+                <a href="https://lindas-nut-butter-store.vercel.app/" target="_blank" rel="noopener noreferrer" class="group flex flex-col h-full bg-slate-800/60 rounded-2xl border border-slate-700/30 hover:border-blue-500/40 transition-all duration-300 overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500">
+                    <div class="aspect-video bg-slate-900 relative overflow-hidden">
+                        <div class="absolute -top-10 -right-10 w-40 h-40 bg-blue-600/10 rounded-full blur-2xl"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-store text-4xl text-blue-400/60"></i>
+                        </div>
+                        <span class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-green-500/15 border border-green-500/30 text-green-300 text-[11px] font-semibold">Live</span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-1">
+                        <p class="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-1.5">E-Commerce Website</p>
+                        <h3 class="text-lg font-bold text-white mb-2.5">Linda's Nut Butter</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-4 flex-1">An e-commerce store for handcrafted, organic nut butter products, with product catalogue, cart and secure payment processing.</p>
+                        <div class="flex flex-wrap gap-1.5 mb-5">
+                            <span class="px-2.5 py-1 rounded-full bg-slate-700/50 text-slate-300 text-[11px] font-medium">E-Commerce</span>
+                            <span class="px-2.5 py-1 rounded-full bg-slate-700/50 text-slate-300 text-[11px] font-medium">Website</span>
+                            <span class="px-2.5 py-1 rounded-full bg-slate-700/50 text-slate-300 text-[11px] font-medium">Retail</span>
+                        </div>
+                        <span class="inline-flex items-center text-blue-400 text-sm font-medium mt-auto group-hover:text-blue-300 transition-colors">
+                            Visit Site <i class="fas fa-external-link-alt ml-2 text-xs"></i>
+                        </span>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
     <!-- Core Services Section -->
-    <section class="py-16 relative overflow-hidden bg-slate-900">
+    <section class="py-16 relative overflow-hidden bg-slate-950">
         <div class="container mx-auto px-4 relative z-10">
 
 
@@ -272,7 +352,7 @@
                             <i class="fas fa-code"></i>
                         </div>
                         <h3 class="text-xl font-bold text-white mb-3">Custom Websites</h3>
-                        <p class="text-gray-300 mb-6">A website that actually wins you customers. Fast on every device, ranks on Google, and built around your business. No templates, no compromises.</p>
+                        <p class="text-gray-300 mb-6">A website that actually wins you customers. Fast on every device, ranks on Google, and designed around your business.</p>
                         <a href="contact.html" class="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all text-sm font-medium">
                             Get a Website <i class="fas fa-arrow-right ml-2"></i>
                         </a>
@@ -293,16 +373,16 @@
                     </div>
                 </div>
 
-                <!-- Service Card 3 - Desktop Apps -->
+                <!-- Service Card 3 - Business Software -->
                 <div class="group">
                     <div class="bg-slate-800/60 rounded-2xl p-8 border border-slate-700/30 h-full hover:border-blue-500/30 transition-all duration-300">
                         <div class="text-4xl text-blue-400 mb-4">
-                            <i class="fas fa-desktop"></i>
+                            <i class="fas fa-gears"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-3">Desktop Apps</h3>
-                        <p class="text-gray-300 mb-6">Custom desktop software for the work your team actually does. Inventory, accounting, internal tools. Runs offline, fits your process, no monthly per-user fees.</p>
-                        <a href="contact.html" class="inline-flex items-center px-4 py-2 bg-blue-600/10 text-blue-400 rounded-lg hover:bg-blue-600/20 transition-all">
-                            Discuss Project <i class="fas fa-arrow-right ml-2"></i>
+                        <h3 class="text-xl font-bold text-white mb-3">Business Software</h3>
+                        <p class="text-gray-300 mb-6">Custom systems for the work your team actually does — operations, workflows, inventory, reporting and internal tools built around your process, on web or desktop.</p>
+                        <a href="services/software-development.html" class="inline-flex items-center px-4 py-2 bg-blue-600/10 text-blue-400 rounded-lg hover:bg-blue-600/20 transition-all">
+                            Explore Service <i class="fas fa-arrow-right ml-2"></i>
                         </a>
                     </div>
                 </div>
@@ -316,8 +396,8 @@
                         <h3 class="text-xl font-bold text-white mb-3">Point of Sale Systems</h3>
                         <p class="text-gray-300 mb-6">Take payments, track stock and see your sales — anywhere. POS for retail and hospitality that runs on phones, tablets and counters. Try our SmartDuka demo below.</p>
                         <div class="flex flex-col gap-2">
-                            <a href="https://smartduka-eta.vercel.app/" target="_blank" rel="noopener" class="inline-flex items-center px-4 py-2 bg-blue-600/10 text-blue-400 rounded-lg hover:bg-blue-600/20 transition-all">
-                                Try POS Demo <i class="fas fa-external-link-alt ml-2"></i>
+                            <a href="https://www.smartduka.org" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-2 bg-blue-600/10 text-blue-400 rounded-lg hover:bg-blue-600/20 transition-all">
+                                Visit SmartDuka <i class="fas fa-external-link-alt ml-2"></i>
                             </a>
                         </div>
                     </div>
@@ -369,7 +449,7 @@
     </section>
 
     <!-- Website Building Showcase Section -->
-    <section class="py-16 sm:py-20 relative overflow-hidden bg-slate-950">
+    <section class="py-16 sm:py-20 relative overflow-hidden bg-slate-900">
         <div class="absolute -top-40 -left-40 w-80 h-80 bg-blue-600/[0.04] rounded-full blur-3xl pointer-events-none"></div>
         <div class="container mx-auto px-5 sm:px-6 relative z-10">
 
@@ -459,13 +539,13 @@
                     <i class="fas fa-rocket mr-2 text-xs"></i>
                     Start Your Project
                 </a>
-                <p class="text-slate-500 text-xs mt-3">Free consultation · No commitment · Serving Australia &amp; Kenya · Almost instant replies</p>
+                <p class="text-slate-500 text-xs mt-3">Free consultation · No commitment · Serving Australia &amp; Kenya</p>
             </div>
         </div>
     </section>
 
     <!-- New Build, Fix or Maintain Section -->
-    <section class="py-16 sm:py-20 relative overflow-hidden bg-slate-900">
+    <section class="py-16 sm:py-20 relative overflow-hidden bg-slate-950">
         <div class="absolute -top-40 -right-40 w-80 h-80 bg-blue-600/[0.04] rounded-full blur-3xl pointer-events-none"></div>
         <div class="container mx-auto px-5 sm:px-6 relative z-10">
 
@@ -487,9 +567,9 @@
                     <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-5">
                         <i class="fas fa-cubes text-2xl text-blue-400"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Built From Scratch, Your Way</h3>
+                    <h3 class="text-xl font-bold text-white mb-3">Designed Around Your Business</h3>
                     <p class="text-gray-300 text-sm leading-relaxed mb-4">
-                        Every website, app and system we build is designed around your exact business needs. No templates, no shortcuts. We listen to how your company actually runs, then build software that fits it.
+                        Every website, app and system we build is designed around your exact business needs. We listen to how your company actually runs, then build software that fits it.
                     </p>
                     <ul class="text-slate-400 text-sm space-y-2">
                         <li class="flex items-start"><i class="fas fa-check text-blue-400 text-xs mt-1 mr-2"></i>Discovery and scoping with your team</li>
@@ -554,7 +634,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div class="space-y-6">
                     <h2 class="text-3xl md:text-4xl font-bold text-white">Ready to Get Started?</h2>
-                    <p class="text-gray-300 text-lg">Whether it's a new website, a mobile or desktop app, business software, or IT support. We're here. Tell us what you need and we'll scope it with you.</p>
+                    <p class="text-gray-300 text-lg">Whether it's a new website, a web or mobile app, business software, or IT support. We're here. Tell us what you need and we'll scope it with you.</p>
                     <div class="flex flex-col sm:flex-row gap-4">
                         <a href="contact.html" class="px-6 py-3 min-h-[44px] rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm transition-colors flex items-center justify-center">
                             Get in Touch
@@ -573,123 +653,82 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div class="bg-slate-800/60 p-6 rounded-2xl border border-slate-700/30">
                         <div class="text-blue-400 text-3xl mb-4">
-                            <i class="fas fa-clock"></i>
+                            <i class="fas fa-headset"></i>
                         </div>
-                        <h3 class="text-xl font-semibold text-white mb-2">24/7 Support</h3>
-                        <p class="text-gray-300">Round-the-clock technical assistance for your business</p>
+                        <h3 class="text-xl font-semibold text-white mb-2">Ongoing Support</h3>
+                        <p class="text-gray-300">Support and maintenance for the software we build</p>
                     </div>
                     <div class="bg-slate-800/60 p-6 rounded-2xl border border-slate-700/30">
                         <div class="text-blue-400 text-3xl mb-4">
-                            <i class="fas fa-headset"></i>
+                            <i class="fas fa-user-check"></i>
                         </div>
-                        <h3 class="text-xl font-semibold text-white mb-2">Expert Team</h3>
-                        <p class="text-gray-300">Certified professionals ready to help</p>
+                        <h3 class="text-xl font-semibold text-white mb-2">Direct Access</h3>
+                        <p class="text-gray-300">Talk to the people building your software</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Statistics Section -->
+    <!-- At a Glance Section -->
     <section class="relative py-20 bg-slate-900">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <!-- Happy Clients -->
+                <!-- Founded -->
                 <div class="group relative">
                     <div class="p-8 rounded-2xl bg-slate-800/60 border border-slate-700/30 transition-all duration-300 hover:border-blue-500/30">
                         <div class="flex items-center justify-center mb-4">
-                            <i class="fas fa-smile text-4xl text-blue-400"></i>
+                            <i class="fas fa-flag text-4xl text-blue-400"></i>
                         </div>
                         <div class="text-center">
-                            <div class="counter-value text-4xl font-bold text-white mb-2" data-target="30">0</div>
-                            <p class="text-gray-400">Happy Clients</p>
+                            <div class="text-4xl font-bold text-white mb-2">2020</div>
+                            <p class="text-gray-400">Founded</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Projects Completed -->
+                <!-- Locations -->
                 <div class="group relative">
                     <div class="p-8 rounded-2xl bg-slate-800/60 border border-slate-700/30 transition-all duration-300 hover:border-blue-500/30">
                         <div class="flex items-center justify-center mb-4">
-                            <i class="fas fa-check-circle text-4xl text-blue-400"></i>
+                            <i class="fas fa-globe text-4xl text-blue-400"></i>
                         </div>
                         <div class="text-center">
-                            <div class="counter-value text-4xl font-bold text-white mb-2" data-target="20">0</div>
-                            <p class="text-gray-400">Projects Completed</p>
+                            <div class="text-4xl font-bold text-white mb-2">2</div>
+                            <p class="text-gray-400">Countries · AU &amp; KE</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- 24/7 Support -->
+                <!-- What We Build -->
+                <div class="group relative">
+                    <div class="p-8 rounded-2xl bg-slate-800/60 border border-slate-700/30 transition-all duration-300 hover:border-blue-500/30">
+                        <div class="flex items-center justify-center mb-4">
+                            <i class="fas fa-layer-group text-4xl text-blue-400"></i>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-bold text-white mb-2">End-to-End</div>
+                            <p class="text-gray-400">Design · Build · Support</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Support -->
                 <div class="group relative">
                     <div class="p-8 rounded-2xl bg-slate-800/60 border border-slate-700/30 transition-all duration-300 hover:border-blue-500/30">
                         <div class="flex items-center justify-center mb-4">
                             <i class="fas fa-headset text-4xl text-blue-400"></i>
                         </div>
                         <div class="text-center">
-                            <div class="text-4xl font-bold text-white mb-2">24/7</div>
-                            <p class="text-gray-400">Support Available</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Years Experience -->
-                <div class="group relative">
-                    <div class="p-8 rounded-2xl bg-slate-800/60 border border-slate-700/30 transition-all duration-300 hover:border-blue-500/30">
-                        <div class="flex items-center justify-center mb-4">
-                            <i class="fas fa-star text-4xl text-blue-400"></i>
-                        </div>
-                        <div class="text-center">
-                            <div class="counter-value text-4xl font-bold text-white mb-2" data-target="3">0</div>
-                            <p class="text-gray-400">Years Experience</p>
+                            <div class="text-4xl font-bold text-white mb-2">Ongoing</div>
+                            <p class="text-gray-400">Support &amp; Maintenance</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <script>
-        // Counter animation
-        function animateCounter(element) {
-            const target = parseInt(element.getAttribute('data-target'));
-            const duration = 2000; // Animation duration in milliseconds
-            const steps = 50; // Number of steps
-            const stepDuration = duration / steps;
-            const increment = target / steps;
-            let current = 0;
-            
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    element.textContent = target + '+';
-                    clearInterval(timer);
-                } else {
-                    element.textContent = Math.floor(current) + '+';
-                }
-            }, stepDuration);
-        }
-
-        // Intersection Observer for counter animation
-        const counterObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const counters = entry.target.querySelectorAll('.counter-value');
-                    counters.forEach(counter => {
-                        animateCounter(counter);
-                    });
-                    counterObserver.unobserve(entry.target); // Only animate once
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
-
-        // Observe the statistics section
-        document.querySelectorAll('.counter-value').forEach(counter => {
-            counterObserver.observe(counter.closest('section'));
-        });
-    </script>
+    </main>
 
     <!-- Contact Orb Button -->
     <div class="fixed bottom-8 left-8 z-50 ml-4">
@@ -705,7 +744,6 @@
 
     <footer class="bg-slate-900 border-t border-slate-800">
         <div class="container mx-auto px-4 py-12">
-            <!-- Main Footer Content -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Company Info -->
                 <div class="space-y-4">
@@ -714,104 +752,70 @@
                         <h3 class="text-xl font-bold text-white">DTB Technologies</h3>
                     </div>
                     <p class="text-gray-300">Custom software and IT support for businesses in Australia and Kenya.</p>
-                    <div class="flex items-center space-x-6">
-                        <a href="https://facebook.com/dtbtechnologies" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-xl bg-slate-800/80 hover:bg-blue-600/20 flex items-center justify-center transition-all duration-300 border border-slate-700/30 hover:border-blue-500/30 group">
+                    <div class="flex items-center space-x-3">
+                        <a href="https://facebook.com/dtbtechnologies" aria-label="DTB Technologies on Facebook" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg bg-slate-800/80 hover:bg-blue-600/20 flex items-center justify-center transition-all duration-300 border border-slate-700/30 hover:border-blue-500/30 group">
                             <i class="fab fa-facebook-f text-gray-400 group-hover:text-blue-400 transition-colors"></i>
                         </a>
-                        <a href="https://twitter.com/dtbtechnologies" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-xl bg-slate-800/80 hover:bg-blue-600/20 flex items-center justify-center transition-all duration-300 border border-slate-700/30 hover:border-blue-500/30 group">
-                            <i class="fab fa-twitter text-gray-400 group-hover:text-blue-400 transition-colors"></i>
-                        </a>
-                        <a href="https://linkedin.com/company/dtbtechnologies" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-xl bg-slate-800/80 hover:bg-blue-600/20 flex items-center justify-center transition-all duration-300 border border-slate-700/30 hover:border-blue-500/30 group">
+                        <a href="https://linkedin.com/company/dtbtechnologies" aria-label="DTB Technologies on LinkedIn" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg bg-slate-800/80 hover:bg-blue-600/20 flex items-center justify-center transition-all duration-300 border border-slate-700/30 hover:border-blue-500/30 group">
                             <i class="fab fa-linkedin-in text-gray-400 group-hover:text-blue-400 transition-colors"></i>
                         </a>
-                        <a href="https://instagram.com/dtb_technologies" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-xl bg-slate-800/80 hover:bg-blue-600/20 flex items-center justify-center transition-all duration-300 border border-slate-700/30 hover:border-blue-500/30 group">
+                        <a href="https://instagram.com/dtb_technologies" aria-label="DTB Technologies on Instagram" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg bg-slate-800/80 hover:bg-blue-600/20 flex items-center justify-center transition-all duration-300 border border-slate-700/30 hover:border-blue-500/30 group">
                             <i class="fab fa-instagram text-gray-400 group-hover:text-blue-400 transition-colors"></i>
                         </a>
-                        <a href="https://tiktok.com/@dtb_technologies" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-xl bg-slate-800/80 hover:bg-blue-600/20 flex items-center justify-center transition-all duration-300 border border-slate-700/30 hover:border-blue-500/30 group">
-                            <i class="fab fa-tiktok text-gray-400 group-hover:text-blue-400 transition-colors"></i>
-                        </a>
-                        <a href="https://youtube.com/@dtbtechnologies" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-xl bg-slate-800/80 hover:bg-blue-600/20 flex items-center justify-center transition-all duration-300 border border-slate-700/30 hover:border-blue-500/30 group">
-                            <i class="fab fa-youtube text-gray-400 group-hover:text-blue-400 transition-colors"></i>
+                        <a href="https://github.com/DTBbuilds" aria-label="DTBbuilds on GitHub" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg bg-slate-800/80 hover:bg-blue-600/20 flex items-center justify-center transition-all duration-300 border border-slate-700/30 hover:border-blue-500/30 group">
+                            <i class="fab fa-github text-gray-400 group-hover:text-blue-400 transition-colors"></i>
                         </a>
                     </div>
                 </div>
 
-                <!-- Quick Links -->
+                <!-- Company -->
                 <div class="space-y-4">
-                    <h4 class="text-lg font-semibold text-white">Quick Links</h4>
+                    <h4 class="text-lg font-semibold text-white">Company</h4>
                     <ul class="space-y-2">
                         <li><a href="index.html" class="text-gray-300 hover:text-blue-400 transition-colors">Home</a></li>
-                        <li><a href="about.html" class="text-gray-300 hover:text-blue-400 transition-colors">About Us</a></li>
-                        <li><a href="services.html" class="text-gray-300 hover:text-blue-400 transition-colors">Services</a></li>
-                        <li><a href="tech-lab.html" class="text-gray-300 hover:text-blue-400 transition-colors">Tech Lab</a></li>
+                        <li><a href="projects.html" class="text-gray-300 hover:text-blue-400 transition-colors">Projects</a></li>
+                        <li><a href="about.html" class="text-gray-300 hover:text-blue-400 transition-colors">About</a></li>
                         <li><a href="contact.html" class="text-gray-300 hover:text-blue-400 transition-colors">Contact</a></li>
                     </ul>
                 </div>
 
-                <!-- Our Services -->
+                <!-- Services -->
                 <div class="space-y-4">
-                    <h4 class="text-lg font-semibold text-white">Our Services</h4>
-                    <div class="space-y-2">
-                        <a href="services/it-support.html" class="block text-gray-300 hover:text-blue-400 transition-colors">IT Support</a>
-                        <a href="services/cybersecurity.html" class="block text-gray-300 hover:text-blue-400 transition-colors">Cybersecurity</a>
-                        <a href="services/cloud-solutions.html" class="block text-gray-300 hover:text-blue-400 transition-colors">Cloud Solutions</a>
-                        <a href="services/web-app-dev.html" class="block text-gray-300 hover:text-blue-400 transition-colors">Web Development</a>
-                        <a href="https://smartduka-eta.vercel.app/" target="_blank" class="block text-gray-300 hover:text-green-400 transition-colors">Point of Sale Systems</a>
-                    </div>
+                    <h4 class="text-lg font-semibold text-white">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="services/websites.html" class="text-gray-300 hover:text-blue-400 transition-colors">Websites</a></li>
+                        <li><a href="services/web-app-dev.html" class="text-gray-300 hover:text-blue-400 transition-colors">Web Apps</a></li>
+                        <li><a href="services/mobile-apps.html" class="text-gray-300 hover:text-blue-400 transition-colors">Mobile Apps</a></li>
+                        <li><a href="services/software-development.html" class="text-gray-300 hover:text-blue-400 transition-colors">Business Software</a></li>
+                        <li><a href="services/e-commerce.html" class="text-gray-300 hover:text-blue-400 transition-colors">E-Commerce</a></li>
+                        <li><a href="services/hosting-domains.html" class="text-gray-300 hover:text-blue-400 transition-colors">Hosting &amp; Support</a></li>
+                    </ul>
                 </div>
 
-                <!-- Contact Information -->
+                <!-- Locations -->
                 <div class="space-y-4">
-                    <h4 class="text-lg font-semibold text-white">Contact Information</h4>
-                    <div class="space-y-3">
-                        <div class="flex items-start text-gray-300">
-                            <i class="fas fa-map-marker-alt text-blue-400 mr-3 w-5 mt-1"></i>
-                            <div>
-                                <div>Greystanes, Sydney NSW 2145, Australia</div>
-                                <div class="text-gray-400 text-sm">Uthiru Muthua, Nairobi, Kenya</div>
-                            </div>
-                        </div>
-                        <div class="flex items-start text-gray-300">
-                            <i class="fas fa-phone text-green-400 mr-3 w-5 mt-1"></i>
-                            <div>
-                                <div><a href="tel:+61450275013" class="hover:text-green-400 transition-colors">+61 450 275 013</a> <span class="text-gray-500 text-xs">(AU)</span></div>
-                                <div><a href="tel:+254729983567" class="hover:text-green-400 transition-colors">+254 729 983 567</a> <span class="text-gray-500 text-xs">(KE)</span></div>
-                            </div>
-                        </div>
-                        <div class="flex items-center text-gray-300">
-                            <i class="fas fa-envelope text-blue-400 mr-3 w-5"></i>
-                            <a href="mailto:dtbbuildsoffice@gmail.com" class="hover:text-blue-400 transition-colors">dtbbuildsoffice@gmail.com</a>
-                        </div>
-                        <div class="flex items-center text-gray-300">
-                            <i class="fab fa-whatsapp text-green-500 mr-3 w-5"></i>
-                            <a href="https://wa.me/61450275013" class="hover:text-green-500 transition-colors" target="_blank" rel="noopener">WhatsApp Support</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Availability Badge -->
-                    <div class="bg-slate-800/60 rounded-lg p-3 border border-slate-700/30 mt-4">
-                        <div class="flex items-center">
-                            <div class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
-                            <span class="text-green-400 font-medium text-sm">Available 24/7 Online</span>
-                        </div>
+                    <h4 class="text-lg font-semibold text-white">Locations</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-start"><i class="fas fa-map-marker-alt text-blue-400 mr-3 w-5 mt-1"></i>Greystanes, Sydney NSW 2145, Australia</li>
+                        <li class="flex items-start"><i class="fas fa-map-marker-alt text-blue-400 mr-3 w-5 mt-1"></i>Uthiru Muthua, Nairobi, Kenya</li>
+                    </ul>
+                    <div class="pt-2 space-y-2">
+                        <a href="mailto:dtbbuildsoffice@gmail.com" class="flex items-center text-gray-300 hover:text-blue-400 transition-colors">
+                            <i class="fas fa-envelope text-blue-400 mr-3 w-5"></i>dtbbuildsoffice@gmail.com
+                        </a>
+                        <a href="tel:+61450275013" class="flex items-center text-gray-300 hover:text-blue-400 transition-colors">
+                            <i class="fas fa-phone text-blue-400 mr-3 w-5"></i>+61 450 275 013 <span class="text-gray-500 text-xs">(AU)</span>
+                        </a>
+                        <a href="tel:+254729983567" class="flex items-center text-gray-300 hover:text-blue-400 transition-colors">
+                            <i class="fas fa-phone text-blue-400 mr-3 w-5"></i>+254 729 983 567 <span class="text-gray-500 text-xs">(KE)</span>
+                        </a>
                     </div>
                 </div>
             </div>
 
             <!-- Footer Bottom -->
-            <div class="mt-16 pt-10 border-t border-slate-800">
-                <div class="flex flex-col items-center justify-center space-y-8">
-                    <p class="text-gray-400 text-base font-medium tracking-wide">
-                        &copy; 2025 DTB Technologies. All rights reserved.
-                    </p>
-                    <div class="flex flex-wrap items-center justify-center gap-5 text-sm">
-                        <a href="privacy-policy.html" class="text-gray-400 hover:text-blue-400 transition-colors">Privacy Policy</a>
-                        <span class="text-gray-600">|</span>
-                        <a href="terms.html" class="text-gray-400 hover:text-blue-400 transition-colors">Terms</a>
-                        <span class="text-gray-600">|</span>
-                        <a href="cookies.html" class="text-gray-400 hover:text-blue-400 transition-colors">Cookies</a>
-                    </div>
-                </div>
+            <div class="mt-12 pt-8 border-t border-slate-800 text-center">
+                <p class="text-gray-400 text-sm font-medium tracking-wide">&copy; 2026 DTB Technologies. All rights reserved.</p>
             </div>
         </div>
     </footer>

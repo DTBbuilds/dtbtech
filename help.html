@@ -7,7 +7,7 @@
     <!-- Primary Meta Tags -->
     <title>Help & Support - DTB Technologies</title>
     <meta name="title" content="Help & Support - DTB Technologies">
-    <meta name="description" content="Get instant IT help and support from DTB Technologies. FAQs, troubleshooting guides, and 24/7 tech support for all your IT needs.">
+    <meta name="description" content="Get IT help and support from DTB Technologies. FAQs, troubleshooting guides, and technical support for all your IT needs.">
     <meta name="keywords" content="IT help Kenya, tech support Nairobi, DTB Technologies support, IT troubleshooting Kenya, technical help Nairobi, IT FAQ Kenya">
     <meta name="robots" content="index, follow">
     <meta name="language" content="English">
@@ -21,24 +21,23 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://dtbtech.org/help">
     <meta property="og:title" content="Help & Support - DTB Technologies | IT Support Kenya">
-    <meta property="og:description" content="Get instant IT help and support. Access FAQs, guides, and 24/7 tech support from DTB Technologies.">
+    <meta property="og:description" content="Get IT help and support. Access FAQs, guides, and technical support from DTB Technologies.">
     <meta property="og:image" content="https://dtbtech.org/assets/help-og-image.jpg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://dtbtech.org/help">
     <meta property="twitter:title" content="Help & Support - DTB Technologies | IT Support Kenya">
-    <meta property="twitter:description" content="Get instant IT help and support. Access FAQs, guides, and 24/7 tech support from DTB Technologies.">
+    <meta property="twitter:description" content="Get IT help and support. Access FAQs, guides, and technical support from DTB Technologies.">
     <meta property="twitter:image" content="https://dtbtech.org/assets/help-twitter-image.jpg">
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://dtbtech.org/help">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" href="assets/dtb-logo.png">
+    <link rel="apple-touch-icon" href="assets/dtb-logo.png">
 
     <!-- Stylesheets and Scripts -->
     <link rel="stylesheet" href="./dist/output.css">
@@ -61,7 +60,7 @@
                 "name": "How can I get technical support?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "You can reach our 24/7 technical support team via phone at +61 450 275 013 (Australia) or +254 729 983 567 (Kenya), email at dtbbuildsoffice@gmail.com, or through our live chat service."
+                    "text": "You can reach our technical support team via phone at +61 450 275 013 (Australia) or +254 729 983 567 (Kenya), or by email at dtbbuildsoffice@gmail.com."
                 }
             },
             {
@@ -69,7 +68,7 @@
                 "name": "What services does DTB Technologies offer?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "We offer a wide range of IT services including web development, cloud solutions, cybersecurity, and 24/7 technical support."
+                    "text": "We offer a wide range of IT services including web development, cloud solutions, cybersecurity, and technical support."
                 }
             },
             {
@@ -85,7 +84,7 @@
                 "name": "Do you offer emergency IT support?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Yes, we provide 24/7 emergency IT support. Contact our helpline at +61 450 275 013 (Australia) or +254 729 983 567 (Kenya) for immediate assistance."
+                    "text": "Yes, we provide emergency IT support for existing clients. Contact our helpline at +61 450 275 013 (Australia) or +254 729 983 567 (Kenya)."
                 }
             }
         ],
@@ -109,7 +108,7 @@
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div class="max-w-3xl mx-auto text-center animate-slide-up px-2">
                     <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-8 text-white">Help & <span class="text-blue-400">Support</span></h1>
-                    <p class="text-xl md:text-2xl text-slate-300 mb-10">Get instant IT help, FAQs, and 24/7 support from DTB Technologies.</p>
+                    <p class="text-xl md:text-2xl text-slate-300 mb-10">Get IT help, FAQs, and support from DTB Technologies.</p>
                 </div>
             </div>
         </section>
@@ -122,7 +121,7 @@
                     </a>
                 </div>
                 
-                <p class="text-gray-600 mb-6">Our AI assistant is here to help with your technical queries 24/7.</p>
+                <p class="text-gray-600 mb-6">Our assistant is here to help with your technical queries.</p>
                 
                 <div id="chat-container" class="h-[60vh] bg-gray-50 rounded-lg p-4 mb-4 overflow-y-auto border">
                     <div class="space-y-4">
@@ -177,112 +176,88 @@
     </main>
 
 
-    <!-- Help Modal -->
-    <div id="help-modal" class="fixed inset-0 z-50 hidden">
-        <div class="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm"></div>
-        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-900 rounded-xl shadow-2xl w-full max-w-md p-6">
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="text-xl font-bold text-white">Quick Help</h3>
-                <button class="text-gray-400 hover:text-white" onclick="closeHelpModal()">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="space-y-4">
-                <button class="w-full bg-gray-800 hover:bg-gray-700 text-white p-4 rounded-lg flex items-center justify-between group transition-all">
-                    <span>Live Chat Support</span>
-                    <i class="fas fa-comments text-blue-400 group-hover:scale-110 transition-transform"></i>
-                </button>
-                <button class="w-full bg-gray-800 hover:bg-gray-700 text-white p-4 rounded-lg flex items-center justify-between group transition-all">
-                    <span>Call Support Team</span>
-                    <i class="fas fa-phone text-green-400 group-hover:scale-110 transition-transform"></i>
-                </button>
-                <button class="w-full bg-gray-800 hover:bg-gray-700 text-white p-4 rounded-lg flex items-center justify-between group transition-all">
-                    <span>Submit a Ticket</span>
-                    <i class="fas fa-ticket-alt text-blue-400 group-hover:scale-110 transition-transform"></i>
-                </button>
-                <button class="w-full bg-gray-800 hover:bg-gray-700 text-white p-4 rounded-lg flex items-center justify-between group transition-all">
-                    <span>Browse FAQs</span>
-                    <i class="fas fa-book-open text-blue-400 group-hover:scale-110 transition-transform"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modern Footer -->
-    <footer class="bg-gray-900 text-gray-300">
-        <div class="max-w-7xl mx-auto px-4 py-12">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800">
+        <div class="container mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Company Info -->
                 <div class="space-y-4">
                     <div class="flex items-center space-x-3 mb-2">
                         <img src="assets/dtb-logo.png" alt="DTB Technologies Logo" class="h-8 w-8 rounded-full object-cover">
-                        <h3 class="text-2xl font-bold text-blue-400">DTB Technologies</h3>
+                        <h3 class="text-xl font-bold text-white">DTB Technologies</h3>
                     </div>
-                    <p class="text-sm">Custom software and IT support since 2020.</p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">
-                            <i class="fab fa-twitter text-xl"></i>
+                    <p class="text-gray-300">Custom software and IT support for businesses in Australia and Kenya.</p>
+                    <div class="flex items-center space-x-3">
+                        <a href="https://facebook.com/dtbtechnologies" aria-label="DTB Technologies on Facebook" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg bg-slate-800/80 hover:bg-blue-600/20 flex items-center justify-center transition-all duration-300 border border-slate-700/30 hover:border-blue-500/30 group">
+                            <i class="fab fa-facebook-f text-gray-400 group-hover:text-blue-400 transition-colors"></i>
                         </a>
-                        <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">
-                            <i class="fab fa-linkedin text-xl"></i>
+                        <a href="https://linkedin.com/company/dtbtechnologies" aria-label="DTB Technologies on LinkedIn" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg bg-slate-800/80 hover:bg-blue-600/20 flex items-center justify-center transition-all duration-300 border border-slate-700/30 hover:border-blue-500/30 group">
+                            <i class="fab fa-linkedin-in text-gray-400 group-hover:text-blue-400 transition-colors"></i>
                         </a>
-                        <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">
-                            <i class="fab fa-github text-xl"></i>
+                        <a href="https://instagram.com/dtb_technologies" aria-label="DTB Technologies on Instagram" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg bg-slate-800/80 hover:bg-blue-600/20 flex items-center justify-center transition-all duration-300 border border-slate-700/30 hover:border-blue-500/30 group">
+                            <i class="fab fa-instagram text-gray-400 group-hover:text-blue-400 transition-colors"></i>
+                        </a>
+                        <a href="https://github.com/DTBbuilds" aria-label="DTBbuilds on GitHub" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg bg-slate-800/80 hover:bg-blue-600/20 flex items-center justify-center transition-all duration-300 border border-slate-700/30 hover:border-blue-500/30 group">
+                            <i class="fab fa-github text-gray-400 group-hover:text-blue-400 transition-colors"></i>
                         </a>
                     </div>
                 </div>
 
-                <!-- Quick Links -->
+                <!-- Company -->
                 <div class="space-y-4">
-                    <h4 class="text-lg font-semibold text-white">Quick Links</h4>
+                    <h4 class="text-lg font-semibold text-white">Company</h4>
                     <ul class="space-y-2">
                         <li><a href="index.html" class="text-gray-300 hover:text-blue-400 transition-colors">Home</a></li>
-                        <li><a href="about.html" class="text-gray-300 hover:text-blue-400 transition-colors">About Us</a></li>
-                        <li><a href="services.html" class="text-gray-300 hover:text-blue-400 transition-colors">Services</a></li>
-                        <li><a href="tech-lab.html" class="text-gray-300 hover:text-blue-400 transition-colors">Tech Lab</a></li>
+                        <li><a href="projects.html" class="text-gray-300 hover:text-blue-400 transition-colors">Projects</a></li>
+                        <li><a href="about.html" class="text-gray-300 hover:text-blue-400 transition-colors">About</a></li>
                         <li><a href="contact.html" class="text-gray-300 hover:text-blue-400 transition-colors">Contact</a></li>
                     </ul>
                 </div>
 
-                <!-- Resources -->
+                <!-- Services -->
                 <div class="space-y-4">
-                    <h4 class="text-lg font-semibold text-white">Resources</h4>
+                    <h4 class="text-lg font-semibold text-white">Services</h4>
                     <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-blue-400 transition-colors">Blog</a></li>
-                        <li><a href="#" class="hover:text-blue-400 transition-colors">Documentation</a></li>
-                        <li><a href="#" class="hover:text-blue-400 transition-colors">Support Center</a></li>
-                        <li><a href="#" class="hover:text-blue-400 transition-colors">API Access</a></li>
+                        <li><a href="services/websites.html" class="text-gray-300 hover:text-blue-400 transition-colors">Websites</a></li>
+                        <li><a href="services/web-app-dev.html" class="text-gray-300 hover:text-blue-400 transition-colors">Web Apps</a></li>
+                        <li><a href="services/mobile-apps.html" class="text-gray-300 hover:text-blue-400 transition-colors">Mobile Apps</a></li>
+                        <li><a href="services/software-development.html" class="text-gray-300 hover:text-blue-400 transition-colors">Business Software</a></li>
+                        <li><a href="services/e-commerce.html" class="text-gray-300 hover:text-blue-400 transition-colors">E-Commerce</a></li>
+                        <li><a href="services/hosting-domains.html" class="text-gray-300 hover:text-blue-400 transition-colors">Hosting &amp; Support</a></li>
                     </ul>
                 </div>
 
-                <!-- Newsletter -->
+                <!-- Locations -->
                 <div class="space-y-4">
-                    <h4 class="text-lg font-semibold text-white">Stay Updated</h4>
-                    <p class="text-sm">Subscribe to our newsletter for the latest updates and tech insights.</p>
-                    <form class="flex gap-2">
-                        <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-2 bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
-                            Subscribe
-                        </button>
-                    </form>
+                    <h4 class="text-lg font-semibold text-white">Locations</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-start"><i class="fas fa-map-marker-alt text-blue-400 mr-3 w-5 mt-1"></i>Greystanes, Sydney NSW 2145, Australia</li>
+                        <li class="flex items-start"><i class="fas fa-map-marker-alt text-blue-400 mr-3 w-5 mt-1"></i>Uthiru Muthua, Nairobi, Kenya</li>
+                    </ul>
+                    <div class="pt-2 space-y-2">
+                        <a href="mailto:dtbbuildsoffice@gmail.com" class="flex items-center text-gray-300 hover:text-blue-400 transition-colors">
+                            <i class="fas fa-envelope text-blue-400 mr-3 w-5"></i>dtbbuildsoffice@gmail.com
+                        </a>
+                        <a href="tel:+61450275013" class="flex items-center text-gray-300 hover:text-blue-400 transition-colors">
+                            <i class="fas fa-phone text-blue-400 mr-3 w-5"></i>+61 450 275 013 <span class="text-gray-500 text-xs">(AU)</span>
+                        </a>
+                        <a href="tel:+254729983567" class="flex items-center text-gray-300 hover:text-blue-400 transition-colors">
+                            <i class="fas fa-phone text-blue-400 mr-3 w-5"></i>+254 729 983 567 <span class="text-gray-500 text-xs">(KE)</span>
+                        </a>
+                    </div>
                 </div>
             </div>
 
-            <!-- Bottom Bar -->
-            <div class="mt-12 pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
-                <p class="text-gray-400 text-sm font-medium tracking-wide">&copy; 2025 DTB Technologies. All rights reserved.</p>
-                <div class="flex flex-wrap items-center justify-center gap-5 text-sm">
-                    <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">Privacy Policy</a>
-                    <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">Terms of Service</a>
-                    <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">Cookie Policy</a>
-                </div>
+            <!-- Footer Bottom -->
+            <div class="mt-12 pt-8 border-t border-slate-800 text-center">
+                <p class="text-gray-400 text-sm font-medium tracking-wide">&copy; 2026 DTB Technologies. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <!-- Contact Orb with Notice -->
     <div class="fixed bottom-8 left-8 flex flex-col items-center z-20 group">
-        <a href="help.html" class="w-14 h-14 md:w-16 md:h-16 bg-blue-500 rounded-full flex items-center justify-center cursor-pointer shadow-lg hover:bg-blue-600 transition-all mb-2">
+        <a href="contact.html" aria-label="Contact DTB Technologies" class="w-14 h-14 md:w-16 md:h-16 bg-blue-500 rounded-full flex items-center justify-center cursor-pointer shadow-lg hover:bg-blue-600 transition-all mb-2">
             <i class="fas fa-headset text-xl md:text-2xl text-white"></i>
         </a>
         <div class="bg-white text-gray-800 px-3 py-2 rounded-lg shadow-lg text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
@@ -324,30 +299,6 @@
             chatContainer.appendChild(messageDiv);
             chatContainer.scrollTop = chatContainer.scrollHeight;
         }
-    </script>
-
-    <script>
-        // Help Modal Functions
-        const helpButton = document.getElementById('help-button');
-        const helpModal = document.getElementById('help-modal');
-
-        helpButton.addEventListener('click', () => {
-            helpModal.classList.remove('hidden');
-            // Add entrance animation classes
-            const modalContent = helpModal.querySelector('div:nth-child(2)');
-            modalContent.classList.add('animate-fade-in');
-        });
-
-        function closeHelpModal() {
-            helpModal.classList.add('hidden');
-        }
-
-        // Close modal when clicking outside
-        helpModal.addEventListener('click', (e) => {
-            if (e.target === helpModal) {
-                closeHelpModal();
-            }
-        });
     </script>
 </body>
 </html>
