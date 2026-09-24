@@ -3,11 +3,12 @@
 
 User-agent: *
 Allow: /
-Disallow: /dashboard/
-Disallow: /dashboard.html
 Disallow: /node_modules/
 Disallow: /reports/
 Disallow: /src/
+
+# Note: dashboard and internal pages are kept crawlable so their
+# "noindex" meta tags can be read; robots.txt must not hide them.
 
 # Crawl-delay courtesy
 Crawl-delay: 1

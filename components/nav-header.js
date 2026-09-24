@@ -31,7 +31,7 @@ class NavHeader extends HTMLElement {
                     <div class="flex items-center justify-between h-16">
                         <!-- Logo -->
                         <div class="flex-shrink-0">
-                            <a href="${prefix}index.html" class="group inline-flex items-center space-x-2.5">
+                            <a href="${prefix}about" class="group inline-flex items-center space-x-2.5">
                                 <img src="${prefix}assets/dtb-logo.png" alt="DTB Technologies" class="h-9 w-9 rounded-full object-cover">
                                 <span class="text-white font-semibold text-lg tracking-tight hidden sm:block">DTB Technologies</span>
                             </a>
@@ -39,16 +39,16 @@ class NavHeader extends HTMLElement {
                         
                         <!-- Navigation Links -->
                         <div class="hidden md:flex items-center space-x-2">
-                            <a href="${prefix}services.html" class="px-3 py-2 text-slate-300 hover:text-white border-b-2 border-transparent transition-colors ${getActiveClass('services')}">Services</a>
-                            <a href="${prefix}projects.html" class="px-3 py-2 text-slate-300 hover:text-white border-b-2 border-transparent transition-colors ${getActiveClass('projects')}">Projects</a>
-                            <a href="${prefix}about.html" class="px-3 py-2 text-slate-300 hover:text-white border-b-2 border-transparent transition-colors ${getActiveClass('about')}">About</a>
-                            <a href="${prefix}tech-lab.html" class="px-3 py-2 text-slate-300 hover:text-white border-b-2 border-transparent transition-colors ${getActiveClass('tech-lab')}">Tech Lab</a>
-                            <a href="${prefix}contact.html" class="px-3 py-2 text-slate-300 hover:text-white border-b-2 border-transparent transition-colors ${getActiveClass('contact')}">Contact</a>
+                            <a href="${prefix}services" class="px-3 py-2 text-slate-300 hover:text-white border-b-2 border-transparent transition-colors ${getActiveClass('services')}">Services</a>
+                            <a href="${prefix}projects" class="px-3 py-2 text-slate-300 hover:text-white border-b-2 border-transparent transition-colors ${getActiveClass('projects')}">Projects</a>
+                            <a href="${prefix}about" class="px-3 py-2 text-slate-300 hover:text-white border-b-2 border-transparent transition-colors ${getActiveClass('about')}">About</a>
+                            <a href="${prefix}tech-lab" class="px-3 py-2 text-slate-300 hover:text-white border-b-2 border-transparent transition-colors ${getActiveClass('tech-lab')}">Tech Lab</a>
+                            <a href="${prefix}contact" class="px-3 py-2 text-slate-300 hover:text-white border-b-2 border-transparent transition-colors ${getActiveClass('contact')}">Contact</a>
                             ${isLoggedIn ? `
-                                <a href="${prefix}dashboard/welcome.html" class="ml-2 px-3 py-2 text-slate-300 hover:text-white border-b-2 border-transparent transition-colors">Dashboard</a>
+                                <a href="${prefix}dashboard/welcome" class="ml-2 px-3 py-2 text-slate-300 hover:text-white border-b-2 border-transparent transition-colors">Dashboard</a>
                                 <button onclick="sessionStorage.removeItem('userName');sessionStorage.removeItem('dashboardAccess');window.location.href='${prefix}index.html'" class="ml-3 px-3 py-2 rounded-md bg-slate-800/50 text-slate-200 hover:bg-slate-700/70 transition-colors">Logout</button>
                             ` : `
-                                <a href="${prefix}contact.html" class="ml-3 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium transition-colors">Discuss Your Project</a>
+                                <a href="${prefix}contact" class="ml-3 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium transition-colors">Discuss Your Project</a>
                             `}
                         </div>
 
@@ -62,26 +62,26 @@ class NavHeader extends HTMLElement {
                 <!-- Mobile Menu -->
                 <div class="md:hidden hidden" id="mobile-menu">
                     <div class="px-4 py-3 space-y-1 bg-slate-900/95 border-t border-slate-800/60">
-                        <a href="${prefix}index.html" class="block px-4 py-3 min-h-[44px] text-gray-300 hover:text-blue-400 hover:bg-slate-700/50 rounded-lg transition-colors flex items-center font-medium ${getMobileActiveClass('index')}">
+                        <a href="${prefix}" class="block px-4 py-3 min-h-[44px] text-gray-300 hover:text-blue-400 hover:bg-slate-700/50 rounded-lg transition-colors flex items-center font-medium ${getMobileActiveClass('index')}">
                             <i class="fas fa-home mr-3 w-4"></i>Home
                         </a>
-                        <a href="${prefix}services.html" class="block px-4 py-3 min-h-[44px] text-gray-300 hover:text-blue-400 hover:bg-slate-700/50 rounded-lg transition-colors flex items-center font-medium ${getMobileActiveClass('services')}">
+                        <a href="${prefix}services" class="block px-4 py-3 min-h-[44px] text-gray-300 hover:text-blue-400 hover:bg-slate-700/50 rounded-lg transition-colors flex items-center font-medium ${getMobileActiveClass('services')}">
                             <i class="fas fa-cogs mr-3 w-4"></i>Services
                         </a>
-                        <a href="${prefix}projects.html" class="block px-4 py-3 min-h-[44px] text-gray-300 hover:text-blue-400 hover:bg-slate-700/50 rounded-lg transition-colors flex items-center font-medium ${getMobileActiveClass('projects')}">
+                        <a href="${prefix}projects" class="block px-4 py-3 min-h-[44px] text-gray-300 hover:text-blue-400 hover:bg-slate-700/50 rounded-lg transition-colors flex items-center font-medium ${getMobileActiveClass('projects')}">
                             <i class="fas fa-briefcase mr-3 w-4"></i>Projects
                         </a>
-                        <a href="${prefix}about.html" class="block px-4 py-3 min-h-[44px] text-gray-300 hover:text-blue-400 hover:bg-slate-700/50 rounded-lg transition-colors flex items-center font-medium ${getMobileActiveClass('about')}">
+                        <a href="${prefix}" class="block px-4 py-3 min-h-[44px] text-gray-300 hover:text-blue-400 hover:bg-slate-700/50 rounded-lg transition-colors flex items-center font-medium ${getMobileActiveClass('about')}">
                             <i class="fas fa-info-circle mr-3 w-4"></i>About Us
                         </a>
-                        <a href="${prefix}tech-lab.html" class="block px-4 py-3 min-h-[44px] text-gray-300 hover:text-blue-400 hover:bg-slate-700/50 rounded-lg transition-colors flex items-center font-medium ${getMobileActiveClass('tech-lab')}">
+                        <a href="${prefix}tech-lab" class="block px-4 py-3 min-h-[44px] text-gray-300 hover:text-blue-400 hover:bg-slate-700/50 rounded-lg transition-colors flex items-center font-medium ${getMobileActiveClass('tech-lab')}">
                             <i class="fas fa-flask mr-3 w-4"></i>Tech Lab
                         </a>
-                        <a href="${prefix}contact.html" class="block px-4 py-3 min-h-[44px] text-gray-300 hover:text-blue-400 hover:bg-slate-700/50 rounded-lg transition-colors flex items-center font-medium ${getMobileActiveClass('contact')}">
+                        <a href="${prefix}contact" class="block px-4 py-3 min-h-[44px] text-gray-300 hover:text-blue-400 hover:bg-slate-700/50 rounded-lg transition-colors flex items-center font-medium ${getMobileActiveClass('contact')}">
                             <i class="fas fa-envelope mr-3 w-4"></i>Contact
                         </a>
                         ${isLoggedIn ? `
-                            <a href="${prefix}dashboard/welcome.html" class="block px-4 py-3 min-h-[44px] text-gray-300 hover:text-blue-400 hover:bg-slate-700/50 rounded-lg transition-colors flex items-center">
+                            <a href="${prefix}dashboard/welcome" class="block px-4 py-3 min-h-[44px] text-gray-300 hover:text-blue-400 hover:bg-slate-700/50 rounded-lg transition-colors flex items-center">
                                 <i class="fas fa-chart-line mr-3 w-4"></i>Dashboard
                             </a>
                             <button onclick="sessionStorage.removeItem('userName');sessionStorage.removeItem('dashboardAccess');window.location.href='${prefix}index.html'" class="w-full mt-2 px-4 py-3 min-h-[44px] text-left text-gray-300 hover:text-blue-400 hover:bg-slate-700/50 rounded-lg transition-colors flex items-center">
@@ -89,7 +89,7 @@ class NavHeader extends HTMLElement {
                             </button>
                         ` : `
                             <div class="mt-3 pt-3 border-t border-slate-800/60">
-                                <a href="${prefix}contact.html" class="block w-full px-4 py-3 min-h-[44px] bg-blue-600 hover:bg-blue-700 text-white text-center rounded-lg font-medium transition-colors">
+                                <a href="${prefix}contact" class="block w-full px-4 py-3 min-h-[44px] bg-blue-600 hover:bg-blue-700 text-white text-center rounded-lg font-medium transition-colors">
                                     <i class="fas fa-rocket mr-2 text-xs"></i>Discuss Your Project
                                 </a>
                             </div>

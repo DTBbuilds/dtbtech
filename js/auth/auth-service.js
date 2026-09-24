@@ -1,5 +1,5 @@
 /**
- * DTB Technologies Digital Museum - Authentication Service
+ * DTB Technologies - Authentication Service
  * Handles user authentication, registration, and profile management
  */
 

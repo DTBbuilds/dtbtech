@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const fs = require('fs');
 const app = express();
 
 // Gzip compression for all responses
@@ -9,8 +10,28 @@ app.use((req, res, next) => {
     next();
 });
 
+// Match Vercel cleanUrls behaviour: .html URLs permanently redirect to the
+// extensionless canonical URL, and extensionless URLs serve the .html file
+// (before express.static, so /tech-lab doesn't redirect to the tech-lab/ dir).
+app.use((req, res, next) => {
+    if (req.method !== 'GET') return next();
+    if (req.path.endsWith('.html')) {
+        return res.redirect(308, req.path.slice(0, -5));
+    }
+    const clean = req.path.length > 1 && req.path.endsWith('/') ? req.path.slice(0, -1) : req.path;
+    const candidate = path.join(__dirname, clean + '.html');
+    if (clean !== req.path && fs.existsSync(candidate)) {
+        return res.redirect(301, clean);
+    }
+    if (clean !== '/' && !path.extname(clean) && fs.existsSync(candidate)) {
+        return res.sendFile(candidate);
+    }
+    next();
+});
+
 // Serve static files with caching headers
 app.use(express.static(path.join(__dirname), {
+    extensions: ['html'],
     maxAge: '1d',
     setHeaders: (res, filePath) => {
         // Long cache for hashed/versioned assets

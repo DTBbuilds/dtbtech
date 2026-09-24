@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Recovery Services - DTB Technologies</title>
+    <title>Data Recovery Services Nairobi | DTB Technologies</title>
     <meta name="description" content="Emergency data recovery services in Nairobi. We recover lost data from any device with industry-leading success rates.">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="canonical" href="https://dtbtech.org/services/data-recovery">
     <link rel="stylesheet" href="../dist/output.css">
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/animations.css">
@@ -12,7 +15,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css">
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <script src="../components/nav-header.js" defer></script>
-    <script src="../js/dashboard.js" defer></script>
     <style>
         .emergency-pulse {
             animation: pulse 2s infinite;
@@ -23,12 +25,41 @@
             100% { transform: scale(1); }
         }
     </style>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="DTB Technologies">
+    <meta property="og:url" content="https://dtbtech.org/services/data-recovery">
+    <meta property="og:title" content="Data Recovery Services Nairobi | DTB Technologies">
+    <meta property="og:description" content="Emergency data recovery services in Nairobi. We recover lost data from any device with industry-leading success rates.">
+    <meta property="og:image" content="https://dtbtech.org/assets/og/services.jpg">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://dtbtech.org/services/data-recovery">
+    <meta name="twitter:title" content="Data Recovery Services Nairobi | DTB Technologies">
+    <meta name="twitter:description" content="Emergency data recovery services in Nairobi. We recover lost data from any device with industry-leading success rates.">
+    <meta name="twitter:image" content="https://dtbtech.org/assets/og/services.jpg">
+
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://dtbtech.org/"},{"@type":"ListItem","position":2,"name":"Services","item":"https://dtbtech.org/services"},{"@type":"ListItem","position":3,"name":"Data Recovery","item":"https://dtbtech.org/services/data-recovery"}]}
+    </script>
 </head>
 <body class="bg-slate-900">
     <!-- Navigation -->
     <nav-header></nav-header>
 
     <main class="pt-20">
+        <nav aria-label="Breadcrumb" class="container mx-auto px-4 sm:px-6 pt-6">
+            <ol class="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-slate-500">
+                <li><a href="../about" class="hover:text-blue-400 transition-colors">Home</a></li>
+                <li aria-hidden="true" class="text-slate-700">/</li>
+                <li><a href="../services" class="hover:text-blue-400 transition-colors">Services</a></li>
+                <li aria-hidden="true" class="text-slate-700">/</li>
+                <li class="text-slate-300" aria-current="page">Data Recovery</li>
+            </ol>
+        </nav>
+
         <!-- Hero Section -->
         <section class="relative min-h-[60vh] flex items-center py-20">
             <div class="absolute inset-0 bg-gradient-to-br from-blue-900/90 to-slate-900/90"></div>
@@ -42,7 +73,7 @@
                             <i class="fas fa-phone-alt mr-2"></i>
                             Emergency Recovery
                         </a>
-                        <a href="../contact.html" class="inline-flex items-center justify-center px-8 py-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all">
+                        <a href="../contact" class="inline-flex items-center justify-center px-8 py-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all">
                             Request Consultation
                             <i class="fas fa-arrow-right ml-2"></i>
                         </a>
@@ -155,7 +186,7 @@
                     </div>
                     <p class="text-lg text-gray-300 mb-12">Our recovery lab and experienced technicians handle drives, devices and storage media of all kinds.</p>
                     <div class="flex flex-col sm:flex-row gap-6 justify-center">
-                        <a href="../contact.html" class="inline-flex items-center justify-center px-8 py-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all">
+                        <a href="../contact" class="inline-flex items-center justify-center px-8 py-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all">
                             Request Quote
                             <i class="fas fa-arrow-right ml-2"></i>
                         </a>
@@ -185,10 +216,10 @@
                     <img src="../assets/dtb-logo.png" alt="DTB Technologies Logo" class="h-12 w-12 rounded-full object-cover">
                 </div>
                 <div class="flex space-x-6">
-                    <a href="../index.html" class="hover:text-blue-400 transition-colors">Home</a>
-                    <a href="../about.html" class="hover:text-blue-400 transition-colors">About</a>
-                    <a href="../services.html" class="hover:text-blue-400 transition-colors">Services</a>
-                    <a href="../contact.html" class="hover:text-blue-400 transition-colors">Contact</a>
+                    <a href="../" class="hover:text-blue-400 transition-colors">Home</a>
+                    <a href="../" class="hover:text-blue-400 transition-colors">About</a>
+                    <a href="../services" class="hover:text-blue-400 transition-colors">Services</a>
+                    <a href="../contact" class="hover:text-blue-400 transition-colors">Contact</a>
                 </div>
             </div>
             <div class="border-t border-gray-800 mt-8 pt-8 text-center">

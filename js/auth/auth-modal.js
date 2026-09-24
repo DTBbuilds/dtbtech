@@ -1,5 +1,5 @@
 /**
- * DTB Technologies Digital Museum - Authentication Modal
+ * DTB Technologies - Authentication Modal
  * Provides login and registration UI components
  */
 

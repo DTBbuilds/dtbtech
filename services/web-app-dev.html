@@ -3,26 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Development Kenya | Full‑Stack Websites with M‑Pesa STK Push | DTB Technologies</title>
-    <meta name="title" content="Web Development Kenya | Full‑Stack Websites with M‑Pesa STK Push | DTB Technologies">
-    <meta name="description" content="Top web development in Kenya: full‑stack websites, modern responsive design, e‑commerce with M‑Pesa STK Push, SEO, and performance. Nairobi & Kenya‑wide.">
-    <meta name="keywords" content="web development Kenya, website development Nairobi, M‑Pesa STK Push integration, e‑commerce Kenya, full‑stack web developer Kenya, responsive websites Kenya, DTB Technologies web development">
-    <meta name="robots" content="index, follow">
+    <title>Web Application Development | Portals, Dashboards &amp; Marketplaces | DTB Technologies</title>
+    <meta name="title" content="Web Application Development | Portals, Dashboards &amp; Marketplaces | DTB Technologies">
+    <meta name="description" content="Custom web application development: customer portals, admin dashboards, internal business tools, booking systems and marketplace platforms. Australia &amp; Kenya.">
+<meta name="robots" content="index, follow">
     <link rel="canonical" href="https://dtbtech.org/services/web-app-dev">
     
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://dtbtech.org/services/web-app-dev">
-    <meta property="og:title" content="Web Development Kenya | Full‑Stack Websites with M‑Pesa STK Push">
-    <meta property="og:description" content="Modern, responsive websites and e‑commerce with M‑Pesa STK Push. Full‑stack development for Kenyan businesses.">
-    <meta property="og:image" content="https://dtbtech.org/assets/web-dev-og.jpg">
+    <meta property="og:title" content="Web Application Development | Portals, Dashboards &amp; Marketplaces | DTB Technologies">
+    <meta property="og:description" content="Custom web application development: customer portals, admin dashboards, internal business tools, booking systems and marketplace platforms. Australia &amp; Kenya.">
+    <meta property="og:image" content="https://dtbtech.org/assets/og/services.jpg">
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://dtbtech.org/services/web-app-dev">
-    <meta name="twitter:title" content="Web Development Kenya | Full‑Stack Websites with M‑Pesa STK Push">
-    <meta name="twitter:description" content="Modern, responsive websites and e‑commerce with M‑Pesa STK Push. Full‑stack development for Kenyan businesses.">
-    <meta name="twitter:image" content="https://dtbtech.org/assets/web-dev-twitter.jpg">
+    <meta name="twitter:title" content="Web Application Development | Portals, Dashboards &amp; Marketplaces | DTB Technologies">
+    <meta name="twitter:description" content="Custom web application development: customer portals, admin dashboards, internal business tools, booking systems and marketplace platforms. Australia &amp; Kenya.">
+    <meta name="twitter:image" content="https://dtbtech.org/assets/og/services.jpg">
     <link rel="stylesheet" href="../dist/output.css">
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/animations.css">
@@ -30,40 +29,36 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css">
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <script src="../components/nav-header.js" defer></script>
-    <script src="../js/dashboard.js" defer></script>
 
     <!-- Schema.org Service -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Service",
-      "name": "Web Development Services",
-      "serviceType": "Full‑Stack Web Development",
-      "provider": {
-        "@type": "Organization",
-        "name": "DTB Technologies",
-        "url": "https://dtbtech.org"
-      },
-      "areaServed": {
-        "@type": "Country",
-        "name": "Kenya"
-      },
-      "offers": {
-        "@type": "Offer",
-        "category": "WebSiteDevelopment",
-        "availability": "https://schema.org/InStock"
-      },
+      "name": "Web Application Development",
+      "serviceType": "Custom Web Application Development",
+      "url": "https://dtbtech.org/services/web-app-dev",
+      "provider": { "@id": "https://dtbtech.org/#organization" },
+      "areaServed": [
+        { "@type": "Country", "name": "Australia" },
+        { "@type": "Country", "name": "Kenya" }
+      ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
-        "name": "Web Development Packages",
+        "name": "Web Application Development",
         "itemListElement": [
-          {"@type": "Offer", "name": "Business Website", "priceCurrency": "KES"},
-          {"@type": "Offer", "name": "E‑commerce with M‑Pesa STK Push", "priceCurrency": "KES"},
-          {"@type": "Offer", "name": "Custom Web App", "priceCurrency": "KES"}
+          {"@type": "Offer", "itemOffered": { "@type": "Service", "name": "Customer Portals & Dashboards" }},
+          {"@type": "Offer", "itemOffered": { "@type": "Service", "name": "Internal Business Tools" }},
+          {"@type": "Offer", "itemOffered": { "@type": "Service", "name": "Booking & Marketplace Platforms" }}
         ]
       },
-      "description": "Modern responsive websites and e‑commerce with M‑Pesa STK Push integration for Kenyan businesses."
+      "description": "Custom web application development: customer portals, admin dashboards, internal business tools, booking systems and marketplace platforms for businesses in Australia and Kenya."
     }
+    </script>
+
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://dtbtech.org/"},{"@type":"ListItem","position":2,"name":"Services","item":"https://dtbtech.org/services"},{"@type":"ListItem","position":3,"name":"Web Application Development","item":"https://dtbtech.org/services/web-app-dev"}]}
     </script>
 </head>
 <body class="bg-slate-900">
@@ -71,47 +66,81 @@
     <nav-header></nav-header>
 
     <main class="pt-20">
+        <nav aria-label="Breadcrumb" class="container mx-auto px-4 sm:px-6 pt-6">
+            <ol class="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-slate-500">
+                <li><a href="../" class="hover:text-blue-400 transition-colors">Home</a></li>
+                <li aria-hidden="true" class="text-slate-700">/</li>
+                <li><a href="../services" class="hover:text-blue-400 transition-colors">Services</a></li>
+                <li aria-hidden="true" class="text-slate-700">/</li>
+                <li class="text-slate-300" aria-current="page">Web Application Development</li>
+            </ol>
+        </nav>
+
         <!-- Hero Section -->
         <section class="relative h-[60vh] min-h-[400px] flex items-center justify-center">
             <div class="absolute inset-0">
                 <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80" 
-                     alt="Web and App Development" 
+                     alt="Web application development workspace" 
                      class="w-full h-full object-cover">
                 <div class="absolute inset-0 bg-gradient-to-r from-gray-900 to-gray-900/80"></div>
             </div>
             <div class="relative container mx-auto px-4 text-center">
-                <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Web & App Development</h1>
-                <p class="text-xl text-gray-300 max-w-2xl mx-auto">Custom digital solutions for your business</p>
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Web Application Development</h1>
+                <p class="text-xl text-gray-300 max-w-2xl mx-auto">Custom portals, dashboards and business tools that run in the browser</p>
             </div>
         </section>
 
         <!-- Features -->
         <section class="py-16 bg-gray-800">
             <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold text-white text-center mb-12">Development Services</h2>
+                <h2 class="text-3xl font-bold text-white text-center mb-12">What We Build</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div class="bg-gray-900 p-6 rounded-xl">
                         <div class="text-blue-400 text-3xl mb-4">
-                            <i class="fas fa-globe"></i>
+                            <i class="fas fa-users"></i>
                         </div>
-                        <h3 class="text-xl font-semibold text-white mb-3">Website Development</h3>
-                        <p class="text-gray-300">Custom websites built with modern technologies and best practices.</p>
+                        <h3 class="text-xl font-semibold text-white mb-3">Customer Portals</h3>
+                        <p class="text-gray-300">Secure self-service portals where your customers log in, track orders, manage bookings and access their data.</p>
                     </div>
-                    
+
                     <div class="bg-gray-900 p-6 rounded-xl">
                         <div class="text-blue-400 text-3xl mb-4">
-                            <i class="fas fa-mobile-alt"></i>
+                            <i class="fas fa-chart-line"></i>
                         </div>
-                        <h3 class="text-xl font-semibold text-white mb-3">Mobile Apps</h3>
-                        <p class="text-gray-300">Native and cross-platform mobile applications for iOS and Android.</p>
+                        <h3 class="text-xl font-semibold text-white mb-3">Dashboards & Reporting</h3>
+                        <p class="text-gray-300">Admin dashboards with real-time data, role-based access and reporting that turns your business data into decisions.</p>
                     </div>
-                    
+
                     <div class="bg-gray-900 p-6 rounded-xl">
                         <div class="text-blue-400 text-3xl mb-4">
-                            <i class="fas fa-shopping-cart"></i>
+                            <i class="fas fa-toolbox"></i>
                         </div>
-                        <h3 class="text-xl font-semibold text-white mb-3">E-commerce Solutions</h3>
-                        <p class="text-gray-300">Complete online store setup with payment integration and inventory management.</p>
+                        <h3 class="text-xl font-semibold text-white mb-3">Internal Business Tools</h3>
+                        <p class="text-gray-300">Custom tools that replace spreadsheets and manual processes — inventory, job tracking, approvals and workflow automation.</p>
+                    </div>
+
+                    <div class="bg-gray-900 p-6 rounded-xl">
+                        <div class="text-blue-400 text-3xl mb-4">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-3">Booking Systems</h3>
+                        <p class="text-gray-300">Scheduling and reservation platforms with availability management, notifications and payment collection.</p>
+                    </div>
+
+                    <div class="bg-gray-900 p-6 rounded-xl">
+                        <div class="text-blue-400 text-3xl mb-4">
+                            <i class="fas fa-store"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-3">Marketplace Platforms</h3>
+                        <p class="text-gray-300">Two-sided marketplaces that connect providers and customers — like our own <a href="../projects/jack-of-all-trades" class="text-blue-400 hover:text-blue-300">Jack of All Trades</a> job marketplace.</p>
+                    </div>
+
+                    <div class="bg-gray-900 p-6 rounded-xl">
+                        <div class="text-blue-400 text-3xl mb-4">
+                            <i class="fas fa-plug"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-3">API & System Integrations</h3>
+                        <p class="text-gray-300">REST APIs and integrations that connect your web app to payments, messaging and the other systems you already use.</p>
                     </div>
                 </div>
             </div>
@@ -121,48 +150,48 @@
         <section class="py-16">
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl font-bold text-white text-center mb-12">Custom Development Pricing</h2>
-                <p class="text-gray-300 text-center max-w-2xl mx-auto mb-12">Every project is unique. Pricing varies based on features, complexity, integrations and timeline. We provide fixed quotes after understanding your requirements.</p>
+                <p class="text-gray-300 text-center max-w-2xl mx-auto mb-12">Every web application is unique. Pricing varies based on features, complexity, integrations and timeline. We provide fixed quotes after understanding your requirements.</p>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
                     <div class="bg-gray-800 rounded-xl p-8">
-                        <h3 class="text-xl font-semibold text-white mb-4">Business Website</h3>
+                        <h3 class="text-xl font-semibold text-white mb-4">Internal Tool or Dashboard</h3>
                         <div class="text-blue-400 text-4xl font-bold mb-4">Custom Quote</div>
                         <ul class="text-gray-300 space-y-3 mb-8">
-                            <li>Custom Design</li>
-                            <li>Mobile Responsive</li>
-                            <li>Contact Forms</li>
-                            <li>SEO Optimized</li>
+                            <li>Secure Login & Roles</li>
+                            <li>Data Management</li>
+                            <li>Reports & Exports</li>
+                            <li>Works on Any Device</li>
                         </ul>
-                        <a href="../contact.html" class="block w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 text-center">
+                        <a href="../contact" class="block w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 text-center">
                             Get Started
                         </a>
                     </div>
 
                     <div class="bg-gray-800 rounded-xl p-8 border-2 border-blue-400">
-                        <h3 class="text-xl font-semibold text-white mb-4">E-commerce Platform</h3>
+                        <h3 class="text-xl font-semibold text-white mb-4">Customer Portal or Booking System</h3>
                         <div class="text-blue-400 text-4xl font-bold mb-4">Custom Quote</div>
                         <ul class="text-gray-300 space-y-3 mb-8">
-                            <li>Product Management</li>
+                            <li>Customer Accounts</li>
+                            <li>Bookings & Scheduling</li>
                             <li>Payment Integration</li>
-                            <li>Inventory System</li>
                             <li>Admin Dashboard</li>
-                            <li>Advanced SEO</li>
+                            <li>Email & SMS Notifications</li>
                         </ul>
-                        <a href="../contact.html" class="block w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 text-center">
+                        <a href="../contact" class="block w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 text-center">
                             Get Started
                         </a>
                     </div>
 
                     <div class="bg-gray-800 rounded-xl p-8">
-                        <h3 class="text-xl font-semibold text-white mb-4">Custom Application</h3>
+                        <h3 class="text-xl font-semibold text-white mb-4">Marketplace or SaaS Platform</h3>
                         <div class="text-blue-400 text-4xl font-bold mb-4">Custom Quote</div>
                         <ul class="text-gray-300 space-y-3 mb-8">
-                            <li>iOS & Android Apps</li>
-                            <li>Custom Features</li>
-                            <li>API Integration</li>
-                            <li>App Store Publishing</li>
+                            <li>Two-Sided User Roles</li>
+                            <li>Listings & Search</li>
+                            <li>Payments & Payouts</li>
+                            <li>Admin Moderation Tools</li>
                             <li>Ongoing Support</li>
                         </ul>
-                        <a href="../contact.html" class="block w-full bg-gray-700 text-white py-3 rounded-lg hover:bg-gray-600 text-center">
+                        <a href="../contact" class="block w-full bg-gray-700 text-white py-3 rounded-lg hover:bg-gray-600 text-center">
                             Contact Sales
                         </a>
                     </div>
@@ -186,7 +215,7 @@
                     <div class="bg-gray-800 rounded-xl p-6">
                         <div class="text-emerald-400 text-3xl mb-3"><i class="fas fa-shield-check"></i></div>
                         <h3 class="text-white font-semibold mb-2">Secure By Design</h3>
-                        <p class="text-gray-300">Best practices for auth, input validation, and secure payments with M‑Pesa STK Push.</p>
+                        <p class="text-gray-300">Best practices for auth, input validation, role-based access and secure payment integrations.</p>
                     </div>
                     <div class="bg-gray-800 rounded-xl p-6">
                         <div class="text-blue-400 text-3xl mb-3"><i class="fas fa-rocket"></i></div>
@@ -218,11 +247,11 @@
                         </ul>
                     </div>
                     <div class="bg-gray-900 rounded-xl p-6">
-                        <h3 class="text-xl font-semibold text-white mb-4">E‑commerce & Payments</h3>
+                        <h3 class="text-xl font-semibold text-white mb-4">Payments & Integrations</h3>
                         <ul class="text-gray-300 space-y-2 list-disc list-inside">
-                            <li>M‑Pesa STK Push integration</li>
-                            <li>Order management, receipts</li>
-                            <li>Secure checkout and auditing</li>
+                            <li>M-Pesa STK Push, Stripe, PayPal</li>
+                            <li>REST APIs and third-party services</li>
+                            <li>Order management, receipts, auditing</li>
                         </ul>
                     </div>
                 </div>
@@ -259,19 +288,22 @@
 
         <section class="py-16 bg-gray-800">
             <div class="container mx-auto px-4 max-w-6xl">
-                <h2 class="text-3xl font-bold text-white text-center mb-12">Success Stories</h2>
+                <h2 class="text-3xl font-bold text-white text-center mb-12">Web Applications We've Built</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div class="bg-gray-900 rounded-xl p-6">
-                        <h3 class="text-white font-semibold mb-2">Retail E‑commerce</h3>
-                        <p class="text-gray-300">Implemented M‑Pesa checkout and improved conversion by optimizing product pages and performance.</p>
+                        <h3 class="text-white font-semibold mb-2">Jack of All Trades</h3>
+                        <p class="text-gray-300 mb-4">A mobile-first community job marketplace where members post work, discover opportunities and coordinate jobs. Currently in private beta.</p>
+                        <a href="../projects/jack-of-all-trades" class="text-blue-400 hover:text-blue-300 text-sm font-medium">View case study <i class="fas fa-arrow-right ml-1 text-xs"></i></a>
                     </div>
                     <div class="bg-gray-900 rounded-xl p-6">
-                        <h3 class="text-white font-semibold mb-2">Service Business Website</h3>
-                        <p class="text-gray-300">Delivered a fast, SEO‑optimized site that increased inbound leads with clear CTAs and analytics.</p>
+                        <h3 class="text-white font-semibold mb-2">SmartDuka</h3>
+                        <p class="text-gray-300 mb-4">A point-of-sale and inventory web app for retail businesses — sales, stock tracking and reporting on phones, tablets and counters.</p>
+                        <a href="https://www.smartduka.org" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 text-sm font-medium">Visit SmartDuka <i class="fas fa-external-link-alt ml-1 text-xs"></i></a>
                     </div>
                     <div class="bg-gray-900 rounded-xl p-6">
-                        <h3 class="text-white font-semibold mb-2">Custom Web App</h3>
-                        <p class="text-gray-300">Built a dashboard with secure auth, role‑based access, and real‑time data visualizations.</p>
+                        <h3 class="text-white font-semibold mb-2">Fix Place Kenya</h3>
+                        <p class="text-gray-300 mb-4">A services marketplace platform helping clients schedule electricians, plumbers and other professionals on demand.</p>
+                        <a href="https://fix-place-ke.vercel.app/" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 text-sm font-medium">Visit Fix Place <i class="fas fa-external-link-alt ml-1 text-xs"></i></a>
                     </div>
                 </div>
             </div>
@@ -282,16 +314,20 @@
                 <h2 class="text-3xl font-bold text-white text-center mb-12">FAQs</h2>
                 <div class="space-y-6">
                     <div class="bg-gray-800 rounded-xl p-6">
-                        <h3 class="text-white font-semibold mb-2">How long does a website project take?</h3>
-                        <p class="text-gray-300">Typical timelines range from 2–4 weeks for business sites and 4–8 weeks for e‑commerce or custom apps, depending on scope.</p>
+                        <h3 class="text-white font-semibold mb-2">How long does a web application take to build?</h3>
+                        <p class="text-gray-300">A focused internal tool or dashboard typically takes 4–8 weeks. Larger portals, booking systems and marketplaces take longer depending on scope. We agree milestones up front.</p>
                     </div>
                     <div class="bg-gray-800 rounded-xl p-6">
                         <h3 class="text-white font-semibold mb-2">Do you provide maintenance?</h3>
                         <p class="text-gray-300">Yes. We offer flexible maintenance plans covering updates, backups, monitoring, and enhancements.</p>
                     </div>
                     <div class="bg-gray-800 rounded-xl p-6">
-                        <h3 class="text-white font-semibold mb-2">Can you integrate M‑Pesa payments?</h3>
-                        <p class="text-gray-300">Yes. We implement secure M‑Pesa STK Push and reconcile transactions with clear reporting.</p>
+                        <h3 class="text-white font-semibold mb-2">Can you integrate payments or other systems?</h3>
+                        <p class="text-gray-300">Yes. We integrate payment providers such as M-Pesa, Stripe and PayPal, and connect web apps to your existing tools via APIs.</p>
+                    </div>
+                    <div class="bg-gray-800 rounded-xl p-6">
+                        <h3 class="text-white font-semibold mb-2">Do you also build regular websites?</h3>
+                        <p class="text-gray-300">Yes — if you need a marketing or brochure site rather than an application, see our <a href="websites" class="text-blue-400 hover:text-blue-300">website development</a> service.</p>
                     </div>
                 </div>
             </div>
@@ -299,20 +335,19 @@
 
         <section class="py-16 bg-slate-950">
             <div class="container mx-auto px-4 max-w-4xl text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Build a Modern, High‑Performance Website?</h2>
-                <p class="text-gray-300 mb-8">Talk to our team about the best approach for your business and budget. We’ll propose a clear plan with timelines and deliverables.</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Build a Web Application?</h2>
+                <p class="text-gray-300 mb-8">Tell us about the portal, dashboard, tool or marketplace you have in mind. We’ll propose a clear plan with timelines and deliverables.</p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="../contact.html" class="inline-flex items-center justify-center px-8 py-3 rounded-lg bg-blue-600 text-white hover:bg-blue-700">
+                    <a href="../contact" class="inline-flex items-center justify-center px-8 py-3 rounded-lg bg-blue-600 text-white hover:bg-blue-700">
                         Contact Us
                     </a>
-                    <a href="../services.html" class="inline-flex items-center justify-center px-8 py-3 rounded-lg bg-gray-800 text-white hover:bg-gray-700">
+                    <a href="../services" class="inline-flex items-center justify-center px-8 py-3 rounded-lg bg-gray-800 text-white hover:bg-gray-700">
                         Explore All Services
                     </a>
                 </div>
             </div>
         </section>
     </main>
-
 
 </body>
 </html>

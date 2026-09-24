@@ -1,5 +1,5 @@
 /**
- * DTB Technologies Digital Museum - Profile Manager
+ * DTB Technologies - Profile Manager
  * Manages user profiles, preferences, favorites, and personalization
  */
 
