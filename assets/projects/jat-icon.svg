@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Jack of All Trades app icon">
+  <defs>
+    <linearGradient id="jatBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1e293b"/>
+      <stop offset="1" stop-color="#020617"/>
+    </linearGradient>
+    <linearGradient id="jatAccent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#60a5fa"/>
+      <stop offset="1" stop-color="#2563eb"/>
+    </linearGradient>
+  </defs>
+
+  <!-- App-icon tile -->
+  <rect x="16" y="16" width="480" height="480" rx="112" fill="url(#jatBg)" stroke="#3b82f6" stroke-opacity="0.35" stroke-width="6"/>
+
+  <!-- Soft blue glow -->
+  <circle cx="392" cy="118" r="150" fill="#3b82f6" opacity="0.12"/>
+
+  <!-- Community / job-network mark -->
+  <g stroke="#60a5fa" stroke-width="10" stroke-linecap="round" opacity="0.9">
+    <line x1="216" y1="150" x2="256" y2="120"/>
+    <line x1="296" y1="150" x2="256" y2="120"/>
+    <line x1="216" y1="150" x2="296" y2="150"/>
+  </g>
+  <circle cx="256" cy="118" r="22" fill="#60a5fa"/>
+  <circle cx="214" cy="152" r="18" fill="#3b82f6"/>
+  <circle cx="298" cy="152" r="18" fill="#3b82f6"/>
+
+  <!-- Monogram -->
+  <text x="256" y="322" text-anchor="middle"
+        font-family="'Segoe UI', Arial, Helvetica, sans-serif"
+        font-weight="700" font-size="168" letter-spacing="4"
+        fill="#f8fafc">JAT</text>
+
+  <!-- Accent bar -->
+  <rect x="168" y="356" width="176" height="16" rx="8" fill="url(#jatAccent)"/>
+</svg>
