@@ -5,6 +5,8 @@ module.exports = {
     "./auth/**/*.html",        // Auth HTML files
     "./components/**/*.html",  // Components HTML files (if any)
     "./dashboard/**/*.html",   // Dashboard HTML files
+    "./locations/**/*.html",  // Location HTML files
+    "./projects/**/*.html",   // Project case study HTML files
     "./services/**/*.html",   // Services HTML files
     "./tech-lab/**/*.html",  // Tech Lab HTML files (including subdirs like skills)
     "./js/**/*.js",           // Root JS files
