@@ -31,7 +31,7 @@ class NavHeader extends HTMLElement {
                     <div class="flex items-center justify-between h-16">
                         <!-- Logo -->
                         <div class="flex-shrink-0">
-                            <a href="${prefix}about" class="group inline-flex items-center space-x-2.5">
+                            <a href="${prefix}" class="group inline-flex items-center space-x-2.5" aria-label="DTB Technologies — Home">
                                 <img src="${prefix}assets/dtb-logo.png" alt="DTB Technologies" class="h-9 w-9 rounded-full object-cover">
                                 <span class="text-white font-semibold text-lg tracking-tight hidden sm:block">DTB Technologies</span>
                             </a>
@@ -71,7 +71,7 @@ class NavHeader extends HTMLElement {
                         <a href="${prefix}projects" class="block px-4 py-3 min-h-[44px] text-gray-300 hover:text-blue-400 hover:bg-slate-700/50 rounded-lg transition-colors flex items-center font-medium ${getMobileActiveClass('projects')}">
                             <i class="fas fa-briefcase mr-3 w-4"></i>Projects
                         </a>
-                        <a href="${prefix}" class="block px-4 py-3 min-h-[44px] text-gray-300 hover:text-blue-400 hover:bg-slate-700/50 rounded-lg transition-colors flex items-center font-medium ${getMobileActiveClass('about')}">
+                        <a href="${prefix}about" class="block px-4 py-3 min-h-[44px] text-gray-300 hover:text-blue-400 hover:bg-slate-700/50 rounded-lg transition-colors flex items-center font-medium ${getMobileActiveClass('about')}">
                             <i class="fas fa-info-circle mr-3 w-4"></i>About Us
                         </a>
                         <a href="${prefix}tech-lab" class="block px-4 py-3 min-h-[44px] text-gray-300 hover:text-blue-400 hover:bg-slate-700/50 rounded-lg transition-colors flex items-center font-medium ${getMobileActiveClass('tech-lab')}">
