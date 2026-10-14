@@ -25,6 +25,9 @@
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
         }
+            @media (prefers-reduced-motion: reduce) {
+            .emergency-pulse { animation: none; }
+        }
     </style>
 
     <!-- Open Graph -->
@@ -145,7 +148,7 @@
                                         <span class="flex-shrink-0 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold mr-4">2</span>
                                         <div>
                                             <h4 class="font-semibold text-white mb-1">Contact Us</h4>
-                                            <p>Call our emergency hotline for immediate assistance</p>
+                                            <p>Call our hotline for urgent recovery assistance</p>
                                         </div>
                                     </li>
                                 </ul>
@@ -200,13 +203,7 @@
             </div>
         </section>
 
-        <!-- Emergency Contact -->
-        <section class="fixed bottom-8 right-8 z-50">
-            <a href="tel:+61450275013" class="flex items-center px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-all shadow-lg emergency-pulse">
-                <i class="fas fa-phone-alt mr-2"></i>
-                Emergency Recovery
-            </a>
-        </section>
+        
     </main>
 
     <!-- Footer -->

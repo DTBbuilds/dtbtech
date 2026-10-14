@@ -708,12 +708,12 @@
     </main>
 
     <!-- Contact Orb Button -->
-    <div class="fixed bottom-8 left-8 z-50 ml-4">
+    <div class="fixed bottom-8 left-8 z-50 ml-4 hidden [@media(hover:hover)_and_(min-width:1024px)]:block">
         <div class="relative group">
             <a href="contact" aria-label="Contact support" class="relative flex items-center justify-center w-14 h-14 bg-blue-600 hover:bg-blue-700 rounded-full transition-colors shadow-lg">
                 <i class="fas fa-headset text-2xl text-white"></i>
             </a>
-            <div class="absolute bottom-full left-0 mb-2 w-48 p-2 bg-slate-800 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
+            <div class="absolute bottom-full left-0 mb-2 w-48 p-2 bg-slate-800 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity">
                 Need help? Click me!
             </div>
         </div>
