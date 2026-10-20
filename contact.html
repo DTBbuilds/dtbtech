@@ -101,6 +101,7 @@
     <!-- Scripts -->
     <script src="./components/nav-header.js" defer></script>
     <script src="./components/site-footer.js" defer></script>
+    <script src="./js/project-brief.js" defer></script>
 
     <style>
         .form-input:focus { box-shadow: 0 0 0 3px rgba(59,130,246,0.15); }
@@ -127,8 +128,9 @@
                         Let's Build Your <span class="text-blue-400">Software</span>
                     </h1>
                     <p class="text-base sm:text-lg text-slate-400 max-w-lg mx-auto">
-                        Need a website, web or mobile app, e-commerce store, POS or IT support? Tell us what you need and we'll get back to you quickly.
+                        Need a website, web or mobile app, e-commerce store, POS or IT support? Share your requirements and we'll help you scope the next steps.
                     </p>
+                    <a href="#project-brief" class="inline-flex items-center justify-center mt-6 px-6 py-3 min-h-[44px] rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400">Prepare a Project Brief <i class="fas fa-arrow-down ml-2 text-xs" aria-hidden="true"></i></a>
                 </div>
             </div>
         </section>
@@ -142,7 +144,7 @@
                     <div class="text-center mb-10 max-w-2xl mx-auto">
                         <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">Talk to a Real Person</h2>
                         <p class="text-slate-400 text-sm sm:text-base">
-                            Skip the forms. Reach us directly on WhatsApp, email or phone. You'll hear back from a real person, usually the same business day. Pick whichever channel suits you best.
+                            Reach us directly on WhatsApp, email or phone, or use the quick project brief below to prepare a message. Pick whichever option suits you best.
                         </p>
                     </div>
 
@@ -248,6 +250,77 @@
                         </a>
 
                     </div>
+
+
+                    <!-- Guided brief: provides a ready-to-send message; no backend or silent submission -->
+                    <section id="project-brief" aria-labelledby="project-brief-heading" class="mb-10 scroll-mt-24 rounded-2xl border border-blue-500/25 bg-slate-950/70 p-5 sm:p-8">
+                        <div class="flex flex-wrap items-center gap-2 mb-3">
+                            <span class="inline-flex items-center rounded-full bg-blue-500/10 border border-blue-500/25 px-3 py-1 text-xs font-semibold text-blue-300">Start here</span>
+                            <span class="text-xs text-slate-400">No obligation · Australia, Kenya &amp; remote projects</span>
+                        </div>
+                        <h2 id="project-brief-heading" class="text-2xl sm:text-3xl font-bold text-white mb-3">Tell Us About Your Project</h2>
+                        <p class="text-slate-300 text-sm sm:text-base max-w-3xl leading-relaxed mb-6">Not sure what to write? Share a few details and we'll prepare a message you can send on WhatsApp or by email. We'll use it to discuss the right scope, timeline and quote with you.</p>
+                        <form id="dtb-project-brief-form" class="space-y-5">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <div>
+                                    <label for="project-service" class="block text-sm font-medium text-slate-200 mb-2">What do you need? <span class="text-blue-300" aria-hidden="true">*</span></label>
+                                    <select id="project-service" name="service" required class="form-input w-full rounded-xl border border-slate-600 bg-slate-800 text-white px-4 py-3 min-h-[48px] focus:outline-none focus:border-blue-400">
+                                        <option value="">Select a service</option>
+                                        <option value="Business website">Business website</option>
+                                        <option value="Website redesign or repair">Website redesign or repair</option>
+                                        <option value="Online store or booking website">Online store or booking website</option>
+                                        <option value="Custom web or mobile application">Custom web or mobile application</option>
+                                        <option value="POS or business software">POS or business software</option>
+                                        <option value="Hosting, maintenance or IT support">Hosting, maintenance or IT support</option>
+                                        <option value="Other / not sure">Other / not sure</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="project-region" class="block text-sm font-medium text-slate-200 mb-2">Where is your business based?</label>
+                                    <select id="project-region" name="region" class="form-input w-full rounded-xl border border-slate-600 bg-slate-800 text-white px-4 py-3 min-h-[48px] focus:outline-none focus:border-blue-400">
+                                        <option value="Australia">Australia</option>
+                                        <option value="Kenya">Kenya</option>
+                                        <option value="Other / remote">Other / remote</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="project-business" class="block text-sm font-medium text-slate-200 mb-2">Business or organisation <span class="text-slate-500 font-normal">(optional)</span></label>
+                                    <input type="text" id="project-business" name="business" maxlength="80" autocomplete="organization" placeholder="Your business name" class="form-input w-full rounded-xl border border-slate-600 bg-slate-800 text-white placeholder-slate-500 px-4 py-3 min-h-[48px] focus:outline-none focus:border-blue-400">
+                                </div>
+                                <div>
+                                    <label for="project-timeline" class="block text-sm font-medium text-slate-200 mb-2">When would you like to begin?</label>
+                                    <select id="project-timeline" name="timeline" class="form-input w-full rounded-xl border border-slate-600 bg-slate-800 text-white px-4 py-3 min-h-[48px] focus:outline-none focus:border-blue-400">
+                                        <option value="Flexible / not sure">Flexible / not sure</option>
+                                        <option value="As soon as practical">As soon as practical</option>
+                                        <option value="Within 1–2 months">Within 1–2 months</option>
+                                        <option value="Planning for later">Planning for later</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <label for="project-goal" class="block text-sm font-medium text-slate-200 mb-2">Briefly describe your project <span class="text-blue-300" aria-hidden="true">*</span></label>
+                                <textarea id="project-goal" name="goal" rows="4" required minlength="15" maxlength="800" placeholder="What does your business do, and what would you like the website or system to help you achieve?" class="form-input w-full rounded-xl border border-slate-600 bg-slate-800 text-white placeholder-slate-500 px-4 py-3 focus:outline-none focus:border-blue-400"></textarea>
+                                <p class="text-xs text-slate-500 mt-1.5">A couple of sentences is enough. Please don't include passwords or sensitive customer data.</p>
+                            </div>
+                            <div>
+                                <label for="project-budget" class="block text-sm font-medium text-slate-200 mb-2">Approximate budget <span class="text-slate-500 font-normal">(optional)</span></label>
+                                <input type="text" id="project-budget" name="budget" maxlength="60" placeholder="e.g. AUD 2,000, KES 150,000, or not sure" class="form-input w-full rounded-xl border border-slate-600 bg-slate-800 text-white placeholder-slate-500 px-4 py-3 min-h-[48px] focus:outline-none focus:border-blue-400">
+                            </div>
+                            <div class="flex flex-col sm:flex-row gap-3">
+                                <button type="submit" class="inline-flex items-center justify-center min-h-[48px] px-6 py-3 rounded-xl bg-green-600 hover:bg-green-700 text-white font-semibold text-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-400">
+                                    <i class="fab fa-whatsapp mr-2" aria-hidden="true"></i> Continue on WhatsApp
+                                </button>
+                                <button type="button" id="dtb-brief-email" class="inline-flex items-center justify-center min-h-[48px] px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400">
+                                    <i class="fas fa-envelope mr-2" aria-hidden="true"></i> Open Email Draft
+                                </button>
+                                <button type="button" id="dtb-brief-copy" class="inline-flex items-center justify-center min-h-[48px] px-5 py-3 rounded-xl border border-slate-600 text-slate-200 hover:bg-slate-800 font-semibold text-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400">
+                                    <i class="fas fa-copy mr-2" aria-hidden="true"></i> Copy Brief
+                                </button>
+                            </div>
+                            <p class="text-xs text-slate-400 leading-relaxed">This page does not automatically submit or save your information. Review and send your message in WhatsApp or your email app. Their respective privacy terms apply once opened.</p>
+                            <p id="dtb-brief-status" role="status" aria-live="polite" class="text-sm text-blue-300"></p>
+                        </form>
+                    </section>
 
                     <!-- Quick info row: Hours + Locations -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
