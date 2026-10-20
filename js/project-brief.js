@@ -39,6 +39,22 @@
             return true;
         }
 
+        // Status text is set as text nodes; the optional fallback link is built
+        // with the DOM API so nothing from the form is ever placed into HTML.
+        function setStatus(beforeText, linkUrl, linkText, afterText) {
+            status.textContent = beforeText;
+            if (linkUrl) {
+                const link = document.createElement('a');
+                link.href = linkUrl;
+                link.target = '_blank';
+                link.rel = 'noopener noreferrer';
+                link.className = 'text-blue-200 underline rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400';
+                link.textContent = linkText;
+                status.appendChild(link);
+                if (afterText) status.appendChild(document.createTextNode(afterText));
+            }
+        }
+
         function whatsappUrl() {
             const number = read('project-region') === 'Kenya' ? '254729983567' : '61450275013';
             return 'https://wa.me/' + number + '?text=' + encodeURIComponent(buildBrief());
@@ -47,13 +63,12 @@
         form.addEventListener('submit', function (event) {
             event.preventDefault();
             if (!isValid()) return;
-            const opened = window.open(whatsappUrl(), '_blank', 'noopener,noreferrer');
-            status.textContent = 'WhatsApp should open with your project brief. Please review it and press Send.';
-            // Some browsers with strict popup settings may block the new tab.
-            // Direct WhatsApp links remain available in the contact cards above.
-            if (opened === null) {
-                status.textContent = 'If WhatsApp did not open, use the WhatsApp contact option above or copy your brief.';
-            }
+            const url = whatsappUrl();
+            window.open(url, '_blank', 'noopener,noreferrer');
+            // With noopener, window.open() returns null even when the tab opens
+            // successfully, so the result is never treated as a popup error.
+            // The inline link covers strict popup settings either way.
+            setStatus('WhatsApp should have opened with your brief ready to review and send. If the tab did not open, ', url, 'open WhatsApp directly', ' or use Copy Brief and paste it into your chat.');
         });
 
         emailButton.addEventListener('click', function () {
@@ -62,16 +77,39 @@
             const url = 'mailto:dtbbuildsoffice@gmail.com?subject=' +
                 encodeURIComponent(subject) + '&body=' + encodeURIComponent(buildBrief());
             window.location.href = url;
-            status.textContent = 'Your email application should open with a draft. Please review and send it.';
+            setStatus('Your email application should open with the draft ready to review and send. If nothing opened, use Copy Brief and email it to dtbbuildsoffice@gmail.com.');
         });
+
+        async function copyBriefText(text) {
+            if (navigator.clipboard && window.isSecureContext) {
+                try {
+                    await navigator.clipboard.writeText(text);
+                    return true;
+                } catch (_) { /* fall through to the legacy path */ }
+            }
+            try {
+                const helper = document.createElement('textarea');
+                helper.value = text;
+                helper.setAttribute('readonly', '');
+                helper.style.position = 'fixed';
+                helper.style.opacity = '0';
+                document.body.appendChild(helper);
+                helper.select();
+                const ok = document.execCommand('copy');
+                document.body.removeChild(helper);
+                return ok;
+            } catch (_) {
+                return false;
+            }
+        }
 
         copyButton.addEventListener('click', async function () {
             if (!isValid()) return;
-            try {
-                await navigator.clipboard.writeText(buildBrief());
-                status.textContent = 'Project brief copied. Paste it into WhatsApp or an email and send it to DTB.';
-            } catch (_) {
-                status.textContent = 'Clipboard access is unavailable. Use the WhatsApp or email option instead.';
+            const copied = await copyBriefText(buildBrief());
+            if (copied) {
+                setStatus('Project brief copied. Paste it into WhatsApp or an email and send it to DTB.');
+            } else {
+                setStatus('Copying is unavailable in this browser. Use the WhatsApp or email option instead.');
             }
         });
 
