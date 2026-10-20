@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Lead Management | DTB Technologies (Internal)</title>
+    <meta name="description" content="Internal DTB Technologies lead management system. Authorised staff only.">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="author" content="DTB Technologies">
+
+    <!-- Favicons -->
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../dist/output.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/mobile-optimizations.css">
+
+    <!-- Supabase (pinned UMD build) + generated config + CRM modules -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.3/dist/umd/supabase.js"></script>
+    <script src="../js/crm/config.js"></script>
+    <script src="../js/crm/crm-api.js" defer></script>
+    <script src="../js/crm/crm-app.js" defer></script>
+
+    <style>
+        .crm-input:focus { box-shadow: 0 0 0 3px rgba(59,130,246,0.15); }
+        .crm-scroll::-webkit-scrollbar { height: 8px; width: 8px; }
+        .crm-scroll::-webkit-scrollbar-thumb { background: rgba(71,85,105,0.5); border-radius: 8px; }
+    </style>
+</head>
+<body class="bg-slate-900 min-h-screen">
+
+    <!-- App header (rendered by crm-app.js) -->
+    <header id="crm-header" class="fixed top-0 left-0 right-0 z-40 bg-slate-950/90 backdrop-blur-md border-b border-slate-800 h-16"></header>
+
+    <main class="pt-16 min-h-screen">
+        <!-- Configuration / auth / app views are rendered here -->
+        <div id="crm-root" class="container mx-auto px-4 sm:px-6 py-8"></div>
+    </main>
+
+    <!-- Lead detail drawer -->
+    <div id="crm-drawer-root"></div>
+
+    <!-- Modal (new/edit lead) -->
+    <div id="crm-modal-root"></div>
+
+    <!-- Confirm dialog -->
+    <div id="crm-confirm-root"></div>
+
+    <!-- Toasts -->
+    <div id="crm-toast-root" class="fixed bottom-4 right-4 z-[60] space-y-2 w-[calc(100%-2rem)] sm:w-96" aria-live="polite" aria-atomic="false"></div>
+
+</body>
+</html>

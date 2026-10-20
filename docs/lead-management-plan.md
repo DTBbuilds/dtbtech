@@ -1,5 +1,14 @@
 # DTB Lead Management System — Implementation Plan (Phase 2)
 
+**Status update (DTB-LEADS-002):** the foundation described below is now
+implemented on branch `feat/dtb-leads-002-crm`: SQL migrations with RLS
+(`supabase/migrations/`), staff auth flow, CRM UI (`dashboard/leads.html`),
+build-time config generation and an automated RLS test suite
+(`supabase/test/`). It stays inert until `SUPABASE_URL` and
+`SUPABASE_PUBLISHABLE_KEY` are configured — see `docs/crm-setup.md`.
+The section below is the original Phase 1 audit and plan; the "Option A"
+architecture is what was built.
+
 Status: **Plan only — not implemented.** Phase 1 (guided project brief) deliberately
 transmits nothing and stores nothing; visitors review and send their own message.
 No personal data is being collected by the static site today.
