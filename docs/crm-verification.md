@@ -12,10 +12,12 @@ database. All records used below are synthetic.
 
 1. Create the test project; disable public sign-ups (Auth → Providers → Email).
 2. Apply migrations 001–006 in order (SQL Editor or `supabase db push`).
-3. Note the project URL and publishable key; set them as Vercel **Preview**
+3. Set the test project's Auth **Site URL** to the preview CRM page so invite and
+   recovery emails land on the preview set-password view (see `docs/crm-setup.md`).
+4. Note the project URL and publishable key; set them as Vercel **Preview**
    environment variables (`SUPABASE_URL`, `SUPABASE_PUBLISHABLE_KEY`) — publishable
    values only; no service-role key ever goes into the browser or Vercel Preview.
-4. Invite two test staff (one owner, one staff) and one address that will NOT be
+5. Invite two test staff (one owner, one staff) and one address that will NOT be
    linked to `staff_members` (the "non-staff" probe). Complete each invite through
    the CRM set-password view.
 

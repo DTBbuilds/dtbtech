@@ -1147,7 +1147,7 @@
             return;
         }
         if (!state.profile) {
-            renderDenied('This account is not linked to a DTB staff record. Ask an owner to add you in the CRM staff list.');
+            renderDenied('This account is not linked to a DTB staff record. Ask a DTB owner to link it in Supabase (Auth invite + staff insert, see docs/crm-setup.md).');
             return;
         }
         if (state.profile.status !== 'active') {

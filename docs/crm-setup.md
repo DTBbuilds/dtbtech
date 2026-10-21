@@ -11,8 +11,11 @@ variables below are configured; until then the page shows a clear
 2. Under **Authentication → Providers → Email**: disable **"Allow new users to sign up"**
    (staff accounts are invited only). Confirm email is optional for invited users.
 3. Under **Authentication → URL Configuration**, set the Site URL to
-   `https://www.dtbtech.org` and add `https://www.dtbtech.org/dashboard/leads`
-   as a redirect URL.
+   `https://www.dtbtech.org/dashboard/leads`. Invite and password-recovery emails
+   redirect to the Site URL, so it must be the CRM page itself — the only page that
+   can consume the emailed token and show the set-password view. The public homepage
+   cannot, so pointing the Site URL there would strand invite links. Add
+   `https://www.dtbtech.org` as an additional redirect URL for completeness.
 
 ## 2. Apply the database migrations
 
@@ -46,8 +49,8 @@ Supabase **SQL Editor** (or `supabase db push` with the CLI). They create:
 3. Additional staff: invite via Auth, then insert with `role = 'staff'`.
 4. **Password recovery**: the sign-in screen has a "Forgot password?" option that
    sends a reset email; the recovery link opens the same set-password view
-   (`type=recovery`). Set **Auth → URL Configuration → Site URL** to
-   `https://www.dtbtech.org` so emailed links resolve to the production CRM page.
+   (`type=recovery`). The reset link redirects to the Site URL, which must stay
+   set to the CRM page (`https://www.dtbtech.org/dashboard/leads` in production).
 5. Disable leavers with `update public.staff_members set status = 'disabled' where email = '…';`
    (rows are never deleted, so lead assignment history survives).
 
@@ -65,6 +68,14 @@ Set these in **Vercel → Project → Settings → Environment Variables** (and 
 (`scripts/generate-crm-config.mjs`). The generated file is gitignored and never
 contains secret keys. No service/secret key is needed for this phase; if one ever
 is, it must live only in server-side (Vercel Function) environments.
+
+**Preview / test-project scoping.** While verifying against an isolated test
+Supabase project, set these two variables with the **Preview** environment enabled
+(Production unchecked until cutover) using the TEST project's values, and set the
+test project's Site URL to the preview CRM page (e.g.
+`https://<project>-git-<branch>.vercel.app/dashboard/leads`) so test invite and
+recovery emails land on the preview CRM. Vercel applies environment-variable
+changes only to **new** deployments — redeploy the branch after changing values.
 
 ## 5. Deploy
 
