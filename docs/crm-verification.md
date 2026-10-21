@@ -64,6 +64,12 @@ node supabase/test/hosted-verification.mjs https://<preview-base-url> --env <dot
 It reads the generated `js/crm/config.js` from the deployment (or `SUPABASE_URL` /
 `SUPABASE_PUBLISHABLE_KEY` from the environment), signs in the test accounts from
 the dotenv file, and prints a PASS/FAIL line per check. Values are never printed.
+Anonymous requests carry only the `apikey` header (the publishable key is never
+treated as a Bearer JWT); authenticated requests carry the real access token.
+The runner aborts immediately if a required test account is missing or cannot
+authenticate, never counts an authentication failure or network error as an RLS
+denial (a denial must be HTTP 403/404), and removes its synthetic probe lead
+afterwards — a cleanup warning and non-zero exit signal if it could not.
 
 ## 4. Audit integrity (regression for item C)
 
