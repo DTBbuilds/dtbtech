@@ -149,7 +149,77 @@
         ]));
     }
 
-    function renderSignIn(prefillEmail) {
+    function renderSetPassword() {
+        renderHeader();
+        root().textContent = '';
+        const err = el('p', { class: 'hidden text-sm text-red-300 bg-red-500/10 border border-red-500/30 rounded-lg px-3 py-2', role: 'alert' });
+        const passIn = el('input', {
+            type: 'password', id: 'crm-new-password', autocomplete: 'new-password', required: true, minlength: 8,
+            placeholder: 'New password (min. 8 characters)',
+            class: 'crm-input w-full rounded-xl border border-slate-600 bg-slate-800 text-white placeholder-slate-500 px-4 py-3 min-h-[48px] focus:outline-none focus:border-blue-400'
+        });
+        const confirmIn = el('input', {
+            type: 'password', id: 'crm-confirm-password', autocomplete: 'new-password', required: true, minlength: 8,
+            placeholder: 'Confirm new password',
+            class: 'crm-input w-full rounded-xl border border-slate-600 bg-slate-800 text-white placeholder-slate-500 px-4 py-3 min-h-[48px] focus:outline-none focus:border-blue-400'
+        });
+        const submit = el('button', {
+            type: 'submit',
+            class: 'w-full inline-flex items-center justify-center min-h-[48px] px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400'
+        }, [el('span', { text: 'Save password and continue' })]);
+
+        const isRecovery = window.__dtbAuthFlow === 'recovery';
+        const form = el('form', { class: 'space-y-4', novalidate: true, onsubmit: async (ev) => {
+            ev.preventDefault();
+            err.classList.add('hidden');
+            const p1 = passIn.value, p2 = confirmIn.value;
+            if (p1.length < 8) {
+                err.textContent = 'Use at least 8 characters for your password.';
+                err.classList.remove('hidden');
+                return;
+            }
+            if (p1 !== p2) {
+                err.textContent = 'The two passwords do not match.';
+                err.classList.remove('hidden');
+                return;
+            }
+            submit.disabled = true;
+            submit.classList.add('opacity-60', 'pointer-events-none');
+            try {
+                await api.updatePassword(p1);
+                toast('Password saved.');
+                window.__dtbAuthFlow = null;
+                await boot();
+            } catch (e) {
+                err.textContent = e.message;
+                err.classList.remove('hidden');
+            } finally {
+                submit.disabled = false;
+                submit.classList.remove('opacity-60', 'pointer-events-none');
+            }
+        } }, [
+            el('div', {}, [el('label', { for: 'crm-new-password', class: 'block text-sm font-medium text-slate-200 mb-2', text: 'New password' }), passIn]),
+            el('div', {}, [el('label', { for: 'crm-confirm-password', class: 'block text-sm font-medium text-slate-200 mb-2', text: 'Confirm password' }), confirmIn]),
+            err,
+            submit
+        ]);
+
+        root().appendChild(el('div', { class: 'max-w-md mx-auto mt-8 sm:mt-14' }, [
+            el('div', { class: 'bg-slate-800/60 border border-slate-700/30 rounded-2xl p-6 sm:p-8' }, [
+                el('div', { class: 'text-center mb-6' }, [
+                    el('img', { src: '../assets/dtb-logo.png', alt: '', class: 'w-12 h-12 rounded-full mx-auto mb-4' }),
+                    el('h1', { class: 'text-xl font-bold text-white', text: isRecovery ? 'Choose a New Password' : 'Set Your Password' }),
+                    el('p', { class: 'text-slate-400 text-sm mt-1', text: isRecovery
+                        ? 'Your password reset link was verified. Choose a new password for your staff account.'
+                        : 'Your staff invitation was verified. Choose a password to secure your account.' })
+                ]),
+                form
+            ])
+        ]));
+        passIn.focus();
+    }
+
+    function renderSignIn(prefillEmail, initialError) {
         renderHeader();
         root().textContent = '';
         const err = el('p', { id: 'crm-signin-error', class: 'hidden text-sm text-red-300 bg-red-500/10 border border-red-500/30 rounded-lg px-3 py-2', role: 'alert' });
@@ -167,6 +237,8 @@
             type: 'submit',
             class: 'w-full inline-flex items-center justify-center min-h-[48px] px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400'
         }, [el('i', { class: 'fas fa-lock mr-2 text-xs', 'aria-hidden': 'true' }), el('span', { text: 'Sign in' })]);
+        const forgotEmail = el('input', {});
+        const forgotBox = el('div', { class: 'hidden' });
 
         const form = el('form', { class: 'space-y-4', novalidate: true, onsubmit: async (ev) => {
             ev.preventDefault();
@@ -205,9 +277,54 @@
                     el('p', { class: 'text-slate-400 text-sm mt-1', text: 'Internal lead management — authorised DTB staff only.' })
                 ]),
                 form,
+                el('div', { class: 'text-center mt-4' }, [
+                    el('button', {
+                        type: 'button', id: 'crm-forgot-link',
+                        class: 'text-blue-400 hover:text-blue-300 text-xs font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400 rounded-sm',
+                        text: 'Forgot password?',
+                        onclick: () => {
+                            forgotBox.classList.remove('hidden');
+                            forgotEmail.value = emailIn.value;
+                            forgotEmail.focus();
+                        }
+                    })
+                ]),
+                (() => {
+                    forgotBox.id = 'crm-forgot-box';
+                    forgotBox.className = 'hidden mt-4 border-t border-slate-700/40 pt-4';
+                    forgotEmail.id = 'crm-forgot-email';
+                    forgotEmail.type = 'email';
+                    forgotEmail.placeholder = 'you@dtbtech.org';
+                    forgotEmail.className = 'crm-input flex-1 rounded-xl border border-slate-600 bg-slate-800 text-white placeholder-slate-500 px-3 py-2.5 min-h-[44px] focus:outline-none focus:border-blue-400 text-sm';
+                    forgotBox.appendChild(el('p', { class: 'text-slate-400 text-xs mb-2', text: 'Enter your work email and we will send you a password reset link.' }));
+                    forgotBox.appendChild(el('div', { class: 'flex gap-2' }, [
+                        forgotEmail,
+                        el('button', {
+                            type: 'button',
+                            class: 'px-4 py-2.5 min-h-[44px] rounded-xl bg-slate-700 hover:bg-slate-600 text-white text-xs font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400',
+                            text: 'Send reset link',
+                            onclick: async () => {
+                                const email = forgotEmail.value.trim();
+                                if (!email) { toast('Enter your email first.', 'error'); return; }
+                                try {
+                                    await api.resetPassword(email);
+                                    toast('Password reset email sent to ' + email + '. Check your inbox.');
+                                    forgotBox.classList.add('hidden');
+                                } catch (e) {
+                                    toast(e.message, 'error');
+                                }
+                            }
+                        })
+                    ]));
+                    return forgotBox;
+                })(),
                 el('p', { class: 'text-slate-500 text-xs text-center mt-6 leading-relaxed', text: 'Accounts are created by an owner. There is no self-registration.' })
             ])
         ]));
+        if (initialError) {
+            err.textContent = initialError;
+            err.classList.remove('hidden');
+        }
         emailIn.focus();
     }
 
@@ -686,10 +803,15 @@
                 const value = dateIn.value || null;
                 try {
                     await api.updateLead(lead.id, { next_followup_at: value });
-                    if (value) {
-                        await api.addActivity(lead.id, 'follow_up', 'Follow-up scheduled for ' + fmtDate(value) + '.');
+                    try {
+                        if (value) {
+                            await api.addActivity(lead.id, 'follow_up', 'Follow-up scheduled for ' + fmtDate(value) + '.');
+                        }
+                        toast(value ? 'Follow-up scheduled for ' + fmtDate(value) + '.' : 'Follow-up cleared.');
+                    } catch (activityError) {
+                        // The follow-up itself was saved; report the history gap honestly.
+                        toast('Follow-up saved, but the activity note could not be recorded: ' + activityError.message, 'error');
                     }
-                    toast(value ? 'Follow-up scheduled for ' + fmtDate(value) + '.' : 'Follow-up cleared.');
                     await reloadStats();
                     openDrawer(lead.id);
                 } catch (e) {
@@ -810,8 +932,9 @@
                     await api.updateLead(lead.id, values);
                     toast('Lead updated.');
                 } else {
-                    const newId = await api.createLead(values);
-                    await api.addActivity(newId, 'created', 'Lead recorded via CRM by ' + (state.profile ? state.profile.full_name : 'staff') + '.');
+                    // The database trigger records the "created" activity, so a
+                    // successful create cannot leave a missing history entry.
+                    await api.createLead(values);
                     toast('Lead created.');
                 }
                 closeModal();
@@ -988,6 +1111,8 @@
 
     async function boot() {
         if (!api.isConfigured()) { renderNotConfigured(); return; }
+        const authError = window.__dtbAuthError || '';
+        const flow = window.__dtbAuthFlow || '';
         try {
             state.session = await api.getSession();
         } catch (e) {
@@ -1000,7 +1125,20 @@
             state.session = session;
             if (!session && had) { renderSignIn(); }
         });
-        if (!state.session) { renderSignIn(); return; }
+        if (!state.session) {
+            const expired = flow === 'invite'
+                ? 'This invitation link is no longer valid. Ask a DTB owner to resend it.'
+                : flow === 'recovery'
+                    ? 'This password reset link is no longer valid. Request a new one below.'
+                    : '';
+            renderSignIn('', (expired || authError) ? (expired ? expired + (authError ? ' (' + decodeURIComponent(authError) + ')' : '') : decodeURIComponent(authError)) : '');
+            return;
+        }
+        if (flow === 'invite' || flow === 'recovery') {
+            // Invited or resetting staff must set a password before using the CRM.
+            renderSetPassword();
+            return;
+        }
 
         try {
             state.profile = await api.getMyProfile();

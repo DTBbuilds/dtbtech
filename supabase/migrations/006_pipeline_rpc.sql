@@ -1,11 +1,75 @@
 -- DTB Technologies — Lead Management System
--- Migration 006: atomic pipeline operations
+-- Migration 006: pipeline integrity
 --
--- change_lead_status updates a lead and appends a status_change activity in a
--- single transaction, so the history can never drift from the lead's status.
--- Authorisation is re-checked server-side inside the function; RLS still
--- applies to the underlying tables for any direct access.
+-- Audit history is enforced at the DATABASE level so every supported update
+-- path produces exactly one activity record:
+--   * a BEFORE UPDATE trigger appends a status_change activity whenever
+--     pipeline_status actually changes (direct update or RPC — no bypass);
+--   * an AFTER INSERT trigger appends the lead's "created" activity, so every
+--     lead has a creation record regardless of how it entered the system;
+--   * actor_id defaults to the authenticated user (auth.uid()) and the RLS
+--     with-check still rejects any attempt to log activity as someone else.
+-- change_lead_status() remains as a thin, validated wrapper for the UI.
 
+-- 1. actor_id is database-managed: defaults to the caller's identity.
+alter table public.lead_activities
+    alter column actor_id set default auth.uid();
+
+-- 2. Status-change audit trigger (single source of truth for transitions).
+create or replace function public.lead_status_audit()
+returns trigger
+language plpgsql
+security invoker
+set search_path = public
+as $$
+begin
+    if new.pipeline_status is distinct from old.pipeline_status then
+        insert into public.lead_activities
+            (lead_id, actor_id, activity_type, body, old_status, new_status)
+        values (
+            new.id,
+            auth.uid(),
+            'status_change',
+            'Status changed from ' || old.pipeline_status || ' to ' || new.pipeline_status || '.',
+            old.pipeline_status,
+            new.pipeline_status
+        );
+    end if;
+    return new;
+end;
+$$;
+
+drop trigger if exists leads_status_audit on public.leads;
+create trigger leads_status_audit
+    before update on public.leads
+    for each row execute function public.lead_status_audit();
+
+-- 3. Creation audit trigger.
+create or replace function public.lead_created_audit()
+returns trigger
+language plpgsql
+security invoker
+set search_path = public
+as $$
+begin
+    insert into public.lead_activities
+        (lead_id, actor_id, activity_type, body)
+    values (
+        new.id,
+        auth.uid(),
+        'created',
+        'Lead created.'
+    );
+    return new;
+end;
+$$;
+
+drop trigger if exists leads_created_audit on public.leads;
+create trigger leads_created_audit
+    after insert on public.leads
+    for each row execute function public.lead_created_audit();
+
+-- 4. Validated status-change wrapper (the trigger records the history).
 create or replace function public.change_lead_status(
     p_lead_id uuid,
     p_new_status text
@@ -41,16 +105,6 @@ begin
     update public.leads
     set pipeline_status = p_new_status
     where id = p_lead_id;
-
-    insert into public.lead_activities (lead_id, actor_id, activity_type, body, old_status, new_status)
-    values (
-        p_lead_id,
-        auth.uid(),
-        'status_change',
-        'Status changed from ' || v_old_status || ' to ' || p_new_status || '.',
-        v_old_status,
-        p_new_status
-    );
 end;
 $$;
 

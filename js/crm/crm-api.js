@@ -12,7 +12,7 @@
         const cfg = window.DTB_SUPABASE_CONFIG || {};
         if (!cfg.url || !cfg.publishableKey) return null;
         client = window.supabase.createClient(cfg.url, cfg.publishableKey, {
-            auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: false }
+            auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true }
         });
         return client;
     }
@@ -78,9 +78,32 @@
 
         async getMyProfile() {
             const c = getClient();
-            const { data, error } = await c.from('staff_members').select('id, email, full_name, role, status').maybeSingle();
+            const { data: userData, error: userErr } = await c.auth.getUser();
+            if (userErr) throw new Error(normaliseError(userErr));
+            if (!userData || !userData.user) return null;
+            // Restrict to the authenticated user's own row: RLS lets active staff
+            // see the whole staff list, so an unfiltered maybeSingle() could return
+            // a colleague's profile.
+            const { data, error } = await c.from('staff_members')
+                .select('id, email, full_name, role, status')
+                .eq('id', userData.user.id)
+                .maybeSingle();
             if (error) throw new Error(normaliseError(error));
             return data; // null when the signed-in user is not DTB staff
+        },
+
+        async resetPassword(email) {
+            const c = getClient();
+            const { error } = await c.auth.resetPasswordForEmail(email, {
+                redirectTo: window.location.origin + window.location.pathname
+            });
+            if (error) throw new Error(normaliseError(error));
+        },
+
+        async updatePassword(newPassword) {
+            const c = getClient();
+            const { error } = await c.auth.updateUser({ password: newPassword });
+            if (error) throw new Error(normaliseError(error));
         },
 
         async listStaff() {

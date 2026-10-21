@@ -9,6 +9,10 @@
 create temp table test_log (name text, pass boolean, detail text);
 grant all on test_log to public;
 
+-- Reset synthetic data so the suite is re-runnable against an existing schema.
+truncate public.lead_activities, public.leads, public.staff_members cascade;
+truncate auth.users cascade;
+
 -- Fixture: synthetic identities and records (as superuser).
 insert into auth.users (id, email) values
     ('11111111-1111-1111-1111-111111111111', 'owner@example.com'),
@@ -30,10 +34,7 @@ values ('Synthetic Contact', 'Example Business', 'contact@example.com', '+61 400
         'Australia', 'Business website', 'Synthetic lead used by the automated RLS test suite.',
         'AUD 2,000', 'Within 1-2 months', 'website_brief', 'new',
         '22222222-2222-2222-2222-222222222222');
-
-insert into public.lead_activities (lead_id, actor_id, activity_type, body)
-select id, '22222222-2222-2222-2222-222222222222', 'created', 'Synthetic lead created by test suite.'
-from public.leads limit 1;
+-- The leads_created_audit trigger records the "created" activity automatically.
 
 -- Result helpers.
 create temp view test_summary as select name, pass, detail from test_log order by name;
@@ -297,6 +298,85 @@ begin
 
     delete from public.leads where lead_source = 'referral';
     insert into test_log values ('owner: lead delete allowed', true, null);
+end $$;
+
+reset role;
+
+-- ============================================================
+-- 6. Audit integrity: history is enforced at the database level.
+-- ============================================================
+select set_config('request.jwt.claim.sub', '22222222-2222-2222-2222-222222222222', false);
+set role authenticated;
+
+do $$
+declare
+    new_id uuid;
+    n int;
+    actor uuid;
+begin
+    -- Created-audit trigger: inserting a lead records exactly one 'created'
+    -- activity with the inserting staff member as actor.
+    insert into public.leads (contact_name, email, service_required, project_description)
+    values ('Audit Probe', 'audit@example.com', 'Business website',
+            'Synthetic lead for audit-integrity regression tests.')
+    returning id into new_id;
+
+    select count(*) into n from public.lead_activities
+    where lead_id = new_id and activity_type = 'created';
+    insert into test_log values ('audit: lead creation logged', n = 1, 'created activities=' || n);
+
+    select actor_id into actor from public.lead_activities
+    where lead_id = new_id and activity_type = 'created';
+    insert into test_log values ('audit: creation actor is the inserter', actor = auth.uid(), null);
+
+    -- Regression: a DIRECT status update must not bypass history.
+    update public.leads set pipeline_status = 'contacted' where id = new_id;
+
+    select count(*) into n from public.lead_activities
+    where lead_id = new_id and activity_type = 'status_change'
+      and old_status = 'new' and new_status = 'contacted';
+    insert into test_log values ('audit: direct update logged exactly once', n = 1, 'status_change count=' || n);
+
+    select actor_id into actor from public.lead_activities
+    where lead_id = new_id and activity_type = 'status_change';
+    insert into test_log values ('audit: direct update actor recorded', actor = auth.uid(), null);
+
+    -- RPC path: also exactly one activity (no duplicates).
+    perform public.change_lead_status(new_id, 'qualified');
+
+    select count(*) into n from public.lead_activities
+    where lead_id = new_id and activity_type = 'status_change'
+      and new_status = 'qualified';
+    insert into test_log values ('audit: rpc update logged exactly once', n = 1, 'status_change count=' || n);
+
+    -- Non-status updates must not create activity noise.
+    update public.leads set next_followup_at = current_date + 7 where id = new_id;
+
+    select count(*) into n from public.lead_activities where lead_id = new_id;
+    insert into test_log values ('audit: no noise from non-status updates', n = 3, 'total activities=' || n);
+
+    -- actor_id default: inserting an activity WITHOUT actor_id records the caller.
+    insert into public.lead_activities (lead_id, activity_type, body)
+    values (new_id, 'note', 'Note without explicit actor_id.');
+    select actor_id into actor from public.lead_activities
+    where lead_id = new_id and activity_type = 'note';
+    insert into test_log values ('audit: actor_id defaults to auth.uid()', actor = auth.uid(), null);
+
+    -- Cleanup of the probe lead (owner privileges are tested separately).
+end $$;
+
+reset role;
+
+select set_config('request.jwt.claim.sub', '11111111-1111-1111-1111-111111111111', false);
+set role authenticated;
+
+do $$
+declare
+    affected int;
+begin
+    delete from public.leads where contact_name = 'Audit Probe';
+    get diagnostics affected = row_count;
+    insert into test_log values ('audit: probe lead cleaned up', affected = 1, null);
 end $$;
 
 reset role;

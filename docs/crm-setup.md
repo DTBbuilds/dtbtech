@@ -29,7 +29,11 @@ Supabase **SQL Editor** (or `supabase db push` with the CLI). They create:
 ## 3. Bootstrap the owner account (documented process)
 
 1. **Auth → Users → Invite user**: invite the owner's email (e.g. `dtbbuildsoffice@gmail.com`).
-   The owner accepts the invite and sets a password.
+   The invitation email links to the CRM page; when opened, the page detects the
+   invite flow (`type=invite`) and shows the **Set Your Password** view. The staff
+   member chooses a password (minimum 8 characters) and continues straight into
+   the CRM. Expired or already-used links show a clear message and a sign-in
+   screen with a "Forgot password?" option instead.
 2. In the SQL Editor, link the invited Auth user to staff membership:
 
    ```sql
@@ -38,8 +42,13 @@ Supabase **SQL Editor** (or `supabase db push` with the CLI). They create:
    from auth.users where email = 'OWNER-EMAIL@example.com';
    ```
 
+   (Do this before or right after the invite is accepted; both orders work.)
 3. Additional staff: invite via Auth, then insert with `role = 'staff'`.
-   Disable leavers with `update public.staff_members set status = 'disabled' where email = '…';`
+4. **Password recovery**: the sign-in screen has a "Forgot password?" option that
+   sends a reset email; the recovery link opens the same set-password view
+   (`type=recovery`). Set **Auth → URL Configuration → Site URL** to
+   `https://www.dtbtech.org` so emailed links resolve to the production CRM page.
+5. Disable leavers with `update public.staff_members set status = 'disabled' where email = '…';`
    (rows are never deleted, so lead assignment history survives).
 
 ## 4. Configure environment variables
