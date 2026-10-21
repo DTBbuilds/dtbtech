@@ -112,11 +112,25 @@ function check(name, ok, detail) {
     else { fail++; console.log('FAIL  ' + name + (detail ? '  [' + detail + ']' : '')); }
 }
 
-// A denial is a proper RLS/permission result: 403 (permission denied / RLS
-// violation) or 404 (table not visible to the role). Anything else — 401
-// (bad key/token), 2xx (data leaked), 5xx or 0 (network error) — is NOT a pass.
-const denied = (status) => status === 403 || status === 404;
-const detail = (r) => 'HTTP ' + r.status + (r.error ? ' network: ' + r.error : '') + ((r.body && r.body.message) ? ' ' + r.body.message : '');
+// A denial is a proper RLS/permission result. Verified against the hosted
+// platform (DTB-LEADS-002C):
+//   * 403 (RLS violation / permission denied) or 404 (table not visible to the role);
+//   * 401 carrying Postgres code 42501 with a permission/RLS message — the
+//     platform's mapping when the role's grants are revoked; the apikey was
+//     accepted and the DATABASE refused the role.
+// A 401 WITHOUT that Postgres code ("Invalid API key", "No API key found in
+// request") is an authentication failure and must NEVER count as a denial.
+// 2xx means data leaked; 5xx/0 mean server/network errors — all FAIL.
+function denied(r) {
+    if (r.status === 403 || r.status === 404) return true;
+    return r.status === 401 && !!r.body && r.body.code === '42501' &&
+        /permission denied|row-level security/i.test(r.body.message || '');
+}
+function authFailure(r) {
+    return r.status === 401 && !(r.body && r.body.code === '42501' &&
+        /permission denied|row-level security/i.test(r.body.message || ''));
+}
+const detail = (r) => 'HTTP ' + r.status + (r.error ? ' network: ' + r.error : '') + ((r.body && r.body.message) ? ' ' + r.body.message : '') + (authFailure(r) ? ' [AUTH FAILURE — not a valid denial]' : '');
 
 // REST helper. token === null → anonymous (apikey header only, no Bearer).
 function api(token) {
@@ -188,15 +202,15 @@ try {
         console.log('Mode: ANON-ONLY pre-check (authenticated sections are skipped, not passed)');
         const anon = api(null);
         let r = await anon.get('/rest/v1/leads?select=id&limit=1');
-        check('anon: leads select denied', denied(r.status), detail(r));
+        check('anon: leads select denied', denied(r), detail(r));
         r = await anon.post('/rest/v1/leads', LEAD);
-        check('anon: leads insert denied', denied(r.status), detail(r));
+        check('anon: leads insert denied', denied(r), detail(r));
         r = await anon.get('/rest/v1/staff_members?select=id&limit=1');
-        check('anon: staff select denied', denied(r.status), detail(r));
+        check('anon: staff select denied', denied(r), detail(r));
         r = await anon.get('/rest/v1/lead_activities?select=id&limit=1');
-        check('anon: activities select denied', denied(r.status), detail(r));
+        check('anon: activities select denied', denied(r), detail(r));
         r = await anon.get('/rest/v1/enquiry_intake?select=id&limit=1');
-        check('anon: intake select denied (inert table)', denied(r.status), detail(r));
+        check('anon: intake select denied (inert table)', denied(r), detail(r));
         console.log('Note: as anon, a missing table and a grant-revoked table can both look like 404 — run the full suite to disambiguate.');
     } else {
         // ---------- required accounts: fail fast, before any check ----------
@@ -226,15 +240,15 @@ try {
         // ---------- 0c. anonymous: everything denied (apikey header only, no Bearer) ----------
         {
             let q = await anon.get('/rest/v1/leads?select=id&limit=1');
-            check('anon: leads select denied', denied(q.status), detail(q));
+            check('anon: leads select denied', denied(q), detail(q));
             q = await anon.post('/rest/v1/leads', LEAD);
-            check('anon: leads insert denied', denied(q.status), detail(q));
+            check('anon: leads insert denied', denied(q), detail(q));
             q = await anon.get('/rest/v1/staff_members?select=id&limit=1');
-            check('anon: staff select denied', denied(q.status), detail(q));
+            check('anon: staff select denied', denied(q), detail(q));
             q = await anon.get('/rest/v1/lead_activities?select=id&limit=1');
-            check('anon: activities select denied', denied(q.status), detail(q));
+            check('anon: activities select denied', denied(q), detail(q));
             q = await anon.get('/rest/v1/enquiry_intake?select=id&limit=1');
-            check('anon: intake select denied (inert table)', denied(q.status), detail(q));
+            check('anon: intake select denied (inert table)', denied(q), detail(q));
         }
 
         // ---------- 1. staff identity + probe lead (created FIRST so later checks are non-vacuous) ----------
@@ -273,7 +287,7 @@ try {
             check('non-staff: staff select empty', q.status === 200 && Array.isArray(q.body) && q.body.length === 0,
                 'HTTP ' + q.status + ', rows ' + (Array.isArray(q.body) ? q.body.length : 'n/a'));
             q = await outsider.post('/rest/v1/leads', LEAD);
-            check('non-staff: leads insert denied', denied(q.status), detail(q));
+            check('non-staff: leads insert denied', denied(q), detail(q));
             q = await outsider.patch('/rest/v1/leads?id=eq.' + state.probeLeadId, { pipeline_status: 'won' }, 'return=representation');
             check('non-staff: leads update affects zero rows', q.status === 200 && Array.isArray(q.body) && q.body.length === 0,
                 'HTTP ' + q.status + ', rows ' + (Array.isArray(q.body) ? q.body.length : 'n/a'));
@@ -297,7 +311,7 @@ try {
 
         // Forged actor must be rejected by the RLS with-check.
         r = await staff.post('/rest/v1/lead_activities', { lead_id: state.probeLeadId, actor_id: ownerRow.id, activity_type: 'note', body: 'Forged actor attempt.' });
-        check('audit: cannot log activity as another staff', denied(r.status), detail(r));
+        check('audit: cannot log activity as another staff', denied(r), detail(r));
 
         // Direct status update must produce exactly one status_change row.
         r = await staff.patch('/rest/v1/leads?id=eq.' + state.probeLeadId, { pipeline_status: 'contacted' });
@@ -349,7 +363,7 @@ try {
             check('disabled staff: leads select empty (probe lead invisible)', blocked.status === 200 && Array.isArray(blocked.body) && blocked.body.length === 0,
                 'HTTP ' + blocked.status + ', rows ' + (Array.isArray(blocked.body) ? blocked.body.length : 'n/a'));
             r = await staff.post('/rest/v1/leads', LEAD);
-            check('disabled staff: leads insert denied', denied(r.status), detail(r));
+            check('disabled staff: leads insert denied', denied(r), detail(r));
             r = await staff.patch('/rest/v1/leads?id=eq.' + state.probeLeadId, { pipeline_status: 'won' }, 'return=representation');
             check('disabled staff: leads update affects zero rows', r.status === 200 && Array.isArray(r.body) && r.body.length === 0,
                 'HTTP ' + r.status + ', rows ' + (Array.isArray(r.body) ? r.body.length : 'n/a'));
