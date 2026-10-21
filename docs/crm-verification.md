@@ -54,6 +54,17 @@ Also verify the PostgREST join used by the UI:
 `c.from('leads').select('*, assigned_staff:staff_members!leads_assigned_to_fkey(full_name, email)')`
 returns embedded owner names.
 
+Most of sections 2–4 are automated by `supabase/test/hosted-verification.mjs`
+(Node, publishable key only, synthetic records, self-cleaning):
+
+```bash
+node supabase/test/hosted-verification.mjs https://<preview-base-url> --env <dotenv-with-test-accounts>
+```
+
+It reads the generated `js/crm/config.js` from the deployment (or `SUPABASE_URL` /
+`SUPABASE_PUBLISHABLE_KEY` from the environment), signs in the test accounts from
+the dotenv file, and prints a PASS/FAIL line per check. Values are never printed.
+
 ## 4. Audit integrity (regression for item C)
 
 1. As staff: create a lead → `lead_activities` must contain exactly one `created`
