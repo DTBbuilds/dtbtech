@@ -209,8 +209,8 @@ try {
         {
             const r = await staff.get('/rest/v1/leads?select=id&limit=1');
             if (r.status === 404 || (r.body && r.body.code === 'PGRST205')) {
-                check('migrations applied (leads table reachable)', false, 'table not visible — apply migrations 001-006 first');
-                throw new SetupError('migrations 001-006 are not applied to this project — aborting');
+                check('migrations applied (leads table reachable)', false, 'table not visible — apply the six migrations in supabase/migrations/ first');
+                throw new SetupError('the six migrations in supabase/migrations/ are not applied to this project — aborting');
             }
             check('migrations applied (leads table reachable)', r.status === 200, detail(r));
             if (r.status !== 200) throw new SetupError('cannot reach the leads table as staff (HTTP ' + r.status + ') — aborting');

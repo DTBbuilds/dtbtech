@@ -19,8 +19,10 @@ variables below are configured; until then the page shows a clear
 
 ## 2. Apply the database migrations
 
-Run the SQL files in `supabase/migrations/` in numeric order (001 → 006) in the
-Supabase **SQL Editor** (or `supabase db push` with the CLI). They create:
+Run the SQL files in `supabase/migrations/` in filename order
+(`20261021000001_staff.sql` → `20261021000006_pipeline_rpc.sql`) with the Supabase
+CLI (`supabase link` then `supabase db push`) or by pasting each into the
+Supabase **SQL Editor**. They create:
 
 - `staff_members` — staff linked to Supabase Auth users (owner/staff roles, active/disabled status)
 - `leads` — the lead pipeline records
