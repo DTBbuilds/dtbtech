@@ -47,6 +47,9 @@ async function configFromPreview(baseUrl) {
     const res = await fetch(new URL('/js/crm/config.js', baseUrl));
     if (!res.ok) throw new Error('preview config fetch failed: HTTP ' + res.status);
     const text = await res.text();
+    if (/Protected by Vercel Authentication/i.test(text)) {
+        throw new Error('preview is behind Vercel Deployment Protection (SSO) — disable it for this deployment or pass the values via SUPABASE_URL/SUPABASE_PUBLISHABLE_KEY');
+    }
     const u = /url:\s*"([^"]*)"/.exec(text);
     const k = /publishableKey:\s*"([^"]*)"/.exec(text);
     if (!u || !k || !u[1] || !k[1]) throw new Error('preview config has empty values — env vars not applied to this deployment');
