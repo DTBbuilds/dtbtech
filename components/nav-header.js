@@ -26,9 +26,13 @@ class NavHeader extends HTMLElement {
         };
 
         const getAriaCurrent = (page) => {
-            const isActive = currentPath.includes(page) ||
-                           (page === 'index' && (currentPath === '/' || currentPath.endsWith('index.html')));
-            return isActive ? ' aria-current="page"' : '';
+            // aria-current="page" only when the link's destination IS the current
+            // page — section parents of detail routes must not announce as current.
+            const tail = currentPath.replace(/\/+$/, '').replace(/\.html$/, '');
+            const matches = page === 'index'
+                ? (tail === '' || tail === '/index')
+                : (tail === '/' + page || tail.endsWith('/' + page));
+            return matches ? ' aria-current="page"' : '';
         };
 
         this.innerHTML = `
@@ -46,11 +50,11 @@ class NavHeader extends HTMLElement {
                         
                         <!-- Navigation Links -->
                         <div class="hidden md:flex items-center space-x-2">
-                            <a href="${prefix}services" class="px-3 py-2 text-slate-300 hover:text-white border-b-2 border-transparent transition-colors ${getActiveClass('services')}"${getAriaCurrent('services')}>Services</a>
-                            <a href="${prefix}projects" class="px-3 py-2 text-slate-300 hover:text-white border-b-2 border-transparent transition-colors ${getActiveClass('projects')}"${getAriaCurrent('projects')}>Projects</a>
-                            <a href="${prefix}about" class="px-3 py-2 text-slate-300 hover:text-white border-b-2 border-transparent transition-colors ${getActiveClass('about')}"${getAriaCurrent('about')}>About</a>
-                            <a href="${prefix}tech-lab" class="px-3 py-2 text-slate-300 hover:text-white border-b-2 border-transparent transition-colors ${getActiveClass('tech-lab')}"${getAriaCurrent('tech-lab')}>Tech Lab</a>
-                            <a href="${prefix}contact" class="px-3 py-2 text-slate-300 hover:text-white border-b-2 border-transparent transition-colors ${getActiveClass('contact')}"${getAriaCurrent('contact')}>Contact</a>
+                            <a href="${prefix}services" class="px-3 py-2 min-h-[44px] inline-flex items-center text-slate-300 hover:text-white border-b-2 border-transparent transition-colors ${getActiveClass('services')}"${getAriaCurrent('services')}>Services</a>
+                            <a href="${prefix}projects" class="px-3 py-2 min-h-[44px] inline-flex items-center text-slate-300 hover:text-white border-b-2 border-transparent transition-colors ${getActiveClass('projects')}"${getAriaCurrent('projects')}>Projects</a>
+                            <a href="${prefix}about" class="px-3 py-2 min-h-[44px] inline-flex items-center text-slate-300 hover:text-white border-b-2 border-transparent transition-colors ${getActiveClass('about')}"${getAriaCurrent('about')}>About</a>
+                            <a href="${prefix}tech-lab" class="px-3 py-2 min-h-[44px] inline-flex items-center text-slate-300 hover:text-white border-b-2 border-transparent transition-colors ${getActiveClass('tech-lab')}"${getAriaCurrent('tech-lab')}>Tech Lab</a>
+                            <a href="${prefix}contact" class="px-3 py-2 min-h-[44px] inline-flex items-center text-slate-300 hover:text-white border-b-2 border-transparent transition-colors ${getActiveClass('contact')}"${getAriaCurrent('contact')}>Contact</a>
                             ${isLoggedIn ? `
                                 <a href="${prefix}dashboard/welcome" class="ml-2 px-3 py-2 text-slate-300 hover:text-white border-b-2 border-transparent transition-colors">Dashboard</a>
                                 <button onclick="sessionStorage.removeItem('userName');sessionStorage.removeItem('dashboardAccess');window.location.href='${prefix}index.html'" class="ml-3 px-3 py-2 rounded-md bg-slate-800/50 text-slate-200 hover:bg-slate-700/70 transition-colors">Logout</button>
