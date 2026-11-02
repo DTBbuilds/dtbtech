@@ -43,6 +43,7 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="./dist/output.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/tokens.css">
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/animations.css">
     <link rel="stylesheet" href="./css/mobile-optimizations.css">
@@ -123,7 +124,7 @@
     <!-- Navigation -->
     <nav-header></nav-header>
 
-    <main>
+    <main id="main-content">
     <!-- Hero Section -->
     <section class="relative min-h-[calc(100vh-4rem)] flex items-center overflow-hidden pt-20 pb-12 sm:py-0">
         <!-- Background -->
@@ -181,7 +182,9 @@
                     <div class="relative w-[340px] h-[340px] xl:w-[400px] xl:h-[400px]" aria-hidden="true">
                         <!-- Rings -->
                         <div class="absolute inset-0 rounded-full border border-slate-800/50"></div>
+                        <div class="absolute inset-0 m-6 rounded-full border border-dashed border-blue-500/15 animate-orbit"></div>
                         <div class="absolute inset-[60px] xl:inset-[72px] rounded-full border border-slate-700/30"></div>
+                        <div class="absolute inset-0 m-16 xl:m-20 rounded-full bg-blue-600/[0.06] blur-2xl"></div>
                         
                         <!-- Center logo - large and prominent -->
                         <div class="absolute inset-0 flex items-center justify-center">
