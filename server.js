@@ -1,7 +1,13 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
+const enquiryHandler = require('./api/enquiry');
 const app = express();
+
+// Same handler as the Vercel Function so local QA exercises the real path.
+// Without SUPABASE_URL + SUPABASE_SERVICE_ROLE_KEY it answers 503
+// not_configured — honest, and the site keeps WhatsApp/email fallbacks.
+app.post('/api/enquiry', express.json({ limit: '32kb' }), enquiryHandler);
 
 // Gzip compression for all responses
 app.use((req, res, next) => {
