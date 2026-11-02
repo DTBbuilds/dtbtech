@@ -16,15 +16,15 @@ fixed prices only where scope is truly fixed.
 
 | Offer | Target client | Proposed scope | Draft price signal | Open questions |
 |-------|---------------|----------------|--------------------|----------------|
-| Starter website | Trades, local services, small retail | Up to ~5 pages, mobile-first, contact/enquiry form, basic on-page SEO, launch support | From ~A$700–1,500 (TBC) | Content/copy supplied by client? Revision rounds? Hosting bundled or separate? |
-| Business website + enquiries | Growing SMB | Starter + service pages, quote/brief flow, analytics, Google Business Profile handoff | From ~A$1,500–3,500 (TBC) | Include copywriting? Photography? |
+| Starter website | Trades, local services, small retail | Up to ~5 pages, mobile-first, contact/enquiry form, basic on-page SEO, launch support | From A$__ (TBC — owner sets floor) | Content/copy supplied by client? Revision rounds? Hosting bundled or separate? |
+| Business website + enquiries | Growing SMB | Starter + service pages, quote/brief flow, analytics, Google Business Profile handoff | From A$__ (TBC) | Include copywriting? Photography? |
 | Booking / workflow system | Clinics, field services, rental | Custom booking/workflow web app, staff view, notifications | Scoped per project, typical range TBC | Hosting/ops cost model; support SLA |
 | Custom business software | Established SMB | Discovery → fixed-scope proposal → build → launch → support | Fixed-price after discovery (recommended) | Discovery paid or free? |
 | Hosting & care plan | Any launched client | Hosting, SSL, backups, monitoring, small content updates | A$X/month (TBC) | Included update quota; response SLA |
 
-Notes on previously discussed figures: earlier illustrative anchors (~A$149 /
-~A$699) were flagged by the owner as **not approved** — they appear here only
-as history, not as proposed prices.
+Notes on previously discussed figures: earlier illustrative anchors were
+flagged by the owner as **not approved** — figures are deliberately left as
+`A$__ (TBC)` placeholders until the owner sets them.
 
 ## Decisions needed from owner before publishing
 

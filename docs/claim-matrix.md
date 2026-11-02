@@ -15,7 +15,7 @@ business decision.
 |---|------|---------------|----------|-------------------|
 | 1 | index.html (service card) | "Fast on every device, ranks on Google" | None — implies ranking outcome | **FIXED** → "built to be found on Google" (technical SEO capability, not a rank promise) |
 | 2 | index.html ("Found by Real Customers") | "SEO-ready websites that show up on Google" | Partial — SEO-ready is technical; "show up" is soft | **FIXED** → "clean markup, metadata and performance so search engines can index you properly" |
-| 3 | index.html ("Get Paid, Sell Online") | "Stripe, PayPal, M-Pesa, Afterpay, cards and bank transfers" | SmartDuka documents M-Pesa; Stripe/PayPal plausible for e-commerce work; **Afterpay unverified** | Kept (deliverable capability) — **VERIFY** which gateways DTB has actually integrated; remove Afterpay if unconfirmed |
+| 3 | index.html ("Get Paid, Sell Online") | "Stripe, PayPal, M-Pesa, Afterpay, cards and bank transfers" | SmartDuka documents M-Pesa; Stripe/PayPal plausible for e-commerce work; **Afterpay unverified** | **FIXED** — Afterpay removed; list now generic ("cards, M-Pesa, bank transfer and more") pending owner confirmation of delivered gateways |
 | 4 | services/e-commerce.html | "Product pages built to rank" | None | **FIXED** → "built to be indexed and found" |
 | 5 | services/web-app-dev.html | "fast loads, high Lighthouse scores" | No published scores | **FIXED** → "performance-first builds measured against Core Web Vitals" (no invented scores) |
 | 6 | index.html footer CTA strip | "Free consultation · No commitment" | Consistent with brief flow | OK — kept |
@@ -60,3 +60,9 @@ business decision.
 7. Item 15 — confirm "small team / direct access" phrasing matches reality.
 8. `docs/pricing-draft.md` — approve/revise the draft scope & price matrix before
    any figures appear on the site.
+
+
+## 4. 001D review dispositions
+
+- `docs/` and `supabase/` paths are now rewritten to `/404.html` in `vercel.json` — internal docs (this matrix, pricing draft, CRM setup/verification, intake docs) are no longer served by the website (the GitHub repo itself remains public).
+- `docs/pricing-draft.md` figures replaced with `A$__ (TBC)` placeholders.
