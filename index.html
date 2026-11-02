@@ -125,99 +125,66 @@
     <nav-header></nav-header>
 
     <main id="main-content" tabindex="-1">
-    <!-- Hero Section -->
-    <section class="relative min-h-[calc(100vh-4rem)] flex items-center overflow-hidden pt-20 pb-12 sm:py-0">
-        <!-- Background -->
-        <div class="absolute inset-0 bg-slate-950 pointer-events-none"></div>
-        <div class="absolute -top-32 -right-32 w-96 h-96 bg-blue-600/[0.04] rounded-full blur-3xl pointer-events-none"></div>
-
+    <!-- Hero Section — DTB-CONVERT-002: business outcomes and real proof -->
+    <section class="relative overflow-hidden bg-slate-950 pt-28 pb-14 sm:pt-32 sm:pb-16 lg:pt-36 lg:pb-20" aria-labelledby="homepage-hero-title">
+        <div class="absolute -top-32 -right-24 h-96 w-96 rounded-full bg-blue-600/[0.06] blur-3xl pointer-events-none" aria-hidden="true"></div>
         <div class="container mx-auto px-5 sm:px-6 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full">
-                <!-- Left: Text -->
-                <div class="max-w-xl mx-auto lg:mx-0">
-                    <!-- Badge -->
-                    <div class="inline-flex items-center py-1.5 px-3.5 mb-5 rounded-full bg-blue-600/10 border border-blue-500/20">
-                        <i class="fas fa-globe text-blue-400 text-xs mr-2"></i>
-                        <span class="text-blue-300 text-xs font-medium tracking-wide">Custom Software Studio · Australia &amp; Kenya</span>
-                    </div>
-                    
-                    <!-- Heading -->
-                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-bold tracking-tight text-white leading-[1.15] mb-5">
-                        Custom Websites, Apps &amp;<br>
-                        <span class="text-blue-400">Software Built Around Your Goals</span>
+            <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-10 lg:gap-14">
+                <div class="max-w-2xl">
+                    <p class="inline-flex items-center rounded-full border border-blue-500/20 bg-blue-600/10 px-3.5 py-1.5 mb-5 text-xs font-medium tracking-wide text-blue-300">
+                        <i class="fas fa-globe mr-2" aria-hidden="true"></i> Sydney-based studio · Serving Australia &amp; Kenya
+                    </p>
+                    <h1 id="homepage-hero-title" class="text-4xl sm:text-5xl lg:text-[3.4rem] font-bold tracking-tight text-white leading-[1.12] mb-5">
+                        Websites That Help Customers Find You. <span class="text-blue-400">Software That Helps You Work Smarter.</span>
                     </h1>
-
-                    <!-- Description -->
-                    <p class="text-sm sm:text-base text-slate-400 max-w-lg mb-6 leading-relaxed">
-                        We build professional websites that win enquiries, booking and workflow systems that run your business, and custom software shaped around how you work — from first brief to launch and beyond.
+                    <p class="text-base sm:text-lg text-slate-300 max-w-xl mb-7 leading-relaxed">
+                        DTB Technologies builds professional business websites, booking and enquiry workflows, and custom software tailored to the way your business operates.
                     </p>
 
-                    <!-- Service pills (clickable) -->
-                    <div class="flex flex-wrap gap-2 mb-7">
-                        <a href="services/websites" class="px-3 py-1 rounded-full bg-blue-600/10 border border-blue-500/20 text-blue-300 text-xs font-medium hover:bg-blue-600/20 hover:border-blue-400/40 transition-all">Websites</a>
-                        <a href="services/web-app-dev" class="px-3 py-1 rounded-full bg-slate-800/50 border border-slate-700/30 text-slate-300 text-xs hover:bg-slate-700/60 hover:border-slate-600/50 hover:text-white transition-all">Web Apps</a>
-                        <a href="services/mobile-apps" class="px-3 py-1 rounded-full bg-slate-800/50 border border-slate-700/30 text-slate-300 text-xs hover:bg-slate-700/60 hover:border-slate-600/50 hover:text-white transition-all">Mobile Apps</a>
-                        <a href="services/software-development" class="px-3 py-1 rounded-full bg-slate-800/50 border border-slate-700/30 text-slate-300 text-xs hover:bg-slate-700/60 hover:border-slate-600/50 hover:text-white transition-all">Business Software</a>
-                        <a href="services/e-commerce" class="px-3 py-1 rounded-full bg-slate-800/50 border border-slate-700/30 text-slate-300 text-xs hover:bg-slate-700/60 hover:border-slate-600/50 hover:text-white transition-all">E-Commerce</a>
-                        <a href="projects/smartduka" class="px-3 py-1 rounded-full bg-slate-800/50 border border-slate-700/30 text-slate-300 text-xs hover:bg-slate-700/60 hover:border-slate-600/50 hover:text-white transition-all">POS Systems</a>
-                        <a href="services/hosting-domains" class="px-3 py-1 rounded-full bg-slate-800/50 border border-slate-700/30 text-slate-300 text-xs hover:bg-slate-700/60 hover:border-slate-600/50 hover:text-white transition-all">Hosting &amp; Support</a>
-                    </div>
-                    
-                    <!-- CTAs -->
+                    <nav aria-label="Explore our core services" class="flex flex-wrap gap-2 mb-7">
+                        <a href="services/websites" class="inline-flex items-center px-3.5 py-2 min-h-[44px] rounded-full bg-blue-600/15 border border-blue-500/30 text-blue-200 text-sm font-medium hover:bg-blue-600/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400 transition-colors">Business Websites</a>
+                        <a href="services/web-app-dev" class="inline-flex items-center px-3.5 py-2 min-h-[44px] rounded-full bg-slate-800/70 border border-slate-700/60 text-slate-200 text-sm font-medium hover:bg-slate-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400 transition-colors">Booking &amp; Workflows</a>
+                        <a href="services/software-development" class="inline-flex items-center px-3.5 py-2 min-h-[44px] rounded-full bg-slate-800/70 border border-slate-700/60 text-slate-200 text-sm font-medium hover:bg-slate-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400 transition-colors">Custom Software</a>
+                    </nav>
+
                     <div class="flex flex-col sm:flex-row gap-3">
-                        <a href="contact#project-brief" class="px-6 py-3 min-h-[44px] rounded-xl bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold text-sm transition-colors duration-200 flex items-center justify-center">
-                            <i class="fas fa-rocket mr-2 text-xs"></i>
-                            Get a Quote
+                        <a href="contact#project-brief" class="inline-flex items-center justify-center min-h-[48px] px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400 transition-colors">
+                            <i class="fas fa-paper-plane mr-2" aria-hidden="true"></i> Get a Project Quote
                         </a>
-                        <a href="projects" class="px-6 py-3 min-h-[44px] rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 hover:border-slate-600 text-white font-semibold text-sm transition-all duration-200 flex items-center justify-center">
-                            See Our Projects
-                            <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                        <a href="projects" class="inline-flex items-center justify-center min-h-[48px] px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-semibold text-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400 transition-colors">
+                            View Our Work <i class="fas fa-arrow-right ml-2 text-xs" aria-hidden="true"></i>
                         </a>
                     </div>
-                    <p class="mt-3 text-xs text-slate-500">Share a quick brief · No obligation · Direct conversation with our team</p>
+                    <p class="mt-3 text-sm text-slate-400">Start with a conversation · Receive a clear proposal · No obligation</p>
                 </div>
-                
-                <!-- Right: Visual - hidden on mobile for cleaner layout -->
-                <div class="hidden lg:flex justify-center items-center">
-                    <div class="relative w-[340px] h-[340px] xl:w-[400px] xl:h-[400px]" aria-hidden="true">
-                        <!-- Rings -->
-                        <div class="absolute inset-0 rounded-full border border-slate-800/50"></div>
-                        <div class="absolute inset-0 m-6 rounded-full border border-dashed border-blue-500/15 animate-orbit"></div>
-                        <div class="absolute inset-[60px] xl:inset-[72px] rounded-full border border-slate-700/30"></div>
-                        <div class="absolute inset-0 m-16 xl:m-20 rounded-full bg-blue-600/[0.06] blur-2xl"></div>
-                        
-                        <!-- Center logo - large and prominent -->
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <img src="./assets/dtb-logo.png" alt="DTB Technologies" class="w-24 h-24 xl:w-28 xl:h-28 rounded-full shadow-lg shadow-slate-900/50">
-                        </div>
-                        
-                        <!-- Icons on outer ring - cardinal positions -->
-                        <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-lg bg-slate-800 border border-slate-700/50 flex items-center justify-center text-blue-400">
-                            <i class="fas fa-cloud text-sm"></i>
-                        </div>
-                        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-10 h-10 rounded-lg bg-slate-800 border border-slate-700/50 flex items-center justify-center text-blue-400">
-                            <i class="fas fa-database text-sm"></i>
-                        </div>
-                        <div class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 rounded-lg bg-slate-800 border border-slate-700/50 flex items-center justify-center text-blue-400">
-                            <i class="fas fa-code text-sm"></i>
-                        </div>
-                        <div class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-10 h-10 rounded-lg bg-slate-800 border border-slate-700/50 flex items-center justify-center text-blue-400">
-                            <i class="fas fa-shield-alt text-sm"></i>
-                        </div>
-                        <!-- Icons on outer ring - diagonal positions -->
-                        <div class="absolute top-[14.6%] right-[14.6%] w-9 h-9 rounded-lg bg-slate-800 border border-slate-700/50 flex items-center justify-center text-blue-400/70">
-                            <i class="fas fa-wifi text-xs"></i>
-                        </div>
-                        <div class="absolute bottom-[14.6%] left-[14.6%] w-9 h-9 rounded-lg bg-slate-800 border border-slate-700/50 flex items-center justify-center text-blue-400/70">
-                            <i class="fas fa-headset text-xs"></i>
-                        </div>
-                        <div class="absolute top-[14.6%] left-[14.6%] w-9 h-9 rounded-lg bg-slate-800 border border-slate-700/50 flex items-center justify-center text-blue-400/70">
-                            <i class="fas fa-cash-register text-xs"></i>
-                        </div>
-                        <div class="absolute bottom-[14.6%] right-[14.6%] w-9 h-9 rounded-lg bg-slate-800 border border-slate-700/50 flex items-center justify-center text-blue-400/70">
-                            <i class="fas fa-lock text-xs"></i>
-                        </div>
+
+                <!-- Genuine work: projects already documented in the DTB portfolio. -->
+                <div class="w-full max-w-lg mx-auto lg:max-w-none" aria-label="Examples of DTB Technologies projects">
+                    <div class="grid grid-cols-2 gap-3 sm:gap-4">
+                        <a href="projects/keus-logistics" class="group block overflow-hidden rounded-2xl border border-slate-700/70 bg-slate-900 shadow-lg shadow-black/20 hover:border-blue-500/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400 transition-colors">
+                            <div class="aspect-[4/3] overflow-hidden bg-slate-100 flex items-center justify-center p-6 sm:p-8">
+                                <img src="assets/projects/keus-mark.png" alt="KEUS Logistics logo" width="512" height="373" loading="eager" decoding="async" class="w-full h-full object-contain group-hover:scale-[1.03] transition-transform duration-300 motion-reduce:transform-none">
+                            </div>
+                            <div class="p-3 sm:p-4">
+                                <span class="text-[11px] sm:text-xs font-semibold text-blue-300">Client Website</span>
+                                <h2 class="text-sm sm:text-base font-bold text-white mt-1">KEUS Logistics</h2>
+                                <p class="text-xs sm:text-sm text-slate-400 mt-1">Product catalogue &amp; quotation enquiries</p>
+                                <span class="inline-block text-xs text-blue-300 mt-2 group-hover:underline">View case study <span aria-hidden="true">→</span></span>
+                            </div>
+                        </a>
+                        <a href="projects/jack-of-all-trades" class="group block overflow-hidden rounded-2xl border border-slate-700/70 bg-slate-900 shadow-lg shadow-black/20 hover:border-blue-500/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400 transition-colors">
+                            <div class="aspect-[4/3] overflow-hidden bg-slate-100 flex items-center justify-center p-6 sm:p-8">
+                                <img src="assets/projects/jat-wordmark.png" alt="Jack of All Trades logo" width="1732" height="505" loading="eager" decoding="async" class="w-full h-full object-contain group-hover:scale-[1.03] transition-transform duration-300 motion-reduce:transform-none">
+                            </div>
+                            <div class="p-3 sm:p-4">
+                                <span class="text-[11px] sm:text-xs font-semibold text-blue-300">DTB Product</span>
+                                <h2 class="text-sm sm:text-base font-bold text-white mt-1">Jack of All Trades</h2>
+                                <p class="text-xs sm:text-sm text-slate-400 mt-1">Community jobs &amp; services marketplace</p>
+                                <span class="inline-block text-xs text-blue-300 mt-2 group-hover:underline">View case study <span aria-hidden="true">→</span></span>
+                            </div>
+                        </a>
                     </div>
+                    <p class="text-xs text-slate-400 text-center mt-4">Explore real client work and DTB-owned products in our <a href="projects" class="text-blue-300 underline hover:text-blue-200">portfolio</a>.</p>
                 </div>
             </div>
         </div>
@@ -240,9 +207,9 @@
 
                 <!-- KEUS Logistics -->
                 <a href="projects/keus-logistics" class="group flex flex-col h-full bg-slate-800/60 rounded-2xl border border-slate-700/30 hover:border-blue-500/40 transition-all duration-300 overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500">
-                    <div class="aspect-video bg-slate-900 relative overflow-hidden">
-                        <img src="assets/projects/keus-logistics-screen.jpg" alt="KEUS Logistics homepage — Piping &amp; Water Infrastructure Solutions for Kenya" width="1440" height="900" loading="lazy" decoding="async" class="w-full h-full object-cover">
-                        <span class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-green-500/15 border border-green-500/30 text-green-300 text-[11px] font-semibold">Live Website</span>
+                    <div class="aspect-video bg-slate-100 relative overflow-hidden flex items-center justify-center p-8 sm:p-10">
+                        <img src="assets/projects/keus-mark.png" alt="Official KEUS Logistics geometric K logo" width="512" height="373" loading="lazy" decoding="async" class="w-full h-full object-contain">
+                        <span class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-green-900/90 border border-green-700/30 text-green-100 text-[11px] font-semibold">Live Website</span>
                     </div>
                     <div class="p-6 flex flex-col flex-1">
                         <p class="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-1.5">Piping &amp; Water Infrastructure Supplier Website</p>
