@@ -26,13 +26,15 @@ insert into intake_log values
  and exists(select 1 from information_schema.columns where table_name='enquiry_intake' and column_name='preferred_contact')
  and exists(select 1 from information_schema.columns where table_name='enquiry_intake' and column_name='email_consent')
  and exists(select 1 from information_schema.columns where table_name='enquiry_intake' and column_name='utm'), ''),
-('idempotency unique index exists',
- exists(select 1 from pg_indexes where tablename='enquiry_intake' and indexname='enquiry_intake_idempotency_uq'), ''),
-('reference unique index exists',
- exists(select 1 from pg_indexes where tablename='enquiry_intake' and indexname='enquiry_intake_reference_uq'), ''),
-('staff triage policies exist',
- exists(select 1 from pg_policies where tablename='enquiry_intake' and policyname='enquiry_intake_staff_read')
- and exists(select 1 from pg_policies where tablename='enquiry_intake' and policyname='enquiry_intake_staff_triage'), ''),
+('idempotency index is UNIQUE on idempotency_key',
+ exists(select 1 from pg_index i join pg_class c on c.oid=i.indexrelid
+        where c.relname='enquiry_intake_idempotency_uq' and i.indisunique), ''),
+('reference index is UNIQUE on lead_reference',
+ exists(select 1 from pg_index i join pg_class c on c.oid=i.indexrelid
+        where c.relname='enquiry_intake_reference_uq' and i.indisunique), ''),
+('staff policies enforce is_active_staff (not permissive)',
+ exists(select 1 from pg_policies where tablename='enquiry_intake' and policyname='enquiry_intake_staff_read' and qual like '%is_active_staff%')
+ and exists(select 1 from pg_policies where tablename='enquiry_intake' and policyname='enquiry_intake_staff_triage' and qual like '%is_active_staff%' and with_check like '%is_active_staff%'), ''),
 ('RLS still forced',
  (select relforcerowsecurity from pg_class where relname='enquiry_intake'), '');
 
@@ -42,10 +44,11 @@ insert into public.enquiry_intake
     (contact_name, email, service_required, project_description, consent_given)
 values ('T', 't@e.com', 'Business website', 'synthetic check row 1234', true)
 returning lead_reference \gset
-insert into intake_log values
-    ('lead_reference format DTB-YYYYMMDD-NNNN',
-     :'lead_reference' ~ '^DTB-[0-9]{8}-[0-9]{4}$', :'lead_reference');
 rollback;
+-- log row is written AFTER rollback so it is not discarded
+insert into intake_log values
+    ('lead_reference format DTB-YYYYMMDD-<4+ digits>',
+     :'lead_reference' ~ '^DTB-[0-9]{8}-[0-9]{4,}$', :'lead_reference');
 
 select name, pass, detail from intake_log order by name;
 select count(*) filter (where not pass) as failed from intake_log;

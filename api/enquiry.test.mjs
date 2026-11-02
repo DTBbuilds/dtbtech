@@ -78,16 +78,18 @@ const fakePg = (status, rows) => () => Promise.resolve({ ok: status < 300, statu
 }
 // 10. idempotent conflict -> returns original reference
 {
-    let calls = 0;
+    let calls = 0, lookupUrl = '';
+    const key = 'unique-key-abc-123';
     globalThis.fetch = (url) => {
         calls++;
-        return calls === 1
-            ? Promise.resolve({ ok: false, status: 409, json: () => Promise.resolve([]) })
-            : Promise.resolve({ ok: true, status: 200, json: () => Promise.resolve([{ lead_reference: 'DTB-ORIG-1' }]) });
+        if (calls === 1) return Promise.resolve({ ok: false, status: 409, json: () => Promise.resolve([]) });
+        lookupUrl = String(url);
+        return Promise.resolve({ ok: true, status: 200, json: () => Promise.resolve([{ lead_reference: 'DTB-ORIG-1' }]) });
     };
     const res = mockRes();
-    await handler(req(good()), res);
+    await handler(req(good({ idempotencyKey: key })), res);
     check('409 conflict -> 200 same reference', res.statusCode === 200 && res.body.reference === 'DTB-ORIG-1' && res.body.duplicate === true);
+    check('conflict lookup uses the submitted idempotency key', lookupUrl.includes('idempotency_key=eq.' + key));
 }
 // 11. store failure -> honest 502, no fake success
 {
@@ -101,9 +103,32 @@ const fakePg = (status, rows) => () => Promise.resolve({ ok: status < 300, statu
     globalThis.fetch = () => Promise.reject(new Error('down'));
     const res = mockRes();
     await handler(req(good()), res);
-    check('unreachable -> 502 store_unreachable', res.statusCode === 502);
+    check('unreachable -> 502 store_unreachable', res.statusCode === 502 && res.body.error === 'store_unreachable');
 }
-// 13. rate limiting fires after cap
+// 13a. null JSON body -> 400, no hang
+{
+    globalThis.fetch = fakePg(201, [{ lead_reference: 'X' }]);
+    const res = mockRes();
+    await handler(req(null), res);
+    check('null body -> 400 invalid_json', res.statusCode === 400 && res.body.error === 'invalid_json');
+}
+// 13b. oversized pre-parsed body -> 413
+{
+    const res = mockRes();
+    await handler(req(good({ description: 'x'.repeat(40000) })), res);
+    check('oversized body -> 413', res.statusCode === 413 && res.body.error === 'payload_too_large');
+}
+// 13c. whatsapp preferred without phone -> 400; with phone passes validation
+{
+    globalThis.fetch = fakePg(201, [{ lead_reference: 'W' }]);
+    let res = mockRes();
+    await handler(req(good({ preferredContact: 'whatsapp', email: '', phone: '' })), res);
+    check('whatsapp w/o phone -> 400', res.statusCode === 400 && res.body.fields && res.body.fields.phone === 'required_for_preferred');
+    res = mockRes();
+    await handler(req(good({ preferredContact: 'whatsapp', email: '', phone: '+61412345678' })), res);
+    check('whatsapp w/ phone -> 201', res.statusCode === 201);
+}
+// 14. rate limiting fires after cap
 {
     globalThis.fetch = fakePg(201, [{ lead_reference: 'R' }]);
     let last;

@@ -63,15 +63,28 @@ function rateLimited(ip) {
 }
 
 function clientIp(req) {
+    // Prefer the platform-provided client IP; a caller can spoof or vary
+    // X-Forwarded-For, so the first entry is untrusted. The LAST XFF entry is
+    // the one appended by the edge proxy.
+    const real = req.headers['x-real-ip'];
+    if (typeof real === 'string' && real.length) return real.trim();
     const fwd = req.headers['x-forwarded-for'];
-    if (typeof fwd === 'string' && fwd.length) return fwd.split(',')[0].trim();
+    if (typeof fwd === 'string' && fwd.length) {
+        const parts = fwd.split(',');
+        return parts[parts.length - 1].trim();
+    }
     return (req.socket && req.socket.remoteAddress) || 'unknown';
 }
 
 function readBody(req) {
-    if (req.body && typeof req.body === 'object') return Promise.resolve(req.body);
-    if (typeof req.body === 'string') {
-        try { return Promise.resolve(JSON.parse(req.body)); } catch (_) { return Promise.resolve(null); }
+    // Any pre-parsed body (Express/Vercel), including JSON `null`, returns
+    // immediately — the stream was already consumed, so listening for `end`
+    // would hang forever.
+    if (req.body !== undefined) {
+        if (typeof req.body === 'string') {
+            try { return Promise.resolve(JSON.parse(req.body)); } catch (_) { return Promise.resolve(null); }
+        }
+        return Promise.resolve(req.body);
     }
     return new Promise((resolve) => {
         let raw = '';
@@ -107,7 +120,9 @@ function validate(b) {
     const preferred = str(b.preferredContact, 20).toLowerCase();
     const preferredContact = ALLOWED_PREFERRED.has(preferred) ? preferred : 'email';
     if (preferredContact === 'email' && !email) fields.email = 'required_for_preferred';
-    if (preferredContact === 'phone' && !phone) fields.phone = 'required_for_preferred';
+    if ((preferredContact === 'phone' || preferredContact === 'whatsapp') && !phone) {
+        fields.phone = 'required_for_preferred';
+    }
     if (b.consentGiven !== true) fields.consent = 'required';
     if (str(b.website, 200) !== '') fields.bot = 'honeypot'; // honeypot must stay empty
     const elapsed = Number(b.elapsedMs);
@@ -218,8 +233,17 @@ async function handler(req, res) {
         return res.status(429).json({ ok: false, error: 'rate_limited' });
     }
 
+    const declared = Number(req.headers['content-length']);
+    if (Number.isFinite(declared) && declared > MAX_BODY_BYTES) {
+        return res.status(413).json({ ok: false, error: 'payload_too_large' });
+    }
     const body = await readBody(req);
-    if (!body) return res.status(400).json({ ok: false, error: 'invalid_json' });
+    if (body === null || typeof body !== 'object') {
+        return res.status(400).json({ ok: false, error: 'invalid_json' });
+    }
+    if (JSON.stringify(body).length > MAX_BODY_BYTES) {
+        return res.status(413).json({ ok: false, error: 'payload_too_large' });
+    }
 
     const v = validate(body);
     if (v.fields.bot) return res.status(400).json({ ok: false, error: 'rejected' }); // silent-ish drop
@@ -248,6 +272,11 @@ async function handler(req, res) {
     }
 
     if (!insert.ok) {
+        const errBody = await insert.json().catch(() => null);
+        if (errBody && errBody.code === 'PGRST204') {
+            // Column unknown to PostgREST — migration 007 not yet applied.
+            return res.status(503).json({ ok: false, error: 'store_not_ready' });
+        }
         return res.status(502).json({ ok: false, error: 'store_failed' });
     }
 

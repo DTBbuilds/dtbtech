@@ -34,3 +34,7 @@ done
 echo "== Running RLS/authorisation suite =="
 $PSQL -p "$PORT" -U postgres -d "$DB" -v ON_ERROR_STOP=1 \
     -f "$HERE/rls-test.sql" | grep -E "TESTS (PASSED|FAILED)|name.*pass"
+
+echo "== Running enquiry-intake structural checks =="
+$PSQL -p "$PORT" -U postgres -d "$DB" -v ON_ERROR_STOP=1 \
+    -f "$HERE/enquiry-intake-test.sql" | grep -E "pass|failed"

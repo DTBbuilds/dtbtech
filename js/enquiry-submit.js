@@ -70,7 +70,8 @@
             var phone = val('project-phone');
             var pref = val('project-preferred') || 'email';
             if (pref === 'email' && !email) errs.push('your email');
-            if (pref !== 'email' && !email && !phone) errs.push('an email or phone number');
+            if ((pref === 'phone' || pref === 'whatsapp') && !phone) errs.push('a phone / WhatsApp number');
+            if (!email && !phone) errs.push('an email or phone number');
             if (!byId('project-consent').checked) errs.push('consent to store your details');
             return errs;
         }
