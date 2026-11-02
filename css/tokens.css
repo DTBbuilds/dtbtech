@@ -1,0 +1,51 @@
+/* ==========================================================================
+   DTB Technologies — Design Tokens
+   Single source of truth for the marketing site's visual system.
+   Values mirror the Tailwind palette already used across pages
+   (slate surfaces + blue accent); reference these variables instead of
+   hard-coding colours in any hand-written CSS.
+   See docs/design-system.md for usage guidance.
+   ========================================================================== */
+
+:root {
+    /* Surfaces */
+    --dtb-bg: rgb(2, 6, 23);            /* slate-950 — page background */
+    --dtb-surface: rgb(15, 23, 42);     /* slate-900 — raised sections */
+    --dtb-surface-2: rgb(30, 41, 59);   /* slate-800 — cards, chips */
+    --dtb-border: rgba(51, 65, 85, 0.5);/* slate-700/50 — card borders */
+    --dtb-border-soft: rgba(51, 65, 85, 0.3);
+
+    /* Brand accent (blue ramp) */
+    --dtb-accent-strong: rgb(37, 99, 235);  /* blue-600 — primary CTA */
+    --dtb-accent-strong-hover: rgb(29, 78, 216); /* blue-700 */
+    --dtb-accent: rgb(59, 130, 246);        /* blue-500 */
+    --dtb-accent-soft: rgb(96, 165, 250);   /* blue-400 — links/icons on dark */
+    --dtb-accent-text: rgb(147, 197, 253);  /* blue-300 — badge text */
+    --dtb-accent-wash: rgba(37, 99, 235, 0.1);
+    --dtb-accent-wash-border: rgba(59, 130, 246, 0.2);
+
+    /* Text */
+    --dtb-text: rgb(209, 213, 219);      /* gray-300 — body on dark (legacy common.css value) */
+    --dtb-text-strong: rgb(255, 255, 255);
+    --dtb-text-muted: rgb(148, 163, 184);/* slate-400 */
+    --dtb-text-faint: rgb(100, 116, 139);/* slate-500 */
+
+    /* Status */
+    --dtb-success: rgb(74, 222, 128);    /* green-400 */
+    --dtb-success-wash: rgba(34, 197, 94, 0.15);
+
+    /* Focus */
+    --dtb-focus-ring: rgb(59, 130, 246);
+
+    /* Shape */
+    --dtb-radius-sm: 0.5rem;
+    --dtb-radius-md: 0.75rem;
+    --dtb-radius-lg: 1rem;
+    --dtb-radius-xl: 1.5rem;
+    --dtb-radius-full: 9999px;
+
+    /* Layout */
+    --dtb-header-height: 4rem;           /* fixed nav height (h-16) */
+    --dtb-container-max: 80rem;          /* max-w-7xl */
+    --dtb-tap-target: 44px;              /* minimum interactive size */
+}
