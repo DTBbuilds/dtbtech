@@ -102,6 +102,7 @@
     <script src="./components/nav-header.js" defer></script>
     <script src="./components/site-footer.js" defer></script>
     <script src="./js/project-brief.js" defer></script>
+    <script src="./js/enquiry-submit.js" defer></script>
 
     <style>
         .form-input:focus { box-shadow: 0 0 0 3px rgba(59,130,246,0.15); }
@@ -259,7 +260,7 @@
                             <span class="text-xs text-slate-400">No obligation · Australia, Kenya &amp; remote projects</span>
                         </div>
                         <h2 id="project-brief-heading" class="text-2xl sm:text-3xl font-bold text-white mb-3">Tell Us About Your Project</h2>
-                        <p class="text-slate-300 text-sm sm:text-base max-w-3xl leading-relaxed mb-6">Not sure what to write? Share a few details and we'll prepare a message you can send on WhatsApp or by email. We'll use it to discuss the right scope, timeline and quote with you.</p>
+                        <p class="text-slate-300 text-sm sm:text-base max-w-3xl leading-relaxed mb-6">Share a few details and send your enquiry straight to our team — you'll get a reference number. Prefer to chat first? WhatsApp, email and Copy Brief still work and store nothing.</p>
                         <form id="dtb-project-brief-form" class="space-y-5">
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                                 <div>
@@ -306,7 +307,56 @@
                                 <label for="project-budget" class="block text-sm font-medium text-slate-200 mb-2">Approximate budget <span class="text-slate-500 font-normal">(optional)</span></label>
                                 <input type="text" id="project-budget" name="budget" maxlength="60" placeholder="e.g. AUD 2,000, KES 150,000, or not sure" class="form-input w-full rounded-xl border border-slate-600 bg-slate-800 text-white placeholder-slate-500 px-4 py-3 min-h-[48px] focus:outline-none focus:border-blue-400">
                             </div>
+
+                            <fieldset class="border-t border-slate-700/40 pt-5">
+                                <legend class="text-sm font-semibold text-white mb-1">Your details <span class="text-slate-500 font-normal">— only needed to send your enquiry to us</span></legend>
+                                <p class="text-xs text-slate-500 mb-4">WhatsApp, email and Copy Brief prepare a message in your own app and store nothing here.</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                    <div>
+                                        <label for="project-name" class="block text-sm font-medium text-slate-200 mb-2">Your name</label>
+                                        <input type="text" id="project-name" name="name" maxlength="120" autocomplete="name" placeholder="Full name" class="form-input w-full rounded-xl border border-slate-600 bg-slate-800 text-white placeholder-slate-500 px-4 py-3 min-h-[48px] focus:outline-none focus:border-blue-400">
+                                    </div>
+                                    <div>
+                                        <label for="project-preferred" class="block text-sm font-medium text-slate-200 mb-2">Preferred reply channel</label>
+                                        <select id="project-preferred" name="preferredContact" class="form-input w-full rounded-xl border border-slate-600 bg-slate-800 text-white px-4 py-3 min-h-[48px] focus:outline-none focus:border-blue-400">
+                                            <option value="email">Email</option>
+                                            <option value="whatsapp">WhatsApp</option>
+                                            <option value="phone">Phone call</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label for="project-email" class="block text-sm font-medium text-slate-200 mb-2">Email</label>
+                                        <input type="email" id="project-email" name="email" maxlength="254" autocomplete="email" placeholder="you@example.com" class="form-input w-full rounded-xl border border-slate-600 bg-slate-800 text-white placeholder-slate-500 px-4 py-3 min-h-[48px] focus:outline-none focus:border-blue-400">
+                                    </div>
+                                    <div>
+                                        <label for="project-phone" class="block text-sm font-medium text-slate-200 mb-2">Phone / WhatsApp <span class="text-slate-500 font-normal">(optional if email given)</span></label>
+                                        <input type="tel" id="project-phone" name="phone" maxlength="40" autocomplete="tel" placeholder="+61 … or +254 …" class="form-input w-full rounded-xl border border-slate-600 bg-slate-800 text-white placeholder-slate-500 px-4 py-3 min-h-[48px] focus:outline-none focus:border-blue-400">
+                                    </div>
+                                </div>
+                                <!-- Honeypot: invisible to people, must stay empty -->
+                                <div class="absolute -left-[9999px] top-0 h-0 w-0 overflow-hidden" aria-hidden="true">
+                                    <label for="project-website">Website (leave empty)</label>
+                                    <input type="text" id="project-website" name="website" tabindex="-1" autocomplete="off">
+                                </div>
+                                <div class="mt-5 space-y-3">
+                                    <label class="flex items-start gap-3 cursor-pointer">
+                                        <input type="checkbox" id="project-consent" class="mt-1 h-4 w-4 rounded border-slate-500 bg-slate-800 text-blue-600 focus:ring-blue-500 focus:ring-offset-slate-900">
+                                        <span class="text-sm text-slate-300 leading-relaxed">I agree to DTB Technologies storing these details so the team can respond to my enquiry. <span class="text-blue-300" aria-hidden="true">*</span></span>
+                                    </label>
+                                    <label class="flex items-start gap-3 cursor-pointer">
+                                        <input type="checkbox" id="project-email-consent" class="mt-1 h-4 w-4 rounded border-slate-500 bg-slate-800 text-blue-600 focus:ring-blue-500 focus:ring-offset-slate-900">
+                                        <span class="text-sm text-slate-400 leading-relaxed">Email me a copy of this enquiry <span class="text-slate-500">(optional)</span></span>
+                                    </label>
+                                </div>
+                            </fieldset>
+
+                            <!-- Result / error panel for secure send -->
+                            <div id="dtb-enquiry-result" hidden class="rounded-xl border p-4 sm:p-5" role="status" aria-live="polite"></div>
+
                             <div class="flex flex-col sm:flex-row gap-3">
+                                <button type="button" id="dtb-brief-send" class="inline-flex items-center justify-center min-h-[48px] px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400 disabled:opacity-60 disabled:cursor-not-allowed">
+                                    <i class="fas fa-paper-plane mr-2" aria-hidden="true"></i> <span id="dtb-brief-send-label">Send Enquiry Securely</span>
+                                </button>
                                 <button type="submit" class="inline-flex items-center justify-center min-h-[48px] px-6 py-3 rounded-xl bg-green-600 hover:bg-green-700 text-white font-semibold text-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-400">
                                     <i class="fab fa-whatsapp mr-2" aria-hidden="true"></i> Continue on WhatsApp
                                 </button>
@@ -317,7 +367,7 @@
                                     <i class="fas fa-copy mr-2" aria-hidden="true"></i> Copy Brief
                                 </button>
                             </div>
-                            <p class="text-xs text-slate-400 leading-relaxed">This page does not automatically submit or save your information. Review and send your message in WhatsApp or your email app. Their respective privacy terms apply once opened.</p>
+                            <p class="text-xs text-slate-400 leading-relaxed"><strong class="text-slate-300">Send Enquiry Securely</strong> stores your brief on our server with your consent and shows a reference number — you'll see an honest error if it can't be saved. <strong class="text-slate-300">WhatsApp, email and Copy Brief</strong> prepare a message in your own app and store nothing here; their privacy terms apply once opened.</p>
                             <p id="dtb-brief-status" role="status" aria-live="polite" class="text-sm text-blue-300"></p>
                         </form>
                     </section>
