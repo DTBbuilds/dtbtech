@@ -5,7 +5,6 @@ class NavHeader extends HTMLElement {
 
     connectedCallback() {
         const currentPath = window.location.pathname;
-        const isLoggedIn = sessionStorage.getItem('dashboardAccess') !== null;
         
         // Better path depth calculation
         const pathSegments = currentPath.split('/').filter(segment => segment !== '');
@@ -55,12 +54,7 @@ class NavHeader extends HTMLElement {
                             <a href="${prefix}about" class="px-3 py-2 min-h-[44px] inline-flex items-center text-slate-300 hover:text-white border-b-2 border-transparent transition-colors ${getActiveClass('about')}"${getAriaCurrent('about')}>About</a>
                             <a href="${prefix}tech-lab" class="px-3 py-2 min-h-[44px] inline-flex items-center text-slate-300 hover:text-white border-b-2 border-transparent transition-colors ${getActiveClass('tech-lab')}"${getAriaCurrent('tech-lab')}>Tech Lab</a>
                             <a href="${prefix}contact" class="px-3 py-2 min-h-[44px] inline-flex items-center text-slate-300 hover:text-white border-b-2 border-transparent transition-colors ${getActiveClass('contact')}"${getAriaCurrent('contact')}>Contact</a>
-                            ${isLoggedIn ? `
-                                <a href="${prefix}dashboard/welcome" class="ml-2 px-3 py-2 text-slate-300 hover:text-white border-b-2 border-transparent transition-colors">Dashboard</a>
-                                <button onclick="sessionStorage.removeItem('userName');sessionStorage.removeItem('dashboardAccess');window.location.href='${prefix}index.html'" class="ml-3 px-3 py-2 rounded-md bg-slate-800/50 text-slate-200 hover:bg-slate-700/70 transition-colors">Logout</button>
-                            ` : `
-                                <a href="${prefix}contact" class="ml-3 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium transition-colors">Discuss Your Project</a>
-                            `}
+                            <a href="${prefix}contact" class="ml-3 px-4 py-2 min-h-[44px] inline-flex items-center rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium transition-colors">Discuss Your Project</a>
                         </div>
 
                         <!-- Mobile Menu Button -->
@@ -91,20 +85,11 @@ class NavHeader extends HTMLElement {
                         <a href="${prefix}contact" class="block px-4 py-3 min-h-[44px] text-gray-300 hover:text-blue-400 hover:bg-slate-700/50 rounded-lg transition-colors flex items-center font-medium ${getMobileActiveClass('contact')}"${getAriaCurrent('contact')}>
                             <i class="fas fa-envelope mr-3 w-4"></i>Contact
                         </a>
-                        ${isLoggedIn ? `
-                            <a href="${prefix}dashboard/welcome" class="block px-4 py-3 min-h-[44px] text-gray-300 hover:text-blue-400 hover:bg-slate-700/50 rounded-lg transition-colors flex items-center">
-                                <i class="fas fa-chart-line mr-3 w-4"></i>Dashboard
+                        <div class="mt-3 pt-3 border-t border-slate-800/60">
+                            <a href="${prefix}contact" class="block w-full px-4 py-3 min-h-[44px] bg-blue-600 hover:bg-blue-700 text-white text-center rounded-lg font-medium transition-colors">
+                                <i class="fas fa-rocket mr-2 text-xs"></i>Discuss Your Project
                             </a>
-                            <button onclick="sessionStorage.removeItem('userName');sessionStorage.removeItem('dashboardAccess');window.location.href='${prefix}index.html'" class="w-full mt-2 px-4 py-3 min-h-[44px] text-left text-gray-300 hover:text-blue-400 hover:bg-slate-700/50 rounded-lg transition-colors flex items-center">
-                                <i class="fas fa-sign-out-alt mr-3 w-4"></i>Logout
-                            </button>
-                        ` : `
-                            <div class="mt-3 pt-3 border-t border-slate-800/60">
-                                <a href="${prefix}contact" class="block w-full px-4 py-3 min-h-[44px] bg-blue-600 hover:bg-blue-700 text-white text-center rounded-lg font-medium transition-colors">
-                                    <i class="fas fa-rocket mr-2 text-xs"></i>Discuss Your Project
-                                </a>
-                            </div>
-                        `}
+                        </div>
                     </div>
                 </div>
             </nav>
