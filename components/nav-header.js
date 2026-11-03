@@ -4,6 +4,15 @@ class NavHeader extends HTMLElement {
     }
 
     connectedCallback() {
+        // Retire browser-only demo login markers; not related to the staff CRM.
+        try {
+            sessionStorage.removeItem('dashboardAccess');
+            sessionStorage.removeItem('userName');
+            localStorage.removeItem('dtb_auth_user');
+        } catch (error) {
+            // Storage may be disabled; public navigation must still render.
+        }
+
         const currentPath = window.location.pathname;
         
         // Better path depth calculation
