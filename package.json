@@ -6,10 +6,11 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "build": "npm run build:css",
+    "build": "npm run build:css && node scripts/generate-crm-config.mjs",
     "build:css": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify",
     "watch:css": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
-    "vercel-build": "npm run build:css"
+    "test:db": "bash supabase/test/run-local-tests.sh",
+    "vercel-build": "npm run build:css && node scripts/generate-crm-config.mjs"
   },
   "repository": {
     "type": "git",
