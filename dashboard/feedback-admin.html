@@ -28,6 +28,14 @@
     <meta name="robots" content="noindex, nofollow">
 </head>
 <body class="p-4">
+    <script>
+        // Retire browser-only demo login markers, not staff CRM credentials.
+        try {
+            sessionStorage.removeItem('dashboardAccess');
+            sessionStorage.removeItem('userName');
+            localStorage.removeItem('dtb_auth_user');
+        } catch (error) { /* Storage unavailable; public pages still work. */ }
+    </script>
     <!-- Navigation -->
     <header class="max-w-7xl mx-auto mb-8">
         <nav class="flex justify-between items-center">
