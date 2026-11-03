@@ -21,9 +21,10 @@
 
 **None at P0.** Candidates at P2 (small, safe):
 
-- **P2 — vague service promise:** `services.html:363` "Quick response times and efficient problem resolution." — softens to avoid implying an SLA. Suggested: "Clear response expectations agreed before work starts." (Smallest safe fix; optional.)
-- **P2 — twitter/x markup references:** `index.html` + `contact.html` each reference `twitter` 5× (likely schema `sameAs`/share). Verify whether an X profile actually exists; remove stale `sameAs` entries if not. Owner decision.
-- **P2 — 404 canonical:** none present — acceptable since the page should stay `noindex` (verify robots meta is present; currently noindex is not explicitly set — suggest adding `<meta name="robots" content="noindex">`).
+- **P2 — vague service promise:** `services.html:362-363` "Fast Response" heading + "Quick response times and efficient problem resolution." — implies an unverified SLA. (Fixed in the companion copy-fix PR.)
+- **P2 — unverified same-business-day promise (meta):** `contact.html:10` meta description states "we usually reply the same business day" — an unverified SLA in search-result copy. Soften to honest wording. (Fixed in the companion copy-fix PR.)
+- ~~twitter/x markup references~~ — **withdrawn:** the `twitter:*` tags are social-sharing card metadata, not a claimed X account; preserve.
+- ~~404 missing noindex~~ — **withdrawn:** `404.html` already carries `<meta name="robots" content="noindex, nofollow">`.
 
 ## 3. Owner decisions required (claim-matrix carryovers)
 
@@ -33,7 +34,7 @@
 | Greystanes locality | `about.html` JSON-LD `streetAddress: Greystanes` + `contact.html` address line | Confirm address is correct and intended public |
 | Payment gateways | Afterpay removed; generic list remains | Confirm which gateways DTB has actually integrated |
 | JAT status | "DTB Product" label in hero/portfolio | Confirm beta/live wording for case-study page |
-| Response-time phrasing | homepage + contact wording softened in #7 | Confirm any stated reply SLA |
+| Response-time phrasing | `contact.html` meta desc + on-page card both say "usually same business day"; meta desc softened in fix PR — **on-page card still live** | Confirm the SLA or approve softening the card too |
 | X/Twitter profile | referenced in markup | Confirm handle exists or remove |
 
 ## 4. PR #14 overlap (flagged, untouched)
