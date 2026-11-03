@@ -22,7 +22,7 @@
 **None at P0.** Candidates at P2 (small, safe):
 
 - **P2 — vague service promise:** `services.html:362-363` "Fast Response" heading + "Quick response times and efficient problem resolution." — implies an unverified SLA. (Fixed in the companion copy-fix PR.)
-- **P2 — unverified same-business-day promise (meta):** `contact.html:10` meta description states "we usually reply the same business day" — an unverified SLA in search-result copy. Soften to honest wording. (Fixed in the companion copy-fix PR.)
+- **P2 — unverified response claims on contact:** `contact.html` meta description states "we usually reply the same business day", and visible email/WhatsApp cards claim "Usually same business day" / "Fast". These are unapproved response expectations. Scoped copy changes are prepared in companion PR #19 (not yet deployed).
 - ~~twitter/x markup references~~ — **withdrawn:** the `twitter:*` tags are social-sharing card metadata, not a claimed X account; preserve.
 - ~~404 missing noindex~~ — **withdrawn:** `404.html` already carries `<meta name="robots" content="noindex, nofollow">`.
 
@@ -34,12 +34,11 @@
 | Greystanes locality | `about.html` JSON-LD `streetAddress: Greystanes` + `contact.html` address line | Confirm address is correct and intended public |
 | Payment gateways | Afterpay removed; generic list remains | Confirm which gateways DTB has actually integrated |
 | JAT status | "DTB Product" label in hero/portfolio | Confirm beta/live wording for case-study page |
-| Response-time phrasing | `contact.html` meta desc + on-page card both say "usually same business day"; meta desc softened in fix PR — **on-page card still live** | Confirm the SLA or approve softening the card too |
-| X/Twitter profile | referenced in markup | Confirm handle exists or remove |
+| Response-time phrasing | On the audited production baseline, `contact.html` meta and visible channel labels imply response-time commitments; `services.html` includes "Fast Response" | PR #19 proposes non-SLA wording in both the meta and visible cards. Confirm any actual SLA before publishing one in future. |
 
 ## 4. PR #14 overlap (flagged, untouched)
 
-Legacy public-dashboard auth wording is handled by PR #14 (draft, QA passed). `dashboard.html`, `dashboard/welcome.html`, `dashboard/feedback-admin.html`, `components/nav-header.js` excluded from this audit's fix scope per coordination rules.
+Legacy public-dashboard auth wording is handled by PR #14 (ready for review, QA passed; not yet merged). `dashboard.html`, `dashboard/welcome.html`, `dashboard/feedback-admin.html`, `components/nav-header.js` excluded from this audit's fix scope per coordination rules.
 
 ## 5. Reproduction commands
 
@@ -51,4 +50,4 @@ curl -s http://localhost:3300/<sitemap-url>  # all 36 → 200
 
 ## 6. Recommendation
 
-Marketing surface is in strong shape post-#6/#7/#10/#12. No P0; two small P2 copy/SEO refinements available as a separate fix PR if owner confirms. **Audit complete — report only; no merges, no deploys.**
+Marketing surface is in strong shape post-#6/#7/#10/#12. No P0 findings in the audited scope. Companion PR #19 proposes the minimal P2 response-copy corrections, including visible contact-card labels; it remains unmerged pending release review. **Audit complete — report only; no merges, no deploys.**
