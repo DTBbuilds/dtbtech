@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - DTB Technologies</title>
+    <title>Public Project Explorer | DTB Technologies</title>
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -11,7 +11,9 @@
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="stylesheet" href="./dist/output.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/tokens.css">
     <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/animations.css">
     <link rel="stylesheet" href="./css/mobile-optimizations.css">
     <style>
         .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
@@ -22,6 +24,14 @@
     <meta name="robots" content="noindex, nofollow">
 </head>
 <body class="bg-slate-950 min-h-screen flex flex-col">
+    <script>
+        // Retire browser-only demo login markers, not staff CRM credentials.
+        try {
+            sessionStorage.removeItem('dashboardAccess');
+            sessionStorage.removeItem('userName');
+            localStorage.removeItem('dtb_auth_user');
+        } catch (error) { /* Storage unavailable; public pages still work. */ }
+    </script>
 
     <!-- Minimal top bar -->
     <header class="w-full py-4 px-6">
@@ -51,9 +61,9 @@
 
                 <!-- Title -->
                 <div class="text-center mb-8">
-                    <h1 class="text-2xl sm:text-3xl font-bold text-white mb-3">Welcome to Dashboard</h1>
+                    <h1 class="text-2xl sm:text-3xl font-bold text-white mb-3">Explore DTB Projects</h1>
                     <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
-                        Explore your personalized DTB Technologies workspace with project showcases, tools, and resources.
+                        Browse a public showcase of projects, tools and technical work by DTB Technologies. No sign-in is needed.
                     </p>
                 </div>
 
@@ -65,24 +75,24 @@
                     </div>
                     <div class="feature-card flex items-center space-x-3 sm:flex-col sm:space-x-0 sm:text-center sm:space-y-2 p-3 rounded-xl bg-slate-800/40 border border-slate-700/30">
                         <i class="fas fa-lock-open text-blue-400 text-sm"></i>
-                        <span class="text-slate-300 text-xs font-medium">No Login Required</span>
+                        <span class="text-slate-300 text-xs font-medium">No Account Needed</span>
                     </div>
                     <div class="feature-card flex items-center space-x-3 sm:flex-col sm:space-x-0 sm:text-center sm:space-y-2 p-3 rounded-xl bg-slate-800/40 border border-slate-700/30">
                         <i class="fas fa-shield-alt text-blue-400 text-sm"></i>
-                        <span class="text-slate-300 text-xs font-medium">Secure Session</span>
+                        <span class="text-slate-300 text-xs font-medium">Public Showcase</span>
                     </div>
                 </div>
 
                 <!-- Enter button -->
-                <button id="enter-btn" onclick="enterDashboard()" class="w-full py-3.5 px-6 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white rounded-xl font-semibold text-base transition-colors duration-200 flex items-center justify-center space-x-2 min-h-[48px]">
-                    <span>Enter Dashboard</span>
+                <a href="./dashboard/welcome" class="w-full py-3.5 px-6 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white rounded-xl font-semibold text-base transition-colors duration-200 flex items-center justify-center space-x-2 min-h-[48px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400">
+                    <span>Explore Public Projects</span>
                     <i class="fas fa-arrow-right text-sm"></i>
-                </button>
+                </a>
             </div>
 
             <!-- Footer note -->
             <p class="text-center text-slate-600 text-xs mt-6">
-                Free access for all visitors. Your session data stays in your browser.
+                This is a public demonstration, not a secure client or staff account. Please do not enter passwords.
             </p>
         </div>
     </main>
@@ -95,18 +105,6 @@
             });
         });
 
-        function enterDashboard() {
-            const btn = document.getElementById('enter-btn');
-            btn.innerHTML = '<i class="fas fa-circle-notch fa-spin text-sm"></i><span class="ml-2">Loading...</span>';
-            btn.disabled = true;
-            btn.classList.add('opacity-70', 'cursor-not-allowed');
-
-            sessionStorage.setItem('dashboardAccess', 'true');
-
-            setTimeout(() => {
-                window.location.href = './dashboard/welcome.html';
-            }, 600);
-        }
     </script>
 </body>
 </html>

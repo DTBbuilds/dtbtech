@@ -3,21 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome | DTB Technologies Dashboard</title>
+    <title>Public Project Explorer | DTB Technologies</title>
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="stylesheet" href="../dist/output.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/tokens.css">
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/animations.css">
     <link rel="stylesheet" href="../css/mobile-optimizations.css">
-    <script type="module">
-        import initDashboardAuth from '../js/auth/dashboard-auth.js';
-        document.addEventListener('DOMContentLoaded', () => {
-            try { initDashboardAuth(); } catch (e) { console.warn('initDashboardAuth failed:', e); }
-        });
-    </script>
     <script src="../components/nav-header.js" defer></script>
-    <meta name="description" content="DTB Technologies dashboard — projects, tools and resources in one place">
+    <meta name="description" content="Public showcase of DTB Technologies projects and tools, with no login or account.">
     <meta name="robots" content="noindex, nofollow">
     <style>
         .exhibit {
@@ -54,7 +49,7 @@
     <!-- Navigation -->
     <nav-header></nav-header>
 
-    <div class="min-h-screen flex flex-col items-center pt-20 p-4 relative overflow-hidden">
+    <main id="main-content" tabindex="-1" class="min-h-screen flex flex-col items-center pt-20 p-4 relative overflow-hidden">
         <!-- Dashboard Welcome Banner -->
         <div class="w-full max-w-6xl mx-auto relative z-10 mb-10 px-2 sm:px-4">
             <div class="bg-slate-800/60 rounded-2xl p-6 sm:p-8 lg:p-10 border border-slate-700/40">
@@ -62,12 +57,12 @@
                     <div class="flex items-center space-x-4">
                         <img src="../assets/dtb-logo.png" alt="DTB" class="h-14 w-14 sm:h-16 sm:w-16 rounded-full object-cover flex-shrink-0">
                         <div>
-                            <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-tight">Dashboard</h1>
-                            <p class="text-slate-400 text-sm sm:text-base mt-1">Projects, tools, and resources - all in one place.</p>
+                            <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-tight">Public Project Explorer</h1>
+                            <p class="text-slate-400 text-sm sm:text-base mt-1">Projects, tools and resources you can explore without an account.</p>
                         </div>
                     </div>
                     <div class="flex items-center gap-4 self-start sm:self-auto">
-                        <div id="user-profile-container" class="relative"></div>
+                        <span class="text-xs text-blue-200 border border-blue-500/30 bg-blue-500/10 rounded-lg px-3 py-2">Public showcase · No sign-in</span>
                         <a href="../projects" class="inline-flex items-center justify-center px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold transition-colors">
                             View Public Projects <i class="fas fa-arrow-right ml-2"></i>
                         </a>
@@ -76,6 +71,10 @@
             </div>
         </div>
         
+        <div role="note" class="w-full max-w-6xl mx-auto mb-6 px-2 sm:px-4">
+            <p class="rounded-xl border border-blue-500/20 bg-blue-500/10 px-4 py-3 text-sm text-blue-100">This is a public portfolio demo, not a private customer portal or staff CRM. Do not enter passwords or confidential project data here.</p>
+        </div>
+
         <!-- Selected Projects -->
         <div class="w-full max-w-6xl mx-auto mb-12 z-10">
             <div class="flex items-center justify-between mb-2">
@@ -349,7 +348,7 @@
             </div>
         </div>
         
-    </div>
+    </main>
 
 </body>
 </html>

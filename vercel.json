@@ -36,6 +36,15 @@
       ]
     },
     {
+      "source": "/components/nav-header.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
       "source": "/(.*)\\.css$",
       "headers": [
         {
@@ -137,6 +146,16 @@
           "value": "public, max-age=86400"
         }
       ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/docs/:path*",
+      "destination": "/404.html"
+    },
+    {
+      "source": "/supabase/:path*",
+      "destination": "/404.html"
     }
   ],
   "redirects": [

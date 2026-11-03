@@ -4,8 +4,16 @@ class NavHeader extends HTMLElement {
     }
 
     connectedCallback() {
+        // Retire browser-only demo login markers; not related to the staff CRM.
+        try {
+            sessionStorage.removeItem('dashboardAccess');
+            sessionStorage.removeItem('userName');
+            localStorage.removeItem('dtb_auth_user');
+        } catch (error) {
+            // Storage may be disabled; public navigation must still render.
+        }
+
         const currentPath = window.location.pathname;
-        const isLoggedIn = sessionStorage.getItem('dashboardAccess') !== null;
         
         // Better path depth calculation
         const pathSegments = currentPath.split('/').filter(segment => segment !== '');
@@ -25,8 +33,19 @@ class NavHeader extends HTMLElement {
             return isActive ? 'bg-blue-600/30 text-white' : '';
         };
 
+        const getAriaCurrent = (page) => {
+            // aria-current="page" only when the link's destination IS the current
+            // page — section parents of detail routes must not announce as current.
+            const tail = currentPath.replace(/\/+$/, '').replace(/\.html$/, '');
+            const matches = page === 'index'
+                ? (tail === '' || tail === '/index')
+                : (tail === '/' + page || tail.endsWith('/' + page));
+            return matches ? ' aria-current="page"' : '';
+        };
+
         this.innerHTML = `
-            <nav class="fixed top-0 left-0 right-0 z-50 bg-slate-900/60 backdrop-blur-md border-b border-slate-800/60 shadow-[0_1px_0_0_rgba(255,255,255,0.03)]">
+            <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-blue-600 focus:text-white focus:text-sm focus:font-medium focus:outline-none">Skip to main content</a>
+            <nav class="fixed top-0 left-0 right-0 z-50 bg-slate-900/60 backdrop-blur-md border-b border-slate-800/60 shadow-[0_1px_0_0_rgba(255,255,255,0.03)]" aria-label="Primary">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex items-center justify-between h-16">
                         <!-- Logo -->
@@ -39,17 +58,12 @@ class NavHeader extends HTMLElement {
                         
                         <!-- Navigation Links -->
                         <div class="hidden md:flex items-center space-x-2">
-                            <a href="${prefix}services" class="px-3 py-2 text-slate-300 hover:text-white border-b-2 border-transparent transition-colors ${getActiveClass('services')}">Services</a>
-                            <a href="${prefix}projects" class="px-3 py-2 text-slate-300 hover:text-white border-b-2 border-transparent transition-colors ${getActiveClass('projects')}">Projects</a>
-                            <a href="${prefix}about" class="px-3 py-2 text-slate-300 hover:text-white border-b-2 border-transparent transition-colors ${getActiveClass('about')}">About</a>
-                            <a href="${prefix}tech-lab" class="px-3 py-2 text-slate-300 hover:text-white border-b-2 border-transparent transition-colors ${getActiveClass('tech-lab')}">Tech Lab</a>
-                            <a href="${prefix}contact" class="px-3 py-2 text-slate-300 hover:text-white border-b-2 border-transparent transition-colors ${getActiveClass('contact')}">Contact</a>
-                            ${isLoggedIn ? `
-                                <a href="${prefix}dashboard/welcome" class="ml-2 px-3 py-2 text-slate-300 hover:text-white border-b-2 border-transparent transition-colors">Dashboard</a>
-                                <button onclick="sessionStorage.removeItem('userName');sessionStorage.removeItem('dashboardAccess');window.location.href='${prefix}index.html'" class="ml-3 px-3 py-2 rounded-md bg-slate-800/50 text-slate-200 hover:bg-slate-700/70 transition-colors">Logout</button>
-                            ` : `
-                                <a href="${prefix}contact" class="ml-3 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium transition-colors">Discuss Your Project</a>
-                            `}
+                            <a href="${prefix}services" class="px-3 py-2 min-h-[44px] inline-flex items-center text-slate-300 hover:text-white border-b-2 border-transparent transition-colors ${getActiveClass('services')}"${getAriaCurrent('services')}>Services</a>
+                            <a href="${prefix}projects" class="px-3 py-2 min-h-[44px] inline-flex items-center text-slate-300 hover:text-white border-b-2 border-transparent transition-colors ${getActiveClass('projects')}"${getAriaCurrent('projects')}>Projects</a>
+                            <a href="${prefix}about" class="px-3 py-2 min-h-[44px] inline-flex items-center text-slate-300 hover:text-white border-b-2 border-transparent transition-colors ${getActiveClass('about')}"${getAriaCurrent('about')}>About</a>
+                            <a href="${prefix}tech-lab" class="px-3 py-2 min-h-[44px] inline-flex items-center text-slate-300 hover:text-white border-b-2 border-transparent transition-colors ${getActiveClass('tech-lab')}"${getAriaCurrent('tech-lab')}>Tech Lab</a>
+                            <a href="${prefix}contact" class="px-3 py-2 min-h-[44px] inline-flex items-center text-slate-300 hover:text-white border-b-2 border-transparent transition-colors ${getActiveClass('contact')}"${getAriaCurrent('contact')}>Contact</a>
+                            <a href="${prefix}contact" class="ml-3 px-4 py-2 min-h-[44px] inline-flex items-center rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium transition-colors">Discuss Your Project</a>
                         </div>
 
                         <!-- Mobile Menu Button -->
@@ -62,38 +76,29 @@ class NavHeader extends HTMLElement {
                 <!-- Mobile Menu -->
                 <div class="md:hidden hidden" id="mobile-menu">
                     <div class="px-4 py-3 space-y-1 bg-slate-900/95 border-t border-slate-800/60">
-                        <a href="${prefix}" class="block px-4 py-3 min-h-[44px] text-gray-300 hover:text-blue-400 hover:bg-slate-700/50 rounded-lg transition-colors flex items-center font-medium ${getMobileActiveClass('index')}">
+                        <a href="${prefix}" class="block px-4 py-3 min-h-[44px] text-gray-300 hover:text-blue-400 hover:bg-slate-700/50 rounded-lg transition-colors flex items-center font-medium ${getMobileActiveClass('index')}"${getAriaCurrent('index')}>
                             <i class="fas fa-home mr-3 w-4"></i>Home
                         </a>
-                        <a href="${prefix}services" class="block px-4 py-3 min-h-[44px] text-gray-300 hover:text-blue-400 hover:bg-slate-700/50 rounded-lg transition-colors flex items-center font-medium ${getMobileActiveClass('services')}">
+                        <a href="${prefix}services" class="block px-4 py-3 min-h-[44px] text-gray-300 hover:text-blue-400 hover:bg-slate-700/50 rounded-lg transition-colors flex items-center font-medium ${getMobileActiveClass('services')}"${getAriaCurrent('services')}>
                             <i class="fas fa-cogs mr-3 w-4"></i>Services
                         </a>
-                        <a href="${prefix}projects" class="block px-4 py-3 min-h-[44px] text-gray-300 hover:text-blue-400 hover:bg-slate-700/50 rounded-lg transition-colors flex items-center font-medium ${getMobileActiveClass('projects')}">
+                        <a href="${prefix}projects" class="block px-4 py-3 min-h-[44px] text-gray-300 hover:text-blue-400 hover:bg-slate-700/50 rounded-lg transition-colors flex items-center font-medium ${getMobileActiveClass('projects')}"${getAriaCurrent('projects')}>
                             <i class="fas fa-briefcase mr-3 w-4"></i>Projects
                         </a>
-                        <a href="${prefix}about" class="block px-4 py-3 min-h-[44px] text-gray-300 hover:text-blue-400 hover:bg-slate-700/50 rounded-lg transition-colors flex items-center font-medium ${getMobileActiveClass('about')}">
+                        <a href="${prefix}about" class="block px-4 py-3 min-h-[44px] text-gray-300 hover:text-blue-400 hover:bg-slate-700/50 rounded-lg transition-colors flex items-center font-medium ${getMobileActiveClass('about')}"${getAriaCurrent('about')}>
                             <i class="fas fa-info-circle mr-3 w-4"></i>About Us
                         </a>
-                        <a href="${prefix}tech-lab" class="block px-4 py-3 min-h-[44px] text-gray-300 hover:text-blue-400 hover:bg-slate-700/50 rounded-lg transition-colors flex items-center font-medium ${getMobileActiveClass('tech-lab')}">
+                        <a href="${prefix}tech-lab" class="block px-4 py-3 min-h-[44px] text-gray-300 hover:text-blue-400 hover:bg-slate-700/50 rounded-lg transition-colors flex items-center font-medium ${getMobileActiveClass('tech-lab')}"${getAriaCurrent('tech-lab')}>
                             <i class="fas fa-flask mr-3 w-4"></i>Tech Lab
                         </a>
-                        <a href="${prefix}contact" class="block px-4 py-3 min-h-[44px] text-gray-300 hover:text-blue-400 hover:bg-slate-700/50 rounded-lg transition-colors flex items-center font-medium ${getMobileActiveClass('contact')}">
+                        <a href="${prefix}contact" class="block px-4 py-3 min-h-[44px] text-gray-300 hover:text-blue-400 hover:bg-slate-700/50 rounded-lg transition-colors flex items-center font-medium ${getMobileActiveClass('contact')}"${getAriaCurrent('contact')}>
                             <i class="fas fa-envelope mr-3 w-4"></i>Contact
                         </a>
-                        ${isLoggedIn ? `
-                            <a href="${prefix}dashboard/welcome" class="block px-4 py-3 min-h-[44px] text-gray-300 hover:text-blue-400 hover:bg-slate-700/50 rounded-lg transition-colors flex items-center">
-                                <i class="fas fa-chart-line mr-3 w-4"></i>Dashboard
+                        <div class="mt-3 pt-3 border-t border-slate-800/60">
+                            <a href="${prefix}contact" class="block w-full px-4 py-3 min-h-[44px] bg-blue-600 hover:bg-blue-700 text-white text-center rounded-lg font-medium transition-colors">
+                                <i class="fas fa-rocket mr-2 text-xs"></i>Discuss Your Project
                             </a>
-                            <button onclick="sessionStorage.removeItem('userName');sessionStorage.removeItem('dashboardAccess');window.location.href='${prefix}index.html'" class="w-full mt-2 px-4 py-3 min-h-[44px] text-left text-gray-300 hover:text-blue-400 hover:bg-slate-700/50 rounded-lg transition-colors flex items-center">
-                                <i class="fas fa-sign-out-alt mr-3 w-4"></i>Logout
-                            </button>
-                        ` : `
-                            <div class="mt-3 pt-3 border-t border-slate-800/60">
-                                <a href="${prefix}contact" class="block w-full px-4 py-3 min-h-[44px] bg-blue-600 hover:bg-blue-700 text-white text-center rounded-lg font-medium transition-colors">
-                                    <i class="fas fa-rocket mr-2 text-xs"></i>Discuss Your Project
-                                </a>
-                            </div>
-                        `}
+                        </div>
                     </div>
                 </div>
             </nav>
