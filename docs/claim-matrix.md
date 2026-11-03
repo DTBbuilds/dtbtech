@@ -66,3 +66,11 @@ business decision.
 
 - `docs/` and `supabase/` paths are now rewritten to `/404.html` in `vercel.json` — internal docs (this matrix, pricing draft, CRM setup/verification, intake docs) are no longer served by the website (the GitHub repo itself remains public).
 - `docs/pricing-draft.md` figures replaced with `A$__ (TBC)` placeholders.
+
+## 5. DTB-HARDEN-004 — Public legacy demo clarity (follow-up)
+
+- The original audit item 17 identified a browser-storage demonstration that could be mistaken for a private staff portal.
+- The new isolated 004 PR removes simulated sign-in/profile prompts and faux `sessionStorage`-based global login/logout navigation from the public project explorer.
+- Public project exploration and browser-local feedback demonstration remain accessible and are explicitly labelled as non-secure demos; this does **not** introduce access control or change the separate Supabase CRM.
+- The real staff CRM remains gated by PR #2's hosted Supabase RLS/auth verification; do not deploy PR #2 or PR #8 until those security checks pass.
+- Owner decision pending: retain, archive, or completely remove the legacy local feedback demonstration once the verified CRM is live.
