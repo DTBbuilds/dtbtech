@@ -29,8 +29,8 @@ Owner remembers positive conversations but has **not provided exact quotations o
 
 | Potential source | Candidate discussion angle (NOT a quote) | Evidence needed |
 | --- | --- | --- |
-| Mercy Jepkeu — KEUS Logistics | How the catalogue and request-for-quotation site supports people exploring industrial piping/water meters | Exact approved comment, correct name/title, permission, project relationship, date, any approved photo and factual star rating if actually given |
-| Linda Mundenyo — Linda's Nut Butter | Product presentation, communication and usefulness of the website; owner mentioned 2024 | Exact comment and date confirmation, classify as client vs portfolio build, permission to attribute |
+| KEUS Logistics representative | How the catalogue and request-for-quotation site supports people exploring industrial piping/water meters | Exact approved comment, correct name/title, permission, project relationship, date, any approved photo and factual star rating if actually given |
+| Linda's Nut Butter representative | Product presentation, communication and usefulness of the website; owner mentioned 2024 | Exact comment and date confirmation, classify as client vs portfolio build, permission to attribute |
 | Jack of All Trades community member | Finding opportunities, clarity of job workflow and usability | Member's specific experience, permission to identify or anonymize, no invented job or income outcomes |
 | SmartDuka user | Store operations/POS/inventory experience they actually used | First-hand verified usage, exact approved words, product-version context, no invented ROI |
 
