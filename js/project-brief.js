@@ -20,6 +20,7 @@
                 'Service: ' + read('project-service'),
                 'Location: ' + read('project-region'),
                 'Business: ' + (read('project-business') || 'Not specified'),
+                ...(read('project-contact-name') ? ['Name: ' + read('project-contact-name')] : []),
                 'Timeline: ' + read('project-timeline'),
                 'Budget: ' + (read('project-budget') || 'To discuss'),
                 '',
@@ -56,7 +57,7 @@
         }
 
         function whatsappUrl() {
-            const number = read('project-region') === 'Kenya' ? '254729983567' : '61450275013';
+            const number = read('project-region') === 'Kenya' ? '254727068107' : '61450275013';
             return 'https://wa.me/' + number + '?text=' + encodeURIComponent(buildBrief());
         }
 

@@ -107,7 +107,7 @@ class SiteFooter extends HTMLElement {
                                     <i class="fas fa-phone text-blue-400 mr-3 w-4 mt-1 text-xs"></i>
                                     <div>
                                         <span class="block text-xs uppercase tracking-wider text-slate-500 mb-0.5">Kenya</span>
-                                        <a href="tel:+254729983567" class="${contactLink}" aria-label="Call DTB Technologies in Kenya">+254 729 983 567</a>
+                                        <a href="tel:+254727068107" class="${contactLink}" aria-label="Call DTB Technologies in Kenya">+254 727 068 107</a>
                                     </div>
                                 </li>
                                 <li class="flex items-start">
@@ -120,7 +120,10 @@ class SiteFooter extends HTMLElement {
 
                     <!-- Bottom -->
                     <div class="border-t border-slate-800/80 py-7 flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-4">
-                        <p class="text-slate-500 text-sm">&copy; ${year} DTB Technologies. All rights reserved.</p>
+                        <div class="flex flex-col sm:flex-row items-center gap-1 sm:gap-5 text-center sm:text-left">
+                            <p class="text-slate-500 text-sm">&copy; ${year} DTB Technologies. All rights reserved.</p>
+                            <p class="text-slate-400 text-sm" aria-label="Australian Business Number">ABN 94 968 049 073</p>
+                        </div>
                         <p class="text-slate-600 text-sm">Built with purpose.</p>
                     </div>
                 </div>
