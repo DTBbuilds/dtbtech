@@ -12,6 +12,22 @@
         const read = (id) => byId(id).value.trim();
         const emailButton = byId('dtb-brief-email');
         const copyButton = byId('dtb-brief-copy');
+        const tradeService = 'Tradie website and quote flow';
+        const tradeFields = byId('project-tradie-details');
+        const serviceSelect = byId('project-service');
+        function isTradeService() {
+            return serviceSelect.value === tradeService;
+        }
+        function updateTradeFields() {
+            if (!tradeFields) return;
+            const show = isTradeService();
+            tradeFields.hidden = !show;
+            tradeFields.disabled = !show;
+        }
+        if (tradeFields) {
+            serviceSelect.addEventListener('change', updateTradeFields);
+            updateTradeFields();
+        }
 
         function buildBrief() {
             return [
@@ -22,6 +38,12 @@
                 'Business: ' + (read('project-business') || 'Not specified'),
                 ...(read('project-contact-name') ? ['Name: ' + read('project-contact-name')] : []),
                 'Timeline: ' + read('project-timeline'),
+                ...(isTradeService() ? [
+                    ...(read('project-trade') ? ['Trade: ' + read('project-trade')] : []),
+                    ...(read('project-service-area') ? ['Service area: ' + read('project-service-area')] : []),
+                    ...(read('project-website-url') ? ['Existing website: ' + read('project-website-url')] : []),
+                    ...(read('project-tradie-priority') ? ['Priority: ' + read('project-tradie-priority')] : [])
+                ] : []),
                 'Budget: ' + (read('project-budget') || 'To discuss'),
                 '',
                 'Project details:',
@@ -117,9 +139,16 @@
         // Allow campaign and service pages to preselect a known service without trusting
         // arbitrary URL values or placing them into the page as HTML.
         const requested = new URLSearchParams(window.location.search).get('service');
-        const serviceSelect = byId('project-service');
         if (requested && Array.from(serviceSelect.options).some((option) => option.value === requested)) {
             serviceSelect.value = requested;
+        }
+        updateTradeFields();
+        // URL prefill is allowlisted to a real select option only; arbitrary text never enters HTML.
+        const requestedTrade = new URLSearchParams(window.location.search).get('trade');
+        const tradeSelect = byId('project-trade');
+        if (isTradeService() && tradeSelect && requestedTrade &&
+            Array.from(tradeSelect.options).some((option) => option.value === requestedTrade)) {
+            tradeSelect.value = requestedTrade;
         }
     }
 
