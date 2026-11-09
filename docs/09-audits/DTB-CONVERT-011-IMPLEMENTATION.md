@@ -16,7 +16,7 @@ The existing Production project exposes only `SUPABASE_URL` + `SUPABASE_PUBLISHA
 ## Required Vercel env names (values must be set only through secure settings)
 - `DTB_INTAKE_ENABLED=true` — final launch switch; leave unset until tests pass.
 - `DTB_INTAKE_SUPABASE_URL` — URL of verified dedicated DTB Supabase project.
-- `DTB_INTAKE_SERVICE_KEY` — server-side service key for DTB project; NEVER expose or use `NEXT_PUBLIC_`.
+- `DTB_INTAKE_SERVICE_KEY` — server-only Supabase `sb_secret_...` key preferred (legacy service-role JWT accepted only for migration compatibility). Send opaque secret key as `apikey`, NOT an `Authorization: Bearer` JWT. NEVER expose or use `NEXT_PUBLIC_`.
 - `DTB_TURNSTILE_SITE_KEY` — public Turnstile site key.
 - `DTB_TURNSTILE_SECRET_KEY` — private Turnstile secret.
 - `DTB_TURNSTILE_HOSTNAMES` — comma-separated exact allowed hosts (including specific Preview only when needed), e.g. `dtbtech.org,www.dtbtech.org`.

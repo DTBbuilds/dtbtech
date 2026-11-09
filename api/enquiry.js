@@ -113,7 +113,10 @@ async function postgrest(settings,method,path,data){
   try {
     return await fetch(settings.url+'/rest/v1/'+path,{
       method,signal:abort.signal,
-      headers:{apikey:settings.key,Authorization:'Bearer '+settings.key,
+      // New sb_secret_* keys are opaque API keys, not JWT bearer tokens.
+      // Keep legacy JWT service_role compatibility only when that format is used.
+      headers:{apikey:settings.key,
+        ...(settings.key.startsWith('sb_secret_') ? {} : {Authorization:'Bearer '+settings.key}),
         'Content-Type':'application/json',Prefer:'return=representation'},
       ...(data?{body:JSON.stringify(data)}:{})
     });
