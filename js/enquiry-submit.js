@@ -88,7 +88,7 @@ function init(){
          elapsedMs:Date.now()-started,turnstileToken:token})
      });
      const result=await r.json();
-     if(r.ok && result.ok===true && /^DTB-[0-9]{8}-[A-Z0-9]{12}$/.test(result.reference||'')){
+     if(r.ok && result.ok===true && /^DTB-[0-9]{8}-[0-9]{4,}$/.test(result.reference||'')){
        done=true;
        setStatus('Enquiry received by DTB. Your reference is '+result.reference+'. Please keep it for follow-up.');
        button.textContent='Enquiry Submitted';

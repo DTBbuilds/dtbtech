@@ -1,6 +1,6 @@
 'use strict';
-// DTB-CONVERT-011: isolated lead intake. Disabled unless an explicitly dedicated
-// DTB database, Turnstile protection and owner release flag are configured.
+// DTB-CONVERT-011: uses existing DTB CRM enquiry_intake schema (migration 007).
+// Disabled unless the approved DTB project, Turnstile and owner flag are configured.
 // NO browser credentials; NO dependency on CRM PR #2/#8.
 const MAX_BYTES = 16 * 1024;
 const SERVICES = new Set([
@@ -139,20 +139,20 @@ async function handler(req,res){
   if(Object.keys(fields).length)return send(res,400,{ok:false,error:'validation',fields});
   if(!(await siteverify(token,settings)))return send(res,403,{ok:false,error:'verification_failed'});
   let response;
-  try {response=await postgrest(settings,'POST','dtb_enquiries',data)}
+  try {response=await postgrest(settings,'POST','enquiry_intake',data)}
   catch{return send(res,502,{ok:false,error:'store_unavailable'})}
   if(response.status===409){
     try{
-      const r=await postgrest(settings,'GET','dtb_enquiries?idempotency_key=eq.'+encodeURIComponent(data.idempotency_key)+'&select=reference');
+      const r=await postgrest(settings,'GET','enquiry_intake?idempotency_key=eq.'+encodeURIComponent(data.idempotency_key)+'&select=lead_reference');
       const rows=r.ok?await r.json():[];
-      if(Array.isArray(rows)&&rows[0]?.reference)return send(res,200,{ok:true,reference:rows[0].reference,duplicate:true});
+      if(Array.isArray(rows)&&rows[0]?.lead_reference)return send(res,200,{ok:true,reference:rows[0].lead_reference,duplicate:true});
     }catch{/* avoid revealing database error */}
     return send(res,409,{ok:false,error:'retry_conflict'});
   }
   if(!response.ok)return send(res,502,{ok:false,error:'store_failed'});
   let rows;try{rows=await response.json()}catch{rows=[]}
-  if(!Array.isArray(rows)||!rows[0]?.reference)return send(res,502,{ok:false,error:'store_unconfirmed'});
-  return send(res,201,{ok:true,reference:rows[0].reference,duplicate:false});
+  if(!Array.isArray(rows)||!rows[0]?.lead_reference)return send(res,502,{ok:false,error:'store_unconfirmed'});
+  return send(res,201,{ok:true,reference:rows[0].lead_reference,duplicate:false});
 }
 module.exports=handler;
 module.exports._test={validate,getSettings,siteverify,originAllowed};

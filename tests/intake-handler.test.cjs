@@ -36,8 +36,8 @@ function mockFetch(insertStatus=201){
   global.fetch=async (url,opts)=>{
     urls.push({url:String(url),method:opts?.method,headers:opts?.headers});
     if(String(url).includes('siteverify'))return {ok:true,json:async()=>({success:true,action:'dtb_enquiry',hostname:'dtbtech.org'})};
-    if(String(url).includes('idempotency_key=eq.'))return {ok:true,status:200,json:async()=>[{reference:'DTB-20261110-ABCDEF123456'}]};
-    return {ok:insertStatus<400,status:insertStatus,json:async()=>insertStatus===201?[{reference:'DTB-20261110-ABCDEF123456'}]:{}};
+    if(String(url).includes('idempotency_key=eq.'))return {ok:true,status:200,json:async()=>[{lead_reference:'DTB-20261110-0042'}]};
+    return {ok:insertStatus<400,status:insertStatus,json:async()=>insertStatus===201?[{lead_reference:'DTB-20261110-0042'}]:{}};
   };
   return urls;
 }
@@ -67,9 +67,9 @@ async function run(){
     console.log('PASS invalid consent/contact/challenge/idempotency/service');
     const calls=mockFetch();
     r=res();await handler(req('POST',payload(),'192.0.2.12'),r);
-    assert.equal(r.code,201);assert.equal(r.body.reference,'DTB-20261110-ABCDEF123456');
+    assert.equal(r.code,201);assert.equal(r.body.reference,'DTB-20261110-0042');
     assert.equal(calls.length,2);
-    assert.ok(calls[1].url.endsWith('/rest/v1/dtb_enquiries'));
+    assert.ok(calls[1].url.endsWith('/rest/v1/enquiry_intake'));
     assert.equal(calls[1].headers.apikey,'sb_secret_LOCAL_TEST_ONLY');
     assert.equal(calls[1].headers.Authorization,undefined);
     console.log('PASS valid challenge then confirmed insert');
