@@ -13,6 +13,16 @@
         const emailButton = byId('dtb-brief-email');
         const copyButton = byId('dtb-brief-copy');
 
+        // Campaign pages may pass a known source label; only whitelisted
+        // values are used so nothing arbitrary enters the message.
+        const SOURCE_LABELS = {
+            tradies: 'dtbtech.org/tradies'
+        };
+        const sourceParam = new URLSearchParams(window.location.search).get('source');
+        const sourceLabel = Object.prototype.hasOwnProperty.call(SOURCE_LABELS, sourceParam)
+            ? SOURCE_LABELS[sourceParam]
+            : 'dtbtech.org/contact';
+
         function buildBrief() {
             return [
                 'Hello DTB Technologies, I would like to discuss a project.',
@@ -26,7 +36,7 @@
                 'Project details:',
                 read('project-goal'),
                 '',
-                'Source: dtbtech.org/contact'
+                'Source: ' + sourceLabel
             ].join('\n');
         }
 

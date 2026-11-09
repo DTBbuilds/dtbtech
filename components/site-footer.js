@@ -24,7 +24,7 @@ class SiteFooter extends HTMLElement {
                                     <p class="text-slate-400 text-sm sm:text-base">From websites to complete software platforms, tell us what you're planning.</p>
                                 </div>
                                 <div class="flex flex-col sm:flex-row sm:items-center gap-3 flex-shrink-0">
-                                    <a href="${prefix}contact#project-brief" class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900">
+                                    <a href="${prefix}contact#project-brief" data-utm-preserve class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900">
                                         <i class="fas fa-rocket mr-2 text-xs"></i>
                                         Discuss Your Project
                                     </a>
@@ -80,6 +80,7 @@ class SiteFooter extends HTMLElement {
                         <nav aria-label="What We Build">
                             <h3 class="${heading}">What We Build</h3>
                             <ul class="space-y-2.5 text-sm">
+                                <li><a href="${prefix}tradies" class="${link}">Websites for Tradies</a></li>
                                 <li><a href="${prefix}services/websites" class="${link}">Websites & Web Applications</a></li>
                                 <li><a href="${prefix}services/mobile-apps" class="${link}">Mobile Applications</a></li>
                                 <li><a href="${prefix}services/software-development" class="${link}">Business Software</a></li>
