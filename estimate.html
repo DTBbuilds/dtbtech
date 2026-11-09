@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en-AU" class="scroll-smooth">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project Scope &amp; Budget Planner | DTB Technologies</title>
+<meta name="description" content="Plan a website, tradie site or business app and explore features, priorities and an indicative starting point before requesting a formal DTB proposal.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://dtbtech.org/estimate">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dtbtech.org/estimate">
+<meta property="og:title" content="DTB Project Scope Planner">
+<meta property="og:description" content="Explore website and software features before requesting a tailored quote.">
+<link rel="stylesheet" href="./dist/output.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css">
+<link rel="stylesheet" href="./css/tokens.css">
+<link rel="stylesheet" href="./css/common.css">
+<link rel="stylesheet" href="./css/animations.css">
+<link rel="stylesheet" href="./css/mobile-optimizations.css">
+<script src="./components/nav-header.js" defer></script>
+<script src="./components/site-footer.js" defer></script>
+<script src="./js/estimate.js" defer></script>
+</head>
+<body class="bg-slate-900 text-slate-100">
+<nav-header></nav-header>
+<main id="main-content" tabindex="-1" class="pt-16">
+<section class="bg-slate-950 py-14 sm:py-20">
+<div class="container mx-auto px-5 sm:px-6">
+<div class="max-w-3xl">
+<p class="text-blue-300 text-sm font-semibold mb-4">DTB Technologies · Project planning preview</p>
+<h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-white mb-5">Plan your website or app. <span class="text-blue-400">Explore what it could include.</span></h1>
+<p class="text-slate-300 text-base sm:text-lg leading-relaxed mb-6">Choose a project, describe what matters and explore a sensible first version. We’ll help identify features and scope before preparing a formal quote.</p>
+<div class="flex flex-wrap gap-3 text-xs text-slate-300">
+<span class="rounded-full border border-slate-700 bg-slate-900 px-3 py-2">No sign-up required</span>
+<span class="rounded-full border border-slate-700 bg-slate-900 px-3 py-2">No automatic submission</span>
+<span class="rounded-full border border-slate-700 bg-slate-900 px-3 py-2">Pricing subject to review</span>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-slate-900 py-12 sm:py-16" aria-labelledby="planner-title">
+<div class="container mx-auto px-5 sm:px-6 grid lg:grid-cols-5 gap-8">
+<div class="lg:col-span-3">
+<form id="dtb-estimate-form" class="rounded-2xl bg-slate-950/70 border border-blue-500/25 p-5 sm:p-8 space-y-7">
+<div>
+<h2 id="planner-title" class="text-2xl sm:text-3xl font-bold text-white mb-2">Your project plan</h2>
+<p class="text-slate-400 text-sm">Start with your business needs. Your choices stay in this browser page unless you decide to send them.</p>
+</div>
+<div>
+<label for="estimate-type" class="block text-white font-semibold text-sm mb-2">What would you like us to build?</label>
+<select id="estimate-type" class="w-full min-h-[48px] rounded-xl border border-slate-600 bg-slate-800 px-4 py-3 text-white">
+<option value="tradie">Tradie website and quote workflow</option>
+<option value="repair">Existing website rescue or repair</option>
+<option value="business">Business website</option>
+<option value="store">Online shop / e-commerce</option>
+<option value="app">Web or mobile application</option>
+<option value="system">POS or custom business system</option>
+</select>
+</div>
+<div>
+<label for="estimate-goal" class="block text-white font-semibold text-sm mb-2">Describe your idea <span class="text-slate-400 font-normal">(optional)</span></label>
+<textarea id="estimate-goal" rows="4" maxlength="600" placeholder="e.g. I'm a Sydney painter. I'd like a website with before/after photos, quote requests and a simple booking calendar." class="w-full rounded-xl border border-slate-600 bg-slate-800 p-4 text-white placeholder-slate-500"></textarea>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mt-2">
+<p class="text-xs text-slate-400">Don't include passwords, customer names or sensitive business information.</p>
+<button id="estimate-suggest" type="button" class="rounded-lg border border-blue-500/40 px-4 py-2.5 min-h-[44px] text-blue-300 text-sm font-semibold hover:bg-blue-600/10">Suggest features from description</button>
+</div>
+<p id="estimate-suggest-status" class="text-xs text-slate-400 mt-2" role="status" aria-live="polite">Suggestions currently use on-device keyword rules, not a live AI model.</p>
+</div>
+<fieldset>
+<legend class="text-white font-semibold text-sm mb-3">Which features matter to you?</legend>
+<div class="grid sm:grid-cols-2 gap-3" id="estimate-feature-list">
+<label class="flex items-center gap-3 rounded-xl border border-slate-700 p-3 cursor-pointer"><input type="checkbox" value="gallery" class="h-5 w-5 accent-blue-500"><span class="text-sm">Work / product gallery</span></label>
+<label class="flex items-center gap-3 rounded-xl border border-slate-700 p-3 cursor-pointer"><input type="checkbox" value="quotes" class="h-5 w-5 accent-blue-500"><span class="text-sm">Quote request form</span></label>
+<label class="flex items-center gap-3 rounded-xl border border-slate-700 p-3 cursor-pointer"><input type="checkbox" value="booking" class="h-5 w-5 accent-blue-500"><span class="text-sm">Bookings / appointments</span></label>
+<label class="flex items-center gap-3 rounded-xl border border-slate-700 p-3 cursor-pointer"><input type="checkbox" value="payments" class="h-5 w-5 accent-blue-500"><span class="text-sm">Online payments</span></label>
+<label class="flex items-center gap-3 rounded-xl border border-slate-700 p-3 cursor-pointer"><input type="checkbox" value="accounts" class="h-5 w-5 accent-blue-500"><span class="text-sm">Customer accounts</span></label>
+<label class="flex items-center gap-3 rounded-xl border border-slate-700 p-3 cursor-pointer"><input type="checkbox" value="inventory" class="h-5 w-5 accent-blue-500"><span class="text-sm">Products / inventory</span></label>
+<label class="flex items-center gap-3 rounded-xl border border-slate-700 p-3 cursor-pointer"><input type="checkbox" value="reports" class="h-5 w-5 accent-blue-500"><span class="text-sm">Admin dashboard / reports</span></label>
+<label class="flex items-center gap-3 rounded-xl border border-slate-700 p-3 cursor-pointer"><input type="checkbox" value="multistore" class="h-5 w-5 accent-blue-500"><span class="text-sm">Multiple locations / teams</span></label>
+</div>
+</fieldset>
+<div class="grid sm:grid-cols-2 gap-5">
+<div>
+<label for="estimate-pages" class="block text-white font-semibold text-sm mb-2">Approximate pages <strong id="estimate-page-count" class="text-blue-300">5</strong></label>
+<input type="range" id="estimate-pages" min="1" max="20" value="5" class="w-full accent-blue-500 min-h-[44px]">
+<p class="text-xs text-slate-400 mt-1">For applications, think of pages as main screens.</p>
+</div>
+<div>
+<label for="estimate-budget" class="block text-white font-semibold text-sm mb-2">Your budget in AUD <span class="text-slate-400 font-normal">(optional)</span></label>
+<input id="estimate-budget" type="number" inputmode="decimal" min="0" max="10000000" step="100" placeholder="e.g. 2000" class="w-full min-h-[48px] rounded-xl border border-slate-600 bg-slate-800 px-4 py-3 text-white placeholder-slate-500">
+</div>
+<div>
+<label for="estimate-timeline" class="block text-white font-semibold text-sm mb-2">Preferred timeframe</label>
+<select id="estimate-timeline" class="w-full min-h-[48px] rounded-xl border border-slate-600 bg-slate-800 px-4 py-3 text-white">
+<option value="Flexible">Flexible</option><option value="As soon as practical">As soon as practical</option>
+<option value="1–2 months">In 1–2 months</option><option value="Planning">Planning for later</option>
+</select>
+</div>
+<div>
+<label for="estimate-area" class="block text-white font-semibold text-sm mb-2">Business location or service area <span class="text-slate-400 font-normal">(optional)</span></label>
+<input id="estimate-area" maxlength="100" placeholder="Sydney, NSW" class="w-full min-h-[48px] rounded-xl border border-slate-600 bg-slate-800 px-4 py-3 text-white placeholder-slate-500">
+</div>
+</div>
+</form>
+</div>
+<aside class="lg:col-span-2">
+<div class="lg:sticky lg:top-24 rounded-2xl border border-blue-500/30 bg-slate-950 p-5 sm:p-7">
+<p class="text-blue-300 text-sm font-semibold mb-2">Your evolving scope</p>
+<h2 class="text-2xl font-bold text-white mb-3" id="estimate-result-type">Tradie website</h2>
+<div class="border-t border-slate-700 pt-4 mb-4">
+<p class="text-sm font-semibold text-slate-300">Starting-price guidance</p>
+<p id="estimate-price" class="text-2xl sm:text-3xl text-white font-bold mt-2">From A$1,500</p>
+<p id="estimate-price-note" class="text-slate-400 text-xs leading-relaxed mt-2">Published starting price only; your selected features need review.</p>
+</div>
+<h3 class="text-white font-semibold text-sm mb-2">Included in your outline</h3>
+<ul id="estimate-scope" class="list-disc pl-5 space-y-2 text-slate-300 text-sm mb-4"></ul>
+<p id="estimate-budget-hint" class="text-sm text-blue-200 bg-blue-600/10 border border-blue-500/20 rounded-xl p-3 mb-5">Enter a budget to see possible scope trade-offs.</p>
+<p class="text-xs text-slate-400 leading-relaxed mb-5">This is a scope-planning preview, <strong>not a binding quote or an AI-calculated final cost</strong>. Final price, tax treatment, hosting, inclusions and milestones require a written proposal from DTB.</p>
+<div class="flex flex-col gap-3">
+<button type="button" id="estimate-copy" class="w-full rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold min-h-[48px] px-5 py-3">Copy My Project Outline</button>
+<a id="estimate-whatsapp" href="https://wa.me/61450275013" target="_blank" rel="noopener noreferrer" class="w-full text-center rounded-xl bg-green-600 hover:bg-green-700 text-white font-semibold min-h-[48px] px-5 py-3 flex items-center justify-center">Discuss on WhatsApp</a>
+<a href="/contact#project-brief" class="w-full text-center rounded-xl border border-slate-600 hover:bg-slate-800 text-white font-semibold min-h-[48px] px-5 py-3">Request a Formal Proposal</a>
+<p id="estimate-action-status" role="status" aria-live="polite" class="text-blue-300 text-sm"></p>
+</div>
+</div>
+</aside>
+</div>
+</section>
+<section class="py-12 sm:py-16 bg-slate-950">
+<div class="container mx-auto px-5 sm:px-6 max-w-3xl">
+<h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">What happens after this?</h2>
+<p class="text-slate-300 leading-relaxed mb-4">Share your scope with DTB. We'll review feasibility, clarify any missing requirements, agree on what is included and prepare a written quote. Your budget helps us suggest a realistic first version rather than committing you to an automated price.</p>
+<p class="text-slate-400 text-sm">The next release will add an owner-approved pricing engine and an optional AI requirements assistant. This preview does not store your answers or call an AI service.</p>
+</div>
+</section>
+</main><site-footer></site-footer></body></html>

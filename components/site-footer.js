@@ -82,6 +82,7 @@ class SiteFooter extends HTMLElement {
                             <ul class="space-y-2.5 text-sm">
                                 <li><a href="${prefix}tradies" class="${link}">Websites for Tradies</a></li>
                                 <li><a href="${prefix}services/websites" class="${link}">Websites & Web Applications</a></li>
+                                <li><a href="${prefix}estimate" class="${link}">Project Scope Planner</a></li>
                                 <li><a href="${prefix}services/mobile-apps" class="${link}">Mobile Applications</a></li>
                                 <li><a href="${prefix}services/software-development" class="${link}">Business Software</a></li>
                                 <li><a href="${prefix}services/e-commerce" class="${link}">E-Commerce</a></li>
