@@ -12,6 +12,7 @@
         const read = (id) => byId(id).value.trim();
         const emailButton = byId('dtb-brief-email');
         const copyButton = byId('dtb-brief-copy');
+        const whatsappButton = byId('dtb-brief-whatsapp');
 
         // Campaign pages may pass a known source label; only whitelisted
         // values are used so nothing arbitrary enters the message.
@@ -32,6 +33,8 @@
                 'Business: ' + (read('project-business') || 'Not specified'),
                 ...(read('project-contact-name') ? ['Name: ' + read('project-contact-name')] : []),
                 'Timeline: ' + read('project-timeline'),
+                ...(byId('dtb-contact-email')?.value.trim() ? ['Email: ' + byId('dtb-contact-email').value.trim()] : []),
+                ...(byId('dtb-contact-phone')?.value.trim() ? ['Phone: ' + byId('dtb-contact-phone').value.trim()] : []),
                 'Budget: ' + (read('project-budget') || 'To discuss'),
                 '',
                 'Project details:',
@@ -71,8 +74,7 @@
             return 'https://wa.me/' + number + '?text=' + encodeURIComponent(buildBrief());
         }
 
-        form.addEventListener('submit', function (event) {
-            event.preventDefault();
+        whatsappButton.addEventListener('click', function () {
             if (!isValid()) return;
             const url = whatsappUrl();
             window.open(url, '_blank', 'noopener,noreferrer');

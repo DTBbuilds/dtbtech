@@ -10,6 +10,9 @@ app.use((req, res, next) => {
     next();
 });
 
+// Dedicated, gated public enquiry API shares the exact handler with Vercel.
+app.use('/api/enquiry', express.json({limit: '16kb'}), require('./api/enquiry'));
+
 // Match Vercel cleanUrls behaviour: .html URLs permanently redirect to the
 // extensionless canonical URL, and extensionless URLs serve the .html file
 // (before express.static, so /tech-lab doesn't redirect to the tech-lab/ dir).
