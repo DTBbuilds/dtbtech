@@ -66,26 +66,20 @@ create unique index if not exists enquiry_intake_idempotency_uq
     on public.enquiry_intake (idempotency_key)
     where idempotency_key is not null;
 
--- 3. Staff triage access -------------------------------------------------
--- Active staff may READ intake rows and mark them processed/rejected.
--- They cannot insert or delete; the service-role endpoint owns writes.
--- anon keeps zero access (revoke from migration 005 stands).
-
-grant select on public.enquiry_intake to authenticated;
-grant update (status, processed_at) on public.enquiry_intake to authenticated;
-
-create policy enquiry_intake_staff_read
-    on public.enquiry_intake for select to authenticated
-    using (public.is_active_staff());
-
-create policy enquiry_intake_staff_triage
-    on public.enquiry_intake for update to authenticated
-    using (public.is_active_staff())
-    with check (public.is_active_staff());
-
--- No insert/delete grants for anon or authenticated. The /api/enquiry
--- endpoint uses the service role, which bypasses RLS, after its own
--- validation, rate limiting and idempotency checks.
-
--- Service-role inserts execute the reference trigger, which uses this sequence.
+-- 3. Strict public access: owner currently manages intake via Supabase Dashboard.
+-- Do not introduce authenticated staff read/update policies until the CRM
+-- hosted auth/RLS matrix is separately tested. Keep forced RLS in place.
+revoke all on public.enquiry_intake from public, anon, authenticated;
+grant select, insert on public.enquiry_intake to service_role;
 grant usage, select on sequence public.enquiry_reference_seq to service_role;
+
+-- Validate server-only collection input at the database boundary as well.
+alter table public.enquiry_intake
+    add constraint enquiry_intake_has_contact
+    check (email is not null or nullif(btrim(phone), '') is not null);
+alter table public.enquiry_intake
+    add constraint enquiry_intake_consent_required
+    check (consent_given = true);
+
+-- Trigger functions are not a public API; prevent direct execution.
+revoke execute on function public.set_enquiry_reference() from public, anon, authenticated;
