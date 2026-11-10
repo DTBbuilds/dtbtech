@@ -152,9 +152,9 @@ async function saveStatus(event){
       .select('id,status,processed_at').single();
     if(error||!data)throw error||new Error('No updated row returned');
     state.selected={...state.selected,status:data.status,processed_at:data.processed_at};
-    notify('Status saved in Supabase with an audit record.');
     byId('inbox-detail').hidden=true;
     await loadRows();
+    notify('Status saved in Supabase with an audit record.');
   }catch{
     notify('Status was not confirmed as saved. Please retry or contact the administrator.',true);
   }finally{button.disabled=false;}
