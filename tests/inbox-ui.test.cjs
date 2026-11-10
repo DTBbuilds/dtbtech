@@ -31,9 +31,13 @@ async function create(kind){
   },
   from(table){
    if(table==='staff_members'){
-    return {select:()=>({eq:()=>({eq:()=>({maybeSingle:async()=>kind==='staff'?{
-      data:{id:'aaaaaaaa-aaaa-4aaa-aaaa-aaaaaaaaaaaa',role:'owner',status:'active',email:'owner@example.test'},error:null
-    }:{data:null,error:null}})})})})};
+     const query={
+       eq(){return this;},
+       maybeSingle:async()=>kind==='staff'
+         ? {data:{id:'aaaaaaaa-aaaa-4aaa-aaaa-aaaaaaaaaaaa',role:'owner',status:'active',email:'owner@example.test'},error:null}
+         : {data:null,error:null}
+     };
+     return {select:()=>query};
    }
    if(table!=='enquiry_intake')throw Error('unexpected table '+table);
    return {
