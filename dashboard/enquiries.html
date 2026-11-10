@@ -50,7 +50,19 @@ input:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible{ou
      <input id="inbox-password" type="password" autocomplete="current-password" required class="w-full rounded-xl bg-slate-800 border border-slate-600 p-3 min-h-[48px] text-white"></div>
      <button id="inbox-login-button" type="submit" class="inbox-btn w-full rounded-xl bg-blue-600 hover:bg-blue-700 px-5 py-3 font-semibold">Sign in securely</button>
    </form>
-   <p class="text-xs text-slate-400 mt-5">No public sign-up. Ask your DTB account administrator for an invitation or password recovery.</p>
+   <button id="inbox-reset-request" type="button" class="inbox-btn text-blue-300 text-sm underline underline-offset-4 mt-4">Forgot password? Email a recovery link</button>
+   <p class="text-xs text-slate-400 mt-3">No public sign-up. Ask your DTB administrator for an invitation.</p>
+ </section>
+ <section id="inbox-password-panel" hidden class="max-w-md mx-auto rounded-2xl border border-blue-500/30 bg-slate-900 p-6 sm:p-8">
+  <h1 class="text-xl font-bold text-white mb-2">Set your DTB password</h1>
+  <p class="text-sm text-slate-400 mb-5">Complete your invitation or recovery securely. This password is handled by Supabase Auth.</p>
+  <form id="inbox-password-form" class="space-y-4">
+   <div><label for="inbox-new-password" class="block text-sm mb-2">New password (at least 12 characters)</label>
+    <input id="inbox-new-password" type="password" autocomplete="new-password" minlength="12" required class="w-full rounded-xl bg-slate-800 border border-slate-600 p-3 min-h-[48px] text-white"></div>
+   <div><label for="inbox-confirm-password" class="block text-sm mb-2">Confirm new password</label>
+    <input id="inbox-confirm-password" type="password" autocomplete="new-password" minlength="12" required class="w-full rounded-xl bg-slate-800 border border-slate-600 p-3 min-h-[48px] text-white"></div>
+   <button id="inbox-password-save" type="submit" class="inbox-btn w-full rounded-xl bg-blue-600 hover:bg-blue-700 px-5 py-3 font-semibold">Save password</button>
+  </form>
  </section>
  <section id="inbox-denied" hidden class="max-w-lg rounded-2xl border border-red-500/30 bg-slate-900 p-6">
    <h1 class="text-xl font-bold text-white mb-3">Access not authorised</h1>

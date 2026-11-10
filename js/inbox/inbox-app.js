@@ -4,8 +4,8 @@
 const byId = (id) => document.getElementById(id);
 const statusNames = {unprocessed:'New',contacted:'Contacted',qualified:'Qualified',proposal_sent:'Proposal sent',won:'Won',lost:'Lost',processed:'Processed',rejected:'Rejected'};
 const PAGE_SIZE = 12;
-const state = {client:null,profile:null,page:0,total:0,rows:[],selected:null,loading:false};
-const sections = ['inbox-disabled','inbox-login','inbox-denied','inbox-dashboard'];
+const state = {client:null,profile:null,page:0,total:0,rows:[],selected:null,loading:false,authFlow:''};
+const sections = ['inbox-disabled','inbox-login','inbox-password-panel','inbox-denied','inbox-dashboard'];
 function notify(message, failure) {
   const n = byId('inbox-status');
   n.textContent = message;
@@ -13,7 +13,7 @@ function notify(message, failure) {
 }
 function show(name) {
   for (const section of sections) byId(section).hidden = section !== name;
-  byId('inbox-signout').hidden = name !== 'inbox-dashboard' && name !== 'inbox-denied';
+  byId('inbox-signout').hidden = name !== 'inbox-dashboard' && name !== 'inbox-denied' && name !== 'inbox-password-panel';
   if(name !== 'inbox-dashboard') byId('inbox-detail').hidden=true;
 }
 function node(tag,cls,text) {
@@ -101,6 +101,9 @@ async function verifyStaff(){
   const c=state.client;
   const user=await c.auth.getUser();
   if(user.error||!user.data?.user){state.profile=null;show('inbox-login');notify('Sign in using your DTB staff account.');return;}
+  if(state.authFlow==='invite'||state.authFlow==='recovery'){
+    show('inbox-password-panel');notify('Please choose a new password to finish account setup.');return;
+  }
   const uid=user.data.user.id;
   const {data,error}=await c.from('staff_members').select('id,role,status,email').eq('id',uid).eq('status','active').maybeSingle();
   if(error){state.profile=null;show('inbox-denied');notify('Could not verify staff membership. Please try again.',true);return;}
@@ -171,6 +174,32 @@ async function signIn(e){
    notify('Unable to sign in. Check your credentials or ask the DTB administrator.',true);
  }finally{btn.disabled=false;}
 }
+async function requestRecovery(){
+ const email=byId('inbox-email').value.trim();
+ if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+   notify('Enter your staff email address above, then request a recovery link.',true);return;
+ }
+ try{
+   const {error}=await state.client.auth.resetPasswordForEmail(email,{redirectTo:window.location.origin+window.location.pathname});
+   if(error)throw error;
+   notify('If this is an authorised account, a recovery email has been requested. Check your inbox.');
+ }catch{notify('Recovery could not be requested. Please contact the administrator.',true);}
+}
+async function saveNewPassword(event){
+ event.preventDefault();
+ const pw=byId('inbox-new-password').value,confirm=byId('inbox-confirm-password').value;
+ if(pw.length<12||pw!==confirm){notify('Passwords must match and contain at least 12 characters.',true);return;}
+ const button=byId('inbox-password-save');button.disabled=true;
+ try{
+   const {error}=await state.client.auth.updateUser({password:pw});
+   if(error)throw error;
+   byId('inbox-new-password').value='';byId('inbox-confirm-password').value='';
+   state.authFlow='';
+   window.history.replaceState(null,'',window.location.pathname);
+   await verifyStaff();
+ }catch{notify('Password could not be updated. Please request a fresh invitation or recovery link.',true);}
+ finally{button.disabled=false;}
+}
 async function signOut(){
  if(!state.client)return;
  const {error}=await state.client.auth.signOut();
@@ -181,6 +210,8 @@ async function signOut(){
 }
 async function start(){
  byId('inbox-login-form').addEventListener('submit',signIn);
+ byId('inbox-reset-request').addEventListener('click',requestRecovery);
+ byId('inbox-password-form').addEventListener('submit',saveNewPassword);
  byId('inbox-signout').addEventListener('click',signOut);
  byId('inbox-refresh').addEventListener('click',()=>loadRows());
  byId('inbox-filters').addEventListener('submit',(e)=>{e.preventDefault();state.page=0;loadRows()});
@@ -192,6 +223,9 @@ async function start(){
  byId('inbox-detail-close').addEventListener('click',()=>{byId('inbox-detail').hidden=true;state.selected=null});
  byId('inbox-status-form').addEventListener('submit',saveStatus);
  try{
+   const incoming=new URLSearchParams(window.location.hash.slice(1));
+   const flow=incoming.get('type')||new URLSearchParams(window.location.search).get('type')||'';
+   state.authFlow=(flow==='invite'||flow==='recovery')?flow:'';
    const req=await fetch('/api/inbox-config',{cache:'no-store',headers:{Accept:'application/json'}});
    if(!req.ok)throw new Error('config');
    const cfg=await req.json();
@@ -200,7 +234,13 @@ async function start(){
    }
    if(!window.supabase?.createClient)throw new Error('SDK unavailable');
    state.client=window.supabase.createClient(cfg.url,cfg.publishableKey,{
-     auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:false}
+     auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}
+   });
+   state.client.auth.onAuthStateChange((event)=>{
+     if(event==='PASSWORD_RECOVERY'){
+       state.authFlow='recovery';show('inbox-password-panel');
+       notify('Choose a new password to finish recovery.');
+     }
    });
    await verifyStaff();
  }catch{
