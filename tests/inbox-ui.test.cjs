@@ -83,7 +83,8 @@ async function create(kind){
  doc.getElementById('inbox-new-status').value='contacted';
  doc.getElementById('inbox-status-form').dispatchEvent(new staff.w.Event('submit',{cancelable:true,bubbles:true}));
  await wait(50);
- assert.deepEqual(staff.getUpdate(),{status:'contacted'});
+ assert.equal(staff.getUpdate()?.status,'contacted');
+ assert.equal(Object.keys(staff.getUpdate()).length,1);
  assert.match(doc.getElementById('inbox-status').textContent,/Status saved/);
  console.log('PASS active staff list, safe text rendering, status-only update');
  staff.dom.window.close();
