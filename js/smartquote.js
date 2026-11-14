@@ -185,8 +185,14 @@ async function analyze(wantAI){
       'AI suggested a scope. Check the selected features and clarify assumptions before requesting a written quote.' :
       'Guided scope and a dated DTB pricing range are ready. This was not a live AI analysis.');
   }catch{
-    if(serial===state.lastAnalysisId)
+    if(serial===state.lastAnalysisId){
+      state.quote=null;
+      label('estimate-price','Estimate unavailable');
+      label('estimate-price-note','The pricing service could not respond. This is not a quote. You can still send your requirements to DTB manually.');
+      label('estimate-analysis-mode','Guided calculation unavailable');
       label('estimate-suggest-status','We could not calculate your estimate. If this is a protected Preview, refresh your Vercel login and try again. No estimate was saved; WhatsApp and email drafts remain available.');
+      updateHandoffs();
+    }
   }finally{
     button.disabled=false;
     if(ai)resetChallenge('ai');
