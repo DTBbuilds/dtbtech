@@ -90,3 +90,27 @@ The new handler reuses public.enquiry_intake and does not expose server credenti
 ## Operational limitations
 
 This preview does not fetch live market prices per request, does not continuously retrain the pricing engine, and does not provide a legally binding automatic quote. Real AI inference and secure persistence are coded but not activated. No production records were changed.
+
+## 15 Nov 2026 — Preview analysis failure and owner notification setup
+
+The DTB Vercel project has Vercel SSO protection enabled for Preview URLs. The browser's
+SmartQuote POST helper previously set `credentials: 'omit'`, which stripped the
+same-origin Preview authentication cookie, resulting in failed analysis requests
+even when the page itself was visible. Corrected to `credentials: 'same-origin'`.
+Added a regression test and clear guided-mode / error-state labels. Vercel Preview
+build reports READY; a real authenticated browser POST is still a final acceptance gate.
+
+Owner confirmed an existing Gmail address for both future staff login and new-lead
+notifications. The recipient was saved as encrypted Vercel `DTB_LEAD_NOTIFY_TO`
+for Preview/Production; **no SMTP/Resend provider or notifier has been activated**.
+Avoid putting the private recipient address in this Git repository.
+
+DTB2 `dtb-crm-test` currently has **0 Auth users and 0 staff_members**. Owner must
+use Supabase Auth Dashboard → Users → Add user → Send invitation to their approved
+email, accept the invitation, then map the verified Auth UUID to an active
+`staff_members` owner record. Do not create `auth.users` through raw SQL or
+fabricate a staff UUID. Test login and access before the submit flag is enabled.
+
+Release still requires an independently verified delivery path for notification
+email (verified sender domain/service, API key, durable retry/outbox, one received
+test message), plus the existing secure intake and staff inbox merge gates.
