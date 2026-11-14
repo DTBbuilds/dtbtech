@@ -142,7 +142,7 @@ async function handler(req,res){
   const staff=body.staff&&Number(body.staff)>0?body.staff:(proposed.staff||0);
   const requirements=normalize({category,pages,staff,region:body.region,
     description,timeframe:body.timeframe,
-    features:Array.from(new Set([...selected,...proposed.features]))});
+    features:Array.from(new Set([...selected,...(body.suggestFeatures===true?proposed.features:[])]))});
   const quote=estimate(requirements);
   return send(res,200,{ok:true,mode,notice,requirements,quote,
     interpretation:classification?.summary||'Review the suggested scope and adjust any features before requesting a formal quote.',
