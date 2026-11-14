@@ -95,7 +95,7 @@ async function postJson(url,body){
   try{
     const r=await fetch(url,{
       method:'POST',headers:{'Content-Type':'application/json'},
-      cache:'no-store',credentials:'omit',signal:controller.signal,
+      cache:'no-store',credentials:'same-origin',signal:controller.signal,
       body:JSON.stringify(body)
     });
     const data=await r.json().catch(()=>({}));
