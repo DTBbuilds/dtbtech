@@ -108,3 +108,12 @@ test('submission origin must match an explicitly configured hostname',()=>{
   assert.equal(submitApi._test.originAllowed(request('POST',{},
     {origin:'https://evil.example'}),c),false);
 });
+
+test('preview fetch keeps Vercel SSO cookie on same-origin API calls',()=>{
+  const fs=require('node:fs');
+  const path=require('node:path');
+  const browser=fs.readFileSync(path.join(__dirname,'../js/smartquote.js'),'utf8');
+  assert.ok(browser.includes("credentials:'same-origin'"),'same-origin credentials are required on protected Preview POST requests');
+  assert.ok(!browser.includes("credentials:'omit'"),'do not strip SSO session cookies from same-origin POST requests');
+  assert.ok(browser.includes("Calculate My Estimate"),'AI-disabled mode must be labelled as guided price calculation');
+});
