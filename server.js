@@ -29,6 +29,10 @@ app.use((req, res, next) => {
     next();
 });
 
+// SmartQuote development routes. Vercel serves matching api/*.js as functions.
+app.use('/api/smartquote-submit', express.json({limit:'12kb'}), require('./api/smartquote-submit'));
+app.use('/api/smartquote', express.json({limit:'8kb'}), require('./api/smartquote'));
+
 // Serve static files with caching headers
 app.use(express.static(path.join(__dirname), {
     extensions: ['html'],
