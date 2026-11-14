@@ -99,7 +99,7 @@ async function postJson(url,body){
       body:JSON.stringify(body)
     });
     const data=await r.json().catch(()=>({}));
-    if(!r.ok)throw new Error(data.error||'service_unavailable');
+    if(!r.ok)throw new Error((r.status===401||r.status===403)?'preview_auth_required':(data.error||'service_unavailable'));
     return data;
   }finally{clearTimeout(timeout)}
 }
@@ -186,11 +186,14 @@ async function analyze(wantAI){
       'Guided scope and a dated DTB pricing range are ready. This was not a live AI analysis.');
   }catch{
     if(serial===state.lastAnalysisId)
-      label('estimate-suggest-status','The estimate service is unavailable or verification failed. No estimate was saved. You can still prepare a message to DTB.');
+      label('estimate-suggest-status','We could not calculate your estimate. If this is a protected Preview, refresh your Vercel login and try again. No estimate was saved; WhatsApp and email drafts remain available.');
   }finally{
     button.disabled=false;
     if(ai)resetChallenge('ai');
   }
+}
+function updateAnalysisButton(){
+  $('estimate-suggest').textContent=state.aiAvailable&&checked('estimate-ai-consent')?'Analyse With AI':'Calculate My Estimate';
 }
 function manualUpdate(){
   label('estimate-page-count',q('estimate-pages'));
@@ -264,6 +267,7 @@ async function submit(event){
 async function boot(){
   label('estimate-page-count',q('estimate-pages'));
   $('estimate-suggest').addEventListener('click',()=>analyze(true));
+  $('estimate-ai-consent').addEventListener('change',updateAnalysisButton);
   form.addEventListener('input',event=>{
     if(event.target.id==='estimate-ai-consent')return;
     if(event.target.id==='estimate-goal')return; // typing is not sent to AI until explicitly requested
@@ -290,6 +294,7 @@ async function boot(){
   state.aiAvailable=aiConfig.aiAvailable===true;
   state.aiSiteKey=aiConfig.siteKey||'';
   $('estimate-ai-consent').disabled=!state.aiAvailable;
+  updateAnalysisButton();
   label('estimate-ai-availability',state.aiAvailable?
     'AI requirement extraction is available with optional consent and verification. Prices still come from fixed rules.' :
     'Guided estimates are available. AI analysis is not currently activated.');
