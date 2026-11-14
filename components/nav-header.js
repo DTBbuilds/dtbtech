@@ -58,6 +58,7 @@ class NavHeader extends HTMLElement {
                         
                         <!-- Navigation Links -->
                         <div class="hidden md:flex items-center space-x-2">
+                            <a href="${prefix}services/tradies" class="hidden lg:inline-flex px-3 py-2 min-h-[44px] items-center text-blue-200 hover:text-white border-b-2 border-transparent transition-colors">For Tradies</a>
                             <a href="${prefix}services" class="px-3 py-2 min-h-[44px] inline-flex items-center text-slate-300 hover:text-white border-b-2 border-transparent transition-colors ${getActiveClass('services')}"${getAriaCurrent('services')}>Services</a>
                             <a href="${prefix}projects" class="px-3 py-2 min-h-[44px] inline-flex items-center text-slate-300 hover:text-white border-b-2 border-transparent transition-colors ${getActiveClass('projects')}"${getAriaCurrent('projects')}>Projects</a>
                             <a href="${prefix}about" class="px-3 py-2 min-h-[44px] inline-flex items-center text-slate-300 hover:text-white border-b-2 border-transparent transition-colors ${getActiveClass('about')}"${getAriaCurrent('about')}>About</a>
@@ -82,6 +83,7 @@ class NavHeader extends HTMLElement {
                         <a href="${prefix}services" class="block px-4 py-3 min-h-[44px] text-gray-300 hover:text-blue-400 hover:bg-slate-700/50 rounded-lg transition-colors flex items-center font-medium ${getMobileActiveClass('services')}"${getAriaCurrent('services')}>
                             <i class="fas fa-cogs mr-3 w-4"></i>Services
                         </a>
+                        <a href="${prefix}services/tradies" class="block px-4 py-3 min-h-[44px] text-blue-300 hover:text-blue-200 hover:bg-slate-700/50 rounded-lg transition-colors flex items-center font-medium"><i class="fas fa-screwdriver-wrench mr-3 w-4" aria-hidden="true"></i>Websites for Tradies</a>
                         <a href="${prefix}projects" class="block px-4 py-3 min-h-[44px] text-gray-300 hover:text-blue-400 hover:bg-slate-700/50 rounded-lg transition-colors flex items-center font-medium ${getMobileActiveClass('projects')}"${getAriaCurrent('projects')}>
                             <i class="fas fa-briefcase mr-3 w-4"></i>Projects
                         </a>

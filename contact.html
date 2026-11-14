@@ -287,6 +287,7 @@
                                         <option value="">Select a service</option>
                                         <option value="Business website">Business website</option>
                                         <option value="Website redesign or repair">Website redesign or repair</option>
+                                        <option value="Tradie website and quote flow">Tradie website and quote flow</option>
                                         <option value="Online store or booking website">Online store or booking website</option>
                                         <option value="Custom web or mobile application">Custom web or mobile application</option>
                                         <option value="POS or business software">POS or business software</option>
@@ -320,6 +321,45 @@
                                 <label for="project-contact-name" class="block text-sm font-medium text-slate-200 mb-2">Your name <span class="text-slate-500 font-normal">(optional)</span></label>
                                 <input type="text" id="project-contact-name" name="contactName" maxlength="80" autocomplete="name" placeholder="How should we address you?" class="form-input w-full rounded-xl border border-slate-600 bg-slate-800 text-white placeholder-slate-500 px-4 py-3 min-h-[48px] focus:outline-none focus:border-blue-400">
                             </div>
+                            <fieldset id="project-tradie-details" hidden disabled class="rounded-xl border border-blue-500/25 bg-blue-500/5 p-4 sm:p-5 mb-5">
+                                <legend class="text-sm sm:text-base font-bold text-blue-200 px-2">A few details about your trade business</legend>
+                                <p class="text-slate-300 text-sm mb-4">These optional details help us prepare the right questions before we quote. They only go into the message you choose to send.</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="project-trade" class="block text-sm font-medium text-slate-200 mb-2">Your trade</label>
+                                        <select id="project-trade" name="trade" class="form-input w-full rounded-xl border border-slate-600 bg-slate-800 text-white px-4 py-3 min-h-[48px] focus:outline-none focus:border-blue-400">
+                                            <option value="">Choose a trade (optional)</option>
+                                            <option value="Plumbing">Plumbing</option>
+                                            <option value="Electrical">Electrical</option>
+                                            <option value="Roofing">Roofing</option>
+                                            <option value="Landscaping">Landscaping</option>
+                                            <option value="Painting">Painting</option>
+                                            <option value="Carpentry">Carpentry</option>
+                                            <option value="Concreting">Concreting</option>
+                                            <option value="Other trade">Other trade</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label for="project-service-area" class="block text-sm font-medium text-slate-200 mb-2">Suburbs or area you service</label>
+                                        <input type="text" id="project-service-area" name="serviceArea" maxlength="120" placeholder="e.g. Parramatta, Blacktown, Western Sydney" class="form-input w-full rounded-xl border border-slate-600 bg-slate-800 text-white placeholder-slate-500 px-4 py-3 min-h-[48px] focus:outline-none focus:border-blue-400">
+                                    </div>
+                                    <div>
+                                        <label for="project-website-url" class="block text-sm font-medium text-slate-200 mb-2">Existing website (if any)</label>
+                                        <input type="url" id="project-website-url" name="currentWebsite" maxlength="200" placeholder="https://example.com.au" class="form-input w-full rounded-xl border border-slate-600 bg-slate-800 text-white placeholder-slate-500 px-4 py-3 min-h-[48px] focus:outline-none focus:border-blue-400">
+                                    </div>
+                                    <div>
+                                        <label for="project-tradie-priority" class="block text-sm font-medium text-slate-200 mb-2">What should work better?</label>
+                                        <select id="project-tradie-priority" name="tradiePriority" class="form-input w-full rounded-xl border border-slate-600 bg-slate-800 text-white px-4 py-3 min-h-[48px] focus:outline-none focus:border-blue-400">
+                                            <option value="">Let's discuss (optional)</option>
+                                            <option value="New website">New website</option>
+                                            <option value="Fix existing website">Fix existing website</option>
+                                            <option value="More useful quote requests">More useful quote requests</option>
+                                            <option value="Appointments or booking">Appointments or booking</option>
+                                            <option value="Job tracking or staff workflow">Job tracking or staff workflow</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </fieldset>
                             <div>
                                 <label for="project-goal" class="block text-sm font-medium text-slate-200 mb-2">Briefly describe your project <span class="text-blue-300" aria-hidden="true">*</span></label>
                                 <textarea id="project-goal" name="goal" rows="4" required minlength="15" maxlength="800" placeholder="What does your business do, and what would you like the website or system to help you achieve?" class="form-input w-full rounded-xl border border-slate-600 bg-slate-800 text-white placeholder-slate-500 px-4 py-3 focus:outline-none focus:border-blue-400"></textarea>
