@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en-AU" class="scroll-smooth">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SmartQuote — AI-assisted Website & Software Estimate | DTB Technologies</title>
+<meta name="description" content="Describe your website or business software idea in plain English, explore an indicative Australian cost range and request a written quote from DTB Technologies.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://dtbtech.org/estimate">
+<meta property="og:type" content="website">
+<meta property="og:title" content="DTB SmartQuote — Plan Your Project">
+<meta property="og:description" content="Describe it. Refine the scope. Explore a transparent estimate.">
+<link rel="stylesheet" href="/dist/output.css">
+<link rel="stylesheet" href="/css/tokens.css">
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/css/animations.css">
+<link rel="stylesheet" href="/css/mobile-optimizations.css">
+<script src="/components/nav-header.js" defer></script>
+<script src="/components/site-footer.js" defer></script>
+<script src="/js/smartquote.js" defer></script>
+</head>
+<body class="bg-slate-900 text-slate-100">
+<nav-header></nav-header>
+<main id="main-content" tabindex="-1" class="pt-16">
+<section class="bg-slate-950 py-12 sm:py-20">
+  <div class="container mx-auto px-5 sm:px-6">
+    <div class="max-w-4xl">
+      <p class="text-blue-300 text-xs font-semibold tracking-widest uppercase mb-4">DTB Technologies / SmartQuote preview</p>
+      <h1 class="text-3xl sm:text-5xl font-bold text-white tracking-tight leading-tight mb-5">Tell us what you want to build. <span class="text-blue-400">Explore what it could cost.</span></h1>
+      <p class="max-w-3xl text-slate-300 text-base sm:text-lg leading-relaxed mb-7">Describe your project in everyday language. Our guided estimator helps outline the requirements and shows a transparent planning range in AUD. Optional AI assistance can help interpret your idea when enabled.</p>
+      <ol class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm" aria-label="SmartQuote steps">
+        <li class="rounded-xl bg-slate-900 border border-slate-700 p-4"><span class="text-blue-300 font-bold mr-2">01</span> Describe your idea</li>
+        <li class="rounded-xl bg-slate-900 border border-slate-700 p-4"><span class="text-blue-300 font-bold mr-2">02</span> Review scope and range</li>
+        <li class="rounded-xl bg-slate-900 border border-slate-700 p-4"><span class="text-blue-300 font-bold mr-2">03</span> Request a formal quote</li>
+      </ol>
+    </div>
+  </div>
+</section>
+<section class="py-10 sm:py-14 bg-slate-900" aria-labelledby="estimate-title">
+  <div class="container mx-auto px-5 sm:px-6 grid grid-cols-1 lg:grid-cols-5 gap-7">
+    <div class="lg:col-span-3">
+      <form id="dtb-estimate-form" class="rounded-2xl border border-blue-500/25 bg-slate-950/75 p-5 sm:p-8 space-y-6">
+        <div>
+          <h2 id="estimate-title" class="text-2xl font-bold text-white mb-2">What's your project?</h2>
+          <p class="text-slate-400 text-sm">No account needed to get a planning range. Nothing is automatically saved or submitted.</p>
+        </div>
+        <div>
+          <label for="estimate-goal" class="block text-white font-semibold text-sm mb-2">Describe what your business needs</label>
+          <textarea id="estimate-goal" rows="5" maxlength="1000" class="w-full rounded-xl border border-slate-600 bg-slate-800 p-4 text-white placeholder-slate-400" placeholder="e.g. I own a plumbing business. I want a website where customers request quotes and three technicians can see their assigned jobs." aria-describedby="estimate-privacy"></textarea>
+          <p id="estimate-privacy" class="text-slate-400 text-xs mt-2">Do not include passwords, personal customer records or other sensitive information. If you opt in to AI analysis, your description is processed by an external AI service.</p>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label for="estimate-type" class="block text-white font-semibold text-sm mb-2">Project type</label>
+            <select id="estimate-type" class="w-full min-h-[48px] rounded-xl border border-slate-600 bg-slate-800 px-4 py-3 text-white">
+              <option value="auto">Suggest from my description</option>
+              <option value="site">Business / tradie website</option>
+              <option value="repair">Website repair</option>
+              <option value="store">Online store</option>
+              <option value="crew">Website + existing staff/job software</option>
+              <option value="portal">Custom staff portal</option>
+              <option value="custom">Custom app / software platform</option>
+            </select>
+          </div>
+          <div>
+            <label for="estimate-region" class="block text-white font-semibold text-sm mb-2">Project location</label>
+            <select id="estimate-region" class="w-full min-h-[48px] rounded-xl border border-slate-600 bg-slate-800 px-4 py-3 text-white">
+              <option value="Australia">Australia — AUD planning estimate</option>
+              <option value="Kenya">Kenya — personalised quote</option>
+              <option value="Other">Other — personalised quote</option>
+            </select>
+          </div>
+          <div>
+            <label for="estimate-pages" class="block text-white font-semibold text-sm mb-2">Estimated pages or app screens: <span id="estimate-page-count" class="text-blue-300">5</span></label>
+            <input id="estimate-pages" type="range" min="1" max="25" step="1" value="5" class="w-full accent-blue-500 min-h-[44px]">
+          </div>
+          <div>
+            <label for="estimate-staff" class="block text-white font-semibold text-sm mb-2">Staff who need access (if any)</label>
+            <input id="estimate-staff" type="number" min="0" max="50" value="0" inputmode="numeric" class="w-full min-h-[48px] rounded-xl border border-slate-600 bg-slate-800 px-4 py-3 text-white">
+          </div>
+          <div>
+            <label for="estimate-timeline" class="block text-white font-semibold text-sm mb-2">Preferred timing</label>
+            <select id="estimate-timeline" class="w-full min-h-[48px] rounded-xl border border-slate-600 bg-slate-800 px-4 py-3 text-white">
+              <option value="flexible">Flexible</option>
+              <option value="soon">As soon as practical</option>
+              <option value="1-3-months">Within 1–3 months</option>
+            </select>
+          </div>
+          <div>
+            <label for="estimate-budget" class="block text-white font-semibold text-sm mb-2">Your budget (AUD, optional)</label>
+            <input id="estimate-budget" type="number" min="0" max="1000000" step="100" placeholder="e.g. 5000" inputmode="numeric" class="w-full min-h-[48px] rounded-xl border border-slate-600 bg-slate-800 px-4 py-3 text-white">
+          </div>
+        </div>
+        <fieldset>
+          <legend class="text-white font-semibold text-sm mb-3">What features would you like?</legend>
+          <div id="estimate-feature-list" class="grid sm:grid-cols-2 gap-2.5">
+            <label class="flex items-center gap-3 rounded-xl bg-slate-800/60 border border-slate-700 p-3"><input type="checkbox" value="gallery" class="h-5 w-5 accent-blue-500"><span class="text-sm">Portfolio / gallery</span></label>
+            <label class="flex items-center gap-3 rounded-xl bg-slate-800/60 border border-slate-700 p-3"><input type="checkbox" value="quote" class="h-5 w-5 accent-blue-500"><span class="text-sm">Quote request forms</span></label>
+            <label class="flex items-center gap-3 rounded-xl bg-slate-800/60 border border-slate-700 p-3"><input type="checkbox" value="booking" class="h-5 w-5 accent-blue-500"><span class="text-sm">Bookings / calendar</span></label>
+            <label class="flex items-center gap-3 rounded-xl bg-slate-800/60 border border-slate-700 p-3"><input type="checkbox" value="payments" class="h-5 w-5 accent-blue-500"><span class="text-sm">Online payments</span></label>
+            <label class="flex items-center gap-3 rounded-xl bg-slate-800/60 border border-slate-700 p-3"><input type="checkbox" value="customer_accounts" class="h-5 w-5 accent-blue-500"><span class="text-sm">Customer accounts</span></label>
+            <label class="flex items-center gap-3 rounded-xl bg-slate-800/60 border border-slate-700 p-3"><input type="checkbox" value="staff_workspace" class="h-5 w-5 accent-blue-500"><span class="text-sm">Existing staff/job software</span></label>
+            <label class="flex items-center gap-3 rounded-xl bg-slate-800/60 border border-slate-700 p-3"><input type="checkbox" value="custom_staff_portal" class="h-5 w-5 accent-blue-500"><span class="text-sm">Bespoke staff portal</span></label>
+            <label class="flex items-center gap-3 rounded-xl bg-slate-800/60 border border-slate-700 p-3"><input type="checkbox" value="inventory" class="h-5 w-5 accent-blue-500"><span class="text-sm">Product catalogue / stock</span></label>
+            <label class="flex items-center gap-3 rounded-xl bg-slate-800/60 border border-slate-700 p-3"><input type="checkbox" value="integration" class="h-5 w-5 accent-blue-500"><span class="text-sm">CRM / accounting integration</span></label>
+            <label class="flex items-center gap-3 rounded-xl bg-slate-800/60 border border-slate-700 p-3"><input type="checkbox" value="multi_location" class="h-5 w-5 accent-blue-500"><span class="text-sm">Multiple locations</span></label>
+            <label class="flex items-center gap-3 rounded-xl bg-slate-800/60 border border-slate-700 p-3"><input type="checkbox" value="seo" class="h-5 w-5 accent-blue-500"><span class="text-sm">Local SEO foundations</span></label>
+            <label class="flex items-center gap-3 rounded-xl bg-slate-800/60 border border-slate-700 p-3"><input type="checkbox" value="reports" class="h-5 w-5 accent-blue-500"><span class="text-sm">Admin reports</span></label>
+          </div>
+        </fieldset>
+        <div class="border-t border-slate-700 pt-5">
+          <label for="estimate-ai-consent" class="flex items-start gap-3 cursor-pointer">
+            <input id="estimate-ai-consent" type="checkbox" class="accent-blue-500 h-5 w-5 mt-0.5">
+            <span class="text-slate-300 text-sm"><strong class="text-white">Use AI to help understand my description</strong> (optional). AI sends this description to an external model for feature suggestions, not to decide the price.</span>
+          </label>
+          <div id="estimate-ai-challenge" class="hidden mt-4" aria-label="AI verification"></div>
+          <p id="estimate-ai-availability" class="text-slate-400 text-xs mt-3">Guided estimation is available. Checking whether AI assistance is enabled…</p>
+          <button id="estimate-suggest" type="button" class="mt-4 inline-flex items-center justify-center min-h-[48px] px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold w-full sm:w-auto">Analyse My Project</button>
+          <p id="estimate-suggest-status" role="status" aria-live="polite" class="text-sm text-blue-300 mt-3">Use this button to update the suggested scope and estimate.</p>
+        </div>
+      </form>
+    </div>
+    <aside class="lg:col-span-2">
+      <div class="lg:sticky lg:top-24 rounded-2xl border border-blue-500/30 bg-slate-950 p-5 sm:p-7">
+        <p class="text-blue-300 font-semibold text-xs uppercase tracking-wider mb-2">Your planning estimate</p>
+        <h2 id="estimate-result-type" class="text-xl font-bold text-white mb-4">Ready when you are</h2>
+        <p class="text-sm text-slate-400">Indicative project range</p>
+        <p id="estimate-price" class="text-2xl sm:text-3xl font-bold text-white my-2">Describe your idea</p>
+        <p id="estimate-price-note" class="text-slate-400 text-xs leading-relaxed mb-5">Final price requires a written quote. Tax, hosting and subscriptions may be extra.</p>
+        <p id="estimate-analysis-mode" class="text-blue-300 text-xs font-semibold mb-5">Guided preview</p>
+        <h3 class="text-white font-semibold text-sm mb-2">Included in your draft scope</h3>
+        <ul id="estimate-scope" class="list-disc pl-5 space-y-2 text-slate-300 text-sm mb-5"></ul>
+        <h3 class="text-white font-semibold text-sm mb-2">Questions worth clarifying</h3>
+        <ul id="estimate-questions" class="list-disc pl-5 space-y-2 text-slate-400 text-sm mb-5"></ul>
+        <p id="estimate-budget-hint" class="text-sm text-blue-200 border border-blue-500/20 bg-blue-600/10 rounded-xl p-3 mb-5">An estimate can be calculated without entering your budget.</p>
+        <p class="text-xs text-slate-400 mb-5">Uses DTB's versioned price guidance and published Australian benchmark ranges, reviewed on <strong>15 November 2026</strong>. It does not check competitor prices live, guarantee results or make a binding offer.</p>
+        <div class="space-y-3">
+          <button id="estimate-copy" type="button" class="w-full min-h-[48px] rounded-xl border border-slate-600 text-white font-semibold px-5 py-3 hover:bg-slate-800">Copy My Project Outline</button>
+          <a id="estimate-whatsapp" href="https://wa.me/61450275013" target="_blank" rel="noopener noreferrer" class="w-full min-h-[48px] rounded-xl bg-green-700 text-white font-semibold px-5 py-3 flex items-center justify-center">Prepare WhatsApp Message</a>
+          <a id="estimate-email" href="mailto:dtbbuildsoffice@gmail.com" class="w-full min-h-[48px] rounded-xl border border-blue-500/40 text-blue-300 font-semibold px-5 py-3 flex items-center justify-center">Prepare Email Draft</a>
+        </div>
+        <p id="estimate-action-status" role="status" aria-live="polite" class="text-blue-300 text-sm mt-4">Prepared messages must be sent by you; they are not automatically delivered.</p>
+      </div>
+    </aside>
+  </div>
+</section>
+<section id="request-quote" class="py-12 sm:py-16 bg-slate-950" aria-labelledby="submit-heading">
+  <div class="container mx-auto px-5 sm:px-6 max-w-3xl">
+    <div class="rounded-2xl border border-blue-500/25 bg-slate-900 p-5 sm:p-8">
+      <p class="text-blue-300 uppercase text-xs tracking-widest font-semibold mb-2">Next step</p>
+      <h2 id="submit-heading" class="text-2xl sm:text-3xl font-bold text-white mb-3">Happy with your scope? Request a written quote.</h2>
+      <p class="text-slate-300 text-sm leading-relaxed mb-5">If secure submission is active, we can save your enquiry and give you a reference number. If not, use the WhatsApp or email draft above. A saved request is not an accepted quote or payment obligation.</p>
+      <p id="estimate-submit-availability" class="text-slate-400 text-xs mb-5" role="status">Checking secure submission availability…</p>
+      <form id="estimate-submit-form" class="space-y-4">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label for="estimate-contact-name" class="text-sm font-semibold text-white block mb-2">Your name</label>
+            <input id="estimate-contact-name" maxlength="120" autocomplete="name" required class="w-full rounded-xl border border-slate-600 bg-slate-800 px-4 py-3 min-h-[48px]">
+          </div>
+          <div>
+            <label for="estimate-business" class="text-sm font-semibold text-white block mb-2">Business name (optional)</label>
+            <input id="estimate-business" maxlength="120" autocomplete="organization" class="w-full rounded-xl border border-slate-600 bg-slate-800 px-4 py-3 min-h-[48px]">
+          </div>
+          <div>
+            <label for="estimate-contact-email" class="text-sm font-semibold text-white block mb-2">Email</label>
+            <input id="estimate-contact-email" type="email" maxlength="254" autocomplete="email" class="w-full rounded-xl border border-slate-600 bg-slate-800 px-4 py-3 min-h-[48px]">
+          </div>
+          <div>
+            <label for="estimate-contact-phone" class="text-sm font-semibold text-white block mb-2">Phone / WhatsApp</label>
+            <input id="estimate-contact-phone" type="tel" maxlength="40" autocomplete="tel" class="w-full rounded-xl border border-slate-600 bg-slate-800 px-4 py-3 min-h-[48px]">
+          </div>
+          <div>
+            <label for="estimate-contact-preferred" class="text-sm font-semibold text-white block mb-2">Preferred reply channel</label>
+            <select id="estimate-contact-preferred" class="w-full rounded-xl border border-slate-600 bg-slate-800 px-4 py-3 min-h-[48px]">
+              <option value="email">Email</option><option value="phone">Phone call</option><option value="whatsapp">WhatsApp</option>
+            </select>
+          </div>
+        </div>
+        <div class="hidden" aria-hidden="true">
+          <label for="estimate-website">Leave empty</label>
+          <input id="estimate-website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+        <label for="estimate-contact-consent" class="flex items-start gap-3 text-sm text-slate-300">
+          <input id="estimate-contact-consent" type="checkbox" class="h-5 w-5 mt-0.5 accent-blue-500" required>
+          <span>I agree that DTB Technologies may contact me about this project enquiry. This does not opt me into marketing emails.</span>
+        </label>
+        <div id="estimate-submit-challenge" class="hidden" aria-label="Submit verification"></div>
+        <button id="estimate-submit" type="submit" disabled class="w-full sm:w-auto min-h-[48px] px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 disabled:opacity-40 text-white font-semibold">Send My Quote Request</button>
+        <p id="estimate-submit-status" role="status" aria-live="polite" class="text-sm text-blue-300"></p>
+      </form>
+    </div>
+  </div>
+</section>
+<section class="py-10 bg-slate-900">
+  <div class="container mx-auto px-5 sm:px-6 max-w-3xl text-slate-400 text-sm leading-relaxed">
+    <h2 class="text-xl font-bold text-white mb-3">How the range is prepared</h2>
+    <p>The AI feature, when enabled and consented to, suggests a project category, pages, staff count and features. A separate controlled pricing engine uses a dated DTB pricing profile to calculate an illustrative range. It is not a live market feed. A person at DTB must confirm requirements, delivery costs, GST and contractual terms before issuing a quote.</p>
+  </div>
+</section>
+</main>
+<site-footer></site-footer>
+</body>
+</html>
