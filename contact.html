@@ -103,6 +103,7 @@
     <script src="./components/nav-header.js" defer></script>
     <script src="./components/site-footer.js" defer></script>
     <script src="./js/project-brief.js" defer></script>
+    <script src="./js/enquiry-submit.js" defer></script>
 
     <style>
         .form-input:focus { box-shadow: 0 0 0 3px rgba(59,130,246,0.15); }
@@ -273,11 +274,11 @@
                             <span class="text-xs text-slate-400">No obligation · Australia, Kenya &amp; remote projects</span>
                         </div>
                         <h2 id="project-brief-heading" class="text-2xl sm:text-3xl font-bold text-white mb-3">Tell Us About Your Project</h2>
-                        <p class="text-slate-300 text-sm sm:text-base max-w-3xl leading-relaxed mb-5">Tell us what you are building or improving. We'll prepare a message you can review and send yourself using WhatsApp or email. No account needed.</p>
+                        <p class="text-slate-300 text-sm sm:text-base max-w-3xl leading-relaxed mb-5">Tell us what you want to build or improve. You can request a direct submission when available, or prepare a WhatsApp/email message to send yourself. No account needed.</p>
                         <ol class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-7" aria-label="How your project brief works">
                             <li class="rounded-xl border border-slate-700 bg-slate-800/60 p-3 text-sm text-slate-200"><span class="font-bold text-blue-300">1. Describe</span> your project</li>
-                            <li class="rounded-xl border border-slate-700 bg-slate-800/60 p-3 text-sm text-slate-200"><span class="font-bold text-blue-300">2. Choose</span> WhatsApp or email</li>
-                            <li class="rounded-xl border border-slate-700 bg-slate-800/60 p-3 text-sm text-slate-200"><span class="font-bold text-blue-300">3. Review and send</span> in that app</li>
+                            <li class="rounded-xl border border-slate-700 bg-slate-800/60 p-3 text-sm text-slate-200"><span class="font-bold text-blue-300">2. Choose</span> online submission or WhatsApp/email</li>
+                            <li class="rounded-xl border border-slate-700 bg-slate-800/60 p-3 text-sm text-slate-200"><span class="font-bold text-blue-300">3. Review and send</span> with the method you choose</li>
                         </ol>
                         <form id="dtb-project-brief-form" class="space-y-5">
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -329,8 +330,33 @@
                                 <label for="project-budget" class="block text-sm font-medium text-slate-200 mb-2">Approximate budget <span class="text-slate-500 font-normal">(optional)</span></label>
                                 <input type="text" id="project-budget" name="budget" maxlength="60" placeholder="e.g. AUD 2,000, KES 150,000, or not sure" class="form-input w-full rounded-xl border border-slate-600 bg-slate-800 text-white placeholder-slate-500 px-4 py-3 min-h-[48px] focus:outline-none focus:border-blue-400">
                             </div>
+                            <fieldset id="dtb-contact-online-fields" hidden disabled class="rounded-xl border border-blue-500/30 bg-blue-600/5 p-4 sm:p-5">
+                                <legend class="px-2 text-sm font-bold text-blue-200">Contact details for direct submission</legend>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
+                                    <div>
+                                        <label for="dtb-contact-email" class="block text-sm font-medium text-slate-200 mb-2">Email address (email or phone required)</label>
+                                        <input id="dtb-contact-email" name="email" type="email" autocomplete="email" maxlength="254" placeholder="you@example.com" class="form-input w-full rounded-xl border border-slate-600 bg-slate-800 text-white placeholder-slate-500 px-4 py-3 min-h-[48px] focus:outline-none focus:border-blue-400">
+                                    </div>
+                                    <div>
+                                        <label for="dtb-contact-phone" class="block text-sm font-medium text-slate-200 mb-2">Phone / WhatsApp</label>
+                                        <input id="dtb-contact-phone" name="phone" type="tel" autocomplete="tel" maxlength="40" placeholder="+61..." class="form-input w-full rounded-xl border border-slate-600 bg-slate-800 text-white placeholder-slate-500 px-4 py-3 min-h-[48px] focus:outline-none focus:border-blue-400">
+                                    </div>
+                                </div>
+                                <label for="dtb-contact-consent" class="flex gap-3 mt-5 text-sm text-slate-200 cursor-pointer">
+                                    <input id="dtb-contact-consent" type="checkbox" class="w-5 h-5 mt-0.5 rounded border-slate-500 text-blue-600 flex-shrink-0">
+                                    <span>I agree that DTB Technologies may store this enquiry and contact me about the project. This is not consent to marketing.</span>
+                                </label>
+                                <div class="sr-only" aria-hidden="true"><label for="dtb-contact-hp">Leave empty</label><input id="dtb-contact-hp" name="website" tabindex="-1" autocomplete="off"></div>
+                            </fieldset>
+                            <div id="dtb-contact-turnstile" class="min-h-[1px]" aria-label="Anti-spam verification"></div>
+                            <button type="submit" id="dtb-contact-submit" disabled class="w-full inline-flex items-center justify-center min-h-[52px] px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400">
+                                <i class="fas fa-paper-plane mr-2" aria-hidden="true"></i> Submit Enquiry to DTB
+                            </button>
+                            <p id="dtb-contact-online-status" role="status" aria-live="polite" class="text-sm text-blue-300">Checking secure submission availability… WhatsApp and email remain available.</p>
+                            <p class="text-xs text-slate-400 leading-relaxed">Direct submission saves your enquiry securely only after you choose Submit and agree to the collection notice. A confirmation reference appears after successful storage.</p>
+                            <p class="text-sm text-slate-300">Alternatively, send the same brief yourself:</p>
                             <div class="flex flex-col sm:flex-row gap-3">
-                                <button type="submit" class="inline-flex items-center justify-center min-h-[48px] px-6 py-3 rounded-xl bg-green-600 hover:bg-green-700 text-white font-semibold text-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-400">
+                                <button type="button" id="dtb-brief-whatsapp" class="inline-flex items-center justify-center min-h-[48px] px-6 py-3 rounded-xl bg-green-600 hover:bg-green-700 text-white font-semibold text-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-400">
                                     <i class="fab fa-whatsapp mr-2" aria-hidden="true"></i> Review on WhatsApp
                                 </button>
                                 <button type="button" id="dtb-brief-email" class="inline-flex items-center justify-center min-h-[48px] px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400">
@@ -340,7 +366,7 @@
                                     <i class="fas fa-copy mr-2" aria-hidden="true"></i> Copy Brief
                                 </button>
                             </div>
-                            <p class="text-xs text-slate-400 leading-relaxed">Your brief stays in this page until you choose an option. Nothing is submitted to DTB or stored by this website. You must press Send in WhatsApp or your email app; their respective privacy terms apply.</p>
+                            <p class="text-xs text-slate-400 leading-relaxed">WhatsApp, Email and Copy Brief only prepare a message. Those choices do not store anything on DTB's site; you must press Send in the chosen app. Direct submission (when enabled) requires your explicit consent and returns a confirmation reference.</p>
                             <p id="dtb-brief-status" role="status" aria-live="polite" class="text-sm text-blue-300"></p>
                         </form>
                     </section>

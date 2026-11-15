@@ -177,6 +177,8 @@
                 'Service area: ' + (read('tradie-area') || 'Not specified'),
                 'Interested in: ' + read('tradie-offer'),
                 'Preferred contact: ' + read('tradie-contact'),
+                ...(document.getElementById('dtb-tradies-email-address')?.value.trim() ? ['Email: ' + document.getElementById('dtb-tradies-email-address').value.trim()] : []),
+                ...(document.getElementById('dtb-tradies-phone-number')?.value.trim() ? ['Phone: ' + document.getElementById('dtb-tradies-phone-number').value.trim()] : []),
                 '',
                 'Biggest problem:',
                 read('tradie-problem'),
@@ -234,8 +236,7 @@
             }
         }
 
-        form.addEventListener('submit', function (event) {
-            event.preventDefault();
+        document.getElementById('dtb-tradies-whatsapp').addEventListener('click', function () {
             if (!validate()) return;
             var url = whatsappUrl();
             window.open(url, '_blank', 'noopener,noreferrer');

@@ -47,6 +47,7 @@
     <script src="./components/nav-header.js" defer></script>
     <script src="./components/site-footer.js" defer></script>
     <script src="./js/tradies.js" defer></script>
+    <script src="./js/enquiry-submit.js" defer></script>
 
     <!-- Service Schema -->
     <script type="application/ld+json">
@@ -456,10 +457,10 @@
                 <div class="max-w-3xl mx-auto rounded-2xl border border-blue-500/25 bg-slate-950/70 p-5 sm:p-8">
                     <div class="flex flex-wrap items-center gap-2 mb-3">
                         <span class="inline-flex items-center rounded-full bg-blue-500/10 border border-blue-500/25 px-3 py-1 text-xs font-semibold text-blue-300">Free website check</span>
-                        <span class="text-xs text-slate-400">No obligation · No automated submission</span>
+                        <span class="text-xs text-slate-400">No obligation · Online submission when enabled</span>
                     </div>
                     <h2 id="website-check-title" class="text-2xl sm:text-3xl font-bold text-white mb-3">Get Your Free Website Check</h2>
-                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">Send us your website and we'll identify the three most important improvements — no obligation. Fill in the details below and we'll prepare a message you can send on WhatsApp or by email.</p>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">Send us your website and we'll identify the three most important improvements — no obligation. Fill in the details below to request our review when direct submission is enabled, or prepare a message on WhatsApp or by email.</p>
 
                     <form id="dtb-tradies-check-form" novalidate class="space-y-5">
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -528,8 +529,31 @@
                             <p id="tradie-problem-hint" class="text-xs text-slate-500 mt-1.5">A sentence or two is enough. Please don't include passwords or sensitive customer data.</p>
                             <p id="tradie-problem-error" role="alert" class="hidden text-red-400 text-xs mt-1.5">Please describe your biggest problem (at least 10 characters).</p>
                         </div>
+                        <fieldset id="dtb-tradies-online-fields" hidden disabled class="rounded-xl border border-blue-500/30 bg-blue-600/5 p-4 sm:p-5">
+                            <legend class="px-2 text-sm font-bold text-blue-200">Contact details for online submission</legend>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
+                                <div>
+                                    <label for="dtb-tradies-email-address" class="block text-sm font-medium text-slate-200 mb-2">Email address</label>
+                                    <input type="email" id="dtb-tradies-email-address" name="email" maxlength="254" autocomplete="email" placeholder="you@example.com" class="form-input w-full rounded-xl border border-slate-600 bg-slate-800 text-white placeholder-slate-500 px-4 py-3 min-h-[48px] focus:outline-none focus:border-blue-400">
+                                </div>
+                                <div>
+                                    <label for="dtb-tradies-phone-number" class="block text-sm font-medium text-slate-200 mb-2">Phone / WhatsApp</label>
+                                    <input type="tel" id="dtb-tradies-phone-number" name="phone" maxlength="40" autocomplete="tel" placeholder="+61..." class="form-input w-full rounded-xl border border-slate-600 bg-slate-800 text-white placeholder-slate-500 px-4 py-3 min-h-[48px] focus:outline-none focus:border-blue-400">
+                                </div>
+                            </div>
+                            <p class="text-xs text-slate-400 mt-2">At least one valid contact method is required. Your choice above tells us how you prefer a reply.</p>
+                            <label for="dtb-tradies-consent" class="flex gap-3 mt-5 text-sm text-slate-200 cursor-pointer">
+                                <input id="dtb-tradies-consent" type="checkbox" class="w-5 h-5 mt-0.5 rounded border-slate-500 text-blue-600 flex-shrink-0">
+                                <span>I agree that DTB Technologies may store this project enquiry and contact me about it. No marketing opt-in.</span>
+                            </label>
+                            <div class="sr-only" aria-hidden="true"><label for="dtb-tradies-hp">Leave empty</label><input id="dtb-tradies-hp" tabindex="-1" autocomplete="off"></div>
+                        </fieldset>
+                        <div id="dtb-tradies-turnstile" class="min-h-[1px]" aria-label="Anti-spam verification"></div>
+                        <button type="button" id="dtb-tradies-submit" disabled class="w-full inline-flex items-center justify-center min-h-[52px] px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400"><i class="fas fa-paper-plane mr-2" aria-hidden="true"></i> Submit Website Check to DTB</button>
+                        <p id="dtb-tradies-online-status" role="status" aria-live="polite" class="text-sm text-blue-300">Checking secure submission availability… Manual contact methods remain available.</p>
+                        <p class="text-sm text-slate-300">Or send the details through your own app:</p>
                         <div class="flex flex-col sm:flex-row gap-3">
-                            <button type="submit" class="inline-flex items-center justify-center min-h-[48px] px-6 py-3 rounded-xl bg-green-600 hover:bg-green-700 text-white font-semibold text-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-400">
+                            <button type="button" id="dtb-tradies-whatsapp" class="inline-flex items-center justify-center min-h-[48px] px-6 py-3 rounded-xl bg-green-600 hover:bg-green-700 text-white font-semibold text-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-400">
                                 <i class="fab fa-whatsapp mr-2" aria-hidden="true"></i> Send via WhatsApp
                             </button>
                             <button type="button" id="dtb-tradies-email" class="inline-flex items-center justify-center min-h-[48px] px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400">
@@ -539,7 +563,7 @@
                                 <i class="fas fa-copy mr-2" aria-hidden="true"></i> Copy Details
                             </button>
                         </div>
-                        <p class="text-xs text-slate-400 leading-relaxed">This form does not automatically submit or save your information. Review and send your message in WhatsApp or your email app. Their respective privacy terms apply once opened.</p>
+                        <p class="text-xs text-slate-400 leading-relaxed">Manual WhatsApp, email and copy actions do not automatically submit or store details. Direct submission, when enabled, only saves your details with explicit consent and confirms a reference.</p>
                         <p class="text-xs text-slate-400">Prefer the full guided brief? <a href="contact?service=Business%20website&source=tradies#project-brief" data-utm-preserve data-track="tradies_primary_cta" data-track-context="full-brief" class="text-blue-300 underline underline-offset-4 hover:text-blue-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400 rounded-sm">Open the project brief</a> with your details carried across.</p>
                         <p id="dtb-tradies-status" role="status" aria-live="polite" class="text-sm text-blue-300"></p>
                     </form>
