@@ -192,3 +192,42 @@ test('reuses existing Turnstile secret only for identical site keys',()=>{
     }
   }
 });
+test('Vercel function runtime OIDC header enables opt-in model without exposing credentials',async()=>{
+  const names=[
+    'AI_GATEWAY_API_KEY','VERCEL_OIDC_TOKEN','DTB_SMARTQUOTE_AI_ENABLED',
+    'DTB_SMARTQUOTE_MODEL','DTB_SMARTQUOTE_TURNSTILE_SITE_KEY',
+    'DTB_SMARTQUOTE_TURNSTILE_SECRET_KEY','DTB_TURNSTILE_SITE_KEY',
+    'DTB_TURNSTILE_SECRET_KEY','DTB_SMARTQUOTE_HOSTNAMES'
+  ];
+  const before=Object.fromEntries(names.map(k=>[k,process.env[k]]));
+  try{
+    delete process.env.AI_GATEWAY_API_KEY;
+    delete process.env.VERCEL_OIDC_TOKEN;
+    Object.assign(process.env,{
+      DTB_SMARTQUOTE_AI_ENABLED:'true',
+      DTB_SMARTQUOTE_MODEL:'google/gemini-2.5-flash-lite',
+      DTB_SMARTQUOTE_TURNSTILE_SITE_KEY:'0x4AAAA_FAKE_TEST_WIDGET',
+      DTB_TURNSTILE_SITE_KEY:'0x4AAAA_FAKE_TEST_WIDGET',
+      DTB_TURNSTILE_SECRET_KEY:'LOCAL_TEST_SECRET',
+      DTB_SMARTQUOTE_HOSTNAMES:'dtbtech.org'
+    });
+    delete process.env.DTB_SMARTQUOTE_TURNSTILE_SECRET_KEY;
+    const token='FAKE_TEST_RUNTIME_OIDC_TOKEN_DO_NOT_USE';
+    const authorized=request('GET',undefined,{'x-vercel-oidc-token':token});
+    const config=estimateApi._test.settings(authorized);
+    assert.equal(config.enabled,true);
+    assert.equal(config.token,token);
+    assert.equal(estimateApi._test.settings({headers:{}}).enabled,false);
+    const res=mockRes();
+    await estimateApi(authorized,res);
+    assert.equal(res.statusCode,200);
+    assert.equal(res.data.aiAvailable,true);
+    assert.ok(!JSON.stringify(res.data).includes(token));
+    assert.ok(!JSON.stringify(res.data).includes('LOCAL_TEST_SECRET'));
+  } finally{
+    for(const name of names){
+      if(before[name]===undefined)delete process.env[name];
+      else process.env[name]=before[name];
+    }
+  }
+});
