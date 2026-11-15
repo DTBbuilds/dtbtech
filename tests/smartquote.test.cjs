@@ -238,15 +238,57 @@ test('homepage primary quote CTA opens public SmartQuote, while the estimator re
   const home=fs.readFileSync(path.join(__dirname,'../index.html'),'utf8');
   const page=fs.readFileSync(path.join(__dirname,'../estimate.html'),'utf8');
   const script=fs.readFileSync(path.join(__dirname,'../js/smartquote.js'),'utf8');
-  const hero=home.split('<!-- Hero Section')[1]?.split('<!-- Genuine work:')[0];
+  const hero=home.split('<!-- Hero Section')[1]?.split('<!-- Services Section')[0];
   assert.ok(hero,'homepage hero is present');
   assert.match(hero,/<a href="\/estimate"[^>]*>[\s\S]*?Estimate Your Project[\s\S]*?<\/a>/);
   assert.doesNotMatch(hero,/Get a Project Quote/);
-  assert.match(hero,/Free SmartQuote estimate/);
+  assert.match(hero,/Free indicative SmartQuote estimate/);
   assert.match(page,/id="dtb-estimate-form"/);
   assert.match(page,/id="estimate-submit-form"/);
   assert.match(page,/src="\/js\/smartquote\.js"/);
   assert.ok(script.includes("postJson('/api/smartquote'"));
   assert.ok(script.includes("postJson('/api/smartquote-submit'"));
   assert.ok(home.includes('href="projects"'),'secondary portfolio CTA remains intact');
+});
+
+test('homepage presents six sections once, in the intended buying journey',()=>{
+  const fs=require('node:fs');
+  const path=require('node:path');
+  const home=fs.readFileSync(path.join(__dirname,'../index.html'),'utf8');
+  const expected=[
+    'home-hero','what-we-build','selected-work',
+    'why-dtb','how-it-works','start-project'
+  ];
+  const positions=expected.map(id=>{
+    const match=new RegExp('<section[^>]*id="'+id+'"').exec(home);
+    assert.ok(match,'missing homepage section '+id);
+    return match.index;
+  });
+  assert.equal((home.match(/<main\b/g)||[]).length,1);
+  assert.equal((home.match(/<h1\b/g)||[]).length,1);
+  assert.ok(positions.every((pos,i)=>i===0||pos>positions[i-1]),'homepage section order');
+  assert.equal((home.match(/<section\b/g)||[]).length,6,'only six homepage sections');
+  assert.ok(home.includes('<site-footer hide-project-cta></site-footer>'),'no repeated footer promotional card');
+  assert.equal((home.match(/href="\/estimate"/g)||[]).length,2,'hero and closing SmartQuote CTAs');
+  assert.ok(home.includes('href="/contact#project-brief"'),'direct contact alternative remains available');
+  assert.ok(home.includes('href="/tradies"'),'dedicated tradie landing page remains discoverable');
+  assert.ok(home.includes('href="/services"'),'full service catalogue remains discoverable');
+  assert.ok(!home.includes('At a Glance Section'),'nonessential stat cards removed');
+  assert.ok(!home.includes('Featured Projects Section'),'duplicated portfolio gallery removed');
+  assert.ok(!home.includes('New Build, Fix or Maintain Section'),'duplicated lifecycle section removed');
+  assert.ok(!home.includes('Quick Contact Section'),'duplicated contact block removed');
+});
+test('homepage uses real approved portfolio assets and factual project labels',()=>{
+  const fs=require('node:fs');
+  const path=require('node:path');
+  const home=fs.readFileSync(path.join(__dirname,'../index.html'),'utf8');
+  for(const file of ['keus-logistics-screen.jpg','jat-wordmark.png']){
+    assert.ok(fs.existsSync(path.join(__dirname,'../assets/projects',file)),'missing approved project asset '+file);
+    assert.ok(home.includes('/assets/projects/'+file),'project image not used '+file);
+  }
+  assert.ok(home.includes('Client website'));
+  assert.ok(home.includes('DTB-owned product'));
+  assert.ok(home.includes('href="/projects/keus-logistics"'));
+  assert.ok(home.includes('href="/projects/jack-of-all-trades"'));
+  assert.ok(!home.includes('guaranteed leads'),'no unsubstantiated commercial claim');
 });
