@@ -82,14 +82,51 @@ test('cross-origin browser access is denied',async()=>{
   assert.equal(res.statusCode,403);
   assert.equal(res.data.error,'origin_rejected');
 });
-test('submission is OFF by default and cannot silently save enquiries',async()=>{
-  const res=mockRes();
-  await submitApi(request('GET'),res);
-  assert.equal(res.data.enabled,false);assert.equal(res.data.siteKey,null);
-  const post=mockRes();
-  await submitApi(request('POST',{name:'Example',description:'A proper project description.'}),post);
-  assert.equal(post.statusCode,503);
-  assert.equal(post.data.error,'not_configured');
+test('submission disabled flag always fails closed regardless of build environment',async()=>{
+  const name='DTB_SMARTQUOTE_SUBMIT_ENABLED',before=process.env[name];
+  try {
+    process.env[name]='false';
+    const res=mockRes();
+    await submitApi(request('GET'),res);
+    assert.equal(res.data.enabled,false);assert.equal(res.data.siteKey,null);
+    const post=mockRes();
+    await submitApi(request('POST',{name:'Example',description:'A proper project description.'}),post);
+    assert.equal(post.statusCode,503);
+    assert.equal(post.data.error,'not_configured');
+  } finally {
+    if(before===undefined)delete process.env[name];
+    else process.env[name]=before;
+  }
+});
+test('submission enabled flag reports available only with complete server config',async()=>{
+  const names=['DTB_SMARTQUOTE_SUBMIT_ENABLED','DTB_INTAKE_SUPABASE_URL',
+    'DTB_INTAKE_SERVICE_KEY','DTB_SMARTQUOTE_TURNSTILE_SITE_KEY',
+    'DTB_TURNSTILE_SITE_KEY','DTB_TURNSTILE_SECRET_KEY',
+    'DTB_SMARTQUOTE_TURNSTILE_SECRET_KEY','DTB_SMARTQUOTE_HOSTNAMES'];
+  const saved=Object.fromEntries(names.map(k=>[k,process.env[k]]));
+  try {
+    Object.assign(process.env,{
+      DTB_SMARTQUOTE_SUBMIT_ENABLED:'true',
+      DTB_INTAKE_SUPABASE_URL:'https://dtbtest.supabase.co',
+      DTB_INTAKE_SERVICE_KEY:'sb_secret_LOCAL_TEST_ONLY',
+      DTB_SMARTQUOTE_TURNSTILE_SITE_KEY:'0x4AAA_TEST_SHARED_WIDGET',
+      DTB_TURNSTILE_SITE_KEY:'0x4AAA_TEST_SHARED_WIDGET',
+      DTB_TURNSTILE_SECRET_KEY:'TEST_ONLY_FAKE_SECRET',
+      DTB_SMARTQUOTE_HOSTNAMES:'dtbtech.org'
+    });
+    delete process.env.DTB_SMARTQUOTE_TURNSTILE_SECRET_KEY;
+    const res=mockRes();
+    await submitApi(request('GET'),res);
+    assert.equal(res.statusCode,200);
+    assert.equal(res.data.enabled,true);
+    assert.equal(res.data.siteKey,'0x4AAA_TEST_SHARED_WIDGET');
+    assert.ok(!JSON.stringify(res.data).includes('TEST_ONLY_FAKE_SECRET'));
+  } finally {
+    for(const name of names){
+      if(saved[name]===undefined)delete process.env[name];
+      else process.env[name]=saved[name];
+    }
+  }
 });
 test('submission validation rejects consent, spam and missing fields',()=>{
   const result=submitApi._test.validate({
