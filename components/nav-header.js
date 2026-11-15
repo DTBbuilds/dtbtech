@@ -59,11 +59,10 @@ class NavHeader extends HTMLElement {
                         <!-- Navigation Links -->
                         <div class="hidden md:flex items-center space-x-2">
                             <a href="${prefix}services" class="px-3 py-2 min-h-[44px] inline-flex items-center text-slate-300 hover:text-white border-b-2 border-transparent transition-colors ${getActiveClass('services')}"${getAriaCurrent('services')}>Services</a>
-                            <a href="${prefix}projects" class="px-3 py-2 min-h-[44px] inline-flex items-center text-slate-300 hover:text-white border-b-2 border-transparent transition-colors ${getActiveClass('projects')}"${getAriaCurrent('projects')}>Projects</a>
+                            <a href="${prefix}projects" class="px-3 py-2 min-h-[44px] inline-flex items-center text-slate-300 hover:text-white border-b-2 border-transparent transition-colors ${getActiveClass('projects')}"${getAriaCurrent('projects')}>Our Work</a>
                             <a href="${prefix}about" class="px-3 py-2 min-h-[44px] inline-flex items-center text-slate-300 hover:text-white border-b-2 border-transparent transition-colors ${getActiveClass('about')}"${getAriaCurrent('about')}>About</a>
-                            <a href="${prefix}tech-lab" class="px-3 py-2 min-h-[44px] inline-flex items-center text-slate-300 hover:text-white border-b-2 border-transparent transition-colors ${getActiveClass('tech-lab')}"${getAriaCurrent('tech-lab')}>Tech Lab</a>
                             <a href="${prefix}contact" class="px-3 py-2 min-h-[44px] inline-flex items-center text-slate-300 hover:text-white border-b-2 border-transparent transition-colors ${getActiveClass('contact')}"${getAriaCurrent('contact')}>Contact</a>
-                            <a href="${prefix}contact" class="ml-3 px-4 py-2 min-h-[44px] inline-flex items-center rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium transition-colors">Discuss Your Project</a>
+                            <a href="${prefix}estimate" class="ml-3 px-4 py-2 min-h-[44px] inline-flex items-center rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400" ${getAriaCurrent('estimate')}>SmartQuote <i class="fas fa-arrow-right ml-2 text-xs" aria-hidden="true"></i></a>
                         </div>
 
                         <!-- Mobile Menu Button -->
@@ -83,20 +82,17 @@ class NavHeader extends HTMLElement {
                             <i class="fas fa-cogs mr-3 w-4"></i>Services
                         </a>
                         <a href="${prefix}projects" class="block px-4 py-3 min-h-[44px] text-gray-300 hover:text-blue-400 hover:bg-slate-700/50 rounded-lg transition-colors flex items-center font-medium ${getMobileActiveClass('projects')}"${getAriaCurrent('projects')}>
-                            <i class="fas fa-briefcase mr-3 w-4"></i>Projects
+                            <i class="fas fa-briefcase mr-3 w-4"></i>Our Work
                         </a>
                         <a href="${prefix}about" class="block px-4 py-3 min-h-[44px] text-gray-300 hover:text-blue-400 hover:bg-slate-700/50 rounded-lg transition-colors flex items-center font-medium ${getMobileActiveClass('about')}"${getAriaCurrent('about')}>
                             <i class="fas fa-info-circle mr-3 w-4"></i>About Us
-                        </a>
-                        <a href="${prefix}tech-lab" class="block px-4 py-3 min-h-[44px] text-gray-300 hover:text-blue-400 hover:bg-slate-700/50 rounded-lg transition-colors flex items-center font-medium ${getMobileActiveClass('tech-lab')}"${getAriaCurrent('tech-lab')}>
-                            <i class="fas fa-flask mr-3 w-4"></i>Tech Lab
                         </a>
                         <a href="${prefix}contact" class="block px-4 py-3 min-h-[44px] text-gray-300 hover:text-blue-400 hover:bg-slate-700/50 rounded-lg transition-colors flex items-center font-medium ${getMobileActiveClass('contact')}"${getAriaCurrent('contact')}>
                             <i class="fas fa-envelope mr-3 w-4"></i>Contact
                         </a>
                         <div class="mt-3 pt-3 border-t border-slate-800/60">
-                            <a href="${prefix}contact" class="block w-full px-4 py-3 min-h-[44px] bg-blue-600 hover:bg-blue-700 text-white text-center rounded-lg font-medium transition-colors">
-                                <i class="fas fa-rocket mr-2 text-xs"></i>Discuss Your Project
+                            <a href="${prefix}estimate" class="block w-full px-4 py-3 min-h-[48px] bg-blue-600 hover:bg-blue-700 text-white text-center rounded-lg font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400" ${getAriaCurrent('estimate')}>
+                                <i class="fas fa-calculator mr-2 text-sm" aria-hidden="true"></i>Estimate Your Project
                             </a>
                         </div>
                     </div>
