@@ -46,11 +46,18 @@ test('guided natural-language interpretation finds job workflow',()=>{
   assert.ok(data.features.includes('staff_workspace'));
   assert.ok(data.features.includes('booking'));
 });
-test('estimate GET is public config without credentials',async()=>{
+test('estimate GET exposes only safe public configuration in any environment',async()=>{
   const res=mockRes();await estimateApi(request('GET'),res);
-  assert.equal(res.statusCode,200);assert.equal(res.data.ok,true);
-  assert.equal(res.data.aiAvailable,false);assert.equal(res.data.siteKey,null);
-  assert.ok(!JSON.stringify(res.data).includes('secret'));
+  assert.equal(res.statusCode,200);
+  assert.equal(res.data.ok,true);
+  assert.equal(typeof res.data.aiAvailable,'boolean');
+  // AI may be enabled in Production; the public config must accurately reflect it.
+  const config=estimateApi._test.settings();
+  assert.equal(res.data.aiAvailable,config.enabled);
+  assert.equal(res.data.siteKey,config.enabled?config.sitekey:null);
+  assert.ok(!Object.prototype.hasOwnProperty.call(res.data,'token'));
+  assert.ok(!Object.prototype.hasOwnProperty.call(res.data,'secret'));
+  assert.ok(!JSON.stringify(res.data).includes('TEST_ONLY_FAKE_SECRET'));
 });
 test('guided estimate uses server-controlled pricing and never needs paid AI',async()=>{
   const res=mockRes();
