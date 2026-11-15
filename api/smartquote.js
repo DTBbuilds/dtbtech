@@ -14,8 +14,11 @@ function settings(){
   const e=process.env;
   const model=String(e.DTB_SMARTQUOTE_MODEL||'');
   const hosts=String(e.DTB_SMARTQUOTE_HOSTNAMES||'').split(',').map(x=>x.trim().toLowerCase()).filter(Boolean);
-  const sitekey=String(e.DTB_SMARTQUOTE_TURNSTILE_SITE_KEY||'');
-  const secret=String(e.DTB_SMARTQUOTE_TURNSTILE_SECRET_KEY||'');
+  const sitekey=String(e.DTB_SMARTQUOTE_TURNSTILE_SITE_KEY||e.DTB_TURNSTILE_SITE_KEY||'');
+  const primarySiteKey=String(e.DTB_TURNSTILE_SITE_KEY||'');
+  // Share Turnstile server secret only with the exact same widget; no cross-widget reuse.
+  const secret=String(e.DTB_SMARTQUOTE_TURNSTILE_SECRET_KEY||
+    (sitekey&&primarySiteKey&&sitekey===primarySiteKey?e.DTB_TURNSTILE_SECRET_KEY:'')||'');
   const token=e.AI_GATEWAY_API_KEY||e.VERCEL_OIDC_TOKEN;
   const enabled=e.DTB_SMARTQUOTE_AI_ENABLED==='true' &&
     /^[a-z0-9._-]+\/[a-z0-9._-]+$/i.test(model) &&
