@@ -13,6 +13,9 @@ app.use((req, res, next) => {
 // Dedicated, gated public enquiry API shares the exact handler with Vercel.
 app.use('/api/enquiry', express.json({limit: '16kb'}), require('./api/enquiry'));
 app.get('/api/inbox-config', require('./api/inbox-config'));
+// SmartQuote: free guided calculation plus optional AI and verified submission.
+app.use('/api/smartquote-submit', express.json({limit:'12kb'}), require('./api/smartquote-submit'));
+app.use('/api/smartquote', express.json({limit:'8kb'}), require('./api/smartquote'));
 
 // Match Vercel cleanUrls behaviour: .html URLs permanently redirect to the
 // extensionless canonical URL, and extensionless URLs serve the .html file

@@ -5,7 +5,7 @@ Scope: Western Sydney plumbers, electricians, cleaners and painters first; expan
 
 ## What exists today
 
-- Public `/tradies` offers Website Rescue from A$450, Tradie Lead Website from A$1,500, and custom-quoted Local Lead Foundation. Confirm current offers on the live website before quoting a prospect.
+- Public `/tradies` offers Website Rescue from A$450, Get Online from A$990, Win More Enquiries from A$2,490, and Run Your Crew from A$4,990 with compatible third-party job-management setup. A custom DTB Crew Portal MVP is scoped separately from A$7,900. Confirm current offers on the live website before quoting a prospect.
 - Existing public `/tradies` website-check flow **prepares** a WhatsApp/email draft or copies details. It is not proof of a successfully delivered enquiry; a real person must send it.
 - The new private enquiry inbox is still Preview-only and lacks a verified first staff account. **Do not use or advertise it as an operational outbound CRM yet.**
 - Do not promise traffic, rankings, leads, revenue, fixed delivery dates, or an unapproved support SLA.
