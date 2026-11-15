@@ -231,3 +231,22 @@ test('Vercel function runtime OIDC header enables opt-in model without exposing 
     }
   }
 });
+
+test('homepage primary quote CTA opens public SmartQuote, while the estimator remains wired',()=>{
+  const fs=require('node:fs');
+  const path=require('node:path');
+  const home=fs.readFileSync(path.join(__dirname,'../index.html'),'utf8');
+  const page=fs.readFileSync(path.join(__dirname,'../estimate.html'),'utf8');
+  const script=fs.readFileSync(path.join(__dirname,'../js/smartquote.js'),'utf8');
+  const hero=home.split('<!-- Hero Section')[1]?.split('<!-- Genuine work:')[0];
+  assert.ok(hero,'homepage hero is present');
+  assert.match(hero,/<a href="\/estimate"[^>]*>[\s\S]*?Estimate Your Project[\s\S]*?<\/a>/);
+  assert.doesNotMatch(hero,/Get a Project Quote/);
+  assert.match(hero,/Free SmartQuote estimate/);
+  assert.match(page,/id="dtb-estimate-form"/);
+  assert.match(page,/id="estimate-submit-form"/);
+  assert.match(page,/src="\/js\/smartquote\.js"/);
+  assert.ok(script.includes("postJson('/api/smartquote'"));
+  assert.ok(script.includes("postJson('/api/smartquote-submit'"));
+  assert.ok(home.includes('href="projects"'),'secondary portfolio CTA remains intact');
+});
