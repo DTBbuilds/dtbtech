@@ -248,7 +248,7 @@ test('homepage primary quote CTA opens public SmartQuote, while the estimator re
   assert.match(page,/src="\/js\/smartquote\.js"/);
   assert.ok(script.includes("postJson('/api/smartquote'"));
   assert.ok(script.includes("postJson('/api/smartquote-submit'"));
-  assert.ok(home.includes('href="projects"'),'secondary portfolio CTA remains intact');
+  assert.ok(home.includes('href="/projects"'),'secondary portfolio CTA remains intact');
 });
 
 test('homepage presents six sections once, in the intended buying journey',()=>{
