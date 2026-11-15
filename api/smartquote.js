@@ -10,7 +10,7 @@ function send(res,status,body){
   res.setHeader('Content-Type','application/json; charset=utf-8');
   return res.status(status).json(body);
 }
-function settings(){
+function settings(req){
   const e=process.env;
   const model=String(e.DTB_SMARTQUOTE_MODEL||'');
   const hosts=String(e.DTB_SMARTQUOTE_HOSTNAMES||'').split(',').map(x=>x.trim().toLowerCase()).filter(Boolean);
@@ -19,7 +19,10 @@ function settings(){
   // Share Turnstile server secret only with the exact same widget; no cross-widget reuse.
   const secret=String(e.DTB_SMARTQUOTE_TURNSTILE_SECRET_KEY||
     (sitekey&&primarySiteKey&&sitekey===primarySiteKey?e.DTB_TURNSTILE_SECRET_KEY:'')||'');
-  const token=e.AI_GATEWAY_API_KEY||e.VERCEL_OIDC_TOKEN;
+  // Vercel injects OIDC at function runtime in a request header.
+  // Keep environment fallback for local development and explicitly configured Gateway keys.
+  const token=e.AI_GATEWAY_API_KEY||e.VERCEL_OIDC_TOKEN||
+    req?.headers?.['x-vercel-oidc-token'];
   const enabled=e.DTB_SMARTQUOTE_AI_ENABLED==='true' &&
     /^[a-z0-9._-]+\/[a-z0-9._-]+$/i.test(model) &&
     Boolean(token&&sitekey&&secret&&hosts.length);
@@ -113,7 +116,7 @@ async function aiClassify(description,config){
   }catch{return null}finally{clearTimeout(timer)}
 }
 async function handler(req,res){
-  const config=settings();
+  const config=settings(req);
   if(req.method==='GET')return send(res,200,{ok:true,aiAvailable:config.enabled,siteKey:config.enabled?config.sitekey:null,pricingVersion:PRICING_VERSION,marketReviewedAt:'2026-11-15'});
   if(req.method!=='POST'){res.setHeader('Allow','GET, POST');return send(res,405,{ok:false,error:'method_not_allowed'});}
   if(!sameOrigin(req))return send(res,403,{ok:false,error:'origin_rejected'});
