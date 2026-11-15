@@ -117,3 +117,34 @@ test('preview fetch keeps Vercel SSO cookie on same-origin API calls',()=>{
   assert.ok(!browser.includes("credentials:'omit'"),'do not strip SSO session cookies from same-origin POST requests');
   assert.ok(browser.includes("Calculate My Estimate"),'AI-disabled mode must be labelled as guided price calculation');
 });
+
+test('reuses existing Turnstile secret only for identical site keys',()=>{
+  const names=[
+    'DTB_SMARTQUOTE_TURNSTILE_SITE_KEY','DTB_SMARTQUOTE_TURNSTILE_SECRET_KEY',
+    'DTB_TURNSTILE_SITE_KEY','DTB_TURNSTILE_SECRET_KEY'
+  ];
+  const before=Object.fromEntries(names.map(k=>[k,process.env[k]]));
+  try {
+    process.env.DTB_SMARTQUOTE_TURNSTILE_SITE_KEY='0x4AAA_TEST_SAME_WIDGET';
+    delete process.env.DTB_SMARTQUOTE_TURNSTILE_SECRET_KEY;
+    process.env.DTB_TURNSTILE_SITE_KEY='0x4AAA_TEST_SAME_WIDGET';
+    process.env.DTB_TURNSTILE_SECRET_KEY='local_test_shared_secret';
+    assert.equal(submitApi._test.settings().secret,'local_test_shared_secret');
+    assert.equal(estimateApi._test.settings().secret,'local_test_shared_secret');
+
+    // A different widget must not inherit the primary widget's secret.
+    process.env.DTB_SMARTQUOTE_TURNSTILE_SITE_KEY='0x4AAA_TEST_OTHER_WIDGET';
+    assert.equal(submitApi._test.settings().secret,'');
+    assert.equal(estimateApi._test.settings().secret,'');
+
+    // Explicit separate secrets remain supported.
+    process.env.DTB_SMARTQUOTE_TURNSTILE_SECRET_KEY='local_test_dedicated_secret';
+    assert.equal(submitApi._test.settings().secret,'local_test_dedicated_secret');
+    assert.equal(estimateApi._test.settings().secret,'local_test_dedicated_secret');
+  } finally {
+    for(const name of names){
+      if(before[name]===undefined)delete process.env[name];
+      else process.env[name]=before[name];
+    }
+  }
+});

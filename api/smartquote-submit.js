@@ -13,8 +13,12 @@ function settings(){
   const e=process.env;
   const url=String(e.DTB_INTAKE_SUPABASE_URL||'').replace(/\/$/,'');
   const key=String(e.DTB_INTAKE_SERVICE_KEY||'');
-  const secret=String(e.DTB_SMARTQUOTE_TURNSTILE_SECRET_KEY||'');
-  const siteKey=String(e.DTB_SMARTQUOTE_TURNSTILE_SITE_KEY||'');
+  const siteKey=String(e.DTB_SMARTQUOTE_TURNSTILE_SITE_KEY||e.DTB_TURNSTILE_SITE_KEY||'');
+  const primarySiteKey=String(e.DTB_TURNSTILE_SITE_KEY||'');
+  // Reuse the existing server-only Turnstile secret only when widget site keys match.
+  // A distinct SmartQuote widget needs its own secret; otherwise fail closed.
+  const secret=String(e.DTB_SMARTQUOTE_TURNSTILE_SECRET_KEY||
+    (siteKey&&primarySiteKey&&siteKey===primarySiteKey?e.DTB_TURNSTILE_SECRET_KEY:'')||'');
   const hostnames=String(e.DTB_SMARTQUOTE_HOSTNAMES||'').split(',').map(x=>x.trim().toLowerCase()).filter(Boolean);
   const enabled=e.DTB_SMARTQUOTE_SUBMIT_ENABLED==='true' &&
     /^https:\/\/[a-z0-9-]+\.supabase\.co$/i.test(url) &&
