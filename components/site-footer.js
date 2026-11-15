@@ -15,7 +15,7 @@ class SiteFooter extends HTMLElement {
                 <div class="container mx-auto px-4 sm:px-6">
 
                     <!-- Upper: Project CTA -->
-                    <section class="pt-12 sm:pt-14" aria-label="Start a project">
+                    <section class="pt-12 sm:pt-14" aria-label="Start a project" data-footer-project-cta>
                         <div class="relative overflow-hidden bg-slate-900 border border-slate-700/40 rounded-2xl px-6 py-10 sm:px-10 sm:py-12">
                             <div class="absolute -top-24 -right-24 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
                             <div class="relative flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
@@ -131,6 +131,11 @@ class SiteFooter extends HTMLElement {
                 </div>
             </footer>
         `;
+        // Pages that already present a full project CTA can opt out of the
+        // repeated promotional card while retaining all footer navigation.
+        if (this.hasAttribute('hide-project-cta')) {
+            this.querySelector('[data-footer-project-cta]')?.remove();
+        }
     }
 }
 
