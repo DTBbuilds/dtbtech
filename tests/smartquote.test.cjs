@@ -292,3 +292,17 @@ test('homepage uses real approved portfolio assets and factual project labels',(
   assert.ok(home.includes('href="/projects/jack-of-all-trades"'));
   assert.ok(!home.includes('guaranteed leads'),'no unsubstantiated commercial claim');
 });
+
+test('main navigation prioritises SmartQuote and preserves About and Tech Lab discovery',()=>{
+  const fs=require('node:fs'),path=require('node:path');
+  const nav=fs.readFileSync(path.join(__dirname,'../components/nav-header.js'),'utf8');
+  const footer=fs.readFileSync(path.join(__dirname,'../components/site-footer.js'),'utf8');
+  assert.equal((nav.match(/href="\\?\$\{prefix\}estimate"/g)||[]).length,2,'desktop and mobile SmartQuote navigation links');
+  assert.ok(nav.includes('Estimate Your Project'),'mobile CTA should describe the destination');
+  assert.ok(nav.includes('>SmartQuote <i'),'desktop CTA should be visible');
+  assert.ok(nav.includes('aria-controls="mobile-menu" aria-expanded="false"'),'mobile menu accessibility retained');
+  assert.ok(nav.includes('getAriaCurrent('),'accessible current-page navigation retained');
+  assert.ok(footer.includes('href="\${prefix}about"'),'About remains discoverable');
+  assert.ok(footer.includes('href="\${prefix}tech-lab"'),'Tech Lab remains discoverable');
+  assert.ok(footer.includes("this.hasAttribute('hide-project-cta')"),'footer CTA opt-out remains supported');
+});
