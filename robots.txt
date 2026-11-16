@@ -1,11 +1,12 @@
 # DTB Technologies - robots.txt
-# https://dtbtech.org
+# https://www.dtbtech.org
 
 User-agent: *
 Allow: /
 Disallow: /node_modules/
 Disallow: /reports/
 Disallow: /src/
+Disallow: /api/
 
 # Note: dashboard and internal pages are kept crawlable so their
 # "noindex" meta tags can be read; robots.txt must not hide them.
@@ -13,4 +14,4 @@ Disallow: /src/
 # Crawl-delay courtesy
 Crawl-delay: 1
 
-Sitemap: https://dtbtech.org/sitemap.xml
+Sitemap: https://www.dtbtech.org/sitemap.xml

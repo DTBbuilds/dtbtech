@@ -3,7 +3,7 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "buildCommand": "npm run build",
-  "outputDirectory": ".",
+  "outputDirectory": "site",
   "headers": [
     {
       "source": "/(.*)",
@@ -146,16 +146,47 @@
           "value": "public, max-age=86400"
         }
       ]
+    },
+    {
+      "source": "/dashboard",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow, noarchive"
+        }
+      ]
+    },
+    {
+      "source": "/dashboard/:path*",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow, noarchive"
+        }
+      ]
+    },
+    {
+      "source": "/auth/:path*",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow, noarchive"
+        }
+      ]
     }
   ],
   "rewrites": [
     {
       "source": "/docs/:path*",
-      "destination": "/404.html"
+      "destination": "/api/not-found"
     },
     {
       "source": "/supabase/:path*",
-      "destination": "/404.html"
+      "destination": "/api/not-found"
+    },
+    {
+      "source": "/:path*",
+      "destination": "/api/not-found"
     }
   ],
   "redirects": [
