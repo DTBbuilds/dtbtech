@@ -62,7 +62,7 @@ function ico(map){const entries=Object.entries(map).map(([size,data])=>({size:+s
 const {size,data}=entries[i],j=6+i*16;header[j]=size===256?0:size;header[j+1]=size===256?0:size;header.writeUInt16LE(1,j+4);header.writeUInt16LE(32,j+6);header.writeUInt32LE(data.length,j+8);header.writeUInt32LE(offset,j+12);offset+=data.length}return Buffer.concat([header,...entries.map(e=>e.data)])}
 function save(rel,data){const fp=path.join(site,rel);fs.mkdirSync(path.dirname(fp),{recursive:true});fs.writeFileSync(fp,data);console.log('Brand icon',rel,data.length,'bytes')}
 const sizes={};for(const n of [16,32,48,180,192,256,512])sizes[n]=render(n);
-save('favicon-16x16.png',sizes[16]);save('favicon-32x32.png',sizes[32]);save('favicon.ico',ico({16:sizes[16],32:sizes[32],48:sizes[48],256:sizes[256]}));
+save('favicon-16x16.png',sizes[16]);save('favicon-32x32.png',sizes[32]);save('favicon-48x48.png',sizes[48]);save('favicon.ico',ico({16:sizes[16],32:sizes[32],48:sizes[48],256:sizes[256]}));
 save('apple-touch-icon.png',sizes[180]);save('assets/dtb-logo.png',sizes[192]);save('assets/brand/spider-192.png',sizes[192]);save('assets/brand/spider-512.png',sizes[512]);save('assets/brand/spider-maskable-512.png',render(512,true));
 const manifest={name:'DTB Technologies',short_name:'DTB',description:'Websites, business software, and project quotes.',start_url:'/',scope:'/',display:'standalone',background_color:'#fdfaf1',theme_color:'#0f172a',icons:[
 {src:'/assets/brand/spider-192.png',sizes:'192x192',type:'image/png',purpose:'any'},
