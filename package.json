@@ -6,15 +6,17 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "build": "npm run test:intake && npm run test:inbox && npm run test:smartquote && npm run build:css && npm run build:public && npm run test:seo",
+    "build": "npm run test:intake && npm run test:inbox && npm run test:smartquote && npm run build:css && npm run build:public && npm run build:brand && npm run test:seo && npm run test:brand",
     "build:css": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify",
     "watch:css": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
-    "vercel-build": "npm run test:intake && npm run test:inbox && npm run test:smartquote && npm run build:css && npm run build:public && npm run test:seo",
+    "vercel-build": "npm run test:intake && npm run test:inbox && npm run test:smartquote && npm run build:css && npm run build:public && npm run build:brand && npm run test:seo && npm run test:brand",
     "test:intake": "node tests/intake-handler.test.cjs",
     "test:inbox": "node tests/inbox-config.test.cjs",
     "test:smartquote": "node --test tests/smartquote.test.cjs",
     "build:public": "node scripts/build-public-site.cjs",
-    "test:seo": "node --test tests/seo-foundation.test.cjs"
+    "test:seo": "node --test tests/seo-foundation.test.cjs",
+    "build:brand": "node scripts/build-brand-icons.cjs",
+    "test:brand": "node --test tests/brand-assets.test.cjs"
   },
   "repository": {
     "type": "git",

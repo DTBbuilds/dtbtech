@@ -43,7 +43,7 @@ class SiteFooter extends HTMLElement {
                         <!-- Brand -->
                         <div class="space-y-4 lg:pr-6">
                             <a href="${prefix}" class="inline-flex items-center space-x-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 rounded-lg">
-                                <img src="${prefix}assets/dtb-logo.png" alt="DTB Technologies Logo" class="h-9 w-9 rounded-full object-cover">
+                                <img src="${prefix}assets/brand/spider-192.png" alt="" width="40" height="40" class="h-10 w-10 rounded-xl object-cover border border-amber-200/25">
                                 <span class="text-white font-semibold text-lg tracking-tight">DTB Technologies</span>
                             </a>
                             <p class="text-slate-400 text-sm leading-relaxed">Software studio building websites, apps and business systems for teams in Australia and Kenya.</p>

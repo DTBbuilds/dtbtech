@@ -51,7 +51,7 @@ class NavHeader extends HTMLElement {
                         <!-- Logo -->
                         <div class="flex-shrink-0">
                             <a href="${prefix}" class="group inline-flex items-center space-x-2.5" aria-label="DTB Technologies — Home">
-                                <img src="${prefix}assets/dtb-logo.png" alt="DTB Technologies" class="h-9 w-9 rounded-full object-cover">
+                                <img src="${prefix}assets/brand/spider-192.png" alt="" width="40" height="40" class="h-10 w-10 rounded-xl object-cover border border-amber-200/25">
                                 <span class="text-white font-semibold text-lg tracking-tight hidden sm:block">DTB Technologies</span>
                             </a>
                         </div>
