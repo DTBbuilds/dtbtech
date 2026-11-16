@@ -14,7 +14,7 @@
     "test:inbox": "node tests/inbox-config.test.cjs",
     "test:smartquote": "node --test tests/smartquote.test.cjs",
     "build:public": "node scripts/build-public-site.cjs",
-    "test:seo": "node --test tests/seo-foundation.test.cjs"
+    "test:seo": "node --test tests/seo-foundation.test.cjs tests/seo-content.test.cjs"
   },
   "repository": {
     "type": "git",
